@@ -6,6 +6,7 @@ import heroPicture from './assets/images/hero.jpg'
 
 import About from './About'
 import Project from './Project'
+import Skill from './Skill'
 
 function App() {
   const roles : string[] = ["Front-End Developer", "3D Artist", "Steve", "something else"]
@@ -127,6 +128,8 @@ function App() {
       </section>
 
       <About />
+
+      <Skill />
 
       <Project />
     </>
