@@ -103,8 +103,8 @@ function App() {
     <>
       <Header />
 
-      <section id='test' className='flex sm:flex-col-reverse lg:flex-row px-10 py-10 gap-5 items-center justify-between w-screen min-h-240'>
-        <div className='h-full w-full flex flex-col items-start justify-center gap-6'>
+      <section id='test' className='flex flex-col-reverse lg:flex-row items-stretch justify-between min-h-240'>
+        <div className='flex flex-col items-start justify-center gap-6 flex-1 rounded-l-2xl pl-10'>
           <h3 className='text-2xl'>
             Hi, I'm
           </h3>
@@ -120,18 +120,21 @@ function App() {
           <SocialLinks />
         </div>
 
-        <div className='flex lg:justify-end sm:justify-center items-center h-full w-full'>
+        <div className='flex lg:justify-end justify-center items-center flex-1 rounded;r-2xl pr-10'>
           <div className='h-160 overflow-hidden rounded-2xl'>
             <img src={heroPicture} className='w-full h-full object-cover' />
           </div>
         </div>
       </section>
 
-      <About />
+      <div className='flex flex-col gap-12 max-w-7xl mx-auto px-8 xl:px-0'>
+        <About />
 
-      <Skill />
+        <Skill />
 
-      <Project />
+
+        <Project />
+      </div>
     </>
   )
 }

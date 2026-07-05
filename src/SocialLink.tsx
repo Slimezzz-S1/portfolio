@@ -67,7 +67,7 @@ export function SocialLink({name, description, url, iconUrl, IconElement} : Soci
             href={url}
             onMouseEnter={() => setIsHover(true)}
             onMouseLeave={() => setIsHover(false)}
-            className={"w-12 h-12 rounded-4xl p-2 bg-black text-foreground border-2 border-foreground transition-transform" + (isHover ? 'transform -scale-[-110%]' : "")}
+            className={"w-12 h-12 rounded-4xl p-2 bg-black text-foreground border-3 border-foreground hover:bg-foreground hover:text-background hover:border-background transition-all " + (isHover ? 'transform -scale-[-110%]' : "")}
             children={hasIcon ? (IconElement ? <IconElement /> : <img src={iconUrl} />) : iconHandle(name)}
         />
     )

@@ -8,10 +8,10 @@ export interface AboutCardProps {
 
 const aboutData : AboutCardProps[] = [
     {
-        title : <h2 className="border-2 border-lime-300 px-4 font-bold text-4xl py-4 pb-8 mb-[-1rem] rounded-t-2xl"> Summary </h2>,
+        title : <h2 className="border-4 border-lime-300 text-lime-300 px-4 font-bold text-4xl py-4 pb-8 mb-[-1rem] rounded-t-2xl"> Summary </h2>,
         className : "flex flex-col col-span-2 row-span-2 rounded-2xl",
         text : (
-            <div className="bg-background flex flex-col gap-2 px-4 py-4 rounded-2xl border-2 border-lime-500 h-full flex-1 transition-transform">
+            <div className="bg-background flex flex-col gap-2 px-4 py-4 rounded-2xl border-4 border-lime-500 h-full flex-1 transition-transform">
                 <p className="text-2xl">
                     I'm a 17 year old freshman studying Software Engineering
                 </p>
@@ -29,10 +29,9 @@ const aboutData : AboutCardProps[] = [
         )
     },
     {
-        title : <h2 className="text-4xl font-bold px-4 py-2"> SE Student </h2>,
-        className : "border-2 border-foreground rounded-2xl",
+        title : <h2 className="text-4xl font-bold"> SE Student </h2>,
         text : (
-            <div className="px-4 pb-2">
+            <div>
                 <p>
                     I study Software Engineering in a vocational school, just a regular freshman
                 </p>
@@ -45,9 +44,9 @@ const aboutData : AboutCardProps[] = [
     },
     {
         title : <h1 className="text-4xl font-bold"> 3D Artist </h1>,
-        className : "border-2 border-red-500 p-4 rounded-2xl col-span-3 row-span-2",
+        className : "border-4 border-red-500 text-red-500 p-4 rounded-2xl col-span-3 row-span-2",
         text : (
-            <div>
+            <div className="text-white">
                 <p className="text-2xl">
                     I also do 3D, especially 3d animation using blender 3.6.23 and 5.1. I primarly focused on animation and VFX rather than rigging and modelling
                 </p>
@@ -58,7 +57,7 @@ const aboutData : AboutCardProps[] = [
 
 export function AboutCards({aboutList = aboutData} : {aboutList? : AboutCardProps[]}) {
     return (
-        <div className="grid grid-cols-3 grid-rows-3 gap-6 min-h-128">
+        <div className="lg:grid lg:grid-cols-3 lg:grid-rows-3 gap-6 flex flex-col min-h-128">
             {aboutList.map(aboutItem => <AboutCard key={aboutItem.title?.toString()} title={aboutItem.title} text={aboutItem.text} className={aboutItem.className} />)}
         </div>
     )
@@ -66,7 +65,7 @@ export function AboutCards({aboutList = aboutData} : {aboutList? : AboutCardProp
 
 export function AboutCard({title, text, className} : AboutCardProps) {
     return (
-        <div className={className ?? "bg-background text-foreground border-2 border-foreground px-4 py-2 rounded-2xl flex flex-col"}>
+        <div className={className ?? "bg-background text-foreground border-4 border-foreground min-h-48 px-4 py-2 rounded-2xl flex flex-col"}>
             {typeof title === "string" ? <h2 className="text-4xl font-bold" children={title} /> : title}
 
             {typeof text === "string" ? <p children={text} /> : text}
@@ -76,12 +75,13 @@ export function AboutCard({title, text, className} : AboutCardProps) {
 
 export default function About() {
     return (
-        <section className="px-10 pb-10">
-            <div className="flex flex-col items-center max-w-5xl mx-auto">
-                <h1 className="text-6xl text-center mb-10 font-bold" children="About Me" />
+        <section>
+            <h1
+                className="text-6xl text-center mb-12 font-bold"
+                children="About Me"
+            />
 
-                <AboutCards />
-            </div>
+            <AboutCards />
         </section>
     )
 }

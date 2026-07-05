@@ -3,6 +3,7 @@
 @theme {
     --color-background : black;
     --color-foreground : white;
+    --color-border : gray;
 }
 
 html {
