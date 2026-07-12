@@ -8,6 +8,9 @@ importers:
 
   .:
     dependencies:
+      animejs:
+        specifier: ^4.5.0
+        version: 4.5.0
       react:
         specifier: ^19.2.7
         version: 19.2.7
@@ -663,6 +666,17 @@ packages:
   amqplib@0.5.2:
     resolution: {integrity: sha512-l9mCs6LbydtHqRniRwYkKdqxVa6XMz3Vw1fh+2gJaaVgTM6Jk3o8RccAKWKtlhT1US5sWrFh+KKxsVUALURSIA==}
     engines: {node: '>=0.8 <=9'}
+
+  animejs@4.5.0:
+    resolution: {integrity: sha512-NQimYX+lz8WaXonGS9zVVoviCIAjONeJayxacUditaivYLqyXgGjFKjuyl0aUUhFKm5MriX9ty1TGovNzoJQWA==}
+    peerDependencies:
+      '@types/three': '>=0.150.0'
+      three: '>=0.150.0'
+    peerDependenciesMeta:
+      '@types/three':
+        optional: true
+      three:
+        optional: true
 
   ansi-styles@3.2.1:
     resolution: {integrity: sha512-VT0ZI6kZRdTh8YyJw3SMbYm/u+NqfsAxEpWO0Pf9sq8/e94WxxOpPKx9FR1FlyCtOVDNOQ+8ntlqFxiRc+r5qA==}
@@ -2740,6 +2754,8 @@ snapshots:
       buffer-more-ints: 0.0.2
       readable-stream: 1.1.14
       safe-buffer: 5.2.1
+
+  animejs@4.5.0: {}
 
   ansi-styles@3.2.1:
     dependencies:

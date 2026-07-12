@@ -1,17 +1,59 @@
 import SocialLinks from './SocialLink'
 import Header from './Header'
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 
 import heroPicture from './assets/images/hero.jpg'
 
 import About from './About'
-import Project from './Project'
 import Skill from './Skill'
+import BuildWith from './BuildWith'
+import Projects from './Project'
+
+import { animate, stagger } from 'animejs'
 
 function App() {
   const roles : string[] = ["Front-End Developer", "3D Artist", "Steve", "something else"]
   const [heroRole, setHeroRole] = useState("")
   const [isCursor, setIsCursor] = useState(false)
+
+  const heroRef = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    if (!heroRef) {
+      return
+    }
+
+    animate(heroRef.current?.children!, {
+      x : (el, i) => [i == 0 ? "-100vw" : "100vw", 0],
+      duration : 700,
+      ease : "outSine",
+      delay : stagger(500)
+    })
+  }, [])
+
+  // useEffect(() => {
+  //   const observer = new IntersectionObserver(
+  //     (entries) => {
+  //       entries.forEach((entry) => {
+  //         if (entry.isIntersecting) {
+  //           console.log(entry.target)
+  //         } else {
+  //           console.log("Not visible")
+  //         }
+  //       })
+  //     },
+
+  //     { 
+  //       root : null,
+  //       rootMargin: "0px",
+  //       scrollMargin: "0px",
+  //       threshold: 0,
+  //     }
+  //   )
+
+  //   observer.observe(document.querySelector("#test")!)
+  //   return () => observer.disconnect()
+  // }, [])
   
   // useEffect(() => {
   //   const delayEachLetter : number = 30
@@ -83,13 +125,14 @@ function App() {
       })
     }
 
-    runCycle()
-    // console.log(sumTime)
-    
-    setInterval(() => {
+    setTimeout(() => {
       runCycle()
-    }, sumTime)
-    
+      // console.log(sumTime)
+      
+      setInterval(() => {
+        runCycle()
+      }, sumTime)
+    }, 1200)
   }, [])
 
   useEffect(() => {
@@ -103,7 +146,7 @@ function App() {
     <>
       <Header />
 
-      <section id='test' className='flex flex-col-reverse lg:flex-row items-stretch justify-between min-h-240'>
+      <section ref={heroRef} className='flex flex-col-reverse lg:flex-row items-stretch justify-between min-h-240'>
         <div className='flex flex-col items-start justify-center gap-6 flex-1 rounded-l-2xl pl-10'>
           <h3 className='text-2xl'>
             Hi, I'm
@@ -127,13 +170,15 @@ function App() {
         </div>
       </section>
 
+      <BuildWith />
+
       <div className='flex flex-col gap-12 max-w-7xl mx-auto px-8 xl:px-0'>
+
         <About />
 
         <Skill />
 
-
-        <Project />
+        <Projects />
       </div>
     </>
   )

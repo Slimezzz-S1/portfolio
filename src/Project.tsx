@@ -3,18 +3,6 @@ import image2 from './assets/images/son/HMURL7obYAE4A_C.jpg'
 import image3 from './assets/images/son/StQ5quvf-odqJWOa22NCHDtfBXDaQeGAbAwGXIZUVK0.jpg'
 import image4 from './assets/images/son/my-collection-of-son-memes-so-far-v0-d5qtfrwjatzg1.webp'
 
-export default function Project() {
-    return (
-        <section>
-            <h1 className="text-6xl font-bold text-center mb-12">
-                My Project
-            </h1>
-
-            <ProjectCards />
-        </section>
-    )
-}
-
 const projectCardData : projectCardProps[] = [
     {
         title : "falcons won",
@@ -49,7 +37,7 @@ export interface projectCardProps {
     description : string
 }
 
-export function ProjectCard({title, bannerImage, summary, description} : projectCardProps) {
+export function ProjectCard({title, bannerImage, summary} : projectCardProps) {
     return (
         <div className='bg-background border-3 rounded-2xl overflow-hidden w-80'>
             <div className='h-64'>
@@ -84,5 +72,18 @@ export function ProjectCards({projectCardList = projectCardData} : {projectCardL
                 />
             ))}
         </div>
+    )
+}
+
+
+export default function Projects() {
+    return (
+        <section>
+            <h1 className="text-6xl font-bold text-center mb-12">
+                My Project
+            </h1>
+
+            <ProjectCards />
+        </section>
     )
 }

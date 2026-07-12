@@ -27,7 +27,7 @@ export default function Header() {
     
     return (
         <>
-            <header className={'sticky w-screen top-0 left-0 transition-transform '  + (isScrolled ? "transform -translate-y-full" : "")}>
+            <header className={'sticky w-screen top-0 left-0 transition-transform z-50 '  + (isScrolled ? "transform -translate-y-full" : "")}>
                 <div
                     className="flex items-center justify-center border-b border-gray-200 bg-gray-100 px-4 py-2 text-gray-900 dark:border-gray-700 dark:bg-gray-800 dark:text-white"
                 >

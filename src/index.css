@@ -17,3 +17,9 @@ body {
 #root {
     @apply flex flex-col
 }
+
+@keyframes spinControl {
+    to {
+        transform: rotate(360deg);
+    }
+}

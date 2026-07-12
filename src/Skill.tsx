@@ -200,7 +200,7 @@ export function SkillLanguage({name, IconElement, color} : Omit<skillLanguagePro
         title={name}
         style={{ ["--icon-color" as any]: color }}
         className={"group w-20 h-20 p-3 border-2 border-foreground rounded-2xl transition-transform hover:-scale-[-105%] transition- " + (color ? `hover:border-[var(--icon-color)]` : "hover:border-gray-500")}>
-            {IconElement ? <IconElement className={color ? `transition-colors group-hover:text-[var(--icon-color)]` : ""} /> : <UnknownIcon />}
+            {IconElement ? <IconElement className={color ? `transition-colors group-hover:text-(--icon-color)` : ""} /> : <UnknownIcon />}
         </div>
     )
 }
