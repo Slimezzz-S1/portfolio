@@ -24,7 +24,7 @@ function App() {
     }
 
     animate(heroRef.current?.children!, {
-      x : (el, i) => [i == 0 ? "-100vw" : "100vw", 0],
+      x : (_el, i) => [i == 0 ? "-100vw" : "100vw", 0],
       duration : 700,
       ease : "outSine",
       delay : stagger(500)
@@ -152,7 +152,7 @@ function App() {
             Hi, I'm
           </h3>
 
-          <h2 className='lg:min-h-36 sm:min-h-18 text-7xl'>
+          <h2 className='lg:min-h-36 min-h-42 sm:min-h-18 text-7xl'>
             {heroRole}<span className={isCursor ? "text-foreground" : "text-background"}>_</span>
           </h2>
 
@@ -163,8 +163,8 @@ function App() {
           <SocialLinks />
         </div>
 
-        <div className='flex lg:justify-end justify-center items-center flex-1 rounded;r-2xl pr-10'>
-          <div className='h-160 overflow-hidden rounded-2xl'>
+        <div className='flex lg:justify-end justify-center items-center flex-1 rounded;r-2xl p-10 lg:p-0 lg:pr-10'>
+          <div className='lg:h-128 h-full overflow-hidden rounded-2xl aspect-3/4'>
             <img src={heroPicture} className='w-full h-full object-cover' />
           </div>
         </div>

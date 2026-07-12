@@ -19,7 +19,7 @@ export default function TwoPanels({ mainPart, secondPart, isFlipped, isFlippedAl
         }
 
         animate(sectionRef.current?.children!, {
-            x : (el, i) => [i == 0 ? "-100vw" : "100vw", 0],
+            x : (_el, i) => [i == 0 ? "-100vw" : "100vw", 0],
             duration : 1200,
             ease : "outQuart"
         })

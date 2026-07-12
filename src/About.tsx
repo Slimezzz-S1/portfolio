@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState, type ReactNode } from "react"
+import { type ReactNode } from "react"
 
 export interface AboutCardProps {
     title : ReactNode | string

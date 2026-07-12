@@ -1,5 +1,3 @@
-import { useState, type ReactNode } from 'react'
-
 import ReactIcon from './assets/icons/language/uil--react.svg?react'
 import JavascriptIcon from './assets/icons/language/akar-icons--javascript-fill.svg?react'
 import TypescriptIcon from './assets/icons/language/akar-icons--typescript-fill.svg?react'

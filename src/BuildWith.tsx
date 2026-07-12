@@ -1,7 +1,7 @@
 import ZylPicture from './assets/images/zyl_holding.png'
 import ZylHandPicture from './assets/images/zyl_holding_hand.png'
 import ReactIcon from './assets/icons/language/uil--react.svg?react'
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef } from 'react'
 import { animate } from 'animejs'
 
 
@@ -17,7 +17,7 @@ export default function BuildWith() {
                     if (entry.isIntersecting) {
 
                         animate(sectionRef.current?.children!, {
-                            x: (el, i) => [i == 0 ? "-100vw" : "100vw", 0],
+                            x: (_el, i) => [i == 0 ? "-100vw" : "100vw", 0],
                             duration : 700,
                             ease : "outSine"
                         })
