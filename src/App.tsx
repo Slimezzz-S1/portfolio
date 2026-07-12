@@ -12,7 +12,7 @@ import Projects from './Project'
 import { animate, stagger } from 'animejs'
 
 function App() {
-  const roles : string[] = ["Front-End Developer", "3D Artist", "Steve", "something else"]
+  const roles : string[] = ["Front-End Developer", "3D Artist", "Full-Stack Developer"]
   const [heroRole, setHeroRole] = useState("")
   const [isCursor, setIsCursor] = useState(false)
 
@@ -173,7 +173,6 @@ function App() {
       <BuildWith />
 
       <div className='flex flex-col gap-12 max-w-7xl mx-auto px-8 xl:px-0'>
-
         <About />
 
         <Skill />
