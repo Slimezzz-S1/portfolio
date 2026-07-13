@@ -16,8 +16,8 @@ export default function BuildWith() {
 
                         animate(sectionRef.current?.children!, {
                             x: (_el, i) => [i == 0 ? "-100vw" : "100vw", 0],                            
-                            duration : 900,
-                            ease : "outQuint"
+                            duration : 1000,
+                            ease : "outQuart"
                         })
                         observer.unobserve(sectionRef.current!)
                     }
@@ -37,12 +37,12 @@ export default function BuildWith() {
     return (
         <section ref={sectionRef} className='relative overflow-hidden h-196 flex flex-col lg:flex-row-reverse lg:justify-center items-center gap-12 p-10'>
             <div style={{"transform" : "translateX(-100vw)"}}>
-                <h1 className='text-8xl lg:text-9xl text-center font-bold lg:font-black'>
+                <h1 className='text-8xl lg:text-9xl text-left self-center font-bold lg:font-black'>
                     Built with
                 </h1>
 
                 <p className='font-mono'>
-                    Along with : TypeScript + Tailwind + AnimeJS
+                    React + TypeScript + Tailwind + AnimeJS
                 </p>
             </div>
 

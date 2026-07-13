@@ -22,6 +22,9 @@ import FfmpegIcon from './assets/icons/language/file-icons--ffmpeg.svg?react'
 import DockerIcon from './assets/icons/language/mdi--docker.svg?react'
 
 import UnknownIcon from './assets/icons/language/material-symbols--question-mark.svg?react'
+import { Panel } from './TwoPanels'
+import { useEffect, useState, type ReactNode, useRef } from 'react'
+import { animate, stagger } from 'animejs'
 
 interface skillLanguageProps {
     name : string
@@ -185,49 +188,96 @@ const skillToolsData : skillLanguageProps[] = [
 
 export function SkillLanguages({skillLanguageList = skillLanguageData, className} : {skillLanguageList? : skillLanguageProps[], className? : string}) {
     return (
-        <div className={'grid grid-cols-4 gap-4 ' + (className ?? "")}>
+        <div className={'grid grid-cols-[repeat(auto-fit,minmax(5rem,1fr))] gap-4 ' + (className ?? "")}>
             {skillLanguageList.map(skillLanguageItem => <SkillLanguage key={skillLanguageItem.name} name={skillLanguageItem.name} color={skillLanguageItem.color} IconElement={skillLanguageItem.IconElement} />)}
         </div>
     )
 }
 
-export function SkillLanguage({name, IconElement, color} : Omit<skillLanguageProps, "description" | "percent">) {
+export function SkillLanguage({name, IconElement, color, className, style} : Omit<skillLanguageProps, "description" | "percent"> & {className? : string, style? : React.CSSProperties}) {
 
     return (
         <div
         title={name}
-        style={{ ["--icon-color" as any]: color }}
-        className={"group w-20 h-20 p-3 border-2 border-foreground rounded-2xl transition-transform hover:-scale-[-105%] transition- " + (color ? `hover:border-[var(--icon-color)]` : "hover:border-gray-500")}>
+        style={{ ["--icon-color" as any]: color, style} as React.CSSProperties}
+        className={"group p-3 border-2 border-foreground bg-background rounded-2xl transition-transform hover:-scale-[-105%] transition- " + (color ? `hover:border-[var(--icon-color)] ` : "hover:border-gray-500 ") + (className ?? "")}>
             {IconElement ? <IconElement className={color ? `transition-colors group-hover:text-(--icon-color)` : ""} /> : <UnknownIcon />}
         </div>
     )
 }
 
 export default function Skill() {
+    const languageRef = useRef<HTMLDivElement>(null)
+    const toolRef = useRef<HTMLDivElement>(null)
+
+    const onVisibleHandle = () => {
+        animate(languageRef.current?.children!, {
+            x: {
+                from : "-100%",
+                to : "0",
+                ease : "outQuint"
+            },
+            opacity : ["0", "1"],
+            duration : 700,
+            delay : stagger(100)
+        })
+
+        animate(toolRef.current?.children!, {
+            x: {
+                from : "-100%",
+                to : "0",
+                ease : "outQuint",
+            },
+            opacity : ["0", "1"],
+            duration : 700,
+            delay : stagger(100),
+        })
+    }
+
     return (
-        <section>
+        <Panel customAnimate={true} onVisibleHandle={() => onVisibleHandle()}>
             <h1 className="text-6xl text-center py-4 font-bold mb-12">
                 Skill
             </h1>
-
-            <div className="flex flex-col lg:flex-row justify-between items-center gap-4">
-                <div className='flex flex-col gap-4 items-center h-full'>
-                    <h1 className="text-4xl text-center">
+            
+            <div className="flex flex-col lg:flex-row justify-between gap-16">
+                <div className='flex-1 flex flex-col gap-4 h-full items-center'>
+                    <h1 className="text-4xl text-center font-bold">
                         Tools
                     </h1>
 
-                    <SkillLanguages className='w-fit' />
+                    <div ref={languageRef} className='grid grid-cols-[repeat(auto-fit,minmax(5rem,1fr))] gap-4 max-w-lg'>
+                        {skillLanguageData.map((skillLanguageItem, index) => 
+                            <SkillLanguage
+                                key={index}
+                                name={skillLanguageItem.name}
+                                color={skillLanguageItem.color}
+                                IconElement={skillLanguageItem.IconElement}
+                                className='opacity-0'
+                            />
+                        )}
+                    </div>
                 </div>
 
-                <div className='flex flex-col gap-4 items-center h-full'>
-                    <h1 className="text-4xl text-center">
+                <div className='flex-1 flex flex-col gap-4 h-full items-center'>
+                    <h1 className="text-4xl text-center font-bold">
                         Apps
                     </h1>
 
-                    <SkillLanguages className='w-fit' skillLanguageList={skillToolsData} />
+                    <div ref={toolRef} className='grid grid-cols-[repeat(auto-fit,minmax(5rem,1fr))] gap-4 max-w-lg'>
+                        {skillToolsData.map((skillToolsItem, index) => 
+                            <SkillLanguage
+                                key={index}
+                                name={skillToolsItem.name}
+                                color={skillToolsItem.color}
+                                IconElement={skillToolsItem.IconElement}
+                                className='opacity-0'
+                            />
+                        )}
+                    </div>
                 </div>
 
             </div>
-        </section>
+        </Panel>
     )
 }

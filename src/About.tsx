@@ -1,9 +1,12 @@
-import { type ReactNode } from "react"
+import { useEffect, useRef, useState, type CSSProperties, type ReactNode } from "react"
+import { Panel } from "./TwoPanels"
+import { animate, stagger } from "animejs"
 
 export interface AboutCardProps {
     title : ReactNode | string
     text : ReactNode | string
     className? : string
+    style? : React.CSSProperties
 }
 
 const aboutData : AboutCardProps[] = [
@@ -58,14 +61,14 @@ const aboutData : AboutCardProps[] = [
 export function AboutCards({aboutList = aboutData} : {aboutList? : AboutCardProps[]}) {
     return (
         <div className="lg:grid lg:grid-cols-3 lg:grid-rows-3 gap-6 flex flex-col min-h-128">
-            {aboutList.map(aboutItem => <AboutCard key={aboutItem.title?.toString()} title={aboutItem.title} text={aboutItem.text} className={aboutItem.className} />)}
+            {aboutList.map((aboutItem, index) => <AboutCard key={index} title={aboutItem.title} text={aboutItem.text} className={aboutItem.className} />)}
         </div>
     )
 }
 
-export function AboutCard({title, text, className} : AboutCardProps) {
+export function AboutCard({title, text, className, style} : AboutCardProps) {
     return (
-        <div className={className ?? "bg-background text-foreground border-4 border-foreground min-h-48 px-4 py-2 rounded-2xl flex flex-col"}>
+        <div style={style as React.CSSProperties} className={className ?? "bg-background text-foreground border-4 border-foreground min-h-48 px-4 py-2 rounded-2xl flex flex-col"}>
             {typeof title === "string" ? <h2 className="text-4xl font-bold" children={title} /> : title}
 
             {typeof text === "string" ? <p children={text} /> : text}
@@ -74,14 +77,39 @@ export function AboutCard({title, text, className} : AboutCardProps) {
 }
 
 export default function About() {
+    const [isVisible, setIsVisible] = useState(false)
+    const cardsRef = useRef<HTMLDivElement>(null)
+
+    useEffect(() => {
+        if (!isVisible) return
+        
+        animate(cardsRef.current?.children!, {
+            x : (_item, index) => [index == 0 ? "-100%" : index == 2 ? "100%" : "0" , "0"],
+            y : (_item, index) => [index == 1 ? "-100%" : index == 3 ? "100%" : "0", "0"],
+            opacity : "1",
+            duration : 700,
+            delay : stagger(200)
+        })
+    }, [isVisible])
+
     return (
-        <section>
+        <Panel customAnimate={true} onVisibleHandle={() => setIsVisible(true)}>
             <h1
                 className="text-6xl text-center mb-12 font-bold"
                 children="About Me"
             />
 
-            <AboutCards />
-        </section>
+            <div ref={cardsRef} className="lg:grid lg:grid-cols-3 lg:grid-rows-3 gap-6 flex flex-col min-h-128">
+                {aboutData.map((item, index) => (
+                    <AboutCard
+                        key={index}
+                        style={{"transform" : `translateX(${index == 0 ? "-100%" : index == 2 ? "100%" : "0"}) translateY(${index == 1 ? "-100%" : index == 3 ? "100%" : "0"})`, "opacity" : "0"}}
+                        title={item.title}
+                        text={item.text}
+                        className={item.className}
+                    />
+                ))}
+            </div>
+        </Panel>
     )
 }

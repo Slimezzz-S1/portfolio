@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import HeaderLogo from './assets/logo.svg?react'
+import { createPortal } from 'react-dom'
 
 export default function Header() {
     const [isScrolled, setIsScrolled] = useState(false)
@@ -10,7 +11,8 @@ export default function Header() {
     useEffect(() => {
         const handleScroll : () => void = () => {
             const current = window.scrollY
-
+            if (isOpened) return
+            
             if (current > lastScroll.current) {
                 setIsScrolled(true)
             } else {
@@ -61,6 +63,19 @@ export default function Header() {
                     </div>
                 </div>
             </header>
+
+            {isOpened && <Nav />}
         </>
+    )
+}
+
+export function Nav() {
+    return createPortal(
+        <div className='fixed top-0 right-0 z-50 pt-34'>
+            <nav className=''>
+                Meow
+            </nav>
+        </div>,
+        document.body
     )
 }

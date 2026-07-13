@@ -23,3 +23,11 @@ body {
         transform: rotate(360deg);
     }
 }
+
+@keyframes scroll {
+    from {
+        transform: translateX(0) translateY(0);
+    } to {
+        transform: translateX(var(--x, 0)) translateY(var(--y, 0));
+    }
+}

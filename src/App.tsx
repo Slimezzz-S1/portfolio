@@ -10,6 +10,10 @@ import BuildWith from './BuildWith'
 import Projects from './Project'
 
 import { animate, stagger } from 'animejs'
+import Marquee from './Marquee'
+
+import WaterDotGrid from './WaterDotGrid'
+import { Panel } from './TwoPanels'
 
 function App() {
   const roles : string[] = ["Front-End Developer", "3D Artist", "Full-Stack Developer"]
@@ -139,6 +143,7 @@ function App() {
     const interval = setInterval(() => {
       setIsCursor(prev => !prev)
     }, 600)
+    
     return () => clearInterval(interval)
   }, [])
 
@@ -152,7 +157,7 @@ function App() {
             Hi, I'm
           </h3>
 
-          <h2 className='lg:min-h-36 min-h-42 sm:min-h-18 text-7xl'>
+          <h2 className='lg:min-h-36 min-h-36 text-7xl'>
             {heroRole}<span className={isCursor ? "text-foreground" : "text-background"}>_</span>
           </h2>
 
@@ -170,7 +175,29 @@ function App() {
         </div>
       </section>
 
+      <Marquee className="border-y py-2 my-4 [--x:-100%]" speed={20}>
+          {Array.from({ length : 4}).map((_item, index) => (
+            <p key={index} className='text-1xl'>
+              Work In Progress
+            </p>
+          ))}
+      </Marquee>
+
       <BuildWith />
+
+      <Panel>
+        <section className='relative py-10 flex justify-center'>
+          <WaterDotGrid className='w-full max-w-5xl aspect-video' />
+
+          <div className='absolute top-0 left-0 w-full h-full flex justify-center items-center mix-blend-difference'>
+            <h1 className='text-8xl font-black text-white flex gap-3'>
+              3D ARTIST
+            </h1>
+          </div>
+
+          <div className='absolute top-0 left-0 w-full h-full z-20 bg-radial from-none from-50% to-80% to-black' />
+        </section>
+      </Panel>
 
       <div className='flex flex-col gap-12 max-w-7xl mx-auto px-8 xl:px-0'>
         <About />
