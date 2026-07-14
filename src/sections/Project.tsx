@@ -76,7 +76,7 @@ function ProjectDetailed({ onClose, props } : { onClose : () => void, props : pr
         if (isClosing) {
             animate(overlayRef.current!, {
                 opacity : ["1", "0"],
-                duration : 600
+                duration : 400
             })
 
             setTimeout(() => onClose(), 600)
@@ -85,7 +85,7 @@ function ProjectDetailed({ onClose, props } : { onClose : () => void, props : pr
 
         animate(overlayRef.current!, {
             opacity : ["0", "1"],
-            duration : 600
+            duration : 400
         })
     }, [isClosing])
 

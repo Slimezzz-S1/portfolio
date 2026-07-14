@@ -14,6 +14,7 @@ import Marquee from './components/Marquee'
 import WaterDotGrid from './components/WaterDotGrid'
 import SocialLinks from './components/SocialLink'
 import { Panel } from './components/TwoPanels'
+import Gallery from './sections/Gallery'
 
 function App() {
   const roles : string[] = ["Front-End Developer", "3D Artist", "Full-Stack Developer"]
@@ -205,6 +206,8 @@ function App() {
         <Skill />
 
         <Projects />
+
+        <Gallery />
       </div>
     </>
   )

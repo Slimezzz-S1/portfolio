@@ -8,6 +8,7 @@ interface basicPanelProps {
     isCustomAnimation? : boolean
     onVisibleHandle? : () => void
     isOverwriteClass? : boolean
+    threshold? : number | number[]
 }
 
 export interface twoPanelsProps extends basicPanelProps {
@@ -21,25 +22,30 @@ export interface onePanelProps extends basicPanelProps {
     children : React.ReactNode
 }
 
-export default function TwoPanels({ mainPart, secondPart, isFlipped, isFlippedAlternate, className, isOverwriteClass, style, id, isCustomAnimation} : twoPanelsProps) {
+export default function TwoPanels({ mainPart, secondPart, isFlipped, isFlippedAlternate, className, isOverwriteClass, style, id, isCustomAnimation, threshold} : twoPanelsProps) {
     const sectionRef = useRef<HTMLDivElement>(null)
 
     useEffect(() => {
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach((entry) => {
-                if (entry.isIntersecting) {
-                    if (isCustomAnimation) return
+        const observer = new IntersectionObserver(
+            (entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        if (isCustomAnimation) return
 
-                    animate(sectionRef.current?.children!, {
-                        x : (_el, i) => [i == 0 ? "-100vw" : "100vw", 0],
-                        duration : 1200,
-                        ease : "outQuart"
-                    })
+                        animate(sectionRef.current?.children!, {
+                            x : (_el, i) => [i == 0 ? "-100vw" : "100vw", 0],
+                            duration : 1200,
+                            ease : "outQuart"
+                        })
 
-                    observer.unobserve(sectionRef.current!)
-                }
-            })
-        })
+                        observer.unobserve(sectionRef.current!)
+                    }
+                })
+            },
+            {
+                threshold : threshold ?? 0.5
+            }
+        )
 
         observer.observe(sectionRef.current!)
 
@@ -59,7 +65,7 @@ export default function TwoPanels({ mainPart, secondPart, isFlipped, isFlippedAl
     )
 }
 
-export function Panel({ children, className, id, style, onVisibleHandle, isOverwriteClass, isCustomAnimation} : onePanelProps) {
+export function Panel({ children, className, id, style, onVisibleHandle, isCustomAnimation, threshold} : onePanelProps) {
     const sectionRef = useRef<HTMLDivElement>(null)
 
     useEffect(() => {
@@ -84,7 +90,8 @@ export function Panel({ children, className, id, style, onVisibleHandle, isOverw
                 })
             },
             {
-                threshold : 0.5
+                threshold : threshold ?? 0.5,
+
             }
         )
 
