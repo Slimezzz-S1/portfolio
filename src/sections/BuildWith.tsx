@@ -1,8 +1,9 @@
-import ZylPicture from './assets/images/zyl_holding.png'
-import ZylHandPicture from './assets/images/zyl_holding_hand.png'
-import ReactIcon from './assets/icons/language/uil--react.svg?react'
 import { useEffect, useRef } from 'react'
 import { animate } from 'animejs'
+
+import ZylPicture from '../assets/images/zyl_holding.webp'
+// import ZylHandPicture from './assets/images/zyl_holding_hand.png'
+import ReactIcon from '../assets/icons/language/uil--react.svg?react'
 
 export default function BuildWith() {
     const sectionRef = useRef<HTMLDivElement>(null)
@@ -27,7 +28,7 @@ export default function BuildWith() {
                 root : null,
                 rootMargin : "0px",
                 scrollMargin : "0px",
-                threshold : .75
+                threshold : 0.75
             }
         )
 
@@ -49,7 +50,7 @@ export default function BuildWith() {
             <div className='max-w-3xl h-full' style={{"transform" : "translateX(100vw)"}}>
             <div className='relative'>
                 <img src={ZylPicture} alt="" className='w-full object-contain' />
-                <img src={ZylHandPicture} alt="" className='absolute top-0 left-0 w-full object-contain z-20' />
+                {/* <img src={ZylHandPicture} alt="" className='absolute top-0 left-0 w-full object-contain z-20' /> */}
 
                 <div className='absolute top-[18%] left-[1%] w-[40%] aspect-square z-10'>
                     <ReactIcon className='animate-[spinControl_3s_linear_infinite] text-[#00c8ff] drop-shadow-[0px_0px_20px_#7be2ff,0px_0px_50px_#00f]' />

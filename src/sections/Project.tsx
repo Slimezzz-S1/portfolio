@@ -1,23 +1,24 @@
-import posterZZZ from './assets/images/PosterZZZ.png'
-import contactImage from './assets/images/Contact Form.png'
-import image3 from './assets/images/son/StQ5quvf-odqJWOa22NCHDtfBXDaQeGAbAwGXIZUVK0.jpg'
-import image4 from './assets/images/son/my-collection-of-son-memes-so-far-v0-d5qtfrwjatzg1.webp'
 import { createPortal } from 'react-dom'
 import { useState, useRef, useEffect } from 'react'
 import { animate } from 'animejs'
+
+import posterZZZ from '../assets/images/PosterZZZ.png'
+import contactImage from '../assets/images/Contact Form.png'
+import image3 from '../assets/images/son/StQ5quvf-odqJWOa22NCHDtfBXDaQeGAbAwGXIZUVK0.jpg'
+import image4 from '../assets/images/son/my-collection-of-son-memes-so-far-v0-d5qtfrwjatzg1.webp'
 
 const projectCardData : projectCardProps[] = [
     {
         title : "PosterZZZ",
         bannerImage : posterZZZ,
         summary : "Twitter/X knockoff made in NextJS",
-        description : "insane"
+        description : "I made this in hopes of learning the basics of fullstack web development. I chose NextJS because I love it."
     },
     {
         title : "Contact Form",
         bannerImage : contactImage,
         summary : "Small challenges in Front End Mentor",
-        description : "son"
+        description : "This is my first ever challenges I ever took in Front End Mentor"
     },
     {
         title : "PosterZZZ",
@@ -45,24 +46,24 @@ export function ProjectCard({title, bannerImage, summary, description} : project
 
     return (
         <>
-        <div className='bg-background border-3 rounded-2xl overflow-hidden'>
-            <div className='h-64'>
-                <img src={bannerImage} alt="" className='w-full h-full object-cover' />
+            <div className='bg-background border-3 rounded-2xl overflow-hidden'>
+                <div className='h-64'>
+                    <img src={bannerImage} alt="" className='w-full h-full object-cover' />
+                </div>
+
+                <div className='p-4 border-t flex flex-col'>
+                    <h2 className='text-4xl font-bold'>
+                        {title}
+                    </h2>
+
+                    <p className='min-h-12'>
+                        {summary}
+                    </p>
+
+                    <button className='p-2 w-3xs max-w-full self-center border rounded-2xl hover:bg-foreground hover:text-background hover:border-background transition-colors' children="Check it out" onClick={() => setIsDetailed(true)} />
+                </div>
             </div>
-
-            <div className='p-4 border-t flex flex-col'>
-                <h2 className='text-4xl font-bold'>
-                    {title}
-                </h2>
-
-                <p className='min-h-12'>
-                    {summary}
-                </p>
-
-                <button className='p-2 w-3xs max-w-full self-center border rounded-2xl hover:bg-foreground hover:text-background hover:border-background transition-colors' children="Check it out" onClick={() => setIsDetailed(true)} />
-            </div>
-        </div>
-        {isDetailed && <ProjectDetailed onClose={() => setIsDetailed(false)} props={{title, bannerImage, summary, description}} />}
+            {isDetailed && <ProjectDetailed onClose={() => setIsDetailed(false)} props={{title, bannerImage, summary, description}} />}
         </>
     )
 }

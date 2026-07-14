@@ -1,19 +1,19 @@
-import SocialLinks from './SocialLink'
-import Header from './Header'
 import { useEffect, useRef, useState } from 'react'
+import { animate, stagger } from 'animejs'
 
 import heroPicture from './assets/images/hero.jpg'
 
-import About from './About'
-import Skill from './Skill'
-import BuildWith from './BuildWith'
-import Projects from './Project'
+import Header from './Header'
 
-import { animate, stagger } from 'animejs'
-import Marquee from './Marquee'
+import About from './sections/About'
+import Skill from './sections/Skill'
+import BuildWith from './sections/BuildWith'
+import Projects from './sections/Project'
 
-import WaterDotGrid from './WaterDotGrid'
-import { Panel } from './TwoPanels'
+import Marquee from './components/Marquee'
+import WaterDotGrid from './components/WaterDotGrid'
+import SocialLinks from './components/SocialLink'
+import { Panel } from './components/TwoPanels'
 
 function App() {
   const roles : string[] = ["Front-End Developer", "3D Artist", "Full-Stack Developer"]
@@ -175,7 +175,7 @@ function App() {
         </div>
       </section>
 
-      <Marquee className="border-y py-2 my-4 [--x:-100%]" speed={20}>
+      <Marquee className="border-y py-2 my-12 lg:my-2 [--x:-100%]" speed={20}>
           {Array.from({ length : 4}).map((_item, index) => (
             <p key={index} className='text-1xl'>
               Work In Progress

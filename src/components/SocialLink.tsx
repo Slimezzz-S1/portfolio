@@ -1,7 +1,7 @@
-import YoutubeIcon from './assets/icons/socialLink/youtube.svg?react'
-import XIcon from './assets/icons/socialLink/x.svg?react'
-import GithubIcon from './assets/icons/socialLink/github.svg?react'
-import DiscordIcon from './assets/icons/socialLink/discord.svg?react'
+import YoutubeIcon from '../assets/icons/socialLink/youtube.svg?react'
+import XIcon from '../assets/icons/socialLink/x.svg?react'
+import GithubIcon from '../assets/icons/socialLink/github.svg?react'
+import DiscordIcon from '../assets/icons/socialLink/discord.svg?react'
 import { useState, type ReactNode } from 'react'
 
 export interface SocialLinkProps {

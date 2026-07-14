@@ -1,5 +1,5 @@
-import { useEffect, useRef, useState, type CSSProperties, type ReactNode } from "react"
-import { Panel } from "./TwoPanels"
+import { useEffect, useRef, useState, type ReactNode } from "react"
+import { Panel } from "../components/TwoPanels"
 import { animate, stagger } from "animejs"
 
 export interface AboutCardProps {
@@ -93,11 +93,11 @@ export default function About() {
     }, [isVisible])
 
     return (
-        <Panel customAnimate={true} onVisibleHandle={() => setIsVisible(true)}>
-            <h1
+        <Panel isCustomAnimation={true} onVisibleHandle={() => setIsVisible(true)}>
+            {/* <h1
                 className="text-6xl text-center mb-12 font-bold"
                 children="About Me"
-            />
+            /> */}
 
             <div ref={cardsRef} className="lg:grid lg:grid-cols-3 lg:grid-rows-3 gap-6 flex flex-col min-h-128">
                 {aboutData.map((item, index) => (
