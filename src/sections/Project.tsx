@@ -1,6 +1,6 @@
 import { createPortal } from 'react-dom'
-import { useState, useRef, useEffect } from 'react'
-import { animate } from 'animejs'
+import { useState, useRef, useEffect, type Ref } from 'react'
+import { animate, stagger } from 'animejs'
 
 import posterZZZ from '../assets/images/PosterZZZ.png'
 import contactImage from '../assets/images/Contact Form.png'
@@ -39,14 +39,16 @@ export interface projectCardProps {
     bannerImage : string
     summary : string
     description : string
+    className? : string
+    style? : React.CSSProperties
 }
 
-export function ProjectCard({title, bannerImage, summary, description} : projectCardProps) {
+export function ProjectCard({title, bannerImage, summary, description, className, style} : projectCardProps) {
     const [isDetailed, setIsDetailed] = useState(false)
 
     return (
         <>
-            <div className='bg-background border-3 rounded-2xl overflow-hidden'>
+            <div className={'bg-background border-3 rounded-2xl overflow-hidden ' + (className ?? "")} style={style ?? {}}>
                 <div className='h-64'>
                     <img src={bannerImage} alt="" className='w-full h-full object-cover' />
                 </div>
@@ -121,9 +123,9 @@ function ProjectDetailed({ onClose, props } : { onClose : () => void, props : pr
     )
 }
 
-export function ProjectCards({projectCardList = projectCardData} : {projectCardList? : projectCardProps[]}) {
+export function ProjectCards({projectCardList = projectCardData, ref, classNameChildren, styleChildren} : {projectCardList? : projectCardProps[], ref? : Ref<HTMLDivElement>, classNameChildren? : string, styleChildren? : React.CSSProperties}) {
     return (
-        <div className='grid gap-10 grid-cols-[repeat(auto-fit,minmax(24rem,1fr))]'>
+        <div ref={ref} className='grid gap-10 grid-cols-[repeat(auto-fit,minmax(24rem,1fr))]'>
             {projectCardList.map((project, index) => (
                 <ProjectCard
                     key={index}
@@ -131,6 +133,8 @@ export function ProjectCards({projectCardList = projectCardData} : {projectCardL
                     bannerImage={project.bannerImage}
                     summary={project.summary}
                     description={project.description}
+                    style={styleChildren}
+                    className={classNameChildren}
                 />
             ))}
         </div>
@@ -139,13 +143,40 @@ export function ProjectCards({projectCardList = projectCardData} : {projectCardL
 
 
 export default function Projects() {
+    const projectCardsRef = useRef<HTMLDivElement>(null)
+
+    useEffect(() => {
+        const observer = new IntersectionObserver(
+            (entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+
+                        animate(projectCardsRef.current?.children!, {
+                            opacity : ["0", "1"],
+                            x : (_element, index) => [index! % 2 ? "100%" : "-100%", "0"],
+                            delay : stagger(100)
+                        }) 
+                        observer.disconnect()
+                    }
+                })
+            },
+            {
+                threshold : 0.25
+            }
+        )
+
+        observer.observe(projectCardsRef.current!)
+
+        return () => observer.disconnect()
+    }, [])
+
     return (
         <section>
             <h1 className="text-6xl font-bold text-center mb-12">
                 My Project
             </h1>
 
-            <ProjectCards />
+            <ProjectCards ref={projectCardsRef} styleChildren={{"opacity" : "0"}} />
         </section>
     )
 }

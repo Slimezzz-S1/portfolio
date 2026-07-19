@@ -5,10 +5,22 @@ import ZylPicture from '../assets/images/zyl_holding.webp'
 // import ZylHandPicture from './assets/images/zyl_holding_hand.png'
 import ReactIcon from '../assets/icons/language/uil--react.svg?react'
 
-export default function BuildWith() {
+export default function BuildWith({ useOwnObserver = false, isVisible = false} : { useOwnObserver? : boolean, isVisible? : boolean}) {
     const sectionRef = useRef<HTMLDivElement>(null)
 
     useEffect(() => {
+        if (useOwnObserver) return
+
+        animate(sectionRef.current?.children!, {
+            x: (_el, i) => [i == 0 ? "-100vw" : "100vw", 0],                            
+            duration : 1000,
+            ease : "outQuart"
+        })
+
+    }, [isVisible])
+    useEffect(() => {
+        if (!useOwnObserver) return
+
         const observer = new IntersectionObserver(
             (entries) => {
                 entries.forEach((entry) => {

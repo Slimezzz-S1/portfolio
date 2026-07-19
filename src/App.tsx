@@ -9,12 +9,14 @@ import About from './sections/About'
 import Skill from './sections/Skill'
 import BuildWith from './sections/BuildWith'
 import Projects from './sections/Project'
+import Gallery from './sections/Gallery'
+import TimelineSection from './sections/Timeline'
 
 import Marquee from './components/Marquee'
 import WaterDotGrid from './components/WaterDotGrid'
 import SocialLinks from './components/SocialLink'
 import { Panel } from './components/TwoPanels'
-import Gallery from './sections/Gallery'
+import Carousel from './components/Carousels'
 
 function App() {
   const roles : string[] = ["Front-End Developer", "3D Artist", "Full-Stack Developer"]
@@ -22,6 +24,7 @@ function App() {
   const [isCursor, setIsCursor] = useState(false)
 
   const heroRef = useRef<HTMLDivElement>(null)
+  const refs = useRef([])
 
   useEffect(() => {
     if (!heroRef) {
@@ -200,14 +203,19 @@ function App() {
         </section>
       </Panel>
 
-      <div className='flex flex-col gap-12 max-w-7xl mx-auto px-8 xl:px-0'>
+      <div className='flex flex-col gap-12 max-w-7xl mx-auto px-8 2xl:px-0'>
         <About />
 
         <Skill />
 
         <Projects />
 
+        <TimelineSection />
+
         <Gallery />
+        
+        <Carousel />
+
       </div>
     </>
   )
