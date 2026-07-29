@@ -2,11 +2,10 @@ import { createPortal } from 'react-dom'
 import { useState, useRef, useEffect, type Ref } from 'react'
 import { animate, stagger } from 'animejs'
 
-import posterZZZ from '../assets/images/PosterZZZ.png'
-import contactImage from '../assets/images/Contact Form.png'
-import image3 from '../assets/images/son/StQ5quvf-odqJWOa22NCHDtfBXDaQeGAbAwGXIZUVK0.jpg'
-import image4 from '../assets/images/son/my-collection-of-son-memes-so-far-v0-d5qtfrwjatzg1.webp'
-
+import posterZZZ from '../assets/images/projects/PosterZZZ.png'
+import contactImage from '../assets/images/projects/Contact Form.png'
+import image3 from '../assets/images/projects/Blender.png'
+import image4 from '../assets/images/projects/Photoshop.png'
 const projectCardData : projectCardProps[] = [
     {
         title : "PosterZZZ",
@@ -21,15 +20,15 @@ const projectCardData : projectCardProps[] = [
         description : "This is my first ever challenges I ever took in Front End Mentor"
     },
     {
-        title : "PosterZZZ",
+        title : "S11ME",
         bannerImage : image3,
-        summary : "4chan-like website",
+        summary : "My animation series",
         description : "a"
     },
     {
-        title : "Hello Studio",
+        title : "Photoshop",
         bannerImage : image4,
-        summary : "A school finals project",
+        summary : "Silly photoshopped images",
         description : "as"
     }
 ]
@@ -153,7 +152,7 @@ export default function Projects() {
 
                         animate(projectCardsRef.current?.children!, {
                             opacity : ["0", "1"],
-                            x : (_element, index) => [index! % 2 ? "100%" : "-100%", "0"],
+                            // x : (_element, index) => [index! % 2 ? "100%" : "-100%", "0"],
                             delay : stagger(100)
                         }) 
                         observer.disconnect()

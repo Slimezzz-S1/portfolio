@@ -65,7 +65,7 @@ export default function TwoPanels({ mainPart, secondPart, isFlipped, isFlippedAl
     )
 }
 
-export function Panel({ children, className, id, style, onVisibleHandle, isCustomAnimation, threshold} : onePanelProps) {
+export function OnePanel({ children, className, id, style, onVisibleHandle, isCustomAnimation, threshold} : onePanelProps) {
     const sectionRef = useRef<HTMLDivElement>(null)
 
     useEffect(() => {

@@ -9,7 +9,7 @@ export default function BuildWith({ useOwnObserver = false, isVisible = false} :
     const sectionRef = useRef<HTMLDivElement>(null)
 
     useEffect(() => {
-        if (useOwnObserver) return
+        if (!isVisible) return
 
         animate(sectionRef.current?.children!, {
             x: (_el, i) => [i == 0 ? "-100vw" : "100vw", 0],                            
@@ -18,8 +18,9 @@ export default function BuildWith({ useOwnObserver = false, isVisible = false} :
         })
 
     }, [isVisible])
+
     useEffect(() => {
-        if (!useOwnObserver) return
+        if (useOwnObserver) return
 
         const observer = new IntersectionObserver(
             (entries) => {
@@ -61,7 +62,7 @@ export default function BuildWith({ useOwnObserver = false, isVisible = false} :
 
             <div className='max-w-3xl h-full' style={{"transform" : "translateX(100vw)"}}>
             <div className='relative'>
-                <img src={ZylPicture} alt="" className='w-full object-contain' />
+                <img src={ZylPicture} alt="" className='w-full object-contain pointer-events-none' />
                 {/* <img src={ZylHandPicture} alt="" className='absolute top-0 left-0 w-full object-contain z-20' /> */}
 
                 <div className='absolute top-[18%] left-[1%] w-[40%] aspect-square z-10'>

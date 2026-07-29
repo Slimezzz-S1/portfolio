@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState, type ReactNode } from "react"
-import { Panel } from "../components/TwoPanels"
+import { OnePanel } from "../components/TwoPanels"
 import { animate, stagger } from "animejs"
 
 export interface AboutCardProps {
@@ -50,7 +50,7 @@ const aboutData : AboutCardProps[] = [
         className : "border-4 border-red-500 text-red-500 p-4 rounded-2xl col-span-3 row-span-2",
         text : (
             <div className="text-white">
-                <p className="text-2xl">
+                <p className="lg:text-2xl">
                     I also do 3D, especially 3d animation using blender 3.6.23 and 5.1. I primarly focused on animation and VFX rather than rigging and modelling
                 </p>
             </div>
@@ -93,7 +93,7 @@ export default function About() {
     }, [isVisible])
 
     return (
-        <Panel isCustomAnimation={true} onVisibleHandle={() => setIsVisible(true)}>
+        <OnePanel isCustomAnimation={true} onVisibleHandle={() => setIsVisible(true)}>
             {/* <h1
                 className="text-6xl text-center mb-12 font-bold"
                 children="About Me"
@@ -110,6 +110,6 @@ export default function About() {
                     />
                 ))}
             </div>
-        </Panel>
+        </OnePanel>
     )
 }

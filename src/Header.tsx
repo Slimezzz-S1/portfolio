@@ -57,9 +57,9 @@ export default function Header() {
                         onMouseLeave={() => setIsHover(false)}
                         onClick={() => setIsOpened(!isOpened)}
                     >
-                        <div className={"w-10 h-1.5 bg-blue-50 rounded-2xl transition-transform " + (isHover ? 'transform -translate-y-full' : "")}></div>
-                        <div className="w-10 h-1.5 bg-blue-50 rounded-2xl"></div>
-                        <div className={"w-10 h-1.5 bg-blue-50 rounded-2xl transition-transform " + (isHover ? 'transform -translate-y-[-100%]' : "")}></div>
+                        <div className={"w-10 h-1.5 bg-blue-50 rounded-2xl transition-transform " + (isHover ? 'transform -translate-y-full' : "")} />
+                        <div className="w-10 h-1.5 bg-blue-50 rounded-2xl" />
+                        <div className={"w-10 h-1.5 bg-blue-50 rounded-2xl transition-transform " + (isHover ? 'transform -translate-y-[-100%]' : "")} />
                     </div>
                 </div>
             </header>

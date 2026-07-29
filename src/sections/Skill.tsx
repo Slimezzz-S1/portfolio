@@ -1,28 +1,31 @@
-import ReactIcon from '../assets/icons/language/uil--react.svg?react'
-import JavascriptIcon from '../assets/icons/language/akar-icons--javascript-fill.svg?react'
-import TypescriptIcon from '../assets/icons/language/akar-icons--typescript-fill.svg?react'
-import ViteIcon from '../assets/icons/language/simple-icons--vite.svg?react'
-import NextJsIcon from '../assets/icons/language/devicon--nextjs.svg?react'
-import HtmlIcon from '../assets/icons/language/flowbite--html-solid.svg?react'
-import CssIcon from '../assets/icons/language/flowbite--css-solid.svg?react'
-import PythonIcon from '../assets/icons/language/akar-icons--python-fill.svg?react'
-import TailwindIcon from '../assets/icons/language/mdi--tailwind.svg?react'
-import CppIcon from '../assets/icons/language/mdi--language-cpp.svg?react'
-import PrismaIcon from '../assets/icons/language/lineicons--prisma.svg?react'
-import PostGreSQLIcon from '../assets/icons/language/akar-icons--postgresql-fill.svg?react'
+import ReactIcon from '@/assets/icons/language/uil--react.svg?react'
+import JavascriptIcon from '@/assets/icons/language/akar-icons--javascript-fill.svg?react'
+import TypescriptIcon from '@/assets/icons/language/akar-icons--typescript-fill.svg?react'
+import ViteIcon from '@/assets/icons/language/simple-icons--vite.svg?react'
+import NextJsIcon from '@/assets/icons/language/devicon--nextjs.svg?react'
+import HtmlIcon from '@/assets/icons/language/flowbite--html-solid.svg?react'
+import CssIcon from '@/assets/icons/language/flowbite--css-solid.svg?react'
+import PythonIcon from '@/assets/icons/language/akar-icons--python-fill.svg?react'
+import TailwindIcon from '@/assets/icons/language/mdi--tailwind.svg?react'
+import CppIcon from '@/assets/icons/language/mdi--language-cpp.svg?react'
+import PrismaIcon from '@/assets/icons/language/lineicons--prisma.svg?react'
+import PostGreSQLIcon from '@/assets/icons/language/akar-icons--postgresql-fill.svg?react'
+import NuxtJsIcon from "@/assets/icons/language/lineicons--nuxt.svg?react"
+import VueJsIcon from "@/assets/icons/language/mdi--vuejs.svg?react"
+import LuaIcon from "@/assets/icons/language/file-icons--lua.svg?react"
 
-import VscodeIcon from '../assets/icons/language/akar-icons--vscode-fill.svg?react'
-import PhotoshopIcon from '../assets/icons/language/mage--photoshop.svg?react'
-import AffinityIcon from '../assets/icons/language/vscode-icons--file-type-affinity.svg?react'
-import DavinciIcon from '../assets/icons/language/simple-icons--davinciresolve.svg?react'
-import BlenderIcon from '../assets/icons/language/file-icons--blender.svg?react'
-import FigmaIcon from '../assets/icons/language/solar--figma-bold-duotone.svg?react'
-import AudacityIcon from '../assets/icons/language/file-icons--audacity.svg?react'
-import FfmpegIcon from '../assets/icons/language/file-icons--ffmpeg.svg?react'
-import DockerIcon from '../assets/icons/language/mdi--docker.svg?react'
+import VscodeIcon from '@/assets/icons/language/akar-icons--vscode-fill.svg?react'
+import PhotoshopIcon from '@/assets/icons/language/mage--photoshop.svg?react'
+import AffinityIcon from '@/assets/icons/language/vscode-icons--file-type-affinity.svg?react'
+import DavinciIcon from '@/assets/icons/language/simple-icons--davinciresolve.svg?react'
+import BlenderIcon from '@/assets/icons/language/file-icons--blender.svg?react'
+import FigmaIcon from '@/assets/icons/language/solar--figma-bold-duotone.svg?react'
+import AudacityIcon from '@/assets/icons/language/file-icons--audacity.svg?react'
+import FfmpegIcon from '@/assets/icons/language/file-icons--ffmpeg.svg?react'
+import DockerIcon from '@/assets/icons/language/mdi--docker.svg?react'
 
-import UnknownIcon from '../assets/icons/language/material-symbols--question-mark.svg?react'
-import { Panel } from '../components/TwoPanels'
+import UnknownIcon from '@/assets/icons/language/material-symbols--question-mark.svg?react'
+import { OnePanel } from '@/components/TwoPanels'
 import { useRef } from 'react'
 import { animate, stagger } from 'animejs'
 
@@ -117,6 +120,27 @@ const skillLanguageData : skillLanguageProps[] = [
         color : "#336791",
         description : "Not know much",
         IconElement : PostGreSQLIcon
+    },
+    {
+        name : "Lua",
+        percent : 15,
+        color : "#000080",
+        description : "Just started learning cuz of hyprland",
+        IconElement : LuaIcon
+    },
+    {
+        name : "NuxtJs",
+        percent : 7,
+        color : "#00dc82",
+        description : "What is this thing lol",
+        IconElement : NuxtJsIcon
+    },
+    {
+        name : "VueJs",
+        percent : 4,
+        color : "#41b883",
+        description : "Very different from React, love it",
+        IconElement : VueJsIcon
     }
 ]
 
@@ -198,9 +222,10 @@ export function SkillLanguage({name, IconElement, color, className, style} : Omi
 
     return (
         <div
-        title={name}
-        style={{ ["--icon-color" as any]: color, style} as React.CSSProperties}
-        className={"group p-3 border-2 border-foreground bg-background rounded-2xl transition-transform hover:-scale-[-105%] transition- " + (color ? `hover:border-[var(--icon-color)] ` : "hover:border-gray-500 ") + (className ?? "")}>
+            title={name}
+            style={{ ["--icon-color" as any]: color, style} as React.CSSProperties}
+            className={"group p-3 border-3 border-foreground bg-background rounded-2xl transition-transform hover:-scale-[-105%] transition- " + (color ? `hover:border-[var(--icon-color)] ` : "hover:border-gray-500 ") + (className ?? "")}
+        >
             {IconElement ? <IconElement className={color ? `transition-colors group-hover:text-(--icon-color)` : ""} /> : <UnknownIcon />}
         </div>
     )
@@ -235,7 +260,7 @@ export default function Skill() {
     }
 
     return (
-        <Panel isCustomAnimation={true} onVisibleHandle={() => onVisibleHandle()}>
+        <OnePanel isCustomAnimation={true} onVisibleHandle={() => onVisibleHandle()}>
             <h1 className="text-6xl text-center py-4 font-bold mb-12">
                 Skill
             </h1>
@@ -278,6 +303,6 @@ export default function Skill() {
                 </div>
 
             </div>
-        </Panel>
+        </OnePanel>
     )
 }
