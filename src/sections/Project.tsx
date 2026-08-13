@@ -6,12 +6,13 @@ import posterZZZ from '../assets/images/projects/PosterZZZ.png'
 import contactImage from '../assets/images/projects/Contact Form.png'
 import image3 from '../assets/images/projects/Blender.png'
 import image4 from '../assets/images/projects/Photoshop.png'
+
 const projectCardData : projectCardProps[] = [
     {
         title : "PosterZZZ",
         bannerImage : posterZZZ,
         summary : "Twitter/X knockoff made in NextJS",
-        description : "I made this in hopes of learning the basics of fullstack web development. I chose NextJS because I love it."
+        description : "I made this in hopes of learning the basics of fullstack web development. I chose NextJS because I love it. This project uses NextJS + React + Tailwind CSS + Prisma."
     },
     {
         title : "Contact Form",
@@ -74,6 +75,10 @@ function ProjectDetailed({ onClose, props } : { onClose : () => void, props : pr
     const overlayRef = useRef<HTMLDivElement>(null)
 
     useEffect(() => {
+        if (!overlayRef.current) return
+
+        overlayRef.current.focus()
+
         if (isClosing) {
             animate(overlayRef.current!, {
                 opacity : ["1", "0"],
@@ -91,7 +96,7 @@ function ProjectDetailed({ onClose, props } : { onClose : () => void, props : pr
     }, [isClosing])
 
     return createPortal(
-        <div ref={overlayRef} className='bg-[#000a] fixed top-0 left-0 w-screen h-screen z-50 opacity-0 flex justify-center items-center p-10'>
+        <div ref={overlayRef} className='bg-[#000a] fixed top-0 left-0 w-screen h-screen z-100 opacity-0 flex justify-center items-center p-10'>
             <div className='bg-background text-foreground border-3 p-10 max-w-full max-h-full w-6xl h-256 flex gap-5 rounded-4xl flex-col lg:flex-row'>
                 <div className='flex-1 max-h-64 lg:max-h-full'>
                     <img src={props.bannerImage} alt="" className='w-full h-full object-cover rounded-2xl' />

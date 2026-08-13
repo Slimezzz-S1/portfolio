@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, type ReactNode } from 'react'
 
 import Header from '@/Header'
 import Footer from '@/Footer'
@@ -17,10 +17,55 @@ import Marquee from '@/components/Marquee'
 import WaterDotGrid from '@/components/WaterDotGrid'
 import { OnePanel } from '@/components/TwoPanels'
 import Carousel from '@/components/Carousels'
-import Danger from '@/components/Danger'
-import Panel from '@/components/Panel'
+import { type navSectionProps } from '@/Header'
+
+import homeIcon from "@/icons/nav/material-symbols--home-rounded.svg?react"
+import projectIcon from "@/icons/nav/eos-icons--project.svg?react"
+import goalsIcon from "@/icons/nav/material-symbols--checklist-rounded.svg?react"
+import skillIcon from "@/icons/nav/material-symbols--home-rounded.svg?react"
+import galleryIcon from "@/icons/nav/material-symbols--photo.svg?react"
+import timelineIcon from "@/icons/nav/material-symbols--timeline.svg?react"
+import aboutIcon from "@/icons/nav/mdi--about.svg?react"
 
 export default App
+
+export const navSectionData : navSectionProps[] = [
+    {
+        name : "Home",
+        Icon : homeIcon,
+        id : "main"
+    },
+    {
+        name : "About",
+        Icon : aboutIcon,
+        id : "about"
+    },
+    {
+        name : "Skills",
+        Icon : skillIcon,
+        id : "skills"
+    },
+    {
+        name : "Projects",
+        Icon : projectIcon,
+        id : "projects"
+    },
+    {
+        name : "Timeline",
+        Icon : timelineIcon,
+        id : "timeline"
+    },
+    {
+        name : "Goals",
+        Icon : goalsIcon,
+        id : "goals"
+    },
+    {
+        name : "Gallery",
+        Icon : galleryIcon,
+        id : "gallery"
+    }
+]
 
 function App() {
 	const sectionRefs = useRef<HTMLDivElement[]>([])
@@ -52,9 +97,11 @@ function App() {
 
 	return (
 		<>
-			<Header />
+			<Header navSections={navSectionData} />
 
-			<Hero />
+			<div id='main'>
+				<Hero />
+			</div>
 
 			<Marquee className="border-y py-2 my-12 lg:my-2 [--x:-100%]" speed={20}>
 					{Array.from({ length : 4}).map((_item, index) => (
@@ -84,21 +131,32 @@ function App() {
 
 				{/* <Danger /> */}
 
-				<About />
+				<div id='about'>
+					<About />
+				</div>
 
-				<Skill />
+				<div id='skills'>
+					<Skill />
+				</div>
 
-				<Projects />
+				<div id='projects'>
+					<Projects />
+				</div>
 
-				<TimelineSection />
+				<div id='timeline'>
+					<TimelineSection />
+				</div>
 
-				<GoalSection />
+				<div id='goals'>
+					<GoalSection />
+				</div>
 
 				<Grid />
 
-				<Gallery />
-				
-				<Carousel />
+				<div id='gallery'>
+					<Gallery />
+					<Carousel />
+				</div>
 
 			</div>
 

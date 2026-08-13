@@ -24,17 +24,11 @@ const goalsData : goalProps[] = [
 		description : "hire me pls"
 	},
 	{
-		name : "become furry",
+		name : "Create a game",
 		isChecklisted : false,
-		description : "I would never be😭"
 	},
 	{
-		name : "become a slime",
-		isChecklisted : true,
-		description : "I AM one."
-	},
-	{
-		name : "find a love partner",
+		name : "Reach Faceit level 10",
 		isChecklisted : false,
 	},
 	{
