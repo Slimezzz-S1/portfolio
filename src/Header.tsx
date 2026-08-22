@@ -1,6 +1,5 @@
 import { useEffect, useRef, useState, type FunctionComponent } from 'react'
 import HeaderLogo from './assets/logo.svg?react'
-import { createPortal } from 'react-dom'
 import { animate } from 'animejs'
 
 
@@ -145,12 +144,21 @@ export function Nav({ isClosing, onClose, navSections } : navProps) {
 	)
 }
 
-function NavSection({name, Icon, id} : navSectionProps) {
-	return (
-		<div className='relative border-l-4 flex items-center gap-4 pl-4 h-14'>
-			<div className='absolute top-0 left-0 w-16 h-full bg-linear-to-r from-gray-600 to-none' />
+function NavSection({name, Icon, id, onClick} : navSectionProps & {onClick? : () => void}) {
 
-			<div className='w-12 aspect-square z-10'>
+	const handleOnClick = () => {
+		if (!document.getElementById(id)) return
+
+		document.getElementById(id)?.scrollIntoView({ behavior : "smooth" })
+
+		onClick?.()
+	}
+
+	return (
+		<div className='group relative border-l-4 flex items-center gap-4 pl-4 h-14' onClick={handleOnClick}>
+			<div className='absolute top-0 left-0 w-32 h-full bg-linear-to-r from-gray-600 group-hover:to-50% transition-colors to-none to-25%' />
+
+			<div className='w-12 aspect-square z-10 group-hover:scale-110 transition-transform'>
 				{Icon ? <Icon /> : <UnknownIcon />}
 			</div>
 

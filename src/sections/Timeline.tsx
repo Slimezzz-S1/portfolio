@@ -101,6 +101,10 @@ function TimelinePin({ title, date, summary, description, image, isFirstChild, i
                     <p>
                         {date.toLocaleDateString()}
                     </p>
+
+                    <p className="text-xl whitespace-nowrap">
+                        {summary}
+                    </p>
                 </div>
             </div>
         </div>

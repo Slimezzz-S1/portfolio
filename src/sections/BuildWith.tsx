@@ -51,7 +51,7 @@ export default function BuildWith({ useOwnObserver = false, isVisible = false} :
     return (
         <section ref={sectionRef} className='relative overflow-hidden h-196 flex flex-col lg:flex-row-reverse lg:justify-center items-center gap-12 p-10'>
             <div style={{"transform" : "translateX(-100vw)"}}>
-                <h1 className='text-8xl lg:text-9xl text-left self-center font-bold lg:font-black'>
+                <h1 className='text-7xl sm:text-8xl lg:text-9xl text-left self-center font-bold lg:font-black'>
                     Built with
                 </h1>
 
