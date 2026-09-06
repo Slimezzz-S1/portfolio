@@ -8,8 +8,9 @@
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "predeploy": "npm run build",
-    "deploy": "pnpm run build && gh-pages -d dist"
+    "predeploy": "pnpm run build",
+    "deploy": "pnpm run build && gh-pages -d dist",
+    "meow" : "echo meow"
   },
   "dependencies": {
     "@types/animejs": "^3.1.13",

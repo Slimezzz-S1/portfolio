@@ -1,43 +1,65 @@
 import Logo from "@/icons/favicon.svg?react"
-import React, { useEffect, useState } from "react"
+import React, { useEffect, useState, useRef } from "react"
 
 import AppBurger from "@/mainComponents/AppBurger"
+import AppSidebar from "@/mainComponents/AppSidebar"
 
 export default function AppHeader() {
-    const [isHidden, setIsHidden] = useState<boolean>(false)
+	const [isHidden, setIsHidden] = useState<boolean>(false)
+	const [isSidebarToggled, setIsSidebarToggled] = useState<boolean>(false)
+	const rootRef = useRef<HTMLDivElement | null>(null)
 
-    useEffect(() => {
-        let lastScroll : number = 0
+	useEffect(() => {
+		if (isSidebarToggled) {
+			setIsHidden(false)
 
-        document.addEventListener("scroll", () => {
-            if (window.scrollY > lastScroll) {
-                setIsHidden(true)
-            } else {
-                setIsHidden(false)
-            }
+			return
+		}
 
-            lastScroll = window.scrollY
-        })
+		let lastScroll : number = 0
 
-    }, [])
+		const onScroll = () => {
+			
+			if (window.scrollY > lastScroll) {
+				setIsHidden(true)
+			} else {
+				setIsHidden(false)
+			}
 
-    // useEffect(() => {
-    //     console.log(isHidden)
-    // }, [isHidden])
+			lastScroll = window.scrollY
+			
+			return
+		}
 
-    return (
-        <div style={{"--y" : isHidden ? "-100%" : "0%"} as React.CSSProperties} className="sticky top-0 left-0 z-100 transition-transform translate-y-(--y)">
-            <header className="bg-root-bg border-b-2 px-6 py-4 flex justify-between">
-                <div className="flex items-center text-root-fg gap-2">
-                    <Logo className="w-12 h-12 aspect-square" />
+		document.addEventListener("scroll", onScroll)
 
-                    <h1 className="font-black text-4xl">
-                        Portfolio
-                    </h1>
-                </div>
+		return () => {
+			document.removeEventListener("scroll", onScroll)
+		}
+	}, [isSidebarToggled])
 
-                <AppBurger />
-            </header>
-        </div>
-    )
+	return (
+		<>
+		<div ref={rootRef} style={{"--y" : isHidden ? "-100%" : "0%"} as React.CSSProperties} className="sticky top-0 left-0 z-100 transition-transform translate-y-(--y)">
+			{/* <div className="bg-gray-600 p-4 flex items-center">
+				Cute puppy!
+			</div> */}
+
+			<header className="bg-root-bg border-b-2 px-6 py-4 flex justify-between">
+				<div className="flex items-center text-root-fg gap-2">
+					<Logo className="w-12 h-12 aspect-square" />
+
+					<h1 className="font-black text-4xl">
+						Portfolio
+					</h1>
+				</div>
+
+				<AppBurger onClick={() => setIsSidebarToggled(!isSidebarToggled)} />
+			</header>
+		</div>
+		{isSidebarToggled && (
+			<AppSidebar posY={rootRef.current?.getBoundingClientRect().height ?? 0} />
+		)}
+		</>
+	)
 }

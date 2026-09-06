@@ -7,7 +7,9 @@
       "@/components/*" : ["src/components/*"],
       "@/sections/*" : ["src/sections/*"],
       "@/assets/*" : ["src/assets/*"],
-      "@/icons/*" : ["src/assets/icons/*"]
+      "@/icons/*" : ["src/assets/icons/*"],
+      "@/mainComponents/*" : ["src/components/main/*"],
+      "@/public/*" : ["public/*"]
     },
     
     "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.app.tsbuildinfo",

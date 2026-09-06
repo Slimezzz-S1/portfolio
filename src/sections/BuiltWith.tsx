@@ -10,7 +10,7 @@ export default function BuiltWith() {
     const sectRef = useRef<HTMLDivElement | null>(null)
     const titleRef = useRef<HTMLDivElement | null>(null)
     const mainRef = useRef<HTMLDivElement | null>(null)
-    const isOnScreen = useIntersectionObserver(sectRef, {threshold : 0.8})
+    const isOnScreen = useIntersectionObserver(sectRef, {threshold : 0.4})
     const [isShownOnce, setIsShownOnce] = useState<boolean>(false)
 
     useEffect(() => {

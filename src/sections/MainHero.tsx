@@ -7,7 +7,7 @@ import SocialLinks from "@/components/SocialLink"
 // media
 import profileImage from "@/assets/images/MainHero/MainHeroProfile.png"
 import useIntersectionObserver from "@/hooks/useIntersectionObserver"
-import { animate } from "animejs"
+import { animate, stagger } from "animejs"
 
 export default function MainHero() {
 	const sectRef = useRef<HTMLDivElement | null>(null)
@@ -42,17 +42,27 @@ export default function MainHero() {
 	useEffect(() => {
 		if (!isVisibleOnce || !sectRef.current || !imageRef.current || !textRef.current) return
 
-		animate(imageRef.current, {
-			x : ["-100vw", "0"],
-			duration : 1200,
-			ease : "outExpo",
-		})
+		// animate(imageRef.current, {
+		// 	x : [
+		// 		"-100vw",
+		// 		"0"
+		// 	],
+		// 	duration : 1200,
+		// 	ease : "outExpo",
+		// })
 		
-		animate(textRef.current, {
-			x : ["100vw", "0"],
+		animate([textRef.current, imageRef.current], {
+			x : (_, index) => {
+				return [
+					(index === 0 ? "-" : "") + "100vw",
+					"0"
+				]
+			},
 			duration : 1200,
 			ease : "outExpo",
-			onComplete : () => setIsFinishedTransition(true)
+			onComplete : () => {
+				setIsFinishedTransition(true)
+			}
 		})
 
 		return
@@ -69,8 +79,14 @@ export default function MainHero() {
 					Hi, I'm
 				</p>
 
-				<h2 className="text-5xl lg:text-7xl font-bold min-h-[2em] whitespace-pre-wrap">
-					<Role isActive={isActive} onBegin={onBeginText} onComplete={onCompleteText} /><BlinkingCursor isActive={isActive} startBlank={true} isSwitchedManually={isTextTransitioning} isSwitchedValue={false} />
+				<h2 className="relative text-5xl lg:text-7xl font-bold min-h-[2em] whitespace-pre-wrap font-mono">
+					<Role isActive={isActive} onBegin={onBeginText} onComplete={onCompleteText} />
+
+					<BlinkingCursor isActive={isActive} startBlank={true} isSwitchedManually={isTextTransitioning} isSwitchedValue={false} cursorType="|" />
+
+					<span className="absolute top-0 left-0 w-full h-full opacity-25">
+						<Underscores amount={11} endLineAt={5} isActive={isActive} />
+					</span>
 				</h2>
 
 				<p>
@@ -87,14 +103,105 @@ export default function MainHero() {
 	)
 }
 
+interface underScoreProps {
+	amount : number
+	endLineAt : number
+	isActive : boolean
+}
+
+function Underscores({ amount, endLineAt, isActive } : underScoreProps) {
+	const underscoreRefs = useRef<HTMLSpanElement[]>([])
+	const timeoutRef = useRef<ReturnType<typeof setTimeout> | false>(false)
+
+	const clearTimeoutRef = () => {
+		if (!timeoutRef.current) return
+
+		clearTimeout(timeoutRef.current)
+
+		return
+	}
+	
+	useEffect(() => {
+		if (!isActive || !underscoreRefs.current) {
+			clearTimeoutRef()
+			return
+		}
+		
+		const duration = 100
+		const staggerDelay = 75
+		const hold = 250
+		
+		const underScores = underscoreRefs.current
+		
+		const getDurationTotal = ( twice : boolean = true, amountChar : number = underScores.length) => {
+			return ( duration + ( amountChar * staggerDelay ) ) * (twice ? 2 : 1) + hold
+		}
+
+		const fadeIn = ( onComplete? : () => any ) => {
+			animate(underScores, {
+				opacity : [
+					"1",
+					"0"
+				],
+				delay : stagger(staggerDelay),
+				duration : duration,
+				onComplete : onComplete?.()
+			})
+		}
+
+		const fadeOut = ( onComplete? : () => any ) => {
+			animate(underScores, {
+				opacity : [
+					"0",
+					"1"
+				],
+				delay : stagger(staggerDelay),
+				duration : duration,
+				onComplete : onComplete?.()
+			})
+		}
+		
+		const onActive = () => {
+			fadeIn()
+
+			const timeout = setTimeout(fadeOut, getDurationTotal(false))
+
+			timeoutRef.current = timeout
+		}
+		
+		onActive()
+		
+		const interval = setInterval(() => {
+			onActive()
+		}, getDurationTotal(true))
+		
+		return () => {
+			clearInterval(interval)
+		}
+	}, [ isActive ])
+
+	// console.log(underscoreRefs.current)
+
+	return (
+		<span>
+			{Array.from({ length : amount }).map(( _, index ) => (
+				<span key={index} ref={( element ) => { if (element) { underscoreRefs.current[index] = element } }}>
+					{index == endLineAt ? "\n" : "_ "}
+				</span>
+			))}
+		</span>
+	)
+}
+
 interface blinkingCursorProps {
 	isActive : boolean
 	startBlank? : boolean
 	isSwitchedManually? : boolean
 	isSwitchedValue? : boolean
+	cursorType? : string
 }
 
-function BlinkingCursor({ isActive, startBlank = false, isSwitchedManually = false, isSwitchedValue = true } : blinkingCursorProps) {
+function BlinkingCursor({ isActive, startBlank = false, isSwitchedManually = false, isSwitchedValue = true, cursorType = "_" } : blinkingCursorProps) {
 	const [isSwitched, setIsSwitched] = useState<boolean>(startBlank ? true : false)
 
 	useEffect(() => {
@@ -124,7 +231,9 @@ function BlinkingCursor({ isActive, startBlank = false, isSwitchedManually = fal
 	}, [ isActive, isSwitchedManually ])
 
 	return (
-		<span style={{"--color" : isSwitched ? "transparent" : "var(--root-foreground)"} as React.CSSProperties} className="text-(--color)">_</span>
+		<span style={{"--color" : isSwitched ? "transparent" : "var(--root-foreground)"} as React.CSSProperties} className="text-(--color)">
+			{cursorType}
+		</span>
 	)
 }
 
@@ -141,14 +250,18 @@ function Role({ isActive, onBegin, onComplete } : roleProps) {
 		"Slime"
 	]
 	const indexRef = useRef<number>(0)
-	const [displayText, setDisplayText] = useState<string>(roles[0])
-	
 	const delayEachLetter : number = 25
 	const textHold : number = 2000
+	const [displayText, setDisplayText] = useState<string>(roles[0])
+
 	const timeoutsRef = useRef<ReturnType<typeof setTimeout>[]>([])
 
 	const clearAllTimeouts = () => {
-		timeoutsRef.current.forEach(clearTimeout)
+		timeoutsRef.current.forEach(( id ) => {
+			clearTimeout(id)
+
+			return
+		})
 		timeoutsRef.current = []
 	}
 
@@ -183,6 +296,7 @@ function Role({ isActive, onBegin, onComplete } : roleProps) {
 	useEffect(() => {
 		if (!isActive) {
 			clearAllTimeouts()
+
 			return
 		}
 
@@ -191,14 +305,22 @@ function Role({ isActive, onBegin, onComplete } : roleProps) {
 			const nextIndex = (indexRef.current + 1) % roles.length
 			const next = roles[nextIndex]
 
+			// START =====
+
+			// REMOVE TEXT
 			const removeDuration = removeText(current)
+
+			// HOLD
 			const gap = delayEachLetter
+
+			// ADD TEXT
 			const addDuration = addText(next, removeDuration + gap)
 
 			const totalCycleDuration = removeDuration + gap + addDuration + textHold
 
 			onBegin?.()
 
+			// COMPLETE =====
 			const onCompleteTimeout = setTimeout(() => {
 				onComplete?.()
 
@@ -206,7 +328,7 @@ function Role({ isActive, onBegin, onComplete } : roleProps) {
 
 			timeoutsRef.current.push(onCompleteTimeout)
 
-
+			// LOOP =====
 			const nextTimeout = setTimeout(() => {
 				indexRef.current = nextIndex
 
@@ -218,8 +340,12 @@ function Role({ isActive, onBegin, onComplete } : roleProps) {
 
 		runCycle()
 
-		return () => clearAllTimeouts()
-	}, [isActive])
+		return () => {
+			clearAllTimeouts()
+
+			return
+		}
+	}, [ isActive ])
 
 	return (
 		<span className="notranslate" translate="no">

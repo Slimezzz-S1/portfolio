@@ -11,6 +11,35 @@ import ProjectSection from "@/sections/ProjectSection"
 // components
 import AppHeader from "./components/main/AppHeader"
 import InteractiveCard from "./components/InteractiveCard"
+import { type navProps } from "./components/main/AppNav"
+
+import HomeIcon from "@/assets/icons/Nav/akar-icons--home-alt1.svg?react"
+import CheckIcon from "@/assets/icons/Nav/akar-icons--check-box.svg?react"
+import InfoIcon from "@/assets/icons/Nav/boxicons--info-circle.svg?react"
+import ProjectIcon from "@/assets/icons/Nav/octicon--project-roadmap-16.svg?react"
+
+export const navData : navProps[] = [
+	{
+		name : "Home",
+		Icon : HomeIcon,
+		idElement : "home",
+	},
+	{
+		name : "About Me",
+		Icon : InfoIcon,
+		idElement : "about",
+	},
+	{
+		name : "Project",
+		Icon : ProjectIcon,
+		idElement : "project",
+	},
+	{
+		name : "Goals",
+		Icon : CheckIcon,
+		idElement : "goals",
+	},
+]
 
 export default function App() {
 	return (

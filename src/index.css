@@ -21,7 +21,7 @@
 }
 
 html {
-    @apply scrollbar-gutter-stable
+    @apply scrollbar-gutter-stable overflow-x-hidden
 }
 
 body {

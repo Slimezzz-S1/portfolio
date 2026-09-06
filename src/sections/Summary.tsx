@@ -5,7 +5,7 @@ import React, { useState, useRef, useEffect } from "react"
 export default function Summary() {
 	const sectRef = useRef<HTMLDivElement>(null)
 	const cardRefs = useRef<HTMLDivElement[]>([])
-	const isVisible = useIntersectionObserver(sectRef, { threshold : 0.8 })
+	const isVisible = useIntersectionObserver(sectRef, { threshold : 0.4 })
 	const [isVisibleOnce, setIsVisibleOnce] = useState<boolean>(false)
 
 	useEffect(() => {
@@ -30,7 +30,7 @@ export default function Summary() {
 			<div className="flex flex-col lg:grid lg:grid-cols-3 lg:grid-rows-3 gap-4 min-h-140">
 				{summaryItems.map((item, index) => (
 					<SummaryItem
-						ref={(element) => { if (element) cardRefs.current[index] = element }}
+						ref={(element) => { if (element) cardRefs.current[index] = element}}
 						key={index}
 						name={item.name}
 						description={item.description}
