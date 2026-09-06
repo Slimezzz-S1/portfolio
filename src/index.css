@@ -1,0 +1,43 @@
+@import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
+
+:root {
+    --accent: red;
+    --root-background: #111;
+    --root-foreground: white;
+}
+/* 
+.dark {
+    --accent: red;
+    --root-background: #131313;
+    --root-foreground: white;
+} */
+
+@theme inline {
+    --color-accent: red;
+    --color-root-bg: var(--root-background);
+    --color-root-fg: var(--root-foreground);
+    --animate-spin-icon: spin 2.5s linear infinite;
+}
+
+html {
+    @apply scrollbar-gutter-stable
+}
+
+body {
+    @apply max-w-screen w-screen min-h-screen bg-root-bg text-root-fg overflow-x-hidden
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes z-slide {
+    from {
+        transform: translateZ(0);
+    } to {
+        transform: translateZ(var(0));
+    }
+}
