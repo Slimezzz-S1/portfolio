@@ -6,15 +6,16 @@ import SocialLinks from "@/components/SocialLink"
 
 // media
 import profileImage from "@/assets/images/MainHero/MainHeroProfile.png"
-import useIntersectionObserver from "@/hooks/useIntersectionObserver"
+import useClientVisibility from "@/hooks/useClientVisibility"
+
 import { animate, stagger } from "animejs"
 
-export default function MainHero() {
+export default function MainHeroSection() {
 	const sectRef = useRef<HTMLDivElement | null>(null)
 	const imageRef = useRef<HTMLDivElement | null>(null)
 	const textRef = useRef<HTMLDivElement | null>(null)
 
-	const isVisible = useIntersectionObserver(sectRef, { threshold : 0.5 })
+	const isVisible = useClientVisibility(sectRef, { threshold : 0.5 })
 	const [isVisibleOnce, setIsVisibleOnce] = useState<boolean>(false)
 	const [isFinishedTransition, setIsFinishedTransition] = useState<boolean>(false)
 	const [isActive, setIsActive] = useState<boolean>(false)
@@ -79,7 +80,7 @@ export default function MainHero() {
 					Hi, I'm
 				</p>
 
-				<h2 className="relative text-5xl lg:text-7xl font-bold min-h-[2em] whitespace-pre-wrap font-mono">
+				<h2 className="relative text-5xl lg:text-7xl font-bold min-h-[2em] whitespace-pre-wrap font-mono col-start-1">
 					<Role isActive={isActive} onBegin={onBeginText} onComplete={onCompleteText} />
 
 					<BlinkingCursor isActive={isActive} startBlank={true} isSwitchedManually={isTextTransitioning} isSwitchedValue={false} cursorType="|" />
@@ -89,7 +90,7 @@ export default function MainHero() {
 					</span>
 				</h2>
 
-				<p>
+				<p className="col-start-1">
 					Just a silly slime trying to enjoy life the human way.
 				</p>
 
@@ -247,7 +248,7 @@ function Role({ isActive, onBegin, onComplete } : roleProps) {
 	const roles : string[] = [
 		"Front-End\nDeveloper",
 		"3D Artist",
-		"Slime"
+		"Left\nHanded",
 	]
 	const indexRef = useRef<number>(0)
 	const delayEachLetter : number = 25

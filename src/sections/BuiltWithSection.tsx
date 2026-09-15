@@ -6,7 +6,7 @@ import ReactIcon from "@/icons/Languages/React/griddy-icons--react.svg?react"
 import useIntersectionObserver from "@/hooks/useIntersectionObserver"
 import { animate } from "animejs"
 
-export default function BuiltWith() {
+export default function BuiltWithSection() {
     const sectRef = useRef<HTMLDivElement | null>(null)
     const titleRef = useRef<HTMLDivElement | null>(null)
     const mainRef = useRef<HTMLDivElement | null>(null)

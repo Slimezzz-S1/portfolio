@@ -1,7 +1,9 @@
 import { useEffect, useState } from "react";
 
-export default function UseVisibilityChange() {
-	const [isVisible, setIsVisible] = useState<boolean>(false)
+export default function useVisibilityChange() {
+	const [isVisible, setIsVisible] = useState<boolean>(
+		document.visibilityState === "visible"
+	)
 
 	useEffect(() => {
 		const handleVisibilityChange = () => {
@@ -16,6 +18,8 @@ export default function UseVisibilityChange() {
 			return
 		}
 	}, [])
+
+	// console.log(isVisible)
 
 	return isVisible
 }

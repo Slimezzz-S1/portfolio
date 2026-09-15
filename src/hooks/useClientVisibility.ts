@@ -1,11 +1,11 @@
-import type { RefObject } from "react"
+import { type RefObject } from "react"
 
 import useIntersectionObserver from "@/hooks/useIntersectionObserver"
-import UseVisibility from "@/hooks/useVisibilityChange"
+import useVisibility from "@/hooks/useVisibilityChange"
 
-export default function useClientVisibility(ref : RefObject<Element | null>, options : {threshold : number} = {threshold : 0}) {
-    const visibility = UseVisibility()    
-    const intersectionObserver = useIntersectionObserver(ref, options)
+export default function useClientVisibility(ref : RefObject<Element | null>, options? : IntersectionObserverInit) {
+	const isVisible = useVisibility()
+	const isIntersecting = useIntersectionObserver(ref, options)
 
-    return visibility && intersectionObserver
+	return isIntersecting && isVisible
 }

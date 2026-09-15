@@ -3,8 +3,16 @@
 
 :root {
     --accent: red;
-    --root-background: #111;
-    --root-foreground: white;
+    --root-bg: #111;
+    --root-fg: white;
+    --hatch-pattern: repeating-linear-gradient(
+        45deg,
+        var(--root-fg) 0px,
+        var(--root-fg) 1px,
+        transparent 1px,
+        transparent 8px
+    );
+
 }
 /* 
 .dark {
@@ -15,8 +23,10 @@
 
 @theme inline {
     --color-accent: red;
-    --color-root-bg: var(--root-background);
-    --color-root-fg: var(--root-foreground);
+    --color-root-bg: var(--root-bg);
+    --color-root-fg: var(--root-fg);
+    --background-image-hatch: var(--hatch-pattern);
+
     --animate-spin-icon: spin 2.5s linear infinite;
 }
 

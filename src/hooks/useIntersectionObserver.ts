@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState, type RefObject } from "react"
 
-export default function useIntersectionObserver(ref : RefObject<Element | null>, options : {threshold : number} = {threshold : 0}) {
+export default function useIntersectionObserver(ref : RefObject<Element | null>, options : IntersectionObserverInit  = {threshold : 0}) {
     const observerRef = useRef<IntersectionObserver>(null)
     const [isOnScreen, setIsOnScreen] = useState<boolean>(false)
 

@@ -2,7 +2,7 @@ import useIntersectionObserver from "@/hooks/useIntersectionObserver"
 import { animate, stagger } from "animejs"
 import React, { useState, useRef, useEffect } from "react"
 
-export default function Summary() {
+export default function SummarySection() {
 	const sectRef = useRef<HTMLDivElement>(null)
 	const cardRefs = useRef<HTMLDivElement[]>([])
 	const isVisible = useIntersectionObserver(sectRef, { threshold : 0.4 })
