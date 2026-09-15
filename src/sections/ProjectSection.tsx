@@ -87,7 +87,7 @@ export default function ProjectSection({ projectData = projectList } : projectSe
 	const cardRefs = useRef< HTMLDivElement[]>( [] )
 	const cardModeRefs = useRef< (projectCardMode | null)[] >( [] )
 
-	console.log(cardModeRefs)
+	// console.log(cardModeRefs)
 
 	const onComplete = () => {
 		if (!cardModeRefs.current) return
@@ -184,7 +184,7 @@ export function ProjectCard({ name, summary, url, image, video, mode, isActivate
 
 	useEffect(() => {
 		setIsActivated(isActivatedManually ? isActivatedManuallyValue : isVisible)
-		console.log(isActivated, isVisible)
+		// console.log(isActivated, isVisible)
 	}, [ isActivatedManually, isActivatedManuallyValue, isVisible ])
 
 	useEffect(() => {

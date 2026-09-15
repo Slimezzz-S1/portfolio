@@ -10,6 +10,7 @@ import ProjectSection from "@/sections/ProjectSection"
 import GallerySection from "@/sections/GallerySection"
 import GambleSection from "@/sections/GambleSection"
 import EpicSection from "./sections/EpicSection"
+import { InfiniteCarousel } from "@/sections/GambleSection"
 
 // components
 import AppHeader from "@/components/main/AppHeader"
