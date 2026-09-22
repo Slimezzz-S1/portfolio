@@ -1,3 +1,5 @@
-# WEB PROFILE
+# Portfolio
 
-This is my actual web profile, created using Vite + React + Typescript + Tailwind + AnimeJS
+STATUS : UNFINISHED
+
+This is my portfolio website made in React.

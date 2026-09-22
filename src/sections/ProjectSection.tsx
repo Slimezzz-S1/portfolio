@@ -1,24 +1,18 @@
 // assets
-import projectImage1 from "@/assets/hybrid/projects/posterzzz/image.png"
-import projectVideo1 from "@/assets/hybrid/projects/posterzzz/video.mp4"
+import projectImage1 from "@/assets/images/projects/posterzzz/PosterZZZ.png"
 
 import projectImage2 from "@/assets/hybrid/projects/s11me/image.png"
-import projectVideo2 from "@/assets/hybrid/Projects/S11ME/video.mp4"
+import projectVideo2 from "@/assets/hybrid/projects/S11ME/video.mp4"
 
-import projectImage3 from "@/assets/hybrid/projects/grits/image.png"
-import projectVideo3 from "@/assets/hybrid/projects/grits/video.mp4"
-
-import projectImage4 from "@/assets/images/Projects/1728482881444.jpg"
-
-import PauseIcon from "@/icons/projects/at-icons--pause.svg?react"
-import PlayIcon from "@/icons/projects/basil--play-solid.svg?react"
+import unknownImage from "@/assets/images/projects/Unknown.png"
 
 // components
 import { useEffect, useRef, useState } from "react"
 import { animate } from "animejs"
 import useClientVisibility from "@/hooks/useClientVisibility"
 
-type projectCardMode = "image-only" | "video-only" | "hybrid"
+export type projectCardMode = "image-only" | "video-only" | "hybrid"
+export type projectStatus = "finished" | "unfinished" | "scrapped" | "work-in-progress" | "prototype" | "abandoned"
 export interface projectProps {
 	name : string
 	summary : string
@@ -26,6 +20,8 @@ export interface projectProps {
 	image? : string
 	video? : string
 	mode? : projectCardMode
+	currentStatus? : projectStatus
+	currestStatusReason? : string
 }
 
 interface projectCardProps extends projectProps {
@@ -40,13 +36,6 @@ interface projectCardProps extends projectProps {
 
 export const projectList : projectProps[] = [
 	{
-		name : "PosterZZZ",
-		summary : "A 4chan knockoff made using Next.js",
-		url : "https://posterzzz.vercel.app/",
-		image : projectImage1,
-		video : projectVideo1
-	},
-	{
 		name : "S11ME",
 		summary : "a 3d animation series about random things",
 		url : "",
@@ -54,17 +43,24 @@ export const projectList : projectProps[] = [
 		video : projectVideo2,
 	},
 	{
+		name : "PosterZZZ",
+		summary : "A 4chan knockoff made using Next.js",
+		url : "https://posterzzz.vercel.app/",
+		image : projectImage1,
+		currentStatus : "abandoned",
+		currestStatusReason : "DB Server is no longer maintained"
+	},
+	{
 		name : "Grits",
 		summary : "X knockoff",
 		url : "",
-		image : projectImage3,
-		video : projectVideo3
+		currentStatus : "prototype",
 	},
 	{
-		name : "Lorem Ipsum",
-		summary : "lorem ipsum",
+		name : "Zuper Zuper",
+		summary : "A short puzzle gane about a player going broke",
 		url : "",
-		image : projectImage4
+		currentStatus : "work-in-progress"
 	},
 ]
 
@@ -81,6 +77,35 @@ const resolveCardType : (image? : string, video? : string, mode? : projectCardMo
 }
 
 export default function ProjectSection({ projectData = projectList } : projectSectionProps) {
+	return (
+		<section className="p-8">
+			<h1 className="text-7xl font-black mb-8 pb-6 border-b-3 border-dashed text-right">
+				Projects
+			</h1>
+
+			<div className="flex md:grid md:grid-cols-2 lg:grid-cols-3 flex-col gap-4">
+				{projectData.map((item, index) => {
+					return (
+						<ProjectCard
+							key={index}
+							name={item.name}
+							summary={item.summary}
+							className="transition-transform duration-500"
+							url={item.url}
+							image={item.image}
+							video={item.video}
+							mode={item.mode}
+							currentStatus={item.currentStatus}
+							currestStatusReason={item.currestStatusReason}
+						/>
+					)
+				})}
+			</div>
+		</section>
+	)
+}
+
+export function ProjectSectionLive({ projectData = projectList } : projectSectionProps) {
 	const sectRef = useRef< HTMLDivElement | null >( null )
 	const isVisible = useClientVisibility(sectRef, { threshold : 0.1 })
 	const [ currentIndex, setCurrentIndex ] = useState< number >( 0 )
@@ -142,6 +167,8 @@ export default function ProjectSection({ projectData = projectList } : projectSe
 							onComplete={onComplete}
 							isActivatedManually={true}
 							isActivatedManuallyValue={currentIndex === index && isVisible}
+							currentStatus={item.currentStatus}
+							currestStatusReason={item.currestStatusReason}
 						/>
 					)
 				})}
@@ -150,7 +177,7 @@ export default function ProjectSection({ projectData = projectList } : projectSe
 	)
 }
 
-export function ProjectCard({ name, summary, url, image, video, mode, isActivatedManually, isActivatedManuallyValue = false, ref, onComplete, onBegin, className, style } : projectCardProps) {
+export function ProjectCard({ name, summary, url, image, video, mode, isActivatedManually, isActivatedManuallyValue = false, onComplete, onBegin, currentStatus, currestStatusReason, className, style, ref } : projectCardProps) {
 	const currentMode = resolveCardType(image, video, mode)!
 	const rootRef = useRef< HTMLDivElement | null >( null )
 	const imageRef = useRef< HTMLImageElement | null >( null )
@@ -159,7 +186,6 @@ export function ProjectCard({ name, summary, url, image, video, mode, isActivate
 
 	const isVisible = useClientVisibility(rootRef, { threshold : 0.5 })
 	const [ isActivated, setIsActivated ] = useState< boolean >( false )
-	const [ isActivatedButtonState, setIsActivatedButtonState ] = useState< boolean >( false )
 
 	const timersRef = useRef<ReturnType<typeof setTimeout | typeof setInterval>[]>( [] )
 
@@ -265,16 +291,12 @@ export function ProjectCard({ name, summary, url, image, video, mode, isActivate
 		}
 	}, [ isActivated ])
 
-	const onClickPlayButton = () => {
-		setIsActivatedButtonState(!isActivatedButtonState)	
-	}
-
 	return (
 		<div ref={setRootRef} className="group">
 			<div style={style as React.CSSProperties} className={"relative w-full h-full max-h-160 aspect-3/4 border-3 rounded-2xl overflow-hidden" + " " + className}>
 				<div className="w-full h-full overflow-hidden">
 					<div className="relative w-full h-full group-hover:scale-110 transition-transform duration-600">
-						<img ref={imageRef} src={image} alt="" className="w-full h-full object-cover" />
+						<img ref={imageRef} src={image ?? unknownImage} alt="" className="w-full h-full object-cover" />
 
 						<video ref={videoRef} src={video} muted={true} loop={true} preload="auto" playsInline={true} className="absolute top-0 left-0 w-full h-full object-cover" />
 					</div>
@@ -291,22 +313,29 @@ export function ProjectCard({ name, summary, url, image, video, mode, isActivate
 						{summary}
 					</p>
 
-					<div className="flex gap-3">
-						<a href={url} className="px-3 py-2 border-3 rounded-3xl flex-1 transition-all active:scale-95 hover:bg-root-fg hover:text-root-bg hover:border-root-bg active:bg-root-fg/80">
-							Check it out
-						</a>
-
-						{currentMode !== "image-only" && (
-							<button className="group relative h-full aspect-square border-3 rounded-full hover:bg-root-fg transition-colors hover:text-root-bg hover:border-root-bg">
-								<PlayIcon style={{ "--opacity" : isActivated ? "1" :"0"} as React.CSSProperties} className="p-1 transition-opacity opacity-(--opacity)" />
-
-								<PauseIcon style={{ "--opacity" : isActivated ? "0" :"1"} as React.CSSProperties} className="p-2 absolute top-0 left-0 w-full h-full transition-opacity opacity-(--opacity)" />
-							</button>
-						)}
-
-					</div>
+					{( !currentStatus || currentStatus === "finished" ) && (
+						<div className="flex gap-3">
+							<a href={url} className="px-3 py-2 border-3 rounded-3xl flex-1 transition-all active:scale-95 hover:bg-root-fg hover:text-root-bg hover:border-root-bg active:bg-root-fg/80">
+								Check it out
+							</a>
+						</div>
+					)}
 
 				</div>
+
+				{currentStatus && currentStatus !== "finished" && (
+					<div className="absolute top-0 left-0 w-full h-full pointer-events-none flex items-center justify-center transition-transform group-hover:scale-115 duration-500">
+						<div className="flex flex-col items-center justify-centerp pointer-events-auto">
+							<h2 className="text-3xl font-bold">
+								{currentStatus.toUpperCase()}
+							</h2>
+
+							<p>
+								{currestStatusReason}
+							</p>
+						</div>
+					</div>
+				)}
 			</div>
 		</div>
 	)

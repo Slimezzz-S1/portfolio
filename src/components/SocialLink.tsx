@@ -1,8 +1,8 @@
 // icons
-import YoutubeIcon from "@/icons/SocialLinkIcons/Youtube/mdi--youtube.svg?react"
-import GithubIcon from "@/icons/SocialLinkIcons/Github/mdi--github.svg?react"
-import XIcon from "@/icons/SocialLinkIcons/X/pajamas--twitter.svg?react"
-import DiscordIcon from "@/icons/SocialLinkIcons/Discord/ic--baseline-discord.svg?react"
+import YoutubeIcon from "@/icons/social_link_icons/youtube/mdi--youtube.svg?react"
+import GithubIcon from "@/icons/social_link_icons/github/mdi--github.svg?react"
+import XIcon from "@/icons/social_link_icons/x/pajamas--twitter.svg?react"
+import DiscordIcon from "@/icons/social_link_icons/discord/ic--baseline-discord.svg?react"
 
 interface socialLinkProps {
     name : string
@@ -11,7 +11,7 @@ interface socialLinkProps {
     url : string
 }
 
-const socialLinkList : socialLinkProps[] = [
+export const socialLinkList : socialLinkProps[] = [
     {
         name : "Youtube",
         Icon : YoutubeIcon,

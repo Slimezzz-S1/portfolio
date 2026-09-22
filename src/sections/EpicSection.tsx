@@ -3,7 +3,7 @@ import imageDark from "@/assets/images/epicSection/dark.png"
 
 import imageEyes from "@/assets/images/epicSection/eyes.png"
 import imageEyesDark from "@/assets/images/epicSection/eyesDark.png"
-import { useEffect, useRef, useState, type ReactInstance } from "react"
+import { useEffect, useRef, useState, type RefObject } from "react"
 import { animate, random, stagger } from "animejs"
 import useClientVisibility from "@/hooks/useClientVisibility"
 
@@ -161,7 +161,7 @@ export default function EpicSection() {
     return (
         <section ref={sectRef}>
             <div className="relative max-w-2xl mx-auto">
-                <div className="absolute top-15 md:top-0 left-0 w-full h-1/2 flex items-center justify-center z-[-1] pointer-events-none">
+                <div className="absolute top-15 md:top-0 left-0 w-full h-1/2 flex items-center justify-center z-0 pointer-events-none">
                     <div ref={backTextsRef} className="flex flex-col gap-2">
                         {["3D Artist", "Developer", "Video Editor"].map(( item, index ) => (
                             <p key={index} style={{"opacity" : "0", "transform" : `translateY(-${90 * ( index + 1)}%)`} as React.CSSProperties} className="text-7xl sm:text-8xl md:text-8xl whitespace-nowrap font-black pointer-events-auto text-center text-transparent [-webkit-text-stroke:1px_white] md:[-webkit-text-stroke:2px_white]">
@@ -171,7 +171,7 @@ export default function EpicSection() {
                     </div>
                 </div>
 
-                <div style={{"opacity" : "0"} as React.CSSProperties} ref={rootImageRef} className="relative w-full aspect-square">
+                <div style={{"opacity" : "0"} as React.CSSProperties} ref={rootImageRef} className="relative w-full aspect-square overflow-hidden pointer-events-none select-none">
                     <img ref={imageDarkRef} src={imageDark} alt="" className="w-full h-full object-cover" />
 
                     <img ref={imageLitRef} src={imageLit} alt="" style={{"opacity" : "0"} as React.CSSProperties} className="absolute top-0 left-0 w-full h-full z-10 object-cover" />
@@ -179,6 +179,12 @@ export default function EpicSection() {
                     <img ref={imageEyesRef} src={imageEyes} alt="" className="absolute top-0 left-0 w-full h-full z-20 animate-pulse object-cover" />
 
                     <img src={imageEyesDark} alt="" className="absolute top-0 left-0 w-full h-full z-10" />
+
+                    <div className="absolute bottom-0 left-0 w-full h-full">
+                        <div style={{"--y" : "50%"} as React.CSSProperties} className="absolute bottom-1 left-0 w-full h-3/5 bg-linear-0 from-blue-400 to-none z-[-2] animate-bob" />
+
+                        <div className="absolute bottom-0 left-0 w-full h-full bg-linear-90 from-root-bg via-transparent to-root-bg" />
+                    </div>
 
                     <div ref={intersectRef} className="absolute top-1/2 left-0 w-full h-[15px] z-40" />
                 </div>
@@ -194,4 +200,31 @@ export default function EpicSection() {
             </div>
         </section>
     )
+}
+
+interface backTextProps {
+    isActivatedManually? : boolean
+    isActivatedManuallyValue? : boolean
+
+    items? : string[]
+    useDefaultWrapper? : boolean
+    ref? : RefObject< HTMLDivElement | null>
+}
+
+function BackTexts({ items = [ "3D Artist", "Developer", "Video Editor" ], useDefaultWrapper = true, ref, isActivatedManually, isActivatedManuallyValue } : backTextProps) {
+    const rootRef = useRef< HTMLDivElement | null >( null )
+    const [ isActivated, setIsActivated ] = useState< boolean >( false )
+    const isVisible = useClientVisibility(rootRef, { threshold : 0.5 })
+
+    if ( useDefaultWrapper ) {
+        return (
+            <div>
+                {items.map(( item, index ) => (
+                    <p key={item} style={{"opacity" : "0", "transform" : `translateY(-${90 * ( index + 1)}%)`} as React.CSSProperties} className="text-7xl sm:text-8xl md:text-8xl whitespace-nowrap font-black pointer-events-auto text-center text-transparent [-webkit-text-stroke:1px_white] md:[-webkit-text-stroke:2px_white]" >
+                        {item}
+                    </p>
+                ))}
+            </div>
+        )
+    }
 }

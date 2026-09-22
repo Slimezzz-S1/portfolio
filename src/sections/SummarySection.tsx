@@ -48,27 +48,27 @@ export default function SummarySection() {
 const summaryItems : summaryItemProps[] = [
 	{
 		name : "Summary",
-		description : "I'm a 17 year old high school student from Indonesia, I'm a 3D artist, front-end developer, and video editor. I have no achievements as of now as I tend to be a lazybone. Almost all of my skills were broad, but mediocre. My first OS was Windows XP, I use CachyOS btw.",
-		simplifiedDescription : "I'm a slime",
+		description : "I'm a 17 year old voca student from Indonesia, I do 3D animation, develop front-end website, and edit videos. I was a computer nerd back when I was a kid. I yearned for learning more about computers. Looking in the future, I want to be a successful SE graduate and get a loving job with appropriate income",
+		simplifiedDescription : "I'm a 3D artist, front-end developer, video editor.",
 		className : "col-span-2 row-span-2",
 		color : "lime"
 	},
 	{
 		name : "3D Artist",
-		description : "I started learning 3D animation back in 2020 using nothing but MineImator to create a silly Minecraft animations. after 4 years, I tried Blender for more control and convenience and now we're here.",
-		simplifiedDescription : "I use Blender 3.6.23",
+		description : "I make 3D animations of my OC. I started learning 3D animation back in 2020 using nothing but MineImator to create silly Minecraft animations. after 4 years of disinterest, I tried Blender for more control and convenience and now we're here.",
+		simplifiedDescription : "I make 3D animation in Blender 3.6.23",
 		color : "cyan"
 	},
 	{
 		name : "Programming",
-		description : "I got into programming in 2024 after seeing rigify scripts that you would see in Blender if you were rigging. My first language was Python.",
-		simplifiedDescription : "I code in Python, React, and Next.js",
+		description : "I got into coding in 2024 after seeing blender scripts. Inspired by those, I started learning Python by creating small scripts. Later, I got good at it and learned other languages as well. As of now, I'm more interested in making front-end websites. My programming languages are Python, HTML, CSS, JavaScript, TypeScript, and Lua. My beloved frameworks are React.js, Next.js, Vue.js, and PySide6.",
+		simplifiedDescription : "I code in Python, React, Vue.js, PySide6, and Next.js",
 		color : "yellow"
 	},
 	{
 		name : "Video editor",
-		description : "I did a bit of editing somewhere in 2018-2020 in Alight Motion, yes I learned editing on my phone. But this year, I started using Davinci Resolve for more professional Editing, I might even try After Effects.",
-		simplifiedDescription : "I use Davinci Resolve",
+		description : "I can do simple video editing, and color grading. I started learning video editing somewhere in 2018-2020 using nothing, but Alight Motion on my Snapdragon 625 phone. But in 2025, I started learning in Davinci Resolve in my laptop, with the goal of learning to use After Effects later",
+		simplifiedDescription : "I use Davinci Resolve for simple video editing",
 		className : "col-span-3",
 		color : "red"
 	},

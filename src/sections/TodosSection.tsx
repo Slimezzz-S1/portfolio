@@ -1,23 +1,52 @@
+import useClientVisibility from "@/hooks/useClientVisibility"
+import { animate, stagger } from "animejs"
+import { useEffect, useRef, useState } from "react"
+
 export default function TodosSection() {
+	const sectRef = useRef< HTMLDivElement | null >( null )
+	const itemsRef = useRef< HTMLDivElement | null >( null )
+	const isVisible = useClientVisibility(sectRef, { threshold : 0.3 })
+	const [ isVisibleOnce, setIsVisibleOnce ] = useState< boolean >( false )
+
+	useEffect(() => {
+		if (isVisible) {
+			setIsVisibleOnce(true)
+		}
+
+	}, [ isVisible ])
+
+	useEffect(() => {
+		if ( !isVisibleOnce || !itemsRef.current ) return
+
+		animate(itemsRef.current.children, {
+			opacity : [ "0", "1" ],
+			y : ( _, index ) =>  [`-${100 * index!}%`, "0"],
+			duration : 700,
+			delay : stagger(100)
+		})
+		return
+	}, [ isVisibleOnce ])
+
 	return (
-		<section className="p-8 flex flex-col gap-4">
+		<section ref={sectRef} className="p-8 flex flex-col gap-4">
 			<h1 className="font-black text-7xl">
-				Todos
+				Goals
 			</h1>
 
 			<div className="border border-dashed" />
 
 			<div>
-				<ol className="flex flex-col gap-4">
+				<div ref={itemsRef} className="flex flex-col gap-4">
 					{todoItemList.map((item, index) => (
 						<TodoItem
 							key={index}
 							name={item.name}
 							description={item.description}
 							isChecked={item.isChecked}
+							style={{ "opacity" : "0" } as React.CSSProperties}
 						/>
 					))}
-				</ol>
+				</div>
 			</div>
 		</section>
 	)
@@ -26,22 +55,25 @@ export default function TodosSection() {
 const todoItemList : todoItemProps[] = [
 	{
 		name : "Create 3D Animation",
-		// description : "Create a stunning animation in Blender",
 		isChecked : true
 	},
 	{
-		name : "Be a furry",
-		description : "NO!",
+		name : "Finish this portfolio",
+		isChecked : "halfway",
+		description : "Almost finished"
+	},
+	{
+		name : "React 100K Subscriber",
+		description : "",
 		isChecked : false
 	},
 	{
-		name : "Become crazy",
-		description : "Crazy? I Was Crazy Once. They Locked Me In A Room. A Rubber Room. A Rubber Room With Rats. And Rats Make Me Crazy. Crazy? I Was Crazy Once. They Locked Me In A Room. A Rubber Room. A Rubber Room With Rats. And Rats Make Me Crazy.",
-		isChecked : true
+		name : "Get a job",
+		isChecked : false
 	},
 	{
 		name : "Make a short movie",
-		description : "A movie about liminal space",
+		description : "Coming soon",
 		isChecked : "halfway"
 	}
 ]
@@ -52,9 +84,14 @@ interface todoItemProps {
 	isChecked : boolean | "halfway"
 }
 
-export function TodoItem({ name, description, isChecked } : todoItemProps) {
+interface todoItemComponentProps extends todoItemProps {
+	className? : string
+	style? : React.CSSProperties
+}
+
+export function TodoItem({ name, description, isChecked, className, style } : todoItemComponentProps) {
 	return (
-		<div className="grid grid-cols-[3rem_1fr] gap-x-4">
+		<div style={style} className={"grid grid-cols-[3rem_1fr] gap-x-4" + " " + className}>
 			<div className={"w-12 h-12 aspect-square border-2 rounded-lg" + " " + (
 				typeof isChecked === "boolean" && isChecked ? "bg-root-fg" :
 				isChecked === "halfway" ? "bg-hatch" :

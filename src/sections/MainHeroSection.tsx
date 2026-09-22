@@ -16,11 +16,11 @@ export default function MainHeroSection() {
 	const textRef = useRef<HTMLDivElement | null>(null)
 
 	const isVisible = useClientVisibility(sectRef, { threshold : 0.5 })
-	const [isVisibleOnce, setIsVisibleOnce] = useState<boolean>(false)
-	const [isFinishedTransition, setIsFinishedTransition] = useState<boolean>(false)
-	const [isActive, setIsActive] = useState<boolean>(false)
+	const [isVisibleOnce, setIsVisibleOnce] = useState< boolean >( false )
+	const [isFinishedTransition, setIsFinishedTransition] = useState< boolean >( false )
+	const [isActive, setIsActive] = useState< boolean >( false )
 
-	const [isTextTransitioning, setIsTextTransitioning] = useState<boolean>(false)
+	const [isTextTransitioning, setIsTextTransitioning] = useState< boolean >( false )
 
 	const onBeginText = () => {
 		setIsTextTransitioning(true)
@@ -83,7 +83,7 @@ export default function MainHeroSection() {
 				<h2 className="relative text-5xl lg:text-7xl font-bold min-h-[2em] whitespace-pre-wrap font-mono col-start-1">
 					<Role isActive={isActive} onBegin={onBeginText} onComplete={onCompleteText} />
 
-					<BlinkingCursor isActive={isActive} startBlank={true} isSwitchedManually={isTextTransitioning} isSwitchedValue={false} cursorType="|" />
+					<BlinkingCursor isActive={isActive} startBlank={true} isSwitchedManually={isTextTransitioning} isSwitchedValue={false} cursorType="_" />
 
 					<span className="absolute top-0 left-0 w-full h-full opacity-25">
 						<Underscores amount={11} endLineAt={5} isActive={isActive} />

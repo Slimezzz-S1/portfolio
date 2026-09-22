@@ -28,6 +28,7 @@
     --background-image-hatch: var(--hatch-pattern);
 
     --animate-spin-icon: spin 2.5s linear infinite;
+    --animate-bob: bob 2.5s ease infinite alternate;
 }
 
 html {
@@ -49,5 +50,11 @@ body {
         transform: translateZ(0);
     } to {
         transform: translateZ(var(0));
+    }
+}
+
+@keyframes bob {
+    to {
+        transform: translateY(var(--y));
     }
 }

@@ -22,7 +22,7 @@ export default function AppSidebar({ posY } : appSidebarProps) {
 	}, [])
 
 	return createPortal(
-		<aside ref={sidebarRef} style={{ "--y" : (posY ?? "0") + "px"} as React.CSSProperties} className="fixed top-(--y) right-0 w-1/2 h-[calc(100%-var(--y))] bg-root-bg border-l-3 flex flex-col justify-between p-4">
+		<aside ref={sidebarRef} style={{ "--y" : (posY ?? "0") + "px"} as React.CSSProperties} className="fixed top-(--y) right-0 w-full md:w-1/2 lg:w-fit lg:min-w-96 h-[calc(100%-var(--y))] z-100 bg-root-bg border-l-3 flex flex-col justify-between p-4">
 
 			<AppNav />
 

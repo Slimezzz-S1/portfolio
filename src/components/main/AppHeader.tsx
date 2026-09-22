@@ -3,12 +3,12 @@ import React, { useEffect, useState, useRef } from "react"
 
 import AppBurger from "@/mainComponents/AppBurger"
 import AppSidebar from "@/mainComponents/AppSidebar"
-import { createPortal } from "react-dom"
 
 export default function AppHeader() {
 	const [isHidden, setIsHidden] = useState<boolean>(false)
 	const [isSidebarToggled, setIsSidebarToggled] = useState<boolean>(false)
 	const rootRef = useRef<HTMLDivElement | null>(null)
+	const [ currentEmptyHeight, setCurrentEmptyHeight ] = useState< number >( 0 )
 
 	useEffect(() => {
 		if (isSidebarToggled) {
@@ -39,9 +39,17 @@ export default function AppHeader() {
 		}
 	}, [isSidebarToggled])
 
+	useEffect(() => {
+		if (!rootRef.current) return
+		
+		setCurrentEmptyHeight(rootRef.current.getBoundingClientRect().height)
+	}, [])
+
 	return (
 		<>
-			<div ref={rootRef} style={{"--y" : isHidden ? "-100%" : "0%"} as React.CSSProperties} className="sticky top-0 left-0 z-100 transition-transform translate-y-(--y)">
+			<div style={{"--height" : currentEmptyHeight + "px"} as React.CSSProperties} className="h-(--height)" />
+
+			<div ref={rootRef} style={{"--y" : isHidden ? "-100%" : "0%"} as React.CSSProperties} className="fixed top-0 left-0 z-100 transition-transform translate-y-(--y) w-full">
 				{/* <div className="bg-gray-600 p-4 flex items-center">
 					Cute puppy!
 				</div> */}
