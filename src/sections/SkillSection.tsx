@@ -28,7 +28,6 @@ import ExpressIcon from "@/tools/express-js/griddy-icons--expressjs.svg?react"
 export interface itemProps {    
     name : string
     Icon : React.FunctionComponent<React.SVGProps<SVGSVGElement>>
-    description? : string
     skillPercent? : number
     color? : string
 }
@@ -153,7 +152,7 @@ interface itemComponentProps extends itemProps {
     overrideStyle? : boolean
 }
 
-export function ItemIcon({ name, Icon, color, description, className, style, onClick, overrideClassName = false, overrideStyle = false } : itemComponentProps) {
+export function ItemIcon({ name, Icon, color, className, style, onClick, overrideClassName = false, overrideStyle = false } : itemComponentProps) {
     return (
         <div style={overrideStyle ? style : {...{"--color" : color} as React.CSSProperties, ...style}} title={name} onClick={onClick} className={overrideClassName ? className : "w-20 h-20 border rounded-2xl p-3 hover:border-(--color) hover:text-(--color) hover:scale-105 transition-all" + " " + className}>
             <Icon className="w-full h-full" />
@@ -161,9 +160,9 @@ export function ItemIcon({ name, Icon, color, description, className, style, onC
     )
 }
 
-export function ItemDetailed({ name, Icon, color, description, className, skillPercent, style, onClick, overrideClassName = false, overrideStyle = false } : itemComponentProps) {
+export function ItemDetailed({ name, Icon, color, className, skillPercent, style, onClick, overrideClassName = false, overrideStyle = false } : itemComponentProps) {
     return (
-        <div style={{"--color" : color} as React.CSSProperties} className="group grid grid-cols-[auto_1fr] sm:flex justify-between items-center gap-3 sm:gap-4 border rounded-2xl px-3 py-3 transition-all hover:border-(--color) hover:scale-105">
+        <div style={overrideStyle ? style : {...{"--color" : color} as React.CSSProperties, ...style}} className={overrideClassName ? className : "group grid grid-cols-[auto_1fr] sm:flex justify-between items-center gap-3 sm:gap-4 border rounded-2xl px-3 py-3 transition-all hover:border-(--color) hover:scale-105" + " " + className} onClick={onClick}>
             <Icon className="w-12 h-12 aspect-square group-hover:text-(--color)" />
 
             <h3 className="text-2xl font-bold transition-colors group-hover:text-(--color)">
@@ -196,7 +195,6 @@ export function ItemIcons({ items = languages, mode = "icons" } : itemIconsProps
                     key={index}
                     name={item.name}
                     Icon={item.Icon}
-                    description={item.description}
                     skillPercent={item.skillPercent}
                     color={item.color}
                 />
@@ -207,7 +205,6 @@ export function ItemIcons({ items = languages, mode = "icons" } : itemIconsProps
                     key={index}
                     name={item.name}
                     Icon={item.Icon}
-                    description={item.description}
                     skillPercent={item.skillPercent}
                     color={item.color}
                 />
@@ -218,7 +215,6 @@ export function ItemIcons({ items = languages, mode = "icons" } : itemIconsProps
                     key={index}
                     name={item.name}
                     Icon={item.Icon}
-                    description={item.description}
                     skillPercent={item.skillPercent}
                     color={item.color}
                 />
