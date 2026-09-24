@@ -1,8 +1,9 @@
 // icons
 import YoutubeIcon from "@/icons/social_link_icons/youtube/mdi--youtube.svg?react"
 import GithubIcon from "@/icons/social_link_icons/github/mdi--github.svg?react"
-import XIcon from "@/icons/social_link_icons/x/pajamas--twitter.svg?react"
+// import XIcon from "@/icons/social_link_icons/x/pajamas--twitter.svg?react"
 import DiscordIcon from "@/icons/social_link_icons/discord/ic--baseline-discord.svg?react"
+import MonkeyTypeIcon from "@/icons/social_link_icons/monkeytype/simple-icons--monkeytype.svg?react"
 
 interface socialLinkProps {
     name : string
@@ -25,10 +26,10 @@ export const socialLinkList : socialLinkProps[] = [
         url : "https://github.com/Slimezzz-S1"
     },
     {
-        name : "X",
-        Icon : XIcon,
-        description : "My X account",
-        url : "https://x.com/slimedzzz"
+        name : "MonkeyType",
+        Icon : MonkeyTypeIcon,
+        description : "My MonkeyType Profile",
+        url : "https://monkeytype.com/profile/slimez7"
     },
     {
         name : "Discord",

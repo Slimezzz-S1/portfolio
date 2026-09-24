@@ -38,7 +38,7 @@ export const projectList : projectProps[] = [
 	{
 		name : "S11ME",
 		summary : "a 3d animation series about random things",
-		url : "",
+		url : "https://www.youtube.com/@S11-ME_",
 		image : projectImage2,
 		video : projectVideo2,
 	},
@@ -58,7 +58,7 @@ export const projectList : projectProps[] = [
 	},
 	{
 		name : "Zuper Zuper",
-		summary : "A short puzzle gane about a player going broke",
+		summary : "A short puzzle game about a TV Head going on an adventure",
 		url : "",
 		currentStatus : "work-in-progress"
 	},

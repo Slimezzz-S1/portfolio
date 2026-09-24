@@ -8,7 +8,8 @@ import SummarySection from "@/sections/SummarySection"
 import TodosSection from "@/sections/TodosSection"
 import ProjectSection from "@/sections/ProjectSection"
 import GallerySection from "@/sections/GallerySection"
-import EpicSection from "./sections/EpicSection"
+import EpicSection from "@/sections/EpicSection"
+import SkillSection from "@/sections/SkillSection"
 
 // components
 import AppHeader from "@/mainComponents/AppHeader"
@@ -60,6 +61,10 @@ export default function App() {
 
 				<div id="about">
 					<SummarySection />
+				</div>
+
+				<div id="skill">
+					<SkillSection />
 				</div>
 
 				<div id="goals">
