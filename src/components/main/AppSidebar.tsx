@@ -35,6 +35,8 @@ export default function AppSidebar({ posY, onClick, isToggled } : appSidebarProp
 				}
 			})
 		}
+
+		return
 	}, [isToggled])
 
 	return createPortal(

@@ -8,11 +8,13 @@ export default function AppHeader() {
 	const [isHidden, setIsHidden] = useState<boolean>(false)
 	const [isSidebarToggled, setIsSidebarToggled] = useState<boolean>(false)
 	const rootRef = useRef<HTMLDivElement | null>(null)
-	const [ currentEmptyHeight, setCurrentEmptyHeight ] = useState< number >( 0 )
+	const [currentEmptyHeight, setCurrentEmptyHeight] = useState<number>( 0 )
+	const [isSidebarToggledOnce, setISSidebarToggledOnce] = useState<boolean>(false)
 
 	useEffect(() => {
 		if (isSidebarToggled) {
 			setIsHidden(false)
+			setISSidebarToggledOnce(true)
 
 			return
 		}
@@ -66,8 +68,9 @@ export default function AppHeader() {
 					<AppBurger onClick={() => setIsSidebarToggled(!isSidebarToggled)} isToggled={isSidebarToggled} />
 				</header>
 			</div>
-			
-			<AppSidebar posY={rootRef.current?.getBoundingClientRect().height ?? 0} onClick={() => setIsSidebarToggled(!isSidebarToggled)} isToggled={isSidebarToggled} />
+			{isSidebarToggledOnce && (
+				<AppSidebar posY={rootRef.current?.getBoundingClientRect().height ?? 0} onClick={() => setIsSidebarToggled(!isSidebarToggled)} isToggled={isSidebarToggled} />
+			)}
 		</>		
 	)
 }
