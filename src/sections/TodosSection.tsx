@@ -75,6 +75,11 @@ const todoItemList : todoItemProps[] = [
 		name : "Make a short movie",
 		description : "Coming soon",
 		isChecked : "halfway"
+	},
+	{
+		name : "Create a 3d game",
+		description : "Coming soon",
+		isChecked : "halfway"
 	}
 ]
 

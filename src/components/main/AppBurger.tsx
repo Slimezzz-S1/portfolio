@@ -2,18 +2,13 @@ import { useState } from "react"
 
 interface appBurgerProps {
     onClick? : () => void
-    onToggled? : (isClicked : boolean) => void
+    isToggled? : boolean
 }
 
-export default function AppBurger({ onClick, onToggled } : appBurgerProps) {
-    const [isToggled, setIsToggled] = useState<boolean>(false)
+export default function AppBurger({ onClick, isToggled } : appBurgerProps) {
 
     const handleOnClick = () => {
-        setIsToggled(!isToggled)
-        
         onClick?.()
-
-        onToggled?.(isToggled)
     }
 
     return (

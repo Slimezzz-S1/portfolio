@@ -23,6 +23,7 @@ import AEIcon from "@/tools/after-effects/iconoir--adobe-after-effects-solid.svg
 import DavinciIcon from "@/tools/davinci-resolve/thesvg--davinci-resolve.svg?react"
 import NestIcon from "@/tools/nest-js/file-icons--nestjs.svg?react"
 import ExpressIcon from "@/tools/express-js/griddy-icons--expressjs.svg?react"
+import GodotIcon from "@/tools/godot/cib--godot-engine.svg?react"
 
 
 export interface itemProps {    
@@ -142,6 +143,11 @@ const apps : itemProps[] = [
         Icon : DavinciIcon,
         color : "#233A51"
     },
+    {
+        name : "Godot",
+        Icon : GodotIcon,
+        color : "#478CBF"
+    },
 ]
 
 interface itemComponentProps extends itemProps {
@@ -163,15 +169,15 @@ export function ItemIcon({ name, Icon, color, className, style, onClick, overrid
 export function ItemDetailed({ name, Icon, color, className, skillPercent, style, onClick, overrideClassName = false, overrideStyle = false } : itemComponentProps) {
     return (
         <div style={overrideStyle ? style : {...{"--color" : color} as React.CSSProperties, ...style}} className={overrideClassName ? className : "group grid grid-cols-[auto_1fr] sm:flex justify-between items-center gap-3 sm:gap-4 border rounded-2xl px-3 py-3 transition-all hover:border-(--color) hover:scale-105" + " " + className} onClick={onClick}>
-            <Icon className="w-12 h-12 aspect-square group-hover:text-(--color)" />
+            <Icon className="w-20 sm:w-14 h-18 sm:h-14 aspect-square group-hover:text-(--color) transition-colors col-start-1 row-start-1 row-span-3 self-center" />
 
             <h3 className="text-2xl font-bold transition-colors group-hover:text-(--color)">
                 {name}
             </h3>
 
-            <div className="flex-1 col-start-2" />
+            <div className="hidden sm:block flex-1" />
 
-            <p className="font-bold text-center">
+            <p className="font-bold sm:text-center text-left text-xl sm:text-base">
                 {skillPercent}%
             </p>
 
@@ -222,6 +228,31 @@ export function ItemIcons({ items = languages, mode = "icons" } : itemIconsProps
     }
 }
 
+interface skillPartProps {
+    title : string
+    items : itemProps[]
+}
+
+function SkillPart({ title, items } : skillPartProps) {
+    return (
+        <div>
+            <div className="relative my-4 pb-4 px-4">
+                <div className="absolute top-0 left-0 w-full h-full bg-hatch mask-b-to-transparent rounded-t-xl pointer-events-none z-[-1]">
+                    <div className="w-full h-full bg-linear-90 from-root-bg to-transparent" />
+                </div>
+
+                <h2 className="md:text-8xl sm:text-7xl text-5xl md:text-stroke-md text-stroke-sm text-transparent">
+                    {title}
+                </h2>
+            </div>
+
+            <div className={title.toLowerCase() == "tools" ? "flex flex-col gap-4 justify-center" : "flex gap-4 justify-center flex-wrap"}>
+                <ItemIcons items={items} mode={title.toLowerCase() == "tools" ? "details" : "icons"} />
+            </div>
+        </div>
+    )
+}
+
 export default function SkillSection() {
     return (
         <section className="p-8">
@@ -230,47 +261,11 @@ export default function SkillSection() {
             </h1>
 
             <div className="flex flex-col gap-4">
-                <div>
-                    <div className="relative my-4 pb-4 px-4">
-                        <div className="absolute top-0 left-0 w-full h-full bg-hatch mask-b-to-transparent rounded-t-xl" />
+                <SkillPart title="Languages" items={languages} />
 
-                        <h2 className="md:text-8xl sm:text-7xl text-5xl md:text-stroke-md text-stroke-sm text-transparent">
-                            Languages
-                        </h2>
-                    </div>
+                <SkillPart title="Tools" items={tools} />
 
-                    <div className="flex gap-4 justify-center flex-wrap">
-                        <ItemIcons mode="icons" />
-                    </div>
-                </div>
-
-                <div>
-                    <div className="relative my-4 pb-4 px-4">
-                        <div className="absolute top-0 left-0 w-full h-full bg-hatch mask-b-to-transparent rounded-t-xl" />
-
-                        <h2 className="md:text-8xl text-7xl md:text-stroke-md text-stroke-sm text-transparent text-end">
-                            Tools
-                        </h2>
-                    </div>
-
-                    <div className="flex flex-col gap-4 justify-center">
-                        <ItemIcons items={tools} mode="details" />
-                    </div>
-                </div>
-
-                <div>
-                    <div className="relative my-4 pb-4 px-4">
-                        <div className="absolute top-0 left-0 w-full h-full bg-hatch mask-b-to-transparent rounded-t-xl" />
-
-                        <h2 className="md:text-8xl text-7xl md:text-stroke-md text-stroke-sm text-transparent">
-                            Apps
-                        </h2>
-                    </div>
-
-                    <div className="flex gap-4 justify-center">
-                        <ItemIcons items={apps} mode="icons" />
-                    </div>
-                </div>
+                <SkillPart title="Apps" items={apps} />
             </div>
         </section>
     )

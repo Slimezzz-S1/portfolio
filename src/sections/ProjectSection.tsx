@@ -47,8 +47,6 @@ export const projectList : projectProps[] = [
 		summary : "A 4chan knockoff made using Next.js",
 		url : "https://posterzzz.vercel.app/",
 		image : projectImage1,
-		currentStatus : "abandoned",
-		currestStatusReason : "DB Server is no longer maintained"
 	},
 	{
 		name : "Grits",

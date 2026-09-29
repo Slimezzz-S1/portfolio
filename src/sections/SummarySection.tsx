@@ -27,7 +27,7 @@ export default function SummarySection() {
 
 	return (
 		<section ref={sectRef} className="p-8">
-			<div className="flex flex-col lg:grid lg:grid-cols-3 lg:grid-rows-3 gap-4 min-h-140">
+			<div className="flex flex-col lg:grid lg:grid-cols-3 lg:grid-rows-3 gap-4 min-h-80">
 				{summaryItems.map((item, index) => (
 					<SummaryItem
 						ref={(element) => { if (element) cardRefs.current[index] = element}}
@@ -61,7 +61,7 @@ const summaryItems : summaryItemProps[] = [
 	},
 	{
 		name : "Programming",
-		description : "I got into coding in 2024 after seeing blender scripts. Inspired by those, I started learning Python by creating small scripts. Later, I got good at it and learned other languages as well. As of now, I'm more interested in making front-end websites. My programming languages are Python, HTML, CSS, JavaScript, TypeScript, and Lua. My beloved frameworks are React.js, Next.js, Vue.js, and PySide6.",
+		description : "I started learning Python in 2024 by creating small scripts. Later, I got good at it and learned other languages as well. As of now, I'm more interested in making front-end websites. My programming languages are Python, HTML, CSS, JS, TS, and Lua. My beloved frameworks are React.js and Next.js.",
 		simplifiedDescription : "I code in Python, React, Vue.js, PySide6, and Next.js",
 		color : "yellow"
 	},

@@ -63,12 +63,11 @@ export default function AppHeader() {
 						</h1>
 					</div>
 
-					<AppBurger onClick={() => setIsSidebarToggled(!isSidebarToggled)} />
+					<AppBurger onClick={() => setIsSidebarToggled(!isSidebarToggled)} isToggled={isSidebarToggled} />
 				</header>
 			</div>
-			{isSidebarToggled && (
-				<AppSidebar posY={rootRef.current?.getBoundingClientRect().height ?? 0} />
-			)}
+			
+			<AppSidebar posY={rootRef.current?.getBoundingClientRect().height ?? 0} onClick={() => setIsSidebarToggled(!isSidebarToggled)} isToggled={isSidebarToggled} />
 		</>		
 	)
 }
