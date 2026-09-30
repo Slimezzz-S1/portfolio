@@ -24,7 +24,7 @@ import DavinciIcon from "@/tools/davinci-resolve/thesvg--davinci-resolve.svg?rea
 import NestIcon from "@/tools/nest-js/file-icons--nestjs.svg?react"
 import ExpressIcon from "@/tools/express-js/griddy-icons--expressjs.svg?react"
 import GodotIcon from "@/tools/godot/cib--godot-engine.svg?react"
-
+import LaravelIcon from "@/tools/laravel/bxl--laravel.svg?react"
 
 export interface itemProps {    
     name : string
@@ -96,6 +96,12 @@ const tools : itemProps[] = [
         Icon : TailwindIcon,
         color : "#06B6D4",
         skillPercent : 50
+    },
+    {
+        name : "Laravel",
+        Icon : LaravelIcon,
+        color : "#FF2D20",
+        skillPercent : 20
     },
     {
         name : "PostgreSQL",
@@ -205,6 +211,7 @@ export function ItemIcons({ items = languages, mode = "icons" } : itemIconsProps
                     color={item.color}
                 />
             ))
+
         case "details":
             return items.map(( item, index ) => (
                 <ItemDetailed
@@ -215,6 +222,7 @@ export function ItemIcons({ items = languages, mode = "icons" } : itemIconsProps
                     color={item.color}
                 />
             ))
+            
         case "tiles":
             return items.map(( item, index ) => (
                 <ItemIcon
@@ -256,7 +264,7 @@ function SkillPart({ title, items } : skillPartProps) {
 export default function SkillSection() {
     return (
         <section className="p-8">
-            <h1 className="mb-4 py-4 text-7xl font-black text-center border-b-3 border-dashed">
+            <h1 className="mb-4 py-4 text-7xl font-black text-end border-b-3 border-dashed">
                 Skills
             </h1>
 

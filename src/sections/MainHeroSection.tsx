@@ -15,12 +15,12 @@ export default function MainHeroSection() {
 	const imageRef = useRef<HTMLDivElement | null>(null)
 	const textRef = useRef<HTMLDivElement | null>(null)
 
-	const isVisible = useClientVisibility(sectRef, { threshold : 0.5 })
-	const [isVisibleOnce, setIsVisibleOnce] = useState< boolean >( false )
-	const [isFinishedTransition, setIsFinishedTransition] = useState< boolean >( false )
+	const isVisible = useClientVisibility(sectRef, { threshold : 0.1 })
+	const [isVisibleOnce, setIsVisibleOnce] = useState< boolean >(false)
+	const [isFinishedTransition, setIsFinishedTransition] = useState<boolean>(false)
 	const [isActive, setIsActive] = useState< boolean >( false )
 
-	const [isTextTransitioning, setIsTextTransitioning] = useState< boolean >( false )
+	const [isTextTransitioning, setIsTextTransitioning] = useState<boolean>(false)
 
 	const onBeginText = () => {
 		setIsTextTransitioning(true)
@@ -134,11 +134,11 @@ function Underscores({ amount, endLineAt, isActive } : underScoreProps) {
 		
 		const underScores = underscoreRefs.current
 		
-		const getDurationTotal = ( twice : boolean = true, amountChar : number = underScores.length) => {
+		const getDurationTotal = (twice : boolean = true, amountChar : number = underScores.length) => {
 			return ( duration + ( amountChar * staggerDelay ) ) * (twice ? 2 : 1) + hold
 		}
 
-		const fadeIn = ( onComplete? : () => any ) => {
+		const fadeIn = (onComplete? : () => any) => {
 			animate(underScores, {
 				opacity : [
 					"1",
@@ -150,7 +150,7 @@ function Underscores({ amount, endLineAt, isActive } : underScoreProps) {
 			})
 		}
 
-		const fadeOut = ( onComplete? : () => any ) => {
+		const fadeOut = (onComplete? : () => any) => {
 			animate(underScores, {
 				opacity : [
 					"0",

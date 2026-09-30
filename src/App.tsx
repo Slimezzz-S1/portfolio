@@ -28,16 +28,28 @@ export const navData : navProps[] = [
 		name : "Home",
 		Icon : HomeIcon,
 		idElement : "home",
+		options : {
+			behavior : "smooth",
+			block : "start"
+		}
 	},
 	{
 		name : "About Me",
 		Icon : InfoIcon,
 		idElement : "about",
+		options : {
+			behavior : "smooth",
+			block : "start"
+		}
 	},
 	{
 		name : "Skills",
 		Icon : SkillIcon,
 		idElement : "skill",
+		options : {
+			behavior : "smooth",
+			block : "start"
+		}
 	},
 	{
 		name : "Goals",
@@ -53,6 +65,10 @@ export const navData : navProps[] = [
 		name : "Gallery",
 		Icon : GalleryIcon,
 		idElement : "gallery",
+		options : {
+			behavior : "smooth",
+			block : "start"
+		}
 	},
 ]
 
@@ -61,9 +77,10 @@ export default function App() {
 		<>
 
 			<section className="md:max-w-3xl lg:max-w-7xl mx-auto xl:border-x-3 xl:border-dashed xl:border-x-root-fg/50">
-				<AppHeader />
 
 				<div id="home">
+					<AppHeader />
+
 					<MainHeroSection />
 				</div>
 
