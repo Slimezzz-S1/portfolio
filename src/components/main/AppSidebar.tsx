@@ -1,3 +1,4 @@
+// COMPONENTS
 import { createPortal } from "react-dom"
 import AppNav from "@/mainComponents/AppNav"
 import { animate } from "animejs"

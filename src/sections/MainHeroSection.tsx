@@ -1,14 +1,12 @@
-// built-in components
+// COMPONENTS
 import { useEffect, useState, useRef } from "react"
-
-// components
 import SocialLinks from "@/components/SocialLink"
+import { animate, stagger } from "animejs"
 
-// media
+// ASSETS
 import profileImage from "@/assets/images/MainHero/MainHeroProfile.png"
 import useClientVisibility from "@/hooks/useClientVisibility"
 
-import { animate, stagger } from "animejs"
 
 export default function MainHeroSection() {
 	const sectRef = useRef<HTMLDivElement | null>(null)

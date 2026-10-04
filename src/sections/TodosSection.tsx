@@ -1,8 +1,12 @@
+// DATA
+import { todoData } from "@/libs/data"
+
+// COMPONENTS
 import useClientVisibility from "@/hooks/useClientVisibility"
 import { animate, stagger } from "animejs"
 import { useEffect, useRef, useState } from "react"
 
-interface todoItemProps {
+export interface todoItemProps {
 	name : string
 	description? : string
 	isChecked : boolean | "halfway"
@@ -13,39 +17,13 @@ interface todoItemComponentProps extends todoItemProps {
 	style? : React.CSSProperties
 }
 
+interface todoSectionProps {
+	todoList? : todoItemProps[]
+}
 
-const todoItemList : todoItemProps[] = [
-	{
-		name : "Create 3D Animation",
-		isChecked : true
-	},
-	{
-		name : "Finish this portfolio",
-		isChecked : "halfway",
-		description : "Almost finished"
-	},
-	{
-		name : "React 100K Subscriber",
-		description : "",
-		isChecked : false
-	},
-	{
-		name : "Get a job",
-		isChecked : false
-	},
-	{
-		name : "Make a short movie",
-		description : "Coming soon",
-		isChecked : "halfway"
-	},
-	{
-		name : "Create a 3d game",
-		description : "Coming soon",
-		isChecked : "halfway"
-	}
-]
+const todos = todoData
 
-export default function TodosSection() {
+export default function TodosSection({todoList = todos} : todoSectionProps) {
 	const sectRef = useRef< HTMLDivElement | null >( null )
 	const itemsRef = useRef< HTMLDivElement | null >( null )
 	const isVisible = useClientVisibility(sectRef, { threshold : 0.3 })
@@ -80,7 +58,7 @@ export default function TodosSection() {
 
 			<div>
 				<div ref={itemsRef} className="flex flex-col gap-4">
-					{todoItemList.map((item, index) => (
+					{todoList.map((item, index) => (
 						<TodoItem
 							key={index}
 							name={item.name}

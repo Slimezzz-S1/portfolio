@@ -14,64 +14,6 @@ import SkillSection from "@/sections/SkillSection"
 // components
 import AppHeader from "@/mainComponents/AppHeader"
 import AppFooter from "@/mainComponents/AppFooter"
-import { type navProps } from "@/components/main/AppNav"
-import Background from "@/components/Background"
-
-import HomeIcon from "@/icons/nav/akar-icons--home-alt1.svg?react"
-import InfoIcon from "@/icons/nav/boxicons--info-circle.svg?react"
-import SkillIcon from "@/icons/nav/carbon--skill-level-advanced.svg?react"
-import GoalIcon from "@/icons/nav/akar-icons--check-box.svg?react"
-import ProjectIcon from "@/icons/Nav/octicon--project-roadmap-16.svg?react"
-import GalleryIcon from "@/icons/nav/boxicons--gallery-vertical-end-filled.svg?react"
-
-export const navData : navProps[] = [
-	{
-		name : "Home",
-		Icon : HomeIcon,
-		idElement : "home",
-		options : {
-			behavior : "smooth",
-			block : "start"
-		}
-	},
-	{
-		name : "About Me",
-		Icon : InfoIcon,
-		idElement : "about",
-		options : {
-			behavior : "smooth",
-			block : "start"
-		}
-	},
-	{
-		name : "Skills",
-		Icon : SkillIcon,
-		idElement : "skill",
-		options : {
-			behavior : "smooth",
-			block : "start"
-		}
-	},
-	{
-		name : "Goals",
-		Icon : GoalIcon,
-		idElement : "goals",
-	},
-	{
-		name : "Project",
-		Icon : ProjectIcon,
-		idElement : "project",
-	},
-	{
-		name : "Gallery",
-		Icon : GalleryIcon,
-		idElement : "gallery",
-		options : {
-			behavior : "smooth",
-			block : "start"
-		}
-	},
-]
 
 export default function App() {
 	return (

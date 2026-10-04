@@ -1,8 +1,26 @@
+// DATA
+import { summaryItemData } from "@/libs/data"
+
+// COMPONENTS
 import useIntersectionObserver from "@/hooks/useIntersectionObserver"
 import { animate, stagger } from "animejs"
 import React, { useState, useRef, useEffect } from "react"
 
-export default function SummarySection() {
+export interface summaryItemProps {
+	name : string
+	description : string
+	simplifiedDescription : string
+	className? : string
+	color : string
+}
+
+interface summarySectionProps {
+	summaryList? : summaryItemProps[]
+}
+
+const summaries = summaryItemData
+
+export default function SummarySection({summaryList = summaries} : summarySectionProps) {
 	const sectRef = useRef<HTMLDivElement>(null)
 	const cardRefs = useRef<HTMLDivElement[]>([])
 	const isVisible = useIntersectionObserver(sectRef, { threshold : 0.4 })
@@ -28,7 +46,7 @@ export default function SummarySection() {
 	return (
 		<section ref={sectRef} className="p-8">
 			<div className="flex flex-col lg:grid lg:grid-cols-3 lg:grid-rows-3 gap-4 min-h-80">
-				{summaryItems.map((item, index) => (
+				{summaryList.map((item, index) => (
 					<SummaryItem
 						ref={(element) => { if (element) cardRefs.current[index] = element}}
 						key={index}
@@ -43,43 +61,6 @@ export default function SummarySection() {
 			</div>
 		</section>
 	)
-}
-
-const summaryItems : summaryItemProps[] = [
-	{
-		name : "Summary",
-		description : "I'm a 17 year old voca student from Indonesia, I do 3D animation, develop front-end website, and edit videos. I was a computer nerd back when I was a kid. I yearned for learning more about computers. Looking in the future, I want to be a successful SE graduate and get a loving job with appropriate income",
-		simplifiedDescription : "I'm a 3D artist, front-end developer, video editor.",
-		className : "col-span-2 row-span-2",
-		color : "lime"
-	},
-	{
-		name : "3D Artist",
-		description : "I make 3D animations of my OC. I started learning 3D animation back in 2020 using nothing but MineImator to create silly Minecraft animations. after 4 years of disinterest, I tried Blender for more control and convenience and now we're here.",
-		simplifiedDescription : "I make 3D animation in Blender 3.6.23",
-		color : "cyan"
-	},
-	{
-		name : "Programming",
-		description : "I started learning Python in 2024 by creating small scripts. Later, I got good at it and learned other languages as well. As of now, I'm more interested in making front-end websites. My programming languages are Python, HTML, CSS, JS, TS, and Lua. My beloved frameworks are React.js and Next.js.",
-		simplifiedDescription : "I code in Python, React, Vue.js, PySide6, and Next.js",
-		color : "yellow"
-	},
-	{
-		name : "Video editor",
-		description : "I can do simple video editing, and color grading. I started learning video editing somewhere in 2018-2020 using nothing, but Alight Motion on my Snapdragon 625 phone. But in 2025, I started learning in Davinci Resolve in my laptop, with the goal of learning to use After Effects later",
-		simplifiedDescription : "I use Davinci Resolve for simple video editing",
-		className : "col-span-3",
-		color : "red"
-	},
-]
-
-interface summaryItemProps {
-	name : string
-	description : string
-	simplifiedDescription : string
-	className? : string
-	color : string
 }
 
 const SummaryItem = React.forwardRef<HTMLDivElement, summaryItemProps & { style? : React.CSSProperties }>(({ name, description, simplifiedDescription, className, color, style }, ref) => {

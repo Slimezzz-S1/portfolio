@@ -1,3 +1,4 @@
+// COMPONENTS
 import useClientVisibility from "@/hooks/useClientVisibility"
 import { animate, stagger } from "animejs"
 import { useEffect, useRef, useState } from "react"

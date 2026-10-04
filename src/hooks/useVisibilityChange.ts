@@ -1,4 +1,5 @@
-import { useEffect, useState } from "react";
+// COMPONENTS
+import { useEffect, useState } from "react"
 
 export default function useVisibilityChange() {
 	const [isVisible, setIsVisible] = useState<boolean>(

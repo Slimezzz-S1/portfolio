@@ -1,3 +1,4 @@
+// COMPONENTS
 import { useEffect, useRef, useState, type RefObject } from "react"
 
 export default function useIntersectionObserver(ref : RefObject<Element | null>, options : IntersectionObserverInit  = {threshold : 0}) {

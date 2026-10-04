@@ -1,4 +1,6 @@
-import { navData } from "@/App"
+// DATA
+import { navData } from "@/libs/data"
+
 export interface navProps {
 	name : string
 	Icon : React.FunctionComponent<React.SVGProps<SVGSVGElement>>

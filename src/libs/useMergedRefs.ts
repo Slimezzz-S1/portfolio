@@ -1,3 +1,4 @@
+// COMPONENTS
 import { useMemo, type RefCallback, type Ref } from "react"
 
 function useMergedRefs<T>(refs: (Ref<T> | undefined)[]): RefCallback<T> {

@@ -1,5 +1,5 @@
+// COMPONENTS
 import { type RefObject } from "react"
-
 import useIntersectionObserver from "@/hooks/useIntersectionObserver"
 import useVisibility from "@/hooks/useVisibilityChange"
 

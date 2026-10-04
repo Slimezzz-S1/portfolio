@@ -1,8 +1,9 @@
-import { useEffect, useRef, useState } from "react"
-
+// ASSETS
 import zylHoldingImage from "@/assets/images/BuiltWith/ZylHolding.png"
 import ReactIcon from "@/tools/react/griddy-icons--react.svg?react"
 
+// COMPONENTS
+import { useEffect, useRef, useState } from "react"
 import useIntersectionObserver from "@/hooks/useIntersectionObserver"
 import { animate } from "animejs"
 

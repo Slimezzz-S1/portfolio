@@ -1,14 +1,16 @@
+// ASSETS
 import imageLit from "@/assets/images/epicSection/lit.png"
 import imageDark from "@/assets/images/epicSection/dark.png"
-
 import imageEyes from "@/assets/images/epicSection/eyes.png"
 import imageEyesDark from "@/assets/images/epicSection/eyesDark.png"
+
+
+// COMPONENTS
 import { useEffect, useRef, useState } from "react"
 import { animate, random, stagger } from "animejs"
 import useClientVisibility from "@/hooks/useClientVisibility"
 
 export default function EpicSection() {
-    
     const sectRef = useRef< HTMLDivElement | null >( null )
 
     const rootImageRef = useRef< HTMLDivElement | null >( null )

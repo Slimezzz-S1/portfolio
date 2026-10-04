@@ -1,50 +1,21 @@
-// icons
-import YoutubeIcon from "@/icons/social_link_icons/youtube/mdi--youtube.svg?react"
-import GithubIcon from "@/icons/social_link_icons/github/mdi--github.svg?react"
-// import XIcon from "@/icons/social_link_icons/x/pajamas--twitter.svg?react"
-import DiscordIcon from "@/icons/social_link_icons/discord/ic--baseline-discord.svg?react"
-import MonkeyTypeIcon from "@/icons/social_link_icons/monkeytype/simple-icons--monkeytype.svg?react"
+// DATA
+import { socialLinksData } from "@/libs/data"
 
-interface socialLinkProps {
+export interface socialLinkProps {
     name : string
     Icon : React.FunctionComponent<React.SVGProps<SVGSVGElement>>
     description? : string
     url : string
 }
 
-export const socialLinkList : socialLinkProps[] = [
-    {
-        name : "Youtube",
-        Icon : YoutubeIcon,
-        description : "My Youtube Channel",
-        url : "https://www.youtube.com/@S11-ME_"
-    },
-    {
-        name : "Github",
-        Icon : GithubIcon,
-        description : "My Github",
-        url : "https://github.com/Slimezzz-S1"
-    },
-    {
-        name : "MonkeyType",
-        Icon : MonkeyTypeIcon,
-        description : "My MonkeyType Profile",
-        url : "https://monkeytype.com/profile/slimez7"
-    },
-    {
-        name : "Discord",
-        Icon : DiscordIcon,
-        description : "My Discord account",
-        url : ""
-    },
-]
-
 interface socialLinksProps {
-    socialLinks? : socialLinkProps[]
+    socialLinkList? : socialLinkProps[]
     useDefaultWrapper? : boolean
 }
 
-export default function SocialLinks({ socialLinks = socialLinkList, useDefaultWrapper = true } : socialLinksProps) {
+const socialLinks = socialLinksData
+
+export default function SocialLinks({ socialLinkList = socialLinks, useDefaultWrapper = true } : socialLinksProps) {
     if (useDefaultWrapper) return (
         <div className="flex gap-4">
             {socialLinks.map((item, index) => (

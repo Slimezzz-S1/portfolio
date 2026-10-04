@@ -1,12 +1,10 @@
-// assets
-import projectImage1 from "@/assets/images/projects/posterzzz/PosterZZZ.png"
+// DATA
+import { projectData } from "@/libs/data"
 
-import projectImage2 from "@/assets/hybrid/projects/s11me/image.png"
-import projectVideo2 from "@/assets/hybrid/projects/S11ME/video.mp4"
-
+// ASSETS
 import unknownImage from "@/assets/images/projects/Unknown.png"
 
-// components
+// COMPONENTS
 import { useEffect, useRef, useState } from "react"
 import { animate } from "animejs"
 import useClientVisibility from "@/hooks/useClientVisibility"
@@ -33,35 +31,6 @@ interface projectCardProps extends projectProps {
 	className? : string
 	style? : React.CSSProperties
 }
-
-export const projectList : projectProps[] = [
-	{
-		name : "S11ME",
-		summary : "a 3d animation series about random things",
-		url : "https://www.youtube.com/@S11-ME_",
-		image : projectImage2,
-		video : projectVideo2,
-	},
-	{
-		name : "PosterZZZ",
-		summary : "A 4chan knockoff made using Next.js",
-		url : "https://posterzzz.vercel.app/",
-		image : projectImage1,
-	},
-	{
-		name : "Grits",
-		summary : "X knockoff",
-		url : "",
-		currentStatus : "prototype",
-	},
-	{
-		name : "Zuper Zuper",
-		summary : "A short puzzle game about a TV Head going on an adventure",
-		url : "",
-		currentStatus : "work-in-progress"
-	},
-]
-
 interface projectSectionProps {
 	projectData? : projectProps[]
 }
@@ -74,7 +43,9 @@ const resolveCardType : (image? : string, video? : string, mode? : projectCardMo
 	null
 }
 
-export default function ProjectSection({ projectData = projectList } : projectSectionProps) {
+const projects = projectData
+
+export default function ProjectSection({ projectData = projects } : projectSectionProps) {
 	return (
 		<section className="p-8">
 			<h1 className="text-7xl font-black mb-8 pb-6 border-b-3 border-dashed text-right">
@@ -103,7 +74,7 @@ export default function ProjectSection({ projectData = projectList } : projectSe
 	)
 }
 
-export function ProjectSectionLive({ projectData = projectList } : projectSectionProps) {
+export function ProjectSectionLive({ projectData = projects } : projectSectionProps) {
 	const sectRef = useRef< HTMLDivElement | null >( null )
 	const isVisible = useClientVisibility(sectRef, { threshold : 0.1 })
 	const [ currentIndex, setCurrentIndex ] = useState< number >( 0 )
@@ -501,7 +472,7 @@ export function ProjectCard({ name, summary, url, image, video, mode, isActivate
 // }
 
 
-// export default function ProjectSection({ projectData = projectList } : projectSectionProps) {
+// export default function ProjectSection({ projectData = projects } : projectSectionProps) {
 // 	const sectRef = useRef< HTMLDivElement | null >( null )
 // 	const isVisible = useClientVisibility(sectRef, { threshold : 0.1 })
 // 	const cardRefs = useRef<Map<number, Element>>(new Map())

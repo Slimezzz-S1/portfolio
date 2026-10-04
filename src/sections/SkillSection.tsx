@@ -1,161 +1,11 @@
-// Languages
-import HTMLIcon from "@/icons/languages/html/flowbite--html-solid.svg?react"
-import CSSIcon from "@/icons/languages/css/griddy-icons--css-3.svg?react"
-import JSIcon from "@/icons/languages/js/cib--js.svg?react"
-import TSIcon from "@/icons/languages/ts/akar-icons--typescript-fill.svg?react"
-import PythonIcon from "@/icons/languages/python/akar-icons--python-fill.svg?react"
-import LuaIcon from "@/icons/languages/lua/cib--lua.svg?react"
-
-// Frameworks/Tools
-import NextIcon from "@/tools/next-js/akar-icons--nextjs-fill.svg?react"
-import NuxtIcon from "@/tools/nuxt-js/bxl--nuxt-js.svg?react"
-import ReactIcon from "@/tools/react/griddy-icons--react.svg?react"
-import VueIcon from "@/tools/vue-js/carbon--logo-vue.svg?react"
-import TailwindIcon from "@/tools/tailwind-css/bxl--tailwind-css.svg?react" 
-import PGSQLIcon from "@/tools/postgre-sql/akar-icons--postgresql-fill.svg?react"
-// import SupabaseIcon from "@/tools/supabase/bxl--supabase.svg?react"
-// import VercelIcon from "@/tools/vercel/akar-icons--vercel-fill.svg?react"
-// import NodeIcon from "@/tools/node-js/bxl--nodejs.svg?react"
-import DockerIcon from "@/tools/docker/ant-design--docker-outlined.svg?react"
-import BlenderIcon from "@/tools/blender/bxl--blender.svg?react"
-import PhotoshopIcon from "@/tools/photoshop/devicon-plain--photoshop.svg?react"
-import AEIcon from "@/tools/after-effects/iconoir--adobe-after-effects-solid.svg?react"
-import DavinciIcon from "@/tools/davinci-resolve/thesvg--davinci-resolve.svg?react"
-import NestIcon from "@/tools/nest-js/file-icons--nestjs.svg?react"
-import ExpressIcon from "@/tools/express-js/griddy-icons--expressjs.svg?react"
-import GodotIcon from "@/tools/godot/cib--godot-engine.svg?react"
-import LaravelIcon from "@/tools/laravel/bxl--laravel.svg?react"
-
+// DATA
+import { languagesData, toolsData, appsData } from "@/libs/data"
 export interface itemProps {    
     name : string
     Icon : React.FunctionComponent<React.SVGProps<SVGSVGElement>>
     skillPercent? : number
     color? : string
 }
-
-const languages : itemProps[] = [
-    {
-        name : "HTML",
-        Icon : HTMLIcon,
-        color : "#E34F26"
-    },
-    {
-        name : "CSS",
-        Icon : CSSIcon,
-        color : "#1572B6"
-    },
-    {
-        name : "JavaScript",
-        Icon : JSIcon,
-        color : "#F7DF1E"
-    },
-    {
-        name : "TypeScript",
-        Icon : TSIcon,
-        color : "#3178C6"
-    },
-    {
-        name : "Python",
-        Icon : PythonIcon,
-        color : "#3776AB"
-    },
-    {
-        name : "Lua",
-        Icon : LuaIcon,
-        color : "#2C2D72"
-    },
-]
-
-const tools : itemProps[] = [
-    {
-        name : "Next.js",
-        Icon : NextIcon,
-        color : "#fff",
-        skillPercent : 45
-    },
-    {
-        name : "Nuxt.js",
-        Icon : NuxtIcon,
-        color : "#00DC82",
-        skillPercent : 17
-    },
-    {
-        name : "Vue.js",
-        Icon : VueIcon,
-        color : "#4FC08D",
-        skillPercent : 15
-    },
-    {
-        name : "React.js",
-        Icon : ReactIcon,
-        color : "#61DAFB",
-        skillPercent : 76
-    },
-    {
-        name : "TailwindCSS",
-        Icon : TailwindIcon,
-        color : "#06B6D4",
-        skillPercent : 50
-    },
-    {
-        name : "Laravel",
-        Icon : LaravelIcon,
-        color : "#FF2D20",
-        skillPercent : 20
-    },
-    {
-        name : "PostgreSQL",
-        Icon : PGSQLIcon,
-        color : "#4169E1",
-        skillPercent : 35
-    },
-    {
-        name : "Nest.js",
-        Icon : NestIcon,
-        skillPercent : 10,
-        color : "#E0234E"
-    },
-    {
-        name : "Express.js",
-        Icon : ExpressIcon,
-        skillPercent : 5,
-        color : "#fff"
-    }
-]
-
-const apps : itemProps[] = [
-    {
-        name : "Docker",
-        Icon : DockerIcon,
-        color : "#2496ED",
-    },
-    {
-        name : "Blender",
-        Icon : BlenderIcon,
-        color : "#EA7600"
-    },
-    {
-        name : "After Effects",
-        Icon : AEIcon,
-        color : "#9999FF"
-    },
-    {
-        name : "Photoshop",
-        Icon : PhotoshopIcon,
-        color : "#31A8FF"
-    },
-    {
-        name : "Davinci Resolve",
-        Icon : DavinciIcon,
-        color : "#233A51"
-    },
-    {
-        name : "Godot",
-        Icon : GodotIcon,
-        color : "#478CBF"
-    },
-]
-
 interface itemComponentProps extends itemProps {
     className? : string
     style? : React.CSSProperties
@@ -163,6 +13,15 @@ interface itemComponentProps extends itemProps {
     overrideClassName? : boolean
     overrideStyle? : boolean
 }
+
+interface itemIconsProps {
+    items? : itemProps[]
+    mode? : "icons" | "tiles" | "details"
+}
+
+const languages = languagesData
+const tools = toolsData
+const apps = appsData
 
 export function ItemIcon({ name, Icon, color, className, style, onClick, overrideClassName = false, overrideStyle = false } : itemComponentProps) {
     return (
@@ -192,11 +51,6 @@ export function ItemDetailed({ name, Icon, color, className, skillPercent, style
             </div>
         </div>
     )
-}
-
-interface itemIconsProps {
-    items? : itemProps[]
-    mode? : "icons" | "tiles" | "details"
 }
 
 export function ItemIcons({ items = languages, mode = "icons" } : itemIconsProps) {
