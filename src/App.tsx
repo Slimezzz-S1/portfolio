@@ -15,6 +15,7 @@ import SkillSection from "@/sections/SkillSection"
 import AppHeader from "@/mainComponents/AppHeader"
 import AppFooter from "@/mainComponents/AppFooter"
 import { type navProps } from "@/components/main/AppNav"
+import Background from "@/components/Background"
 
 import HomeIcon from "@/icons/nav/akar-icons--home-alt1.svg?react"
 import InfoIcon from "@/icons/nav/boxicons--info-circle.svg?react"
@@ -75,8 +76,9 @@ export const navData : navProps[] = [
 export default function App() {
 	return (
 		<>
-
 			<section className="md:max-w-3xl lg:max-w-7xl mx-auto xl:border-x-3 xl:border-dashed xl:border-x-root-fg/50">
+
+				{/* <Background /> */}
 
 				<div id="home">
 					<AppHeader />

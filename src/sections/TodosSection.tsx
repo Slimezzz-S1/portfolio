@@ -2,6 +2,49 @@ import useClientVisibility from "@/hooks/useClientVisibility"
 import { animate, stagger } from "animejs"
 import { useEffect, useRef, useState } from "react"
 
+interface todoItemProps {
+	name : string
+	description? : string
+	isChecked : boolean | "halfway"
+}
+
+interface todoItemComponentProps extends todoItemProps {
+	className? : string
+	style? : React.CSSProperties
+}
+
+
+const todoItemList : todoItemProps[] = [
+	{
+		name : "Create 3D Animation",
+		isChecked : true
+	},
+	{
+		name : "Finish this portfolio",
+		isChecked : "halfway",
+		description : "Almost finished"
+	},
+	{
+		name : "React 100K Subscriber",
+		description : "",
+		isChecked : false
+	},
+	{
+		name : "Get a job",
+		isChecked : false
+	},
+	{
+		name : "Make a short movie",
+		description : "Coming soon",
+		isChecked : "halfway"
+	},
+	{
+		name : "Create a 3d game",
+		description : "Coming soon",
+		isChecked : "halfway"
+	}
+]
+
 export default function TodosSection() {
 	const sectRef = useRef< HTMLDivElement | null >( null )
 	const itemsRef = useRef< HTMLDivElement | null >( null )
@@ -50,48 +93,6 @@ export default function TodosSection() {
 			</div>
 		</section>
 	)
-}
-
-const todoItemList : todoItemProps[] = [
-	{
-		name : "Create 3D Animation",
-		isChecked : true
-	},
-	{
-		name : "Finish this portfolio",
-		isChecked : "halfway",
-		description : "Almost finished"
-	},
-	{
-		name : "React 100K Subscriber",
-		description : "",
-		isChecked : false
-	},
-	{
-		name : "Get a job",
-		isChecked : false
-	},
-	{
-		name : "Make a short movie",
-		description : "Coming soon",
-		isChecked : "halfway"
-	},
-	{
-		name : "Create a 3d game",
-		description : "Coming soon",
-		isChecked : "halfway"
-	}
-]
-
-interface todoItemProps {
-	name : string
-	description? : string
-	isChecked : boolean | "halfway"
-}
-
-interface todoItemComponentProps extends todoItemProps {
-	className? : string
-	style? : React.CSSProperties
 }
 
 export function TodoItem({ name, description, isChecked, className, style } : todoItemComponentProps) {

@@ -11,12 +11,13 @@ interface appSidebarProps {
 
 export default function AppSidebar({ posY, onClick, isToggled } : appSidebarProps) {
 	const sidebarRef = useRef<HTMLDivElement>(null)
-	const [isHidden, setIsHidden] = useState<boolean>(false)
+	const [isHidden, setIsHidden] = useState<boolean>(true)
 
 	useEffect(() => {
 		if (!sidebarRef.current) return
 
 		if (isToggled) {
+			// setIsHidden(true)
 			animate(sidebarRef.current, {
 				x : ["100%", "0"],
 				duration : 400,
@@ -40,7 +41,7 @@ export default function AppSidebar({ posY, onClick, isToggled } : appSidebarProp
 	}, [isToggled])
 
 	return createPortal(
-		<aside ref={sidebarRef} style={{ "--y" : (posY ?? "0") + "px", "opacity" : isHidden ? "0" : "1"} as React.CSSProperties} className="fixed top-(--y) right-0 w-full md:w-1/2 lg:w-fit lg:min-w-96 h-[calc(100%-var(--y))] z-100 bg-root-bg border-l-3 flex flex-col justify-between p-4 opcaity-(--opacity)">
+		<aside ref={sidebarRef} style={{ "--y" : (posY ?? "0") + "px", "opacity" : isHidden ? "0" : "1"} as React.CSSProperties} className="fixed top-(--y) right-0 w-full md:w-1/2 lg:w-fit lg:min-w-96 h-[calc(100%-var(--y))] z-100 bg-root-bg border-l-3 flex flex-col justify-between p-4 opacity-(--opacity)">
 			<div />
 			
 			<AppNav onClick={onClick} />

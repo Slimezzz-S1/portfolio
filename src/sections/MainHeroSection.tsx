@@ -88,6 +88,7 @@ export default function MainHeroSection() {
 					<span className="absolute top-0 left-0 w-full h-full opacity-25">
 						<Underscores amount={11} endLineAt={5} isActive={isActive} />
 					</span>
+
 				</h2>
 
 				<p className="col-start-1">
@@ -135,7 +136,7 @@ function Underscores({ amount, endLineAt, isActive } : underScoreProps) {
 		const underScores = underscoreRefs.current
 		
 		const getDurationTotal = (twice : boolean = true, amountChar : number = underScores.length) => {
-			return ( duration + ( amountChar * staggerDelay ) ) * (twice ? 2 : 1) + hold
+			return (duration + (amountChar * staggerDelay)) * (twice ? 2 : 1) + hold
 		}
 
 		const fadeIn = (onComplete? : () => any) => {
@@ -307,7 +308,6 @@ function Role({ isActive, onBegin, onComplete } : roleProps) {
 			const next = roles[nextIndex]
 
 			// START =====
-
 			// REMOVE TEXT
 			const removeDuration = removeText(current)
 
