@@ -11,7 +11,8 @@
       "@/mainComponents/*" : ["src/components/main/*"],
       "@/public/*" : ["public/*"],
       "@/libs/*" : ["src/libs/*"],
-      "@/tools/*" : ["src/assets/icons/tools/*"]
+      "@/tools/*" : ["src/assets/icons/tools/*"],
+      "@/pages/*" : ["src/pages/*"]
     },
     
     "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.app.tsbuildinfo",
