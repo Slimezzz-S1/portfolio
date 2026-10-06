@@ -8,9 +8,11 @@ import unknownImage from "@/assets/images/projects/Unknown.png"
 import { useEffect, useRef, useState } from "react"
 import { animate } from "animejs"
 import useClientVisibility from "@/hooks/useClientVisibility"
+import { SectionTitle } from "@/components/main/Section"
 
 export type projectCardMode = "image-only" | "video-only" | "hybrid"
 export type projectStatus = "finished" | "unfinished" | "scrapped" | "work-in-progress" | "prototype" | "abandoned"
+
 export interface projectProps {
 	name : string
 	summary : string
@@ -48,9 +50,7 @@ const projects = projectData
 export default function ProjectSection({ projectData = projects } : projectSectionProps) {
 	return (
 		<section className="p-8">
-			<h1 className="text-7xl font-black mb-8 pb-6 border-b-3 border-dashed text-right">
-				Projects
-			</h1>
+			<SectionTitle text="Projects" direction="end" />
 
 			<div className="flex md:grid md:grid-cols-2 lg:grid-cols-3 flex-col gap-4">
 				{projectData.map((item, index) => {

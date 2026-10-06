@@ -22,3 +22,8 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+__pycache__
+__pycache__/*
+
+results.csv

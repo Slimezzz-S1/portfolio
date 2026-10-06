@@ -5,6 +5,7 @@ import { todoData } from "@/libs/data"
 import useClientVisibility from "@/hooks/useClientVisibility"
 import { animate, stagger } from "animejs"
 import { useEffect, useRef, useState } from "react"
+import { SectionTitle } from "@/components/main/Section"
 
 export interface todoItemProps {
 	name : string
@@ -50,11 +51,7 @@ export default function TodosSection({todoList = todos} : todoSectionProps) {
 
 	return (
 		<section ref={sectRef} className="p-8 flex flex-col gap-4">
-			<h1 className="font-black text-7xl">
-				Goals
-			</h1>
-
-			<div className="border border-dashed" />
+			<SectionTitle text="Goals" />
 
 			<div>
 				<div ref={itemsRef} className="flex flex-col gap-4">
@@ -76,11 +73,7 @@ export default function TodosSection({todoList = todos} : todoSectionProps) {
 export function TodoItem({ name, description, isChecked, className, style } : todoItemComponentProps) {
 	return (
 		<div style={style} className={"grid grid-cols-[3rem_1fr] gap-x-4" + " " + className}>
-			<div className={"w-12 h-12 aspect-square border-2 rounded-lg" + " " + (
-				typeof isChecked === "boolean" && isChecked ? "bg-root-fg" :
-				isChecked === "halfway" ? "bg-hatch" :
-				"bg-none"
-			)} />
+			<div className={"w-12 h-12 aspect-square border-2 rounded-lg" + " " + (typeof isChecked === "boolean" && isChecked ? "bg-root-fg" : isChecked === "halfway" ? "bg-hatch" : "bg-none")} />
 
 			<h2 className="text-2xl font-bold self-center">
 				{name}

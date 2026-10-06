@@ -5,6 +5,7 @@ import { summaryItemData } from "@/libs/data"
 import useIntersectionObserver from "@/hooks/useIntersectionObserver"
 import { animate, stagger } from "animejs"
 import React, { useState, useRef, useEffect } from "react"
+import { SectionTitle } from "@/components/main/Section"
 
 export interface summaryItemProps {
 	name : string
@@ -45,6 +46,8 @@ export default function SummarySection({summaryList = summaries} : summarySectio
 
 	return (
 		<section ref={sectRef} className="p-8">
+			<SectionTitle text="About Me" />
+
 			<div className="flex flex-col lg:grid lg:grid-cols-3 lg:grid-rows-3 gap-4 min-h-80">
 				{summaryList.map((item, index) => (
 					<SummaryItem

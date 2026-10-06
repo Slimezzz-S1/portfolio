@@ -1,5 +1,10 @@
-// DATA
+// COMPONENTS
+import { SectionTitle } from "@/components/main/Section"
+import type { componentProps } from "@/libs/componentProps"
 import { languagesData, toolsData, appsData } from "@/libs/data"
+import type { textDirection } from "@/components/main/Section"
+import { Link } from "react-router"
+
 export interface itemProps {    
     name : string
     Icon : React.FunctionComponent<React.SVGProps<SVGSVGElement>>
@@ -17,6 +22,17 @@ interface itemComponentProps extends itemProps {
 interface itemIconsProps {
     items? : itemProps[]
     mode? : "icons" | "tiles" | "details"
+}
+
+interface skillPartProps {
+    title : string
+    items : itemProps[]
+    titleDirection? : textDirection
+}
+
+interface skillPartTitleProps extends componentProps {
+    text : string
+    direction? : textDirection
 }
 
 const languages = languagesData
@@ -87,26 +103,16 @@ export function ItemIcons({ items = languages, mode = "icons" } : itemIconsProps
                     color={item.color}
                 />
             ))
+
+        default:
+            throw new TypeError(`Invalid mode! "${mode}" is not a valid mode!`)
     }
 }
 
-interface skillPartProps {
-    title : string
-    items : itemProps[]
-}
-
-function SkillPart({ title, items } : skillPartProps) {
+function SkillPart({ title, items, titleDirection = "start" } : skillPartProps) {
     return (
         <div>
-            <div className="relative my-4 pb-4 px-4">
-                <div className="absolute top-0 left-0 w-full h-full bg-hatch mask-b-to-transparent rounded-t-xl pointer-events-none z-[-1]">
-                    <div className="w-full h-full bg-linear-90 from-root-bg to-transparent" />
-                </div>
-
-                <h2 className="md:text-8xl sm:text-7xl text-5xl md:text-stroke-md text-stroke-sm text-transparent">
-                    {title}
-                </h2>
-            </div>
+            <SkillPartTitle text={title} direction={titleDirection} />
 
             <div className={title.toLowerCase() == "tools" ? "flex flex-col gap-4 justify-center" : "flex gap-4 justify-center flex-wrap"}>
                 <ItemIcons items={items} mode={title.toLowerCase() == "tools" ? "details" : "icons"} />
@@ -115,19 +121,46 @@ function SkillPart({ title, items } : skillPartProps) {
     )
 }
 
+function SkillPartTitle({text, className, style, overrideClassName = false, direction = "start"} : Omit<skillPartTitleProps, "overrideStyle">) {
+    return (
+        <div style={style} className={overrideClassName ? className : "my-4" + " " + className}>
+            <h2 className={"text-5xl font-bold mb-4" + " " + (direction === "end" ? "text-end" : direction === "center" ? "text-center" : "text-start")}>
+                {text}
+            </h2>
+            {/* bg-linear-90 from-root-fg to-root-bg */}
+
+            <div className={"w-full h-1" + " " + (direction === "end" ? "bg-linear-270 from-root-fg to-root-bg" : direction === "center" ? "bg-linear-90 from-root-bg via-root-fg to-root-bg" : "bg-linear-90 from-root-fg to-root-bg")} />
+        </div>
+    )
+}
+
+function StatsPart() {
+    return (
+        <div className="flex flex-col items-center my-8">
+            <SkillPartTitle text="Stats" className="w-full" direction="center" />
+
+            <Link to="/stats/monkeytype">
+                <button className="rounded-lg px-4 py-2 border-root-fg border font-bold text-2xl">
+                    My Typing Skill
+                </button>
+            </Link>
+        </div>
+    )    
+}
+
 export default function SkillSection() {
     return (
         <section className="p-8">
-            <h1 className="mb-4 py-4 text-7xl font-black text-end border-b-3 border-dashed">
-                Skills
-            </h1>
+            <SectionTitle text="Skills" direction="end" />
+
+            <StatsPart />
 
             <div className="flex flex-col gap-4">
-                <SkillPart title="Languages" items={languages} />
+                <SkillPart title="Languages" items={languages} titleDirection="start" />
 
-                <SkillPart title="Tools" items={tools} />
+                <SkillPart title="Tools" items={tools} titleDirection="center" />
 
-                <SkillPart title="Apps" items={apps} />
+                <SkillPart title="Apps" items={apps} titleDirection="end" />
             </div>
         </section>
     )

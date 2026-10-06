@@ -387,4 +387,3 @@ export const projectData : projectProps[] = [
 		currentStatus : "work-in-progress"
 	},
 ]
-

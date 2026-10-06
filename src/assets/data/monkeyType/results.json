@@ -1,0 +1,233 @@
+[
+	{
+		"timestamp": 1790641902000.0,
+		"wpm": 91.14,
+		"accuracy": 83.66,
+		"mode": "time",
+		"modeDetailed": "15"
+	},
+	{
+		"timestamp": 1790641941000.0,
+		"wpm": 117.52,
+		"accuracy": 96.25,
+		"mode": "time",
+		"modeDetailed": "15"
+	},
+	{
+		"timestamp": 1790648537000.0,
+		"wpm": 111.13,
+		"accuracy": 98.58,
+		"mode": "time",
+		"modeDetailed": "15"
+	},
+	{
+		"timestamp": 1790648733000.0,
+		"wpm": 123.12,
+		"accuracy": 100.0,
+		"mode": "time",
+		"modeDetailed": "15"
+	},
+	{
+		"timestamp": 1790648841000.0,
+		"wpm": 113.52,
+		"accuracy": 98.64,
+		"mode": "time",
+		"modeDetailed": "15"
+	},
+	{
+		"timestamp": 1790726921000.0,
+		"wpm": 128.0,
+		"accuracy": 98.18,
+		"mode": "time",
+		"modeDetailed": "15"
+	},
+	{
+		"timestamp": 1790727083000.0,
+		"wpm": 104.0,
+		"accuracy": 94.41,
+		"mode": "time",
+		"modeDetailed": "15"
+	},
+	{
+		"timestamp": 1790727110000.0,
+		"wpm": 116.0,
+		"accuracy": 97.35,
+		"mode": "time",
+		"modeDetailed": "15"
+	},
+	{
+		"timestamp": 1790727160000.0,
+		"wpm": 120.8,
+		"accuracy": 100.0,
+		"mode": "time",
+		"modeDetailed": "15"
+	},
+	{
+		"timestamp": 1790822835000.0,
+		"wpm": 101.46,
+		"accuracy": 94.04,
+		"mode": "time",
+		"modeDetailed": "15"
+	},
+	{
+		"timestamp": 1790822884000.0,
+		"wpm": 111.13,
+		"accuracy": 97.99,
+		"mode": "time",
+		"modeDetailed": "15"
+	},
+	{
+		"timestamp": 1790822966000.0,
+		"wpm": 119.2,
+		"accuracy": 98.03,
+		"mode": "time",
+		"modeDetailed": "15"
+	},
+	{
+		"timestamp": 1790822989000.0,
+		"wpm": 119.12,
+		"accuracy": 98.68,
+		"mode": "time",
+		"modeDetailed": "15"
+	},
+	{
+		"timestamp": 1790839167000.0,
+		"wpm": 120.0,
+		"accuracy": 100.0,
+		"mode": "time",
+		"modeDetailed": "15"
+	},
+	{
+		"timestamp": 1790840357000.0,
+		"wpm": 113.45,
+		"accuracy": 97.93,
+		"mode": "time",
+		"modeDetailed": "15"
+	},
+	{
+		"timestamp": 1790840418000.0,
+		"wpm": 118.32,
+		"accuracy": 98.01,
+		"mode": "time",
+		"modeDetailed": "15"
+	},
+	{
+		"timestamp": 1790840492000.0,
+		"wpm": 100.73,
+		"accuracy": 95.07,
+		"mode": "time",
+		"modeDetailed": "15"
+	},
+	{
+		"timestamp": 1790840518000.0,
+		"wpm": 113.52,
+		"accuracy": 98.68,
+		"mode": "time",
+		"modeDetailed": "15"
+	},
+	{
+		"timestamp": 1790840546000.0,
+		"wpm": 112.65,
+		"accuracy": 95.36,
+		"mode": "time",
+		"modeDetailed": "15"
+	},
+	{
+		"timestamp": 1790840583000.0,
+		"wpm": 123.12,
+		"accuracy": 98.72,
+		"mode": "time",
+		"modeDetailed": "15"
+	},
+	{
+		"timestamp": 1790840880000.0,
+		"wpm": 113.52,
+		"accuracy": 98.03,
+		"mode": "time",
+		"modeDetailed": "15"
+	},
+	{
+		"timestamp": 1790841015000.0,
+		"wpm": 103.2,
+		"accuracy": 92.62,
+		"mode": "time",
+		"modeDetailed": "15"
+	},
+	{
+		"timestamp": 1790851235000.0,
+		"wpm": 112.0,
+		"accuracy": 98.62,
+		"mode": "time",
+		"modeDetailed": "15"
+	},
+	{
+		"timestamp": 1790910524000.0,
+		"wpm": 121.52,
+		"accuracy": 98.71,
+		"mode": "time",
+		"modeDetailed": "15"
+	},
+	{
+		"timestamp": 1790927052000.0,
+		"wpm": 112.72,
+		"accuracy": 97.99,
+		"mode": "time",
+		"modeDetailed": "15"
+	},
+	{
+		"timestamp": 1790927102000.0,
+		"wpm": 117.44,
+		"accuracy": 100.0,
+		"mode": "time",
+		"modeDetailed": "15"
+	},
+	{
+		"timestamp": 1790927190000.0,
+		"wpm": 108.8,
+		"accuracy": 95.24,
+		"mode": "time",
+		"modeDetailed": "15"
+	},
+	{
+		"timestamp": 1790927224000.0,
+		"wpm": 108.8,
+		"accuracy": 96.69,
+		"mode": "time",
+		"modeDetailed": "15"
+	},
+	{
+		"timestamp": 1790999266000.0,
+		"wpm": 120.8,
+		"accuracy": 96.41,
+		"mode": "time",
+		"modeDetailed": "15"
+	},
+	{
+		"timestamp": 1790999421000.0,
+		"wpm": 109.53,
+		"accuracy": 97.24,
+		"mode": "time",
+		"modeDetailed": "15"
+	},
+	{
+		"timestamp": 1791000682000.0,
+		"wpm": 111.2,
+		"accuracy": 96.33,
+		"mode": "time",
+		"modeDetailed": "30"
+	},
+	{
+		"timestamp": 1791019850000.0,
+		"wpm": 135.95,
+		"accuracy": 100.0,
+		"mode": "words",
+		"modeDetailed": "10"
+	},
+	{
+		"timestamp": 1791020519000.0,
+		"wpm": 136.19,
+		"accuracy": 100.0,
+		"mode": "words",
+		"modeDetailed": "10"
+	}
+]

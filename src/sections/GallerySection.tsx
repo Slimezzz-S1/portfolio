@@ -1,5 +1,6 @@
 // COMPONENTS
 import useClientVisibility from "@/hooks/useClientVisibility"
+import { SectionTitle } from "@/components/main/Section"
 import { animate, stagger } from "animejs"
 import { useEffect, useRef, useState } from "react"
 
@@ -61,9 +62,7 @@ export default function GallerySection() {
 
     return (
         <section className="p-8">
-            <h1 className="py-4 mb-4 text-7xl font-black border-b border-dashed">
-                Gallery    
-            </h1>
+            <SectionTitle text="Gallery" direction="end" />
 
 			<div ref={cardRef} className="columns-1 sm:columns-2 md:columns-3 lg:columns-4">
 				{images(["Zyl"]).map(( item, index ) => (
