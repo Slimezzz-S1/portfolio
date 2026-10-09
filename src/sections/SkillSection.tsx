@@ -3,11 +3,13 @@ import { SectionTitle } from "@/components/main/Section"
 import type { componentProps } from "@/libs/componentProps"
 import { languagesData, toolsData, appsData } from "@/libs/data"
 import type { textDirection } from "@/components/main/Section"
-import { Link } from "react-router"
+import { useState } from "react"
+import MonkeyTypeStats from "@/components/MonkeyTypeStats"
 
 export interface itemProps {    
     name : string
     Icon : React.FunctionComponent<React.SVGProps<SVGSVGElement>>
+    descriptions? : string[]
     skillPercent? : number
     color? : string
 }
@@ -39,15 +41,15 @@ const languages = languagesData
 const tools = toolsData
 const apps = appsData
 
-export function ItemIcon({ name, Icon, color, className, style, onClick, overrideClassName = false, overrideStyle = false } : itemComponentProps) {
+export function ItemIcon({ name, Icon, color, descriptions, className, style, onClick, overrideClassName = false, overrideStyle = false } : itemComponentProps) {
     return (
-        <div style={overrideStyle ? style : {...{"--color" : color} as React.CSSProperties, ...style}} title={name} onClick={onClick} className={overrideClassName ? className : "w-20 h-20 border rounded-2xl p-3 hover:border-(--color) hover:text-(--color) hover:scale-105 transition-all" + " " + className}>
+        <div style={overrideStyle ? style : {...{"--color" : color} as React.CSSProperties, ...style}} title={descriptions?.toString()} onClick={onClick} className={overrideClassName ? className : "w-20 h-20 border rounded-2xl p-3 hover:border-(--color) hover:text-(--color) hover:scale-105 transition-all" + " " + className}>
             <Icon className="w-full h-full" />
         </div>
     )
 }
 
-export function ItemDetailed({ name, Icon, color, className, skillPercent, style, onClick, overrideClassName = false, overrideStyle = false } : itemComponentProps) {
+export function ItemDetailed({ name, Icon, color, descriptions, className, skillPercent, style, onClick, overrideClassName = false, overrideStyle = false } : itemComponentProps) {
     return (
         <div style={overrideStyle ? style : {...{"--color" : color} as React.CSSProperties, ...style}} className={overrideClassName ? className : "group grid grid-cols-[auto_1fr] sm:flex justify-between items-center gap-3 sm:gap-4 border rounded-2xl px-3 py-3 transition-all hover:border-(--color) hover:scale-105" + " " + className} onClick={onClick}>
             <Icon className="w-20 sm:w-14 h-18 sm:h-14 aspect-square group-hover:text-(--color) transition-colors col-start-1 row-start-1 row-span-3 self-center" />
@@ -61,6 +63,16 @@ export function ItemDetailed({ name, Icon, color, className, skillPercent, style
             <p className="font-bold sm:text-center text-left text-xl sm:text-base">
                 {skillPercent}%
             </p>
+
+            {descriptions && (
+                <ul className="row-start-4 sm col-span-2 sm:hidden list-disc ml-8">
+                    {descriptions?.map((item, index) => (
+                        <li key={index} className="font-bold text-2xl">
+                            {item}
+                        </li>
+                    ))}
+                </ul>
+            )}
 
             <div className="w-full sm:w-56 h-4 border-3 rounded-full overflow-hidden">
                 <div style={{"--x" : `-${100 - (skillPercent ?? 100)}%`} as React.CSSProperties} className="w-full h-full bg-(--color) translate-x-(--x) rounded-[inherit]" />
@@ -90,6 +102,7 @@ export function ItemIcons({ items = languages, mode = "icons" } : itemIconsProps
                     Icon={item.Icon}
                     skillPercent={item.skillPercent}
                     color={item.color}
+                    descriptions={item.descriptions}
                 />
             ))
             
@@ -135,15 +148,20 @@ function SkillPartTitle({text, className, style, overrideClassName = false, dire
 }
 
 function StatsPart() {
+    const [isClicked, setIsClicked] = useState<boolean>(false)
+
+    const onClick = () => {
+        setIsClicked(!isClicked)
+        // WILL BE USED LATER
+    }
+
     return (
         <div className="flex flex-col items-center my-8">
             <SkillPartTitle text="Stats" className="w-full" direction="center" />
 
-            <Link to="/stats/monkeytype">
-                <button className="rounded-lg px-4 py-2 border-root-fg border font-bold text-2xl">
-                    My Typing Skill
-                </button>
-            </Link>
+            <div className="w-full min-w-0">
+                <MonkeyTypeStats />
+            </div>
         </div>
     )    
 }

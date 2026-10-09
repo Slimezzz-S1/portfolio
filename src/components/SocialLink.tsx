@@ -18,7 +18,7 @@ const socialLinks = socialLinksData
 export default function SocialLinks({ socialLinkList = socialLinks, useDefaultWrapper = true } : socialLinksProps) {
     if (useDefaultWrapper) return (
         <div className="flex gap-4">
-            {socialLinks.map((item, index) => (
+            {socialLinkList.map((item, index) => (
                 <SocialLink
                     key={index}
                     name={item.name}

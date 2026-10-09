@@ -146,7 +146,12 @@ export const toolsData : itemProps[] = [
         name : "Next.js",
         Icon : NextIcon,
         color : "#fff",
-        skillPercent : 45
+        skillPercent : 45,
+        descriptions : [
+            "SPA App",
+            "API Routing",
+            "Routing",
+        ]
     },
     {
         name : "Nuxt.js",
@@ -243,7 +248,7 @@ export const navData : navProps[] = [
 		idElement : "home",
 		options : {
 			behavior : "smooth",
-			block : "start"
+			block : "end",
 		}
 	},
 	{
@@ -268,11 +273,19 @@ export const navData : navProps[] = [
 		name : "Goals",
 		Icon : GoalIcon,
 		idElement : "goals",
+        options : {
+            behavior : "smooth",
+            block : "start"
+        }
 	},
 	{
 		name : "Project",
 		Icon : ProjectIcon,
 		idElement : "project",
+        options : {
+            behavior : "smooth",
+            block : "start"
+        }
 	},
 	{
 		name : "Gallery",

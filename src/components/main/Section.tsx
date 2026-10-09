@@ -17,7 +17,7 @@ interface sectionTitleProps extends componentProps {
 
 export function SectionTitle({ text, className, style, direction, overrideClassName } : Omit<sectionTitleProps, "overrideStyle">) {
     return (
-        <div style={style} className="relative my-4 pb-4 px-4">
+        <div style={style} className={overrideClassName ? className :  "relative my-4 pb-4 px-4" + " " + className}>
             <div className="absolute top-0 left-0 w-full h-full bg-hatch mask-b-to-transparent rounded-t-xl pointer-events-none z-[-1]">
                 <div className={"w-full h-full" + " " + (direction === "end" ? "bg-linear-270 from-root-bg to-transparent" : direction === "center" ? "bg-linear-90 from-root-bg via-transparent to-root-bg" : "bg-linear-90 from-root-bg to-transparent")} />
             </div>
@@ -29,10 +29,10 @@ export function SectionTitle({ text, className, style, direction, overrideClassN
     )
 }
 
-export default function Section({ title, titleDirection, isAnimatable = true, className, style, overrideClassName, overrideStyle } : sectionProps) {
+export default function Section({ title, titleDirection = "start", className, style, overrideClassName, overrideStyle } : sectionProps) {
     return (
         <section style={overrideStyle ? style : {...style, ...{} as React.CSSProperties}} className={overrideClassName ? className : className + " " + ""}>
-            <SectionTitle text={title} />
+            <SectionTitle text={title} direction={titleDirection} />
         </section>
     )
 }

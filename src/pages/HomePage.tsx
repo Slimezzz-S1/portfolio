@@ -11,21 +11,12 @@ import GallerySection from "@/sections/GallerySection"
 import EpicSection from "@/sections/EpicSection"
 import SkillSection from "@/sections/SkillSection"
 
-// components
-import AppHeader from "@/mainComponents/AppHeader"
-import AppFooter from "@/mainComponents/AppFooter"
-
 export default function HomePage() {
 	return (
 		<>
 			<section className="md:max-w-3xl lg:max-w-7xl mx-auto xl:border-x-3 xl:border-dashed xl:border-x-root-fg/50">
-
-				{/* <Background /> */}
-
 				<div id="home">
-					<AppHeader />
-
-					<MainHeroSection />
+					<MainHeroSection />				
 				</div>
 
 				<BuiltWithSection />
@@ -58,7 +49,7 @@ export default function HomePage() {
 					<GallerySection />
 				</div>
 
-				<AppFooter />
+				{/* <AppFooter /> */}
 
 			</section>
 		</>

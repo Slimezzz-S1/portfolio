@@ -40,29 +40,31 @@ export function images( folderName : string | string[]) {
 }
 
 export default function GallerySection() {
-    const cardRef = useRef< HTMLDivElement | null >( null )
-    const isVisible = useClientVisibility(cardRef, { threshold : 0.3 })
+    const cardRef = useRef<HTMLDivElement | null>(null)
+    const titleRef = useRef<HTMLDivElement | null>(null)
+    const isVisible = useClientVisibility(titleRef, { threshold : 0.3 })
     const [isVisibleOnce, setIsVisibleOnce] = useState<boolean>(false)
 
     useEffect(() => {
         if (isVisible) setIsVisibleOnce(true)
-
-        }, [isVisible])
+    }, [isVisible])
         
-        useEffect(() => {
-            if (!cardRef.current || !isVisibleOnce) return
+    useEffect(() => {
+        if (!cardRef.current || !isVisibleOnce) return
 
-            animate(cardRef.current.children, {
-                opacity : ["0", "1"],
-                y : ["-100%", "0"],
-                duration : 800,
-                delay : stagger(100)
-            })
-        }, [isVisibleOnce])
+        animate(cardRef.current.children, {
+            opacity : ["0", "1"],
+            y : ["-100%", "0"],
+            duration : 800,
+            delay : stagger(100)
+        })
+    }, [isVisibleOnce])
 
     return (
         <section className="p-8">
-            <SectionTitle text="Gallery" direction="end" />
+            <div ref={titleRef}>
+                <SectionTitle text="Gallery" direction="end" />
+            </div>
 
 			<div ref={cardRef} className="columns-1 sm:columns-2 md:columns-3 lg:columns-4">
 				{images(["Zyl"]).map(( item, index ) => (
