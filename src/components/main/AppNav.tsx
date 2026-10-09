@@ -1,7 +1,7 @@
 // DATA
 import { navData } from "@/libs/data"
 
-export interface navProps {
+export interface NavProps {
 	name : string
 	Icon : React.FunctionComponent<React.SVGProps<SVGSVGElement>>
 	idElement : string
@@ -11,15 +11,15 @@ export interface navProps {
 	onClick? : () => void
 }
 
-interface appNavProps {
-	navList? : navProps[]
+interface AppNavProps {
+	navList? : NavProps[]
 	onClick? : () => void
 	className? : string
 	style? : React.CSSProperties
 	overrideClassName? : boolean
 }
 
-function Nav({ name, Icon, idElement, summary, options, onClick } : Omit<navProps, "element">) {
+function Nav({ name, Icon, idElement, summary, options, onClick } : Omit<NavProps, "element">) {
 	return (
 		<a 
 			className="relative flex gap-2 justify-start border-l-3 px-3 py-2 items-center overflow-hidden group"
@@ -46,7 +46,7 @@ function Nav({ name, Icon, idElement, summary, options, onClick } : Omit<navProp
 	)
 }
 
-export default function AppNav({ navList = navData, onClick, className, style, overrideClassName = false } : appNavProps) {
+export default function AppNav({ navList = navData, onClick, className, style, overrideClassName = false } : AppNavProps) {
 	return (
 		<nav style={style} className={overrideClassName ? className :  "flex flex-col p-4 gap-4" + " " + className}>
 			{navList.map(( item, index ) => ( <Nav key={index} name={item.name} Icon={item.Icon} summary={item.summary} idElement={item.idElement} onClick={onClick} options={item.options} /> ))}

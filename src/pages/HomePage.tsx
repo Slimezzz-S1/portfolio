@@ -16,7 +16,7 @@ export default function HomePage() {
 		<>
 			<section className="md:max-w-3xl lg:max-w-7xl mx-auto xl:border-x-3 xl:border-dashed xl:border-x-root-fg/50">
 				<div id="home">
-					<MainHeroSection />				
+					<MainHeroSection />
 				</div>
 
 				<BuiltWithSection />

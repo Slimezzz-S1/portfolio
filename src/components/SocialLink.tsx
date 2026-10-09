@@ -1,21 +1,21 @@
 // DATA
 import { socialLinksData } from "@/libs/data"
 
-export interface socialLinkProps {
+export interface SocialLinkProps {
     name : string
     Icon : React.FunctionComponent<React.SVGProps<SVGSVGElement>>
     description? : string
     url : string
 }
 
-interface socialLinksProps {
-    socialLinkList? : socialLinkProps[]
+interface SocialLinksProps {
+    socialLinkList? : SocialLinkProps[]
     useDefaultWrapper? : boolean
 }
 
 const socialLinks = socialLinksData
 
-export default function SocialLinks({ socialLinkList = socialLinks, useDefaultWrapper = true } : socialLinksProps) {
+export default function SocialLinks({ socialLinkList = socialLinks, useDefaultWrapper = true } : SocialLinksProps) {
     if (useDefaultWrapper) return (
         <div className="flex gap-4">
             {socialLinkList.map((item, index) => (
@@ -45,7 +45,7 @@ export default function SocialLinks({ socialLinkList = socialLinks, useDefaultWr
     )
 }
 
-export function SocialLink({ name, Icon, description, url } : socialLinkProps) {
+export function SocialLink({ name, Icon, description, url } : SocialLinkProps) {
     return (
         <a className="w-13 aspect-square border-3 rounded-full p-2.5 cursor-pointer transition-all hover:scale-110 hover:bg-root-fg hover:text-root-bg" onClick={(e) => {e.preventDefault; window.location.assign(url)}} title={description ?? name} href={url}>
             <Icon />

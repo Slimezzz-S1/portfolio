@@ -1,3 +1,6 @@
+// DATA
+import { EpicSectionRolesData } from "@/libs/data"
+
 // ASSETS
 import imageLit from "@/assets/images/epicSection/lit.png"
 import imageDark from "@/assets/images/epicSection/dark.png"
@@ -9,6 +12,8 @@ import imageEyesDark from "@/assets/images/epicSection/eyesDark.png"
 import { useEffect, useRef, useState } from "react"
 import { animate, random, stagger } from "animejs"
 import useClientVisibility from "@/hooks/useClientVisibility"
+
+const roles = EpicSectionRolesData
 
 export default function EpicSection() {
     const sectRef = useRef< HTMLDivElement | null >( null )
@@ -165,7 +170,7 @@ export default function EpicSection() {
             <div className="relative max-w-2xl mx-auto">
                 <div className="absolute top-15 md:top-0 left-0 w-full h-1/2 flex items-center justify-center z-0 pointer-events-none">
                     <div ref={backTextsRef} className="flex flex-col gap-2">
-                        {["3D Artist", "Developer", "Video Editor"].map(( item, index ) => (
+                        {roles.map((item, index) => (
                             <p key={index} style={{"opacity" : "0", "transform" : `translateY(-${90 * ( index + 1)}%)`} as React.CSSProperties} className="text-7xl sm:text-8xl md:text-8xl whitespace-nowrap font-black pointer-events-auto text-center text-transparent [-webkit-text-stroke:1px_white] md:[-webkit-text-stroke:2px_white]">
                                 {item}
                             </p>

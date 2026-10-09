@@ -46,7 +46,6 @@ class FieldType(Enum):
             case FieldType.STR:
                 return value
 
-
 @dataclass
 class Field:
     name : str

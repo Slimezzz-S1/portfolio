@@ -7,9 +7,11 @@ export default function AppLayout() {
     return (
         <>
         <AppHeader />
+        
         <main className="flex min-h-[calc(100vh-170px)]">
             <Outlet />
         </main>
+
         <AppFooter />
         </>
     )

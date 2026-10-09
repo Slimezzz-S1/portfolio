@@ -24,7 +24,8 @@
     "react-router": "^8.4.0",
     "sharp": "^0.35.3",
     "svgo": "^4.0.2",
-    "tailwind": "^4.0.0"
+    "tailwind": "^4.0.0",
+    "tailwind-merge": "^3.7.0"
   },
   "devDependencies": {
     "@babel/core": "^7.29.7",

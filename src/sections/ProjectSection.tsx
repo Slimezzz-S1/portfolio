@@ -10,21 +10,21 @@ import { animate } from "animejs"
 import useClientVisibility from "@/hooks/useClientVisibility"
 import { SectionTitle } from "@/components/main/Section"
 
-export type projectCardMode = "image-only" | "video-only" | "hybrid"
-export type projectStatus = "finished" | "unfinished" | "scrapped" | "work-in-progress" | "prototype" | "abandoned"
+export type ProjectCardMode = "image-only" | "video-only" | "hybrid"
+export type ProjectStatus = "finished" | "unfinished" | "scrapped" | "work-in-progress" | "prototype" | "abandoned"
 
-export interface projectProps {
+export interface ProjectProps {
 	name : string
 	summary : string
 	url : string
 	image? : string
 	video? : string
-	mode? : projectCardMode
-	currentStatus? : projectStatus
+	mode? : ProjectCardMode
+	currentStatus? : ProjectStatus
 	currestStatusReason? : string
 }
 
-interface projectCardProps extends projectProps {
+interface ProjectCardProps extends ProjectProps {
 	isActivatedManually? : boolean
 	isActivatedManuallyValue? : boolean
 	ref? : React.Ref< HTMLDivElement >
@@ -33,11 +33,11 @@ interface projectCardProps extends projectProps {
 	className? : string
 	style? : React.CSSProperties
 }
-interface projectSectionProps {
-	projectData? : projectProps[]
+interface ProjectSectionProps {
+	projectData? : ProjectProps[]
 }
 
-const resolveCardType : (image? : string, video? : string, mode? : projectCardMode) => projectCardMode | null = (image?, video?, mode?) => {
+const resolveCardType : (image? : string, video? : string, mode? : ProjectCardMode) => ProjectCardMode | null = (image?, video?, mode?) => {
 	return mode ? mode :
 	image && video ? "hybrid" :
 	!video ? "image-only" :
@@ -47,7 +47,7 @@ const resolveCardType : (image? : string, video? : string, mode? : projectCardMo
 
 const projects = projectData
 
-export default function ProjectSection({ projectData = projects } : projectSectionProps) {
+export default function ProjectSection({ projectData = projects } : ProjectSectionProps) {
 	return (
 		<section className="p-8">
 			<SectionTitle text="Projects" direction="end" />
@@ -74,12 +74,12 @@ export default function ProjectSection({ projectData = projects } : projectSecti
 	)
 }
 
-export function ProjectSectionLive({ projectData = projects } : projectSectionProps) {
+export function ProjectSectionLive({ projectData = projects } : ProjectSectionProps) {
 	const sectRef = useRef< HTMLDivElement | null >( null )
 	const isVisible = useClientVisibility(sectRef, { threshold : 0.1 })
 	const [ currentIndex, setCurrentIndex ] = useState< number >( 0 )
 	const cardRefs = useRef< HTMLDivElement[]>( [] )
-	const cardModeRefs = useRef< (projectCardMode | null)[] >( [] )
+	const cardModeRefs = useRef< (ProjectCardMode | null)[] >( [] )
 
 	// console.log(cardModeRefs)
 
@@ -90,7 +90,7 @@ export function ProjectSectionLive({ projectData = projects } : projectSectionPr
 		// setCurrentIndex((prev) => ( prev + 1 ) % cardRefs.current.length)
 	}
 
-	const nextIndex : (modes : (projectCardMode | null)[], current : number) => number  = (modes, current) => {
+	const nextIndex : (modes : (ProjectCardMode | null)[], current : number) => number  = (modes, current) => {
 		for (let i = 1; i <= modes.length; i++) {
 			const next = (current + i) % modes.length
 			const mode = modes[next]
@@ -146,7 +146,7 @@ export function ProjectSectionLive({ projectData = projects } : projectSectionPr
 	)
 }
 
-export function ProjectCard({ name, summary, url, image, video, mode, isActivatedManually, isActivatedManuallyValue = false, onComplete, onBegin, currentStatus, currestStatusReason, className, style, ref } : projectCardProps) {
+export function ProjectCard({ name, summary, url, image, video, mode, isActivatedManually, isActivatedManuallyValue = false, onComplete, onBegin, currentStatus, currestStatusReason, className, style, ref } : ProjectCardProps) {
 	const currentMode = resolveCardType(image, video, mode)!
 	const rootRef = useRef< HTMLDivElement | null >( null )
 	const imageRef = useRef< HTMLImageElement | null >( null )
@@ -338,14 +338,14 @@ export function ProjectCard({ name, summary, url, image, video, mode, isActivate
 // 	)
 // }
 
-// export function ProjectCard({ name, summary, url, image, video, mode, isActivatedManually, isActivatedManuallyValue = false, ref, onComplete, onBegin } : projectCardProps) {
+// export function ProjectCard({ name, summary, url, image, video, mode, isActivatedManually, isActivatedManuallyValue = false, ref, onComplete, onBegin } : ProjectCardProps) {
 // 	const rootRef = useRef<HTMLDivElement | null>( null )
 
 // 	const imageRef = useRef< HTMLImageElement | null >( null )
 // 	const videoRef = useRef< HTMLVideoElement | null >( null )
 // 	const titleRef = useRef< HTMLHeadingElement | null >( null )
 
-// 	const currentMode : projectCardMode = mode ?? (
+// 	const currentMode : ProjectCardMode = mode ?? (
 // 		image && video ? "hybrid" :
 // 		!image ? "video-only" :
 // 		"image-only"
@@ -472,7 +472,7 @@ export function ProjectCard({ name, summary, url, image, video, mode, isActivate
 // }
 
 
-// export default function ProjectSection({ projectData = projects } : projectSectionProps) {
+// export default function ProjectSection({ projectData = projects } : ProjectSectionProps) {
 // 	const sectRef = useRef< HTMLDivElement | null >( null )
 // 	const isVisible = useClientVisibility(sectRef, { threshold : 0.1 })
 // 	const cardRefs = useRef<Map<number, Element>>(new Map())
@@ -524,7 +524,7 @@ export function ProjectCard({ name, summary, url, image, video, mode, isActivate
 // }
 
 
-// export function ProjectCard({ name, summary, url, image, video, mode } : projectProps) {
+// export function ProjectCard({ name, summary, url, image, video, mode } : ProjectProps) {
 // 	const rootRef = useRef<HTMLDivElement | null>(null)
 // 	const cardRef = useRef<HTMLDivElement | null>(null)
 
@@ -610,7 +610,7 @@ export function ProjectCard({ name, summary, url, image, video, mode, isActivate
 // }
 
 // UNUSED
-// export function ProjectCardTmp({ name, summary, url, image } : projectProps) {
+// export function ProjectCardTmp({ name, summary, url, image } : ProjectProps) {
 // 	const rootRef = useRef<HTMLDivElement | null>(null)
 // 	const cardRef = useRef<HTMLDivElement | null>(null)
 // 	const imageRef = useRef<HTMLImageElement | null>(null)

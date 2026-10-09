@@ -4,13 +4,13 @@ import AppNav from "@/mainComponents/AppNav"
 import { animate } from "animejs"
 import { useEffect, useRef, useState } from "react"
 
-interface appSidebarProps {
+interface AppSidebarProps {
 	posY : number
 	onClick? : () => void
 	isToggled? : boolean
 }
 
-export default function AppSidebar({ posY, onClick, isToggled } : appSidebarProps) {
+export default function AppSidebar({ posY, onClick, isToggled } : AppSidebarProps) {
 	const sidebarRef = useRef<HTMLDivElement>(null)
 	const [isHidden, setIsHidden] = useState<boolean>(true)
 

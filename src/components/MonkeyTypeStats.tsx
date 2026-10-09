@@ -47,7 +47,7 @@ export default function MonkeyTypeStats() {
                     title: {
                       display: true,
                       text: 'WPM'
-                    }
+                    },
                   },
                   y2: {
                     position: 'right' as const,
@@ -55,7 +55,7 @@ export default function MonkeyTypeStats() {
                       drawOnChartArea: false
                     },
                     min: 80,
-                    max: 100
+                    max: 150
                   },
                 },
               }}

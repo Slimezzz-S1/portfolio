@@ -7,6 +7,25 @@ import { animate, stagger } from "animejs"
 import profileImage from "@/assets/images/MainHero/MainHeroProfile.png"
 import useClientVisibility from "@/hooks/useClientVisibility"
 
+interface BlinkingCursorProps {
+	isActive : boolean
+	startBlank? : boolean
+	isSwitchedManually? : boolean
+	isSwitchedValue? : boolean
+	cursorType? : string
+}
+
+interface UnderScoreProps {
+	amount : number
+	endLineAt : number
+	isActive : boolean
+}
+
+interface RoleProps {
+	isActive : boolean
+	onBegin? : () => void
+	onComplete? : () => void
+}
 
 export default function MainHeroSection() {
 	const sectRef = useRef<HTMLDivElement | null>(null)
@@ -103,13 +122,7 @@ export default function MainHeroSection() {
 	)
 }
 
-interface underScoreProps {
-	amount : number
-	endLineAt : number
-	isActive : boolean
-}
-
-function Underscores({ amount, endLineAt, isActive } : underScoreProps) {
+function Underscores({ amount, endLineAt, isActive } : UnderScoreProps) {
 	const underscoreRefs = useRef<HTMLSpanElement[]>([])
 	const timeoutRef = useRef<ReturnType<typeof setTimeout> | false>(false)
 
@@ -193,15 +206,8 @@ function Underscores({ amount, endLineAt, isActive } : underScoreProps) {
 	)
 }
 
-interface blinkingCursorProps {
-	isActive : boolean
-	startBlank? : boolean
-	isSwitchedManually? : boolean
-	isSwitchedValue? : boolean
-	cursorType? : string
-}
 
-function BlinkingCursor({ isActive, startBlank = false, isSwitchedManually = false, isSwitchedValue = true, cursorType = "_" } : blinkingCursorProps) {
+function BlinkingCursor({isActive, startBlank = false, isSwitchedManually = false, isSwitchedValue = true, cursorType = "_"} : BlinkingCursorProps) {
 	const [isSwitched, setIsSwitched] = useState<boolean>(startBlank ? true : false)
 
 	useEffect(() => {
@@ -237,13 +243,7 @@ function BlinkingCursor({ isActive, startBlank = false, isSwitchedManually = fal
 	)
 }
 
-interface roleProps {
-	isActive : boolean
-	onBegin? : () => void
-	onComplete? : () => void
-}
-
-function Role({ isActive, onBegin, onComplete } : roleProps) {
+function Role({ isActive, onBegin, onComplete } : RoleProps) {
 	const roles : string[] = [
 		"Front-End\nDeveloper",
 		"3D Artist",

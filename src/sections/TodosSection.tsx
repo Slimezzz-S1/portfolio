@@ -7,19 +7,19 @@ import { animate, stagger } from "animejs"
 import { useEffect, useRef, useState } from "react"
 import { SectionTitle } from "@/components/main/Section"
 
-export interface todoItemProps {
+export interface TodoItemProps {
 	name : string
 	description? : string
 	isChecked : boolean | "halfway"
 }
 
-interface todoItemComponentProps extends todoItemProps {
+interface TodoItemComponentProps extends TodoItemProps {
 	className? : string
 	style? : React.CSSProperties
 }
 
 interface todoSectionProps {
-	todoList? : todoItemProps[]
+	todoList? : TodoItemProps[]
 }
 
 const todos = todoData
@@ -70,7 +70,7 @@ export default function TodosSection({todoList = todos} : todoSectionProps) {
 	)
 }
 
-export function TodoItem({ name, description, isChecked, className, style } : todoItemComponentProps) {
+export function TodoItem({ name, description, isChecked, className, style } : TodoItemComponentProps) {
 	return (
 		<div style={style} className={"grid grid-cols-[3rem_1fr] gap-x-4" + " " + className}>
 			<div className={"w-12 h-12 aspect-square border-2 rounded-lg" + " " + (typeof isChecked === "boolean" && isChecked ? "bg-root-fg" : isChecked === "halfway" ? "bg-hatch" : "bg-none")} />

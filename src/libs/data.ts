@@ -1,10 +1,10 @@
 // COMPONENTS
-import type { navProps } from "@/components/main/AppNav"
-import type { itemProps } from "@/sections/SkillSection"
-import type { summaryItemProps } from "@/sections/SummarySection"
-import type { todoItemProps } from "@/sections/TodosSection"
-import type { socialLinkProps } from "@/components/SocialLink"
-import type { projectProps } from "@/sections/ProjectSection"
+import type { NavProps } from "@/components/main/AppNav"
+import type { ItemProps } from "@/sections/SkillSection"
+import type { SummaryItemProps } from "@/sections/SummarySection"
+import type { TodoItemProps } from "@/sections/TodosSection"
+import type { SocialLinkProps } from "@/components/SocialLink"
+import type { ProjectProps } from "@/sections/ProjectSection"
 
 // ASSETS
 
@@ -68,13 +68,37 @@ import type { projectProps } from "@/sections/ProjectSection"
 //////  END OF IMPORT   //////
 //////                  //////
 
+//////                  //////
+//////      MAIN HERO   //////
+//////                  //////
+
+const rolesData : string[] = [
+    "Front-end\nDeveloper",
+    "3D Artist",
+    "Left\nHanded"
+]
+
+const underscoreDuration = 100
+const underscoreStaggerDelay = 75
+const underscoreHoldAmount = 250
+
+//////                      //////
+//////      EPIC SECTION    //////
+//////                      //////
+
+export const EpicSectionRolesData : string[] = [
+    "3D Artist",
+    "Developer",
+    "Video Editor"
+]
+
 
 //////                  //////
 //////      SUMMARY     //////
 //////                  //////
 
 
-export const summaryItemData : summaryItemProps[] = [
+export const summaryItemData : SummaryItemProps[] = [
 	{
 		name : "Summary",
 		description : "I'm a 17 year old voca student from Indonesia, I do 3D animation, develop front-end website, and edit videos. I was a computer nerd back when I was a kid. I yearned for learning more about computers. Looking in the future, I want to be a successful SE graduate and get a loving job with appropriate income",
@@ -108,7 +132,7 @@ export const summaryItemData : summaryItemProps[] = [
 //////           //////
 
 
-export const languagesData : itemProps[] = [
+export const languagesData : ItemProps[] = [
     {
         name : "HTML",
         Icon : HTMLIcon,
@@ -141,7 +165,7 @@ export const languagesData : itemProps[] = [
     },
 ]
 
-export const toolsData : itemProps[] = [
+export const toolsData : ItemProps[] = [
     {
         name : "Next.js",
         Icon : NextIcon,
@@ -203,7 +227,7 @@ export const toolsData : itemProps[] = [
     }
 ]
 
-export const appsData : itemProps[] = [
+export const appsData : ItemProps[] = [
     {
         name : "Docker",
         Icon : DockerIcon,
@@ -241,7 +265,7 @@ export const appsData : itemProps[] = [
 //////  NAV     //////
 //////          //////
 
-export const navData : navProps[] = [
+export const navData : NavProps[] = [
 	{
 		name : "Home",
 		Icon : HomeIcon,
@@ -304,7 +328,7 @@ export const navData : navProps[] = [
 
 
 
-export const socialLinksData : socialLinkProps[] = [
+export const socialLinksData : SocialLinkProps[] = [
     {
         name : "Youtube",
         Icon : YoutubeIcon,
@@ -336,7 +360,7 @@ export const socialLinksData : socialLinkProps[] = [
 //////  TODOS   //////
 //////          //////
 
-export const todoData : todoItemProps[] = [
+export const todoData : TodoItemProps[] = [
     {
         name : "Create 3D Animation",
         isChecked : true
@@ -373,7 +397,7 @@ export const todoData : todoItemProps[] = [
 //////              //////
 
 
-export const projectData : projectProps[] = [
+export const projectData : ProjectProps[] = [
 	{
 		name : "S11ME",
 		summary : "a 3d animation series about random things",
