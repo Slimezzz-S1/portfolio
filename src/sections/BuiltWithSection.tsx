@@ -1,5 +1,5 @@
 // ASSETS
-import zylHoldingImage from "@/assets/images/BuiltWith/ZylHolding.png"
+import zylHoldingImage from "@/assets/images/built-with/zyl-holding.png"
 import ReactIcon from "@/tools/react/griddy-icons--react.svg?react"
 
 // COMPONENTS
