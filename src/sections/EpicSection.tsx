@@ -2,10 +2,10 @@
 import { EpicSectionRolesData } from "@/libs/data"
 
 // ASSETS
-import imageLit from "@/assets/images/epicSection/lit.png"
-import imageDark from "@/assets/images/epicSection/dark.png"
-import imageEyes from "@/assets/images/epicSection/eyes.png"
-import imageEyesDark from "@/assets/images/epicSection/eyesDark.png"
+import imageLit from "@/assets/images/epic-section/lit.png"
+import imageDark from "@/assets/images/epic-section/dark.png"
+import imageEyes from "@/assets/images/epic-section/eyes.png"
+import imageEyesDark from "@/assets/images/epic-section/eyes-dark.png"
 
 
 // COMPONENTS

@@ -1,6 +1,7 @@
 // DATA
-import result from "@/data/monkeyType/results.json"
+import result from "@/data/monkey-type/results.json"
 
+// COMPONENTS
 import { Line } from 'react-chartjs-2'
 import {
   Chart as ChartJS,

@@ -2,10 +2,10 @@
 import { todoData } from "@/libs/data"
 
 // COMPONENTS
-import useClientVisibility from "@/hooks/useClientVisibility"
-import { animate, stagger } from "animejs"
 import { useEffect, useRef, useState } from "react"
+import { animate, stagger } from "animejs"
 import { SectionTitle } from "@/components/main/Section"
+import useClientVisibility from "@/hooks/useClientVisibility"
 
 export interface TodoItemProps {
 	name : string

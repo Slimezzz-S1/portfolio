@@ -23,5 +23,7 @@ export default defineConfig({
     svgr(),
     ViteImageOptimizer(),
   ],
-  base : '/portfolio'
+
+  base : '/portfolio',
+  appType : "spa",  
 })

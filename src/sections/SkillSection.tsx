@@ -1,11 +1,11 @@
 // COMPONENTS
-import { SectionTitle } from "@/components/main/Section"
+import type { textDirection } from "@/components/main/Section"
 import type { BaseComponentProps } from "@/libs/BaseComponentProps"
 import { languagesData, toolsData, appsData } from "@/libs/data"
-import type { textDirection } from "@/components/main/Section"
+import { SectionTitle } from "@/components/main/Section"
 import { useState } from "react"
-import MonkeyTypeStats from "@/components/MonkeyTypeStats"
 import { twMerge } from "tailwind-merge"
+import MonkeyTypeStats from "@/components/MonkeyTypeStats"
 
 export interface ItemProps {    
     name : string

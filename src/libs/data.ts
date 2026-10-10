@@ -6,63 +6,59 @@ import type { TodoItemProps } from "@/sections/TodosSection"
 import type { SocialLinkProps } from "@/components/SocialLink"
 import type { ProjectProps } from "@/sections/ProjectSection"
 
-// ASSETS
+// ICONS : SOCIAL LINKS
 
-    // SOCIAL LINKS
+import YoutubeIcon from "@/icons/social-link-icons/youtube/mdi--youtube.svg?react"
+import GithubIcon from "@/icons/social-link-icons/github/mdi--github.svg?react"
+import DiscordIcon from "@/icons/social-link-icons/discord/ic--baseline-discord.svg?react"
+import MonkeyTypeIcon from "@/icons/social-link-icons/monkeytype/simple-icons--monkeytype.svg?react"
+// import XIcon from "@/icons/social-link-icons/x/pajamas--twitter.svg?react"
 
-    import YoutubeIcon from "@/icons/social_link_icons/youtube/mdi--youtube.svg?react"
-    import GithubIcon from "@/icons/social_link_icons/github/mdi--github.svg?react"
-    // import XIcon from "@/icons/social_link_icons/x/pajamas--twitter.svg?react"
-    import DiscordIcon from "@/icons/social_link_icons/discord/ic--baseline-discord.svg?react"
-    import MonkeyTypeIcon from "@/icons/social_link_icons/monkeytype/simple-icons--monkeytype.svg?react"
+// ICONS : NAV
 
-    // NAV
+import HomeIcon from "@/icons/nav/akar-icons--home-alt1.svg?react"
+import InfoIcon from "@/icons/nav/boxicons--info-circle.svg?react"
+import SkillIcon from "@/icons/nav/carbon--skill-level-advanced.svg?react"
+import GoalIcon from "@/icons/nav/akar-icons--check-box.svg?react"
+import ProjectIcon from "@/icons/nav/octicon--project-roadmap-16.svg?react"
+import GalleryIcon from "@/icons/nav/boxicons--gallery-vertical-end-filled.svg?react"
 
-    import HomeIcon from "@/icons/nav/akar-icons--home-alt1.svg?react"
-    import InfoIcon from "@/icons/nav/boxicons--info-circle.svg?react"
-    import SkillIcon from "@/icons/nav/carbon--skill-level-advanced.svg?react"
-    import GoalIcon from "@/icons/nav/akar-icons--check-box.svg?react"
-    import ProjectIcon from "@/icons/Nav/octicon--project-roadmap-16.svg?react"
-    import GalleryIcon from "@/icons/nav/boxicons--gallery-vertical-end-filled.svg?react"
-    // SKILLS
+// ICONS : LANGUAGES
 
-        // LANGUAGES
+import HTMLIcon from "@/icons/languages/html/flowbite--html-solid.svg?react"
+import CSSIcon from "@/icons/languages/css/griddy-icons--css-3.svg?react"
+import JSIcon from "@/icons/languages/js/cib--js.svg?react"
+import TSIcon from "@/icons/languages/ts/akar-icons--typescript-fill.svg?react"
+import PythonIcon from "@/icons/languages/python/akar-icons--python-fill.svg?react"
+import LuaIcon from "@/icons/languages/lua/cib--lua.svg?react"
 
-        import HTMLIcon from "@/icons/languages/html/flowbite--html-solid.svg?react"
-        import CSSIcon from "@/icons/languages/css/griddy-icons--css-3.svg?react"
-        import JSIcon from "@/icons/languages/js/cib--js.svg?react"
-        import TSIcon from "@/icons/languages/ts/akar-icons--typescript-fill.svg?react"
-        import PythonIcon from "@/icons/languages/python/akar-icons--python-fill.svg?react"
-        import LuaIcon from "@/icons/languages/lua/cib--lua.svg?react"
+// ICONS : FRAMEWORK/TOOLS
 
-        // FRAMEWORK/TOOLS
+import NextIcon from "@/tools/next-js/akar-icons--nextjs-fill.svg?react"
+import NuxtIcon from "@/tools/nuxt-js/bxl--nuxt-js.svg?react"
+import ReactIcon from "@/tools/react/griddy-icons--react.svg?react"
+import VueIcon from "@/tools/vue-js/carbon--logo-vue.svg?react"
+import TailwindIcon from "@/tools/tailwind-css/bxl--tailwind-css.svg?react"
+import PGSQLIcon from "@/tools/postgre-sql/akar-icons--postgresql-fill.svg?react"
+import DockerIcon from "@/tools/docker/ant-design--docker-outlined.svg?react"
+import BlenderIcon from "@/tools/blender/bxl--blender.svg?react"
+import PhotoshopIcon from "@/tools/photoshop/devicon-plain--photoshop.svg?react"
+import AEIcon from "@/tools/after-effects/iconoir--adobe-after-effects-solid.svg?react"
+import DavinciIcon from "@/tools/davinci-resolve/thesvg--davinci-resolve.svg?react"
+import NestIcon from "@/tools/nest-js/file-icons--nestjs.svg?react"
+import ExpressIcon from "@/tools/express-js/griddy-icons--expressjs.svg?react"
+import GodotIcon from "@/tools/godot/cib--godot-engine.svg?react"
+import LaravelIcon from "@/tools/laravel/bxl--laravel.svg?react"
+// import SupabaseIcon from "@/tools/supabase/bxl--supabase.svg?react"
+// import VercelIcon from "@/tools/vercel/akar-icons--vercel-fill.svg?react"
+// import NodeIcon from "@/tools/node-js/bxl--nodejs.svg?react"
 
-        import NextIcon from "@/tools/next-js/akar-icons--nextjs-fill.svg?react"
-        import NuxtIcon from "@/tools/nuxt-js/bxl--nuxt-js.svg?react"
-        import ReactIcon from "@/tools/react/griddy-icons--react.svg?react"
-        import VueIcon from "@/tools/vue-js/carbon--logo-vue.svg?react"
-        import TailwindIcon from "@/tools/tailwind-css/bxl--tailwind-css.svg?react" 
-        import PGSQLIcon from "@/tools/postgre-sql/akar-icons--postgresql-fill.svg?react"
-        // import SupabaseIcon from "@/tools/supabase/bxl--supabase.svg?react"
-        // import VercelIcon from "@/tools/vercel/akar-icons--vercel-fill.svg?react"
-        // import NodeIcon from "@/tools/node-js/bxl--nodejs.svg?react"
-        import DockerIcon from "@/tools/docker/ant-design--docker-outlined.svg?react"
-        import BlenderIcon from "@/tools/blender/bxl--blender.svg?react"
-        import PhotoshopIcon from "@/tools/photoshop/devicon-plain--photoshop.svg?react"
-        import AEIcon from "@/tools/after-effects/iconoir--adobe-after-effects-solid.svg?react"
-        import DavinciIcon from "@/tools/davinci-resolve/thesvg--davinci-resolve.svg?react"
-        import NestIcon from "@/tools/nest-js/file-icons--nestjs.svg?react"
-        import ExpressIcon from "@/tools/express-js/griddy-icons--expressjs.svg?react"
-        import GodotIcon from "@/tools/godot/cib--godot-engine.svg?react"
-        import LaravelIcon from "@/tools/laravel/bxl--laravel.svg?react"
+// ASSETS : PROJECTS
 
-    // PROJECTS
+import projectImage1 from "@/assets/images/projects/posterzzz/posterzzz.png"
 
-    import projectImage1 from "@/assets/images/projects/posterzzz/PosterZZZ.png"
-
-    import projectImage2 from "@/assets/hybrid/projects/s11me/image.png"
-    import projectVideo2 from "@/assets/hybrid/projects/S11ME/video.mp4"
-
+import projectImage2 from "@/assets/hybrid/projects/s11me/image.png"
+import projectVideo2 from "@/assets/hybrid/projects/s11me/video.mp4"
 
 //////                  //////
 //////  END OF IMPORT   //////
@@ -72,15 +68,33 @@ import type { ProjectProps } from "@/sections/ProjectSection"
 //////      MAIN HERO   //////
 //////                  //////
 
-const rolesData : string[] = [
-    "Front-end\nDeveloper",
-    "3D Artist",
-    "Left\nHanded"
-]
+interface RolesDataProps {
+    roles : string[]
+    delayEachLetter : number
+    holdDuration : number
+}
 
-const underscoreDuration = 100
-const underscoreStaggerDelay = 75
-const underscoreHoldAmount = 250
+interface UnderscoreDataProps {
+    duration : number
+    staggerDelay : number
+    holdDuration : number
+}
+
+export const rolesData : RolesDataProps = {
+    roles : [
+        "Front-end\nDeveloper",
+        "3D Artist",
+        "Left\nHanded"
+    ],
+    delayEachLetter : 25,
+    holdDuration : 2000
+} as const
+
+export const underscoreData : UnderscoreDataProps = {
+    duration : 100,
+    staggerDelay : 75,
+    holdDuration : 250
+} as const
 
 //////                      //////
 //////      EPIC SECTION    //////
@@ -90,8 +104,7 @@ export const EpicSectionRolesData : string[] = [
     "3D Artist",
     "Developer",
     "Video Editor"
-]
-
+] as const
 
 //////                  //////
 //////      SUMMARY     //////
@@ -125,7 +138,7 @@ export const summaryItemData : SummaryItemProps[] = [
 		className : "col-span-3",
 		color : "red"
 	},
-]
+] as const
 
 //////           //////
 //////  SKILL    //////
@@ -163,7 +176,7 @@ export const languagesData : ItemProps[] = [
         Icon : LuaIcon,
         color : "#2C2D72"
     },
-]
+] as const
 
 export const toolsData : ItemProps[] = [
     {
@@ -225,7 +238,7 @@ export const toolsData : ItemProps[] = [
         skillPercent : 5,
         color : "#fff"
     }
-]
+] as const
 
 export const appsData : ItemProps[] = [
     {
@@ -258,7 +271,7 @@ export const appsData : ItemProps[] = [
         Icon : GodotIcon,
         color : "#478CBF"
     },
-]
+] as const
 
 
 //////          //////
@@ -320,7 +333,7 @@ export const navData : NavProps[] = [
 			block : "start"
 		}
 	},
-]
+] as const
 
 //////                  //////
 //////  SOCIAL LINKS    //////
@@ -353,7 +366,7 @@ export const socialLinksData : SocialLinkProps[] = [
         description : "My Discord account",
         url : ""
     },
-]
+] as const
 
 
 //////          //////
@@ -389,7 +402,7 @@ export const todoData : TodoItemProps[] = [
         description : "Coming soon",
         isChecked : "halfway"
     }
-]
+] as const
 
 
 //////              //////
@@ -423,4 +436,4 @@ export const projectData : ProjectProps[] = [
 		url : "",
 		currentStatus : "work-in-progress"
 	},
-]
+] as const

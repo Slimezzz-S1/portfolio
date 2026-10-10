@@ -1,7 +1,4 @@
-// built-in components
-
-
-// sections
+// COMPONENTS
 import MainHeroSection from "@/sections/MainHeroSection"
 import BuiltWithSection from "@/sections/BuiltWithSection"
 import SummarySection from "@/sections/SummarySection"

@@ -1,11 +1,14 @@
+// DATA
+import { underscoreData } from "@/libs/data"
+
 // COMPONENTS
 import { useEffect, useState, useRef } from "react"
 import SocialLinks from "@/components/SocialLink"
 import { animate, stagger } from "animejs"
+import useClientVisibility from "@/hooks/useClientVisibility"
 
 // ASSETS
-import profileImage from "@/assets/images/MainHero/MainHeroProfile.png"
-import useClientVisibility from "@/hooks/useClientVisibility"
+import profileImage from "@/assets/images/main-hero/main-hero-profile.png"
 
 interface BlinkingCursorProps {
 	isActive : boolean
