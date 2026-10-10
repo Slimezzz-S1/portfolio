@@ -159,40 +159,40 @@ function SkillPartTitle({text, className, style, overrideClassName = false, dire
     )
 }
 
-function StatsPart() {
-    const [isClicked, setIsClicked] = useState<boolean>(false)
-    const [mode, setMode] = useState<TypingMode>("words 10")
+// function StatsPart() {
+//     const [isClicked, setIsClicked] = useState<boolean>(false)
+//     const [mode, setMode] = useState<TypingMode>("words 10")
 
-    const onClick = () => {
-        setIsClicked(!isClicked)
-        // WILL BE USED LATER
-    }
+//     const onClick = () => {
+//         setIsClicked(!isClicked)
+//         // WILL BE USED LATER
+//     }
 
-    return (
-        <div className="flex flex-col items-center my-8">
-            <SkillPartTitle text="Typing" className="w-full" direction="center" />
+//     return (
+//         <div className="flex flex-col items-center my-8">
+//             <SkillPartTitle text="Typing" className="w-full" direction="center" />
 
-            {/* <select name="" id="">
-                {TYPING_ALL_MODES.map((modeName, index) => (
-                    <option key={index} value={modeName}>
-                        {modeName}
-                    </option>
-                ))}
-            </select> */}
+//             {/* <select name="" id="">
+//                 {TYPING_ALL_MODES.map((modeName, index) => (
+//                     <option key={index} value={modeName}>
+//                         {modeName}
+//                     </option>
+//                 ))}
+//             </select> */}
 
-            <div className="w-full min-w-0">
-                <MonkeyTypeStats />
-            </div>
-        </div>
-    )    
-}
+//             <div className="w-full min-w-0">
+//                 <MonkeyTypeStats />
+//             </div>
+//         </div>
+//     )    
+// }
 
 export default function SkillSection() {
     return (
         <section className="p-8">
             <SectionTitle text="Skills" direction="end" />
 
-            <StatsPart />
+            {/* <StatsPart /> */}
 
             <div className="flex flex-col gap-4">
                 <SkillPart title="Languages" items={languages} titleDirection="start" />
