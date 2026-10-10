@@ -63,15 +63,6 @@ export default function MainHeroSection() {
 	useEffect(() => {
 		if (!isVisibleOnce || !sectRef.current || !imageRef.current || !textRef.current) return
 
-		// animate(imageRef.current, {
-		// 	x : [
-		// 		"-100vw",
-		// 		"0"
-		// 	],
-		// 	duration : 1200,
-		// 	ease : "outExpo",
-		// })
-		
 		animate([textRef.current, imageRef.current], {
 			x : (_, index) => {
 				return [
@@ -355,91 +346,3 @@ function Role({ isActive, onBegin, onComplete } : RoleProps) {
 		</span>
 	)
 }
-
-// export function MainHeroTmp() {
-// 	const roles : string[] = [
-// 		"Front-End\nDeveloper",
-// 		"3D Artist",
-// 		"Normies"
-// 	]
-// 	const [currentIndex, setCurrentIndex] = useState<number>(0)
-// 	const [roleDisplay, setRoleDisplay] = useState<string>("")
-	
-// 	const sectRef = useRef<HTMLDivElement>(null)
-// 	const imageRef = useRef<HTMLDivElement>(null)
-// 	const titleRef = useRef<HTMLDivElement>(null)
-	
-// 	const isOnScreen = useIntersectionObserver(sectRef, {threshold : 0.5})
-// 	const [isShownOnce, setIsShownOnce] = useState<boolean>(false)
-// 	const [isActive, setIsActive] = useState<boolean>(true)
-// 	const [isCursorActive, setIsCursorActive] = useState<boolean>(false)
-	
-// 	useEffect(() => {
-// 		setRoleDisplay(roles[currentIndex])
-
-// 		console.log("efwioejf")
-// 	}, [])
-
-// 	useEffect(() => {
-// 		if (!isActive) return
-
-// 		const emptyDisplay = (currentRole : string = roleDisplay) => {
-// 			console.log(currentRole)
-// 		}
-
-// 		emptyDisplay()
-
-// 		return () => {
-
-// 		}
-// 	}, [isActive])
-
-// 	useEffect(() => {
-// 		if (isOnScreen) setIsShownOnce(true)
-// 	}, [isOnScreen])
-
-// 	useEffect(() => {
-// 		if (!isShownOnce || !imageRef.current || !titleRef.current) return
-
-// 		animate(imageRef.current, {
-// 			x : ["-100vw", "0"],
-// 			duration : 1200,
-// 			ease : "outExpo"
-// 		})
-
-// 		animate(titleRef.current, {
-// 			x : ["100vw", "0"],
-// 			duration : 1200,
-// 			ease : "outExpo"
-// 		})
-		
-// 	}, [isShownOnce])
-
-// 	useEffect(() => {
-// 		if (!isActive) return 
-// 	}, [isActive])
-	
-// 	return (
-// 		<section ref={sectRef} className="overflow-hidden relative p-8 flex flex-col-reverse lg:flex-row gap-4 h-[calc(100dvh-90px)] lg:h-full">
-// 			<div style={{"transform" : "translateX(100vw)"} as React.CSSProperties} ref={titleRef} className="lg:w-1/2 flex flex-col justify-center gap-3">
-// 				<p className="text-xl">
-// 					Hi, I'm
-// 				</p>
-
-// 				<h2 className="font-black text-6xl lg:text-7xl min-h-[2em] lg:min-h-[2em]">
-// 					{roleDisplay}<span>_</span>
-// 				</h2>
-
-// 				<p>
-// 					Just a silly slime trying to enjoy life the human way
-// 				</p>
-
-// 				<SocialLinks />
-// 			</div>
-
-// 			<div style={{"transform" : "translateX(-100vw)"} as React.CSSProperties} ref={imageRef} className="h-1/2 lg:h-full flex-1 lg:w-1/2 flex items-center justify-center lg:justify-end">
-// 				<img src={profileImage} alt="loading..." className="w-full h-full object-cover rounded-2xl" />
-// 			</div>
-// 		</section>
-// 	)
-// }

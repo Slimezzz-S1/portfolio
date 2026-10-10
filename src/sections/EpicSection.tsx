@@ -208,30 +208,3 @@ export default function EpicSection() {
         </section>
     )
 }
-
-// interface backTextProps {
-//     isActivatedManually? : boolean
-//     isActivatedManuallyValue? : boolean
-
-//     items? : string[]
-//     useDefaultWrapper? : boolean
-//     ref? : RefObject< HTMLDivElement | null>
-// }
-
-// function BackTexts({ items = [ "3D Artist", "Developer", "Video Editor" ], useDefaultWrapper = true, ref, isActivatedManually, isActivatedManuallyValue } : backTextProps) {
-//     const rootRef = useRef< HTMLDivElement | null >( null )
-//     const [ isActivated, setIsActivated ] = useState< boolean >( false )
-//     const isVisible = useClientVisibility(rootRef, { threshold : 0.5 })
-
-//     if ( useDefaultWrapper ) {
-//         return (
-//             <div>
-//                 {items.map(( item, index ) => (
-//                     <p key={item} style={{"opacity" : "0", "transform" : `translateY(-${90 * ( index + 1)}%)`} as React.CSSProperties} className="text-7xl sm:text-8xl md:text-8xl whitespace-nowrap font-black pointer-events-auto text-center text-transparent [-webkit-text-stroke:1px_white] md:[-webkit-text-stroke:2px_white]" >
-//                         {item}
-//                     </p>
-//                 ))}
-//             </div>
-//         )
-//     }
-// }

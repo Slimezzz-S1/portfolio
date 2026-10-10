@@ -4,7 +4,6 @@ interface AppBurgerProps {
 }
 
 export default function AppBurger({ onClick, isToggled } : AppBurgerProps) {
-
     const handleOnClick = () => {
         onClick?.()
     }

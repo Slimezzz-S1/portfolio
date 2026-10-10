@@ -5,6 +5,7 @@ import { todoData } from "@/libs/data"
 import { useEffect, useRef, useState } from "react"
 import { animate, stagger } from "animejs"
 import { SectionTitle } from "@/components/main/Section"
+import { twMerge } from "tailwind-merge"
 import useClientVisibility from "@/hooks/useClientVisibility"
 
 export interface TodoItemProps {
@@ -72,7 +73,7 @@ export default function TodosSection({todoList = todos} : todoSectionProps) {
 
 export function TodoItem({ name, description, isChecked, className, style } : TodoItemComponentProps) {
 	return (
-		<div style={style} className={"grid grid-cols-[3rem_1fr] gap-x-4" + " " + className}>
+		<div style={style} className={twMerge("grid grid-cols-[3rem_1fr] gap-x-4", className)}>
 			<div className={"w-12 h-12 aspect-square border-2 rounded-lg" + " " + (typeof isChecked === "boolean" && isChecked ? "bg-root-fg" : isChecked === "halfway" ? "bg-hatch" : "bg-none")} />
 
 			<h2 className="text-2xl font-bold self-center">

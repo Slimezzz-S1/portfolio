@@ -12,12 +12,12 @@ export default function AppHeader() {
 	const [isSidebarToggled, setIsSidebarToggled] = useState<boolean>(false)
 	const rootRef = useRef<HTMLDivElement | null>(null)
 	const [currentEmptyHeight, setCurrentEmptyHeight] = useState<number>( 0 )
-	const [isSidebarToggledOnce, setISSidebarToggledOnce] = useState<boolean>(false)
+	const [isSidebarToggledOnce, setIsSidebarToggledOnce] = useState<boolean>(false)
 
 	useEffect(() => {
 		if (isSidebarToggled) {
 			setIsHidden(false)
-			setISSidebarToggledOnce(true)
+			setIsSidebarToggledOnce(true)
 
 			return
 		}
@@ -55,10 +55,6 @@ export default function AppHeader() {
 			<div style={{"--height" : currentEmptyHeight + "px"} as React.CSSProperties} className="h-(--height)" />
 
 			<div ref={rootRef} style={{"--y" : isHidden ? "-100%" : "0%"} as React.CSSProperties} className="fixed top-0 left-0 z-100 transition-transform translate-y-(--y) w-full">
-				{/* <div className="bg-gray-600 p-4 flex items-center">
-					Cute puppy!
-				</div> */}
-
 				<header className="bg-root-bg border-b-2 px-6 py-4 flex justify-between">
 					<div className="flex items-center text-root-fg gap-2">
 						<Logo className="w-12 h-12 aspect-square" />

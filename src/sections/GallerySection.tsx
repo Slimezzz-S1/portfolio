@@ -67,7 +67,7 @@ export default function GallerySection() {
             </div>
 
 			<div ref={cardRef} className="columns-1 sm:columns-2 md:columns-3 lg:columns-4">
-				{images(["Zyl"]).map(( item, index ) => (
+				{images(["zyl"]).map(( item, index ) => (
 					<img style={{ "opacity" : "0" } as React.CSSProperties} key={index} src={item} alt="" className="mb-4 rounded-lg w-full" />
 				))}
 			</div>

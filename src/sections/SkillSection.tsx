@@ -42,9 +42,18 @@ const languages = languagesData
 const tools = toolsData
 const apps = appsData
 
+const TYPING_TIME_MODES = ["time 15", "time 30", "time 60", "time 120"] as const
+const TYPING_WORDS_MODES = ["words 10", "words 25", "words 50", "words 100"] as const
+const TYPING_ALL_MODES = [...TYPING_TIME_MODES, TYPING_WORDS_MODES] as const
+
+type TypingTimeMode = typeof TYPING_TIME_MODES[number]
+type TypingWordsMode = typeof TYPING_WORDS_MODES[number]
+export type TypingMode = TypingTimeMode | TypingWordsMode
+
+
 export function ItemIcon({ name, Icon, color, descriptions, className, style, onClick, overrideClassName = false, overrideStyle = false } : ItemComponentProps) {
     return (
-        <div style={overrideStyle ? style : {...{"--color" : color} as React.CSSProperties, ...style}} title={descriptions?.toString()} onClick={onClick} className={overrideClassName ? className : "w-20 h-20 border rounded-2xl p-3 hover:border-(--color) hover:text-(--color) hover:scale-105 transition-all" + " " + className}>
+        <div style={overrideStyle ? style : {...{"--color" : color} as React.CSSProperties, ...style}} title={descriptions?.toString() ?? name} onClick={onClick} className={overrideClassName ? className : twMerge("w-20 h-20 border rounded-2xl p-3 hover:border-(--color) hover:text-(--color) hover:scale-105 transition-all", className)}>
             <Icon className="w-full h-full" />
         </div>
     )
@@ -52,7 +61,7 @@ export function ItemIcon({ name, Icon, color, descriptions, className, style, on
 
 export function ItemDetailed({ name, Icon, color, descriptions, className, skillPercent, style, onClick, overrideClassName = false, overrideStyle = false } : ItemComponentProps) {
     return (
-        <div style={overrideStyle ? style : {...{"--color" : color} as React.CSSProperties, ...style}} className={overrideClassName ? className : twMerge("group grid grid-cols-[auto_1fr] sm:flex justify-between items-center gap-3 sm:gap-4 border rounded-2xl px-3 py-3 transition-all hover:border-(--color) hover:scale-105", className)} onClick={onClick}>
+        <div style={overrideStyle ? style : {"--color" : color, ...style} as React.CSSProperties} className={overrideClassName ? className : twMerge("group grid grid-cols-[auto_1fr] sm:flex justify-between items-center gap-3 sm:gap-4 border rounded-2xl px-3 py-3 transition-all hover:border-(--color) hover:scale-105", className)} onClick={onClick} title={descriptions?.toString() ?? name}>
             <Icon className="w-20 sm:w-14 h-18 sm:h-14 aspect-square group-hover:text-(--color) transition-colors col-start-1 row-start-1 row-span-3 self-center" />
 
             <h3 className="text-2xl font-bold transition-colors group-hover:text-(--color)">
@@ -92,6 +101,7 @@ export function ItemIcons({ items = languages, mode = "icons" } : ItemIconsProps
                     Icon={item.Icon}
                     skillPercent={item.skillPercent}
                     color={item.color}
+                    descriptions={item.descriptions}
                 />
             ))
 
@@ -115,6 +125,7 @@ export function ItemIcons({ items = languages, mode = "icons" } : ItemIconsProps
                     Icon={item.Icon}
                     skillPercent={item.skillPercent}
                     color={item.color}
+                    descriptions={item.descriptions}
                 />
             ))
 
@@ -148,14 +159,6 @@ function SkillPartTitle({text, className, style, overrideClassName = false, dire
     )
 }
 
-const TYPING_TIME_MODES = ["time 15", "time 30", "time 60", "time 120"] as const
-const TYPING_WORDS_MODES = ["words 10", "words 25", "words 50", "words 100"] as const
-const TYPING_ALL_MODES = [...TYPING_TIME_MODES, TYPING_WORDS_MODES] as const
-
-type TypingTimeMode = typeof TYPING_TIME_MODES[number]
-type TypingWordsMode = typeof TYPING_WORDS_MODES[number]
-export type TypingMode = TypingTimeMode | TypingWordsMode
-
 function StatsPart() {
     const [isClicked, setIsClicked] = useState<boolean>(false)
     const [mode, setMode] = useState<TypingMode>("words 10")
@@ -169,13 +172,13 @@ function StatsPart() {
         <div className="flex flex-col items-center my-8">
             <SkillPartTitle text="Typing" className="w-full" direction="center" />
 
-            <select name="" id="">
+            {/* <select name="" id="">
                 {TYPING_ALL_MODES.map((modeName, index) => (
                     <option key={index} value={modeName}>
                         {modeName}
                     </option>
                 ))}
-            </select>
+            </select> */}
 
             <div className="w-full min-w-0">
                 <MonkeyTypeStats />
