@@ -1,5 +1,5 @@
 // DATA
-import { EpicSectionRolesData } from "@/libs/data"
+import { epicSectionData } from "@/libs/data"
 
 // ASSETS
 import imageLit from "@/assets/images/epic-section/lit.png"
@@ -7,13 +7,14 @@ import imageDark from "@/assets/images/epic-section/dark.png"
 import imageEyes from "@/assets/images/epic-section/eyes.png"
 import imageEyesDark from "@/assets/images/epic-section/eyes-dark.png"
 
-
 // COMPONENTS
 import { useEffect, useRef, useState } from "react"
+import ordinal from "@/libs/ordinal"
 import { animate, random, stagger } from "animejs"
 import useClientVisibility from "@/hooks/useClientVisibility"
+import { getSecretDialogES } from "@/libs/iLoveSlime"
 
-const roles = EpicSectionRolesData
+const options = epicSectionData
 
 export default function EpicSection() {
     const sectRef = useRef< HTMLDivElement | null >( null )
@@ -35,6 +36,9 @@ export default function EpicSection() {
 
     const timersRef = useRef<ReturnType< typeof setTimeout >[] >( [] )
 
+    const [secretCount, setSecretCount] = useState<number>(1)
+    const secretCountRef = useRef<number>(secretCount)
+
     const clearTimers = () => {
         timersRef.current.forEach((id) => {
             clearTimeout(id)
@@ -45,21 +49,20 @@ export default function EpicSection() {
     }
 
     useEffect(() => {
-        if (!isActivated || !imageLitRef.current || !imageDarkRef.current || !imageEyesRef.current) return  () => {
-            clearTimers()
-        }
+        secretCountRef.current = secretCount
+    }, [secretCount])
+
+    useEffect(() => {
+        if (!isActivated || !imageLitRef.current || !imageDarkRef.current || !imageEyesRef.current) return clearTimers()
 
         const imageLit = imageLitRef.current
         // const imageDark = imageDarkRef.current
         // const imageEyes = imageEyesRef.current
 
         const onInterval = () => {
-            const number : number = Number(Math.random().toFixed(1))
-
-            // console.log(number)
+            const number : number = Number(Math.random().toFixed(1))            
 
             switch ( true ) {
-
                 case number >= 0.8:
                     animate(imageLit, {
                         opacity : ["1", "0", "1"],
@@ -90,14 +93,21 @@ export default function EpicSection() {
                         duration : random(300, 500),
                         ease : "outBack(4)"
                     })
+
+                    console.log(getSecretDialogES({ count : secretCountRef.current}))
+
+                    setSecretCount(previous => previous + 1)
                     break
                 
+                case number === 0.01:
+                    console.log("WHAT")
+                    break
+
                 default:
-                    return
+                    return                
             }
         }
         
-
         const onActive = () => {
             animate(imageLit, {
                 opacity : ["0", "1"],
@@ -170,7 +180,7 @@ export default function EpicSection() {
             <div className="relative max-w-2xl mx-auto">
                 <div className="absolute top-15 md:top-0 left-0 w-full h-1/2 flex items-center justify-center z-0 pointer-events-none">
                     <div ref={backTextsRef} className="flex flex-col gap-2">
-                        {roles.map((item, index) => (
+                        {options.roles.map((item, index) => (
                             <p key={index} style={{"opacity" : "0", "transform" : `translateY(-${90 * ( index + 1)}%)`} as React.CSSProperties} className="text-7xl sm:text-8xl md:text-8xl whitespace-nowrap font-black pointer-events-auto text-center text-transparent [-webkit-text-stroke:1px_white] md:[-webkit-text-stroke:2px_white]">
                                 {item}
                             </p>
@@ -201,7 +211,6 @@ export default function EpicSection() {
                         Zyl
                     </p>
                 </div>
-
 
                 <div className="absolute bottom-0 left-0 w-full h-1/3 bg-linear-0 from-root-bg to-none z-20" />
             </div>

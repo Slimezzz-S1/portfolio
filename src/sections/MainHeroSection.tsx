@@ -1,5 +1,5 @@
 // DATA
-import { underscoreData } from "@/libs/data"
+import { underscoreData, rolesData } from "@/libs/data"
 
 // COMPONENTS
 import { useEffect, useState, useRef } from "react"
@@ -29,6 +29,9 @@ interface RoleProps {
 	onBegin? : () => void
 	onComplete? : () => void
 }
+
+const underscoreOptions = underscoreData
+const rolesOptions = rolesData
 
 export default function MainHeroSection() {
 	const sectRef = useRef<HTMLDivElement | null>(null)
@@ -134,9 +137,9 @@ function Underscores({ amount, endLineAt, isActive } : UnderScoreProps) {
 			return
 		}
 		
-		const duration = 100
-		const staggerDelay = 75
-		const hold = 250
+		const duration = underscoreOptions.duration
+		const staggerDelay = underscoreOptions.staggerDelay
+		const hold = underscoreOptions.holdDuration
 		
 		const underScores = underscoreRefs.current
 		
@@ -238,14 +241,10 @@ function BlinkingCursor({isActive, startBlank = false, isSwitchedManually = fals
 }
 
 function Role({ isActive, onBegin, onComplete } : RoleProps) {
-	const roles : string[] = [
-		"Front-End\nDeveloper",
-		"3D Artist",
-		"Left\nHanded",
-	]
+	const roles : string[] = rolesOptions.roles
 	const indexRef = useRef<number>(0)
-	const delayEachLetter : number = 25
-	const textHold : number = 2000
+	const delayEachLetter : number = rolesOptions.delayEachLetter
+	const textHold : number = rolesOptions.holdDuration
 	const [displayText, setDisplayText] = useState<string>(roles[0])
 
 	const timeoutsRef = useRef<ReturnType<typeof setTimeout>[]>([])

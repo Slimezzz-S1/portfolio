@@ -44,7 +44,7 @@ const apps = appsData
 
 const TYPING_TIME_MODES = ["time 15", "time 30", "time 60", "time 120"] as const
 const TYPING_WORDS_MODES = ["words 10", "words 25", "words 50", "words 100"] as const
-const TYPING_ALL_MODES = [...TYPING_TIME_MODES, TYPING_WORDS_MODES] as const
+const TYPING_ALL_MODES = [...TYPING_TIME_MODES, ...TYPING_WORDS_MODES] as const
 
 type TypingTimeMode = typeof TYPING_TIME_MODES[number]
 type TypingWordsMode = typeof TYPING_WORDS_MODES[number]

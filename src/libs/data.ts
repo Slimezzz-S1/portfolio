@@ -64,21 +64,25 @@ import projectVideo2 from "@/assets/hybrid/projects/s11me/video.mp4"
 //////  END OF IMPORT   //////
 //////                  //////
 
-//////                  //////
-//////      MAIN HERO   //////
-//////                  //////
-
-interface RolesDataProps {
+export interface RolesDataProps {
     roles : string[]
     delayEachLetter : number
     holdDuration : number
 }
 
-interface UnderscoreDataProps {
+export interface UnderscoreDataProps {
     duration : number
     staggerDelay : number
     holdDuration : number
 }
+
+export interface EpicSectionData {
+    roles : string[]
+}
+
+//////                  //////
+//////      MAIN HERO   //////
+//////                  //////
 
 export const rolesData : RolesDataProps = {
     roles : [
@@ -100,11 +104,13 @@ export const underscoreData : UnderscoreDataProps = {
 //////      EPIC SECTION    //////
 //////                      //////
 
-export const EpicSectionRolesData : string[] = [
-    "3D Artist",
-    "Developer",
-    "Video Editor"
-] as const
+export const epicSectionData = {
+    roles : [
+        "3D Artist",
+        "Developer",
+        "Video Editor"
+    ]
+} as const
 
 //////                  //////
 //////      SUMMARY     //////

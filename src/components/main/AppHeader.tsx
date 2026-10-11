@@ -1,9 +1,9 @@
 // ASSETS
 import Logo from "@/icons/favicon.svg?react"
-import React, { useEffect, useState, useRef } from "react"
 
 
 // COMPONENTS
+import React, { useEffect, useState, useRef } from "react"
 import AppBurger from "@/mainComponents/AppBurger"
 import AppSidebar from "@/mainComponents/AppSidebar"
 
