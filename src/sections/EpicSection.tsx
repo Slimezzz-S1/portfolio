@@ -9,7 +9,6 @@ import imageEyesDark from "@/assets/images/epic-section/eyes-dark.png"
 
 // COMPONENTS
 import { useEffect, useRef, useState } from "react"
-import ordinal from "@/libs/ordinal"
 import { animate, random, stagger } from "animejs"
 import useClientVisibility from "@/hooks/useClientVisibility"
 import { getSecretDialogES } from "@/libs/iLoveSlime"
