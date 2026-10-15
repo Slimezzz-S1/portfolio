@@ -5,6 +5,7 @@ import resultsData from "@/data/monkey-type/results.json"
 import type { BaseComponentProps } from "@/libs/BaseComponentProps"
 import { useEffect, useState } from "react"
 import { twMerge } from "tailwind-merge"
+import useCount from "@/hooks/useCount"
 
 const CATEGORIES : string[] = [
     "average",
@@ -86,7 +87,9 @@ export default function MonkeyTypePart() {
         <div className="flex flex-col-reverse items-center gap-4">
             <div className="flex flex-col w-sm gap-2">
                 <Options items={CATEGORIES} value={currentCategory} onValueChange={setCurrentCategory} />
+
                 <Options items={MODE} value={currentMode} onValueChange={changeMode} />
+
                 <Options items={MODES[currentMode]} value={currentMode2} onValueChange={setCurrentMode2} />
             </div>
 
@@ -113,35 +116,9 @@ function Options<T extends string>({ items, className, style, overrideClassName,
     )
 }
 
-function useCountUp(target : number, duration : number = 1000) {
-    const [value, setValue] = useState<number>(0)
-
-    useEffect(() => {
-        const start = performance.now()
-        let frame : number
-
-        const tick = (now : number) => {
-            const t = Math.min((now - start) / duration, 1)
-            const eased = 1 - Math.pow(1 - t, 10)
-
-            setValue(Math.round(target * eased))
-
-            if (t < 1) {
-                frame = requestAnimationFrame(tick)
-            }
-        }
-
-        frame = requestAnimationFrame(tick)
-
-        return () => cancelAnimationFrame(frame)
-    }, [target, duration])
-
-    return value
-}
-
 function Card({ timestamp, wpm, rawWpm, accuracy, mode, mode2, category, overrideClassName, className, style, ...rest } : CardProps) {
-    const displayWpm = useCountUp(wpm, 2000)
-    const displayAcc = useCountUp(accuracy, 2000)
+    const displayWpm = useCount(wpm)
+    const displayAcc = useCount(accuracy)
     
     const [categoryIndex, setCategoryIndex] = useState<number>(0)
     const [modeIndex, setModeIndex] = useState<number>(0)
@@ -158,42 +135,42 @@ function Card({ timestamp, wpm, rawWpm, accuracy, mode, mode2, category, overrid
             <div className="relative flex gap-4 py-4 overflow-hidden">
                 <div className="absolute top-0 left-0 w-full h-full z-10 bg-linear-0 from-root-bg via-transparent to-root-bg" />
 
-                <div className="relative">
-                    <p className="opacity-0 pointer-events-none text-lg">
+                <div className="relative text-xl">
+                    <p className="opacity-0 pointer-events-none">
                         {CATEGORIES.reduce((a, b) => a.length >= b.length ? a : b)}
                     </p>
 
                     <div style={{"--y" : `${categoryIndex * -100}%`} as React.CSSProperties} className="absolute top-0 left-0 w-full h-full flex flex-col items-center translate-y-(--y) transition-transform duration-1000">
                         {CATEGORIES.map((name) => (
-                            <div key={name} className="text-lg">
+                            <div key={name}>
                                 {name}
                             </div>
                         ))}
                     </div>
                 </div>
 
-                <div className="relative">
-                    <p className="opacity-0 pointer-events-none text-lg">
+                <div className="relative text-xl">
+                    <p className="opacity-0 pointer-events-none">
                         {MODE.reduce((a, b) => a.length >= b.length ? a : b)}
                     </p>
 
                     <div style={{"--y" : `${modeIndex * -100}%`} as React.CSSProperties} className="absolute top-0 left-0 w-full h-full flex flex-col items-center translate-y-(--y) transition-transform duration-1000">
                         {MODE.map((name) => (
-                            <div key={name} className="text-lg">
+                            <div key={name}>
                                 {name}
                             </div>
                         ))}
                     </div>
                 </div>
 
-                <div className="relative">
-                    <p className="opacity-0 pointer-events-none text-lg">
+                <div className="relative text-xl">
+                    <p className="opacity-0 pointer-events-none">
                         {MODE2.reduce((a, b) => a.length >= b.length ? a : b)}
                     </p>
 
                     <div style={{"--y" : `${mode2Index * -100}%`} as React.CSSProperties} className="absolute top-0 left-0 w-full h-full flex flex-col items-center translate-y-(--y) transition-transform duration-1000">
                         {MODE2.map((name) => (
-                            <div key={name} className="text-lg">
+                            <div key={name}>
                                 {name}
                             </div>
                         ))}
@@ -201,28 +178,28 @@ function Card({ timestamp, wpm, rawWpm, accuracy, mode, mode2, category, overrid
                 </div>
             </div>
 
-            {/* <p className="text-xl opacity-35">
-                {mode} {mode2}
-            </p> */}
-
-            <div className="flex flex-col items-center gap-0">
+            <div className="flex flex-col items-center gap-0 relative">
                 <p className="notranslate text-7xl font-black" translate="no">
                     {displayWpm}
                 </p>
 
-                <span className="text-lg opacity-35 -my-1" >
-                    wpm
-                </span>
+                <div className="absolute bottom-0 left-full w-full h-full flex items-end">
+                    <span className="text-lg ">
+                        wpm
+                    </span>
+                </div>
             </div>
 
-            <p className="text-4xl font-bold opacity-75">
+            <p className="relative text-4xl font-bold opacity-75">
                 <span className="notranslate" translate="no">
                     {displayAcc}
                 </span>
 
-                <span>
-                    %
-                </span>
+                <div className="absolute bottom-0 left-full w-full h-full flex items-end">
+                    <span>
+                        %
+                    </span>
+                </div>
             </p>
         </div>
     )
