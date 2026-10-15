@@ -3,8 +3,8 @@ import type { textDirection } from "@/components/main/Section"
 import type { BaseComponentProps } from "@/libs/BaseComponentProps"
 import { languagesData, toolsData, appsData } from "@/libs/data"
 import { SectionTitle } from "@/components/main/Section"
-import { useState } from "react"
 import { twMerge } from "tailwind-merge"
+import MonkeyTypePart from "@/components/MonkeyTypePart"
 
 export interface ItemProps {    
     name : string
@@ -151,129 +151,22 @@ function SkillPartTitle({text, className, style, overrideClassName = false, dire
             <h2 className={"text-5xl font-bold mb-4" + " " + (direction === "end" ? "text-end" : direction === "center" ? "text-center" : "text-start")}>
                 {text}
             </h2>
-            {/* bg-linear-90 from-root-fg to-root-bg */}
 
             <div className={"w-full h-1" + " " + (direction === "end" ? "bg-linear-270 from-root-fg to-root-bg" : direction === "center" ? "bg-linear-90 from-root-bg via-root-fg to-root-bg" : "bg-linear-90 from-root-fg to-root-bg")} />
         </div>
     )
 }
 
-interface MonkeyTypeDataProps {
-    mode : TypingMode
-    speed : number
-    speedUnit : TypingUnit
-    accuracy : number
-}
-
-
-interface MonkeyTypeStatProps {
-    data : {
-        fastest : MonkeyTypeDataProps
-        average : MonkeyTypeDataProps
-    }
-}
-
-function MonkeyTypeStat({ data } : MonkeyTypeStatProps) {
-    return (
-        <div>
-            <h1>
-                Typing
-            </h1>
-
-            <div className="grid grid-cols-2 gap-4">
-                <MonkeyTypeCard title="Highest WPM" speed={data.fastest.speed} accuracy={data.fastest.accuracy} speedUnit={data.fastest.speedUnit} />
-
-                <MonkeyTypeCard title="Average WPM" speed={data.average.speed} accuracy={data.average.accuracy} speedUnit={data.average.speedUnit} />
-            </div>
-        </div>
-    )
-}
-
-function MonkeyTypePart() {
-    return (
-        <div>
-            <h1>
-                Typing
-            </h1>
-
-            <select name="" id="">
-                {TYPING_ALL_MODES.map((name) => (
-                    <option key={name} value={name}>
-                        {name}
-                    </option>
-                ))}
-            </select>
-        </div>
-    )
-}
-
-
-export type TypingUnit = "wpm" | "cpm"
-
-interface MonkeyTypeCardProps {
-    title : string
-    speed : number
-    accuracy : number
-    speedUnit : TypingUnit
-}
-
-function MonkeyTypeCard({ title, speed, accuracy, speedUnit } : MonkeyTypeCardProps) {
-    return (
-        <div className="border-3 p-2 rounded-lg flex flex-col items-center gap-4">
-            <h1 className="font-black text-4xl text-center">
-                {title}
-            </h1>
-
-            <div className="flex flex-col gap-2 items-center">
-                <div className="font-bold text-3xl">
-                    {speed}{speedUnit}
-                </div>
-
-                <div className="font-bol text-3xl">
-                    {accuracy}%
-                </div>
-            </div>
-
-        </div>
-    )
-}
-
-// function StatsPart() {
-//     const [isClicked, setIsClicked] = useState<boolean>(false)
-//     const [mode, setMode] = useState<TypingMode>("words 10")
-
-//     const onClick = () => {
-//         setIsClicked(!isClicked)
-//         // WILL BE USED LATER
-//     }
-
-//     return (
-//         <div className="flex flex-col items-center my-8">
-//             <SkillPartTitle text="Typing" className="w-full" direction="center" />
-
-//             {/* <select name="" id="">
-//                 {TYPING_ALL_MODES.map((modeName, index) => (
-//                     <option key={index} value={modeName}>
-//                         {modeName}
-//                     </option>
-//                 ))}
-//             </select> */}
-
-//             <div className="w-full min-w-0">
-//                 <MonkeyTypeStat />
-//             </div>
-//         </div>
-//     )    
-// }
-
 export default function SkillSection() {
     return (
         <section className="p-8">
             <SectionTitle text="Skills" direction="end" />
 
-            {/* <StatsPart /> */}
-
-            <MonkeyTypePart />
+            <div>
+                <SkillPartTitle text="Typing" />
+                
+                <MonkeyTypePart />
+            </div>
 
             <div className="flex flex-col gap-4">
                 <SkillPart title="Languages" items={languages} titleDirection="start" />
