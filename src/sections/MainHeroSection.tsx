@@ -1,5 +1,5 @@
 // DATA
-import { underscoreData, rolesData } from "@/libs/data"
+import { underscoreData, rolesData } from "@/lib/data"
 
 // COMPONENTS
 import { useEffect, useState, useRef } from "react"
@@ -32,6 +32,9 @@ interface RoleProps {
 
 const underscoreOptions = underscoreData
 const rolesOptions = rolesData
+const roles : string[] = rolesOptions.roles
+const delayEachLetter : number = rolesOptions.delayEachLetter
+const textHold : number = rolesOptions.holdDuration
 
 export default function MainHeroSection() {
 	const sectRef = useRef<HTMLDivElement | null>(null)
@@ -112,7 +115,7 @@ export default function MainHeroSection() {
 				<SocialLinks />
 			</div>
 
-			<div style={{"transform" : "translateX(100vw)"} as React.CSSProperties} ref={imageRef} className="relative flex-1 h-1/2 flex items-center justify-center lg:justify-end">
+			<div style={{"transform" : "translateX(100vw)"} as React.CSSProperties} ref={imageRef} className="relative flex-1 h-1/2 min-h-120 flex items-center justify-center lg:justify-end">
 				<img src={profileImage} alt="" className="absolute lg:static top-0 left-0 w-full h-full object-cover rounded-2xl lg:max-w-lg" />
 			</div>
 		</section>
@@ -241,10 +244,7 @@ function BlinkingCursor({isActive, startBlank = false, isSwitchedManually = fals
 }
 
 function Role({ isActive, onBegin, onComplete } : RoleProps) {
-	const roles : string[] = rolesOptions.roles
 	const indexRef = useRef<number>(0)
-	const delayEachLetter : number = rolesOptions.delayEachLetter
-	const textHold : number = rolesOptions.holdDuration
 	const [displayText, setDisplayText] = useState<string>(roles[0])
 
 	const timeoutsRef = useRef<ReturnType<typeof setTimeout>[]>([])

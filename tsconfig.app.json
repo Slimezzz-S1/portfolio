@@ -11,7 +11,7 @@
       "@/icons/*" : ["src/assets/icons/*"],
       "@/mainComponents/*" : ["src/components/main/*"],
       "@/public/*" : ["public/*"],
-      "@/libs/*" : ["src/libs/*"],
+      "@/lib/*" : ["src/lib/*"],
       "@/tools/*" : ["src/assets/icons/tools/*"],
       "@/pages/*" : ["src/pages/*"],
       "@/data/*" : ["src/assets/data/*"]

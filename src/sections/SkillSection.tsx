@@ -1,7 +1,7 @@
 // COMPONENTS
 import type { textDirection } from "@/components/main/Section"
-import type { BaseComponentProps } from "@/libs/BaseComponentProps"
-import { languagesData, toolsData, appsData } from "@/libs/data"
+import type { BaseComponentProps } from "@/lib/BaseComponentProps"
+import { languagesData, toolsData, appsData } from "@/lib/data"
 import { SectionTitle } from "@/components/main/Section"
 import { twMerge } from "tailwind-merge"
 import MonkeyTypePart from "@/components/MonkeyTypePart"
@@ -43,7 +43,6 @@ const apps = appsData
 
 const TYPING_TIME_MODES = ["time 15", "time 30", "time 60", "time 120"] as const
 const TYPING_WORDS_MODES = ["words 10", "words 25", "words 50", "words 100"] as const
-const TYPING_ALL_MODES = [...TYPING_TIME_MODES, ...TYPING_WORDS_MODES] as const
 
 type TypingTimeMode = typeof TYPING_TIME_MODES[number]
 type TypingWordsMode = typeof TYPING_WORDS_MODES[number]
@@ -60,21 +59,27 @@ export function ItemIcon({ name, Icon, color, descriptions, className, style, on
 
 export function ItemDetailed({ name, Icon, color, descriptions, className, skillPercent, style, onClick, overrideClassName = false, overrideStyle = false } : ItemComponentProps) {
     return (
-        <div style={overrideStyle ? style : {"--color" : color, ...style} as React.CSSProperties} className={overrideClassName ? className : twMerge("group grid grid-cols-[auto_1fr] sm:flex justify-between items-center gap-3 sm:gap-4 border rounded-2xl px-3 py-3 transition-all hover:border-(--color) hover:scale-105", className)} onClick={onClick} title={descriptions?.toString() ?? name}>
-            <Icon className="w-20 sm:w-14 h-18 sm:h-14 aspect-square group-hover:text-(--color) transition-colors col-start-1 row-start-1 row-span-3 self-center" />
+        <div style={overrideStyle ? style : {"--color" : color, ...style} as React.CSSProperties} className={overrideClassName ? className : twMerge("group grid grid-cols-[auto__auto_1fr] items-center gap-3 sm:gap-4 border-3 rounded-2xl px-3 py-3 transition-all hover:border-(--color) hover:scale-105 hover:bg-(--color)/10", className)} onClick={onClick} title={descriptions?.toString() ?? name}>
+            <Icon className="w-20 sm:w-14 h-18 sm:h-14 aspect-square group-hover:text-(--color) transition-colors col-start-1 row-start-1 row-span-2 self-center" />
 
-            <h3 className="text-2xl font-bold transition-colors group-hover:text-(--color)">
+            <h3 className="text-2xl font-bold transition-colors group-hover:text-(--color) col-span-2">
                 {name}
             </h3>
 
-            <div className="hidden sm:block flex-1" />
+            {/* <div className="hidden sm:block flex-1" /> */}
 
-            <p className="font-bold sm:text-center text-left text-xl sm:text-base">
+            <p className="font-bold sm:text-center text-left text-xl sm:text-base row-start-2">
                 {skillPercent}%
+                {skillPercent?.toString().length != 3 && (<span className="opacity-0">0</span>)}
             </p>
 
+
+            <div className="w-full row-start-2 col-span-2 h-4 border-3 rounded-full overflow-hidden">
+                <div style={{"--x" : `-${100 - (skillPercent ?? 100)}%`} as React.CSSProperties} className="w-full h-full bg-(--color) translate-x-(--x) rounded-[inherit]" />
+            </div>
+
             {descriptions && (
-                <ul className="row-start-4 sm col-span-2 sm:hidden list-disc ml-8">
+                <ul className="col-span-3 list-disc ml-12">
                     {descriptions?.map((item, index) => (
                         <li key={index} className="font-bold text-2xl">
                             {item}
@@ -82,10 +87,6 @@ export function ItemDetailed({ name, Icon, color, descriptions, className, skill
                     ))}
                 </ul>
             )}
-
-            <div className="w-full sm:w-56 h-4 border-3 rounded-full overflow-hidden">
-                <div style={{"--x" : `-${100 - (skillPercent ?? 100)}%`} as React.CSSProperties} className="w-full h-full bg-(--color) translate-x-(--x) rounded-[inherit]" />
-            </div>
         </div>
     )
 }
@@ -164,7 +165,7 @@ export default function SkillSection() {
 
             <div>
                 <SkillPartTitle text="Typing" />
-                
+
                 <MonkeyTypePart />
             </div>
 

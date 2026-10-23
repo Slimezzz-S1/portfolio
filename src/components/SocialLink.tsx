@@ -1,5 +1,5 @@
 // DATA
-import { socialLinksData } from "@/libs/data"
+import { socialLinksData } from "@/lib/data"
 
 export interface SocialLinkProps {
     name : string

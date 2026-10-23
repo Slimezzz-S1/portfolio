@@ -1,7 +1,8 @@
 // COMPONENTS
 import MainHeroSection from "@/sections/MainHeroSection"
 import BuiltWithSection from "@/sections/BuiltWithSection"
-import SummarySection from "@/sections/SummarySection"
+// import SummarySection from "@/sections/SummarySection"
+import AboutMeSection from "@/sections/AboutMeSection"
 import TodosSection from "@/sections/TodosSection"
 import ProjectSection from "@/sections/ProjectSection"
 import GallerySection from "@/sections/GallerySection"
@@ -11,7 +12,7 @@ import SkillSection from "@/sections/SkillSection"
 export default function HomePage() {
 	return (
 		<>
-			<section className="md:max-w-3xl lg:max-w-7xl mx-auto xl:border-x-3 xl:border-dashed xl:border-x-root-fg/50">
+			<section className="md:max-w-3xl lg:max-w-7xl w-full mx-auto xl:border-x-3 xl:border-dashed xl:border-x-root-fg/50">
 				<div id="home">
 					<MainHeroSection />
 				</div>
@@ -21,7 +22,8 @@ export default function HomePage() {
 				<EpicSection />
 
 				<div id="about">
-					<SummarySection />
+					{/* <SummarySection /> */}
+					<AboutMeSection />
 				</div>
 
 				<div id="skill">

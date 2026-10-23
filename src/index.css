@@ -2,7 +2,8 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 :root {
-    --accent: red;
+    --accent: rgb(43, 182, 61);
+    --light-accent: rgb(34, 235, 158);
     --root-bg: #111;
     --root-fg: white;
     --hatch-pattern: repeating-linear-gradient(
@@ -21,7 +22,8 @@
 } */
 
 @theme inline {
-    --color-accent: red;
+    --color-accent: var(--accent);
+    --color-light-accent : var(--light-accent);
     --color-root-bg: var(--root-bg);
     --color-root-fg: var(--root-fg);
     --background-image-hatch: var(--hatch-pattern);

@@ -1,5 +1,5 @@
 // COMPONENTS
-import type { BaseComponentProps } from "@/libs/BaseComponentProps"
+import type { BaseComponentProps } from "@/lib/BaseComponentProps"
 import { twMerge } from "tailwind-merge"
 
 export type textDirection = "start" | "end" | "center"

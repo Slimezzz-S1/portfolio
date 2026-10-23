@@ -24,6 +24,6 @@ export default defineConfig({
     ViteImageOptimizer(),
   ],
 
-  base : '/portfolio',
+  base : '/portfolio/',
   appType : "spa",  
 })

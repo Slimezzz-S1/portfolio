@@ -1,4 +1,4 @@
-import ordinal from "@/libs/ordinal"
+import ordinal from "@/lib/ordinal"
 
 interface DialogContext {
     count : number

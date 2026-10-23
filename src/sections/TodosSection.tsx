@@ -1,5 +1,5 @@
 // DATA
-import { todoData } from "@/libs/data"
+import { todoData } from "@/lib/data"
 
 // COMPONENTS
 import { useEffect, useRef, useState } from "react"

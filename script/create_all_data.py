@@ -249,7 +249,7 @@ def main() -> None:
 
     # write_file(filepath = DATA_PATH / "test.txt", text = str(sorted(dict_data, key = lambda item : item["wpm"], reverse = True)))
     # print(max(dict_data, key = lambda data : data["wpm"]))
-    print(sum(item["wpm"] for item in dict_data) / len(dict_data))
+    # print(sum(item["wpm"] for item in dict_data) / len(dict_data))
 
     return None
 

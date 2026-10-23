@@ -36,10 +36,10 @@
 		},
 		"time": {
 			"15": {
-				"timestamp": 1791436588000.0,
-				"wpm": 108.8,
-				"rawWpm": 115.2,
-				"accuracy": 93.38,
+				"timestamp": 1792237416000.0,
+				"wpm": 109.6,
+				"rawWpm": 118.4,
+				"accuracy": 96.03,
 				"mode": "time",
 				"mode2": "15"
 			},
@@ -80,18 +80,18 @@
 				"mode2": "10"
 			},
 			"25": {
-				"timestamp": 1791549177000.0,
-				"wpm": 128.28,
-				"rawWpm": 128.28,
+				"timestamp": 1792237862000.0,
+				"wpm": 131.33,
+				"rawWpm": 131.33,
 				"accuracy": 100.0,
 				"mode": "words",
 				"mode2": "25"
 			},
 			"50": {
-				"timestamp": 1790595007000.0,
-				"wpm": 116.68,
-				"rawWpm": 119.53,
-				"accuracy": 99.21,
+				"timestamp": 1792291933000.0,
+				"wpm": 116.86,
+				"rawWpm": 122.02,
+				"accuracy": 96.96,
 				"mode": "words",
 				"mode2": "50"
 			},

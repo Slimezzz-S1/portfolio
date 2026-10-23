@@ -36,7 +36,7 @@ export default function BuiltWithSection() {
         <section ref={sectRef} className="p-8 relative flex flex-col lg:flex-row-reverse">
             <div style={{"transform" : "translateX(-100vw)"} as React.CSSProperties} ref={titleRef} className="flex flex-col gap-2 items-center justify-center w-full">
                 <div className="w-fit mx-auto">
-                    <h1 className="text-7xl sm:text-8xl md:text-9xl lg:text-8xl font-black text-center w-full lg:whitespace-nowrap">
+                    <h1 className="text-6xl  sm:text-8xl md:text-9xl lg:text-8xl font-black text-center w-full whitespace-nowrap">
                         Built With
                     </h1>
 
@@ -52,7 +52,7 @@ export default function BuiltWithSection() {
 
             <div style={{"transform" : "translateX(100vw)"} as React.CSSProperties} ref={mainRef} className="relative w-full">
                 <div className="relative">
-                    <img src={zylHoldingImage} alt="" className="w-full object-top object-cover h-160 lg:h-200" />
+                    <img src={zylHoldingImage} alt="" className="w-full object-top object-cover h-160 lg:h-120" />
 
                     <ReactIcon className="text-[#00c8ff] drop-shadow-[0px_0px_15px_#7be2ff,0px_0px_35px_#00f] absolute top-30 left-[1%] w-[40%] aspect-square z-10 animate-spin-icon" />
 

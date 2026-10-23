@@ -2,7 +2,7 @@
 import resultsData from "@/data/monkey-type/results.json"
 
 // COMPONENTS
-import type { BaseComponentProps } from "@/libs/BaseComponentProps"
+import type { BaseComponentProps } from "@/lib/BaseComponentProps"
 import { useEffect, useState } from "react"
 import { twMerge } from "tailwind-merge"
 import useCount from "@/hooks/useCount"
@@ -52,7 +52,7 @@ type DataProps = Record<Category, {
 }>
 interface CardProps extends TypingResultProps, BaseComponentProps {}
 
-interface TypingResultProps {
+export interface TypingResultProps {
     timestamp : number
     wpm : number
     rawWpm : number
@@ -124,6 +124,7 @@ function Card({ timestamp, wpm, rawWpm, accuracy, mode, mode2, category, overrid
     const [modeIndex, setModeIndex] = useState<number>(0)
     const [mode2Index, setMode2Index] = useState<number>(0)
 
+
     useEffect(() => {
         setCategoryIndex(CATEGORIES.indexOf(category))
         setModeIndex(MODE.indexOf(mode))
@@ -192,12 +193,12 @@ function Card({ timestamp, wpm, rawWpm, accuracy, mode, mode2, category, overrid
 
             <p className="relative text-4xl font-bold opacity-75">
                 <span className="notranslate" translate="no">
-                    {displayAcc}
+                    {displayAcc}%
                 </span>
 
-                <div className="absolute bottom-0 left-full w-full h-full flex items-end">
+                <div className="absolute bottom-0 left-full w-full h-full flex items-end text-lg font-normal">
                     <span>
-                        %
+                        acc
                     </span>
                 </div>
             </p>

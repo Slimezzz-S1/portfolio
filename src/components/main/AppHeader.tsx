@@ -11,7 +11,7 @@ export default function AppHeader() {
 	const [isHidden, setIsHidden] = useState<boolean>(false)
 	const [isSidebarToggled, setIsSidebarToggled] = useState<boolean>(false)
 	const rootRef = useRef<HTMLDivElement | null>(null)
-	const [currentEmptyHeight, setCurrentEmptyHeight] = useState<number>( 0 )
+	const [currentEmptyHeight, setCurrentEmptyHeight] = useState<number>(0)
 	const [isSidebarToggledOnce, setIsSidebarToggledOnce] = useState<boolean>(false)
 
 	useEffect(() => {

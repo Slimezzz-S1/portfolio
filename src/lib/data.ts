@@ -35,7 +35,7 @@ import LuaIcon from "@/icons/languages/lua/cib--lua.svg?react"
 // ICONS : FRAMEWORK/TOOLS
 
 import NextIcon from "@/tools/next-js/akar-icons--nextjs-fill.svg?react"
-import NuxtIcon from "@/tools/nuxt-js/bxl--nuxt-js.svg?react"
+// import NuxtIcon from "@/tools/nuxt-js/bxl--nuxt-js.svg?react"
 import ReactIcon from "@/tools/react/griddy-icons--react.svg?react"
 import VueIcon from "@/tools/vue-js/carbon--logo-vue.svg?react"
 import TailwindIcon from "@/tools/tailwind-css/bxl--tailwind-css.svg?react"
@@ -80,6 +80,13 @@ export interface EpicSectionData {
     roles : string[]
 }
 
+export interface AboutMeDataProps {
+    transitionTime : number
+    delay : number
+    delayMid : number
+    roles : string[]
+}
+
 //////                  //////
 //////      MAIN HERO   //////
 //////                  //////
@@ -88,7 +95,7 @@ export const rolesData : RolesDataProps = {
     roles : [
         "Front-end\nDeveloper",
         "3D Artist",
-        "Left\nHanded"
+        "Video\nEditor"
     ],
     delayEachLetter : 25,
     holdDuration : 2000
@@ -150,7 +157,6 @@ export const summaryItemData : SummaryItemProps[] = [
 //////  SKILL    //////
 //////           //////
 
-
 export const languagesData : ItemProps[] = [
     {
         name : "HTML",
@@ -192,57 +198,72 @@ export const toolsData : ItemProps[] = [
         skillPercent : 45,
         descriptions : [
             "SPA App",
-            "API Routing",
+            "REST API",
             "Routing",
         ]
     },
-    {
-        name : "Nuxt.js",
-        Icon : NuxtIcon,
-        color : "#00DC82",
-        skillPercent : 17
-    },
+    // {
+    //     name : "Nuxt.js",
+    //     Icon : NuxtIcon,
+    //     color : "#00DC82",
+    //     skillPercent : 17,
+    // },
     {
         name : "Vue.js",
         Icon : VueIcon,
         color : "#4FC08D",
-        skillPercent : 15
+        skillPercent : 20,
+        descriptions : [
+            "Basic use of utilities"
+        ]
     },
     {
         name : "React.js",
         Icon : ReactIcon,
         color : "#61DAFB",
-        skillPercent : 76
+        skillPercent : 76,
+        descriptions : [
+            "Custom hooks",
+            "SSR and SSG",
+            "Custom complex components"
+        ]
     },
     {
         name : "TailwindCSS",
         Icon : TailwindIcon,
         color : "#06B6D4",
-        skillPercent : 50
+        skillPercent : 62,
+        descriptions : [
+            "Custom utilities",
+            "Smooth animations"
+        ]
     },
-    {
-        name : "Laravel",
-        Icon : LaravelIcon,
-        color : "#FF2D20",
-        skillPercent : 20
-    },
+    // {
+    //     name : "Laravel",
+    //     Icon : LaravelIcon,
+    //     color : "#FF2D20",
+    //     skillPercent : 15
+    // },
     {
         name : "PostgreSQL",
         Icon : PGSQLIcon,
         color : "#4169E1",
         skillPercent : 35
     },
-    {
-        name : "Nest.js",
-        Icon : NestIcon,
-        skillPercent : 10,
-        color : "#E0234E"
-    },
+    // {
+    //     name : "Nest.js",
+    //     Icon : NestIcon,
+    //     skillPercent : 10,
+    //     color : "#E0234E"
+    // },
     {
         name : "Express.js",
         Icon : ExpressIcon,
         skillPercent : 5,
-        color : "#fff"
+        color : "#fff",
+        descriptions : [
+            "Learning phase"
+        ]
     }
 ] as const
 
@@ -345,8 +366,6 @@ export const navData : NavProps[] = [
 //////  SOCIAL LINKS    //////
 //////                  //////
 
-
-
 export const socialLinksData : SocialLinkProps[] = [
     {
         name : "Youtube",
@@ -370,10 +389,9 @@ export const socialLinksData : SocialLinkProps[] = [
         name : "Discord",
         Icon : DiscordIcon,
         description : "My Discord account",
-        url : ""
+        url : "https://discord.com/users/999482178570305586"
     },
 ] as const
-
 
 //////          //////
 //////  TODOS   //////
@@ -390,7 +408,7 @@ export const todoData : TodoItemProps[] = [
         description : "Almost finished"
     },
     {
-        name : "React 100K Subscriber",
+        name : "Reach 100K Subscriber",
         description : "",
         isChecked : false
     },
@@ -443,3 +461,14 @@ export const projectData : ProjectProps[] = [
 		currentStatus : "work-in-progress"
 	},
 ] as const
+
+//////              //////
+//////  About ME    //////
+//////              //////
+
+export const aboutMeData = {
+    transitionTime : 800,
+    delay : 1100,
+    delayMid : 100,
+    roles : rolesData.roles
+}

@@ -1,5 +1,5 @@
 // DATA
-import { epicSectionData } from "@/libs/data"
+import { epicSectionData } from "@/lib/data"
 
 // ASSETS
 import imageLit from "@/assets/images/epic-section/lit.png"
@@ -10,19 +10,20 @@ import imageEyesDark from "@/assets/images/epic-section/eyes-dark.png"
 // COMPONENTS
 import { useEffect, useRef, useState } from "react"
 import { animate, random, stagger } from "animejs"
+import { getSecretDialogES } from "@/lib/iLoveSlime"
 import useClientVisibility from "@/hooks/useClientVisibility"
-import { getSecretDialogES } from "@/libs/iLoveSlime"
+import useTimers from "@/lib/useTimers"
 
 const options = epicSectionData
 
 export default function EpicSection() {
-    const sectRef = useRef< HTMLDivElement | null >( null )
+    const sectRef = useRef<HTMLDivElement | null>(null)
 
-    const rootImageRef = useRef< HTMLDivElement | null >( null )
+    const rootImageRef = useRef<HTMLDivElement | null>(null)
 
-    const imageLitRef = useRef< HTMLImageElement | null >( null )
-    const imageDarkRef = useRef< HTMLImageElement | null >( null )
-    const imageEyesRef = useRef< HTMLImageElement | null >( null )
+    const imageLitRef = useRef<HTMLImageElement | null>(null)
+    const imageDarkRef = useRef<HTMLImageElement | null>(null)
+    const imageEyesRef = useRef<HTMLImageElement | null>(null)
 
     const intersectRef = useRef< HTMLDivElement | null >( null )
     const rootMainRef = useRef< HTMLHeadingElement | null >( null )
@@ -33,19 +34,10 @@ export default function EpicSection() {
     const [ isActivated, setIsActivated ] = useState< boolean >( false )
     const [ isFinishedTransition, setIsFinishedTransition ] = useState< boolean >( false )
 
-    const timersRef = useRef<ReturnType< typeof setTimeout >[] >( [] )
+    const [addTimers, clearTimers] = useTimers()
 
     const [secretCount, setSecretCount] = useState<number>(1)
     const secretCountRef = useRef<number>(secretCount)
-
-    const clearTimers = () => {
-        timersRef.current.forEach((id) => {
-            clearTimeout(id)
-            // clearInterval(id)
-        })
-
-        timersRef.current = []
-    }
 
     useEffect(() => {
         secretCountRef.current = secretCount
@@ -126,7 +118,7 @@ export default function EpicSection() {
         onActive()
 
         const interval = setInterval(onInterval, 1000)
-        timersRef.current.push(interval)
+        addTimers(interval)
 
         return () => {
             onInActive()
@@ -176,7 +168,7 @@ export default function EpicSection() {
 
     return (
         <section ref={sectRef}>
-            <div className="relative max-w-2xl mx-auto">
+            <div className="relative max-w-2xl mx-auto lg:h-150 xl:220 overflow-hidden">
                 <div className="absolute top-15 md:top-0 left-0 w-full h-1/2 flex items-center justify-center z-0 pointer-events-none">
                     <div ref={backTextsRef} className="flex flex-col gap-2">
                         {options.roles.map((item, index) => (
@@ -205,7 +197,7 @@ export default function EpicSection() {
                     <div ref={intersectRef} className="absolute top-1/2 left-0 w-full h-[15px] z-40" />
                 </div>
 
-                <div ref={rootMainRef} style={{"opacity" : "0", "transform" : "translateY(50%)"} as React.CSSProperties} className="absolute bottom-0 left-0 z-40 flex flex-col items-center justify-center gap-3 w-full h-1/2 pointer-events-auto">
+                <div ref={rootMainRef} style={{"opacity" : "0", "transform" : "translateY(50%)"} as React.CSSProperties} className="absolute bottom-0 left-0 z-40 flex flex-col items-center justify-end gap-3 w-full h-1/2 pointer-events-auto pb-12">
                     <p className="text-8xl sm:text-9xl font-black text-center">
                         Zyl
                     </p>

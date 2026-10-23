@@ -1,8 +1,8 @@
 // DATA
-import { summaryItemData } from "@/libs/data"
+import { summaryItemData } from "@/lib/data"
 
 // COMPONENTS
-import type { BaseComponentProps } from "@/libs/BaseComponentProps"
+import type { BaseComponentProps } from "@/lib/BaseComponentProps"
 import React, { useState, useRef, useEffect } from "react"
 import { animate, stagger } from "animejs"
 import { SectionTitle } from "@/components/main/Section"

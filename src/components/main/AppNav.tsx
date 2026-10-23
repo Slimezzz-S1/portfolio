@@ -1,5 +1,5 @@
 // DATA
-import { navData } from "@/libs/data"
+import { navData } from "@/lib/data"
 
 export interface NavProps {
 	name : string

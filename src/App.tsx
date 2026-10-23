@@ -9,6 +9,9 @@ export default function App() {
     <Routes>
       <Route element={<AppLayout />}>
         <Route index element={<HomePage />} />
+
+        <Route path='/meow' element={<p>meow</p>} />
+
         <Route path="*" element={<NotFound />} />
       </Route>
     </Routes>

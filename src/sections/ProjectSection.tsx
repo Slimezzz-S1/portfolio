@@ -1,5 +1,5 @@
 // DATA
-import { projectData } from "@/libs/data"
+import { projectData } from "@/lib/data"
 
 // ASSETS
 import unknownImage from "@/assets/images/projects/Unknown.png"
