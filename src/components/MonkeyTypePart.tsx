@@ -7,6 +7,32 @@ import { useEffect, useState } from "react"
 import { twMerge } from "tailwind-merge"
 import useCount from "@/hooks/useCount"
 
+export type Mode = "words" | "time"
+export type Mode2<M extends Mode = Mode> = (typeof MODES)[M][number]
+export type Category = "average" | "fastest" | "first"
+type DataProps = Record<Category, {
+    [M in Mode]: Record<Mode2<M>, TypingResultProps>
+}>
+interface CardProps extends TypingResultProps, BaseComponentProps {}
+
+export interface TypingResultProps {
+    timestamp : number
+    wpm : number
+    rawWpm : number
+    accuracy : number
+    mode : Mode
+    mode2 : Mode2
+    category : Category
+}
+
+interface OptionProps<T extends string> extends BaseComponentProps{
+    optionClassName? : string
+    optionStyle? : React.CSSProperties
+    items : readonly (string | number)[]
+    value: T
+    onValueChange: (value: T) => void
+}
+
 const CATEGORIES : string[] = [
     "average",
     "fastest",
@@ -43,32 +69,6 @@ const MODE2 = [
     "60",
     "120"
 ] as const
-
-export type Mode = "words" | "time"
-export type Mode2<M extends Mode = Mode> = (typeof MODES)[M][number]
-export type Category = "average" | "fastest" | "first"
-type DataProps = Record<Category, {
-    [M in Mode]: Record<Mode2<M>, TypingResultProps>
-}>
-interface CardProps extends TypingResultProps, BaseComponentProps {}
-
-export interface TypingResultProps {
-    timestamp : number
-    wpm : number
-    rawWpm : number
-    accuracy : number
-    mode : Mode
-    mode2 : Mode2
-    category : Category
-}
-
-interface OptionProps<T extends string> extends BaseComponentProps{
-    optionClassName? : string
-    optionStyle? : React.CSSProperties
-    items : readonly (string | number)[]
-    value: T
-    onValueChange: (value: T) => void
-}
 
 const results : DataProps = resultsData as DataProps
 

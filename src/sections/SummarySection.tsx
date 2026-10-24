@@ -67,7 +67,7 @@ export default function SummarySection({summaryList = summaries} : SummarySectio
 	)
 }
 
-function SummaryItem({ name, description, style, className, simplifiedDescription, color, ...rest } : SummaryItemProps) {
+function SummaryItem({name, description, style, className, simplifiedDescription, color, ...rest} : SummaryItemProps) {
 	const [isSimplified, setIsSimplified] = useState<boolean>(false)
 
 	return (

@@ -47,11 +47,11 @@ export default function AboutMeSection() {
 
     return (
         <section ref={sectRef} className="p-8">
-            <div ref={wrapperRef} style={{"transform" : "translateX(100vw)"} as React.CSSProperties} className="flex justify-between gap-8">
+            <div ref={wrapperRef} style={{"transform" : "translateX(100vw)"} as React.CSSProperties} className="flex flex-col md:flex-row justify-between gap-8">
                 <div className="flex-1 relative overflow-hidden">
                     <img style={{"transform" : "translateX(100%)"} as React.CSSProperties} ref={imageRef} src={image} alt="" className="rounded-2xl w-full h-full object-cover" />
 
-                    <div className="absolute top-0 left-0 w-full h-full bg-linear-270 from-root-bg to-transparent z-10" />
+                    <div className="absolute top-0 left-0 w-full h-full bg-linear-0 md:-bg-linear-90 from-root-bg to-transparent z-10" />
                 </div>
 
                 <div className="flex-1 flex flex-col justify-center gap-4">

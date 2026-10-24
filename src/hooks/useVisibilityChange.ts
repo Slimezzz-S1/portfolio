@@ -20,7 +20,5 @@ export default function useVisibilityChange() {
 		}
 	}, [])
 
-	// console.log(isVisible)
-
 	return isVisible
 }

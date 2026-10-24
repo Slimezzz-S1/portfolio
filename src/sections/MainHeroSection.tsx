@@ -9,6 +9,7 @@ import useClientVisibility from "@/hooks/useClientVisibility"
 
 // ASSETS
 import profileImage from "@/assets/images/main-hero/main-hero-profile.png"
+import useTimers from "@/lib/useTimers"
 
 interface BlinkingCursorProps {
 	isActive : boolean
@@ -97,7 +98,9 @@ export default function MainHeroSection() {
 					Hi, I'm
 				</p>
 
-				<h2 className="relative text-5xl lg:text-7xl font-bold min-h-[2em] whitespace-pre-wrap font-mono col-start-1">
+				<h2 className="relative text-4xl sm:text-5xl lg:text-7xl font-bold min-h-[2em] leading-[1em] whitespace-pre-wrap font-mono col-start-1">
+					{/* THIS */}
+
 					<Role isActive={isActive} onBegin={onBeginText} onComplete={onCompleteText} />
 
 					<BlinkingCursor isActive={isActive} startBlank={true} isSwitchedManually={isTextTransitioning} isSwitchedValue={false} cursorType="_" />
@@ -247,16 +250,7 @@ function Role({ isActive, onBegin, onComplete } : RoleProps) {
 	const indexRef = useRef<number>(0)
 	const [displayText, setDisplayText] = useState<string>(roles[0])
 
-	const timeoutsRef = useRef<ReturnType<typeof setTimeout>[]>([])
-
-	const clearAllTimeouts = () => {
-		timeoutsRef.current.forEach(( id ) => {
-			clearTimeout(id)
-
-			return
-		})
-		timeoutsRef.current = []
-	}
+	const [addTimer, clearTimers] = useTimers()
 
 	const removeText = (text: string, startDelay: number = 0): number => {
 		for (let i = text.length; i >= 0; i--) {
@@ -266,7 +260,7 @@ function Role({ isActive, onBegin, onComplete } : RoleProps) {
 
 			}, startDelay + delayEachLetter * (text.length - i))
 
-			timeoutsRef.current.push(t)
+			addTimer(t)
 		}
 
 		return delayEachLetter * text.length
@@ -280,7 +274,7 @@ function Role({ isActive, onBegin, onComplete } : RoleProps) {
 
 			}, startDelay + delayEachLetter * i)
 
-			timeoutsRef.current.push(t)
+			addTimer(t)
 		}
 
 		return delayEachLetter * text.length
@@ -288,7 +282,7 @@ function Role({ isActive, onBegin, onComplete } : RoleProps) {
 
 	useEffect(() => {
 		if (!isActive) {
-			clearAllTimeouts()
+			clearTimers()
 
 			return
 		}
@@ -318,7 +312,7 @@ function Role({ isActive, onBegin, onComplete } : RoleProps) {
 
 			}, totalCycleDuration - textHold)
 
-			timeoutsRef.current.push(onCompleteTimeout)
+			addTimer(onCompleteTimeout)
 
 			// LOOP =====
 			const nextTimeout = setTimeout(() => {
@@ -327,13 +321,13 @@ function Role({ isActive, onBegin, onComplete } : RoleProps) {
 				runCycle()
 			}, totalCycleDuration)
 
-			timeoutsRef.current.push(nextTimeout)
+			addTimer(nextTimeout)
 		}
 
 		runCycle()
 
 		return () => {
-			clearAllTimeouts()
+			clearTimers()
 
 			return
 		}

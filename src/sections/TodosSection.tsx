@@ -26,10 +26,10 @@ interface todoSectionProps {
 const todos = todoData
 
 export default function TodosSection({todoList = todos} : todoSectionProps) {
-	const sectRef = useRef< HTMLDivElement | null >( null )
-	const itemsRef = useRef< HTMLDivElement | null >( null )
-	const isVisible = useClientVisibility(sectRef, { threshold : 0.3 })
-	const [ isVisibleOnce, setIsVisibleOnce ] = useState< boolean >( false )
+	const sectRef = useRef<HTMLDivElement | null>(null)
+	const itemsRef = useRef<HTMLDivElement | null>(null)
+	const isVisible = useClientVisibility(sectRef, {threshold : 0.3})
+	const [isVisibleOnce, setIsVisibleOnce] = useState<boolean>(false)
 
 	useEffect(() => {
 		if (isVisible) {
@@ -42,13 +42,13 @@ export default function TodosSection({todoList = todos} : todoSectionProps) {
 		if ( !isVisibleOnce || !itemsRef.current ) return
 
 		animate(itemsRef.current.children, {
-			opacity : [ "0", "1" ],
-			y : ( _, index ) =>  [`-${100 * index!}%`, "0"],
+			opacity : ["0", "1"],
+			y : (_, index) =>  [`-${100 * index!}%`, "0"],
 			duration : 700,
 			delay : stagger(100)
 		})
 		return
-	}, [ isVisibleOnce ])
+	}, [isVisibleOnce])
 
 	return (
 		<section ref={sectRef} className="p-8 flex flex-col gap-4">
@@ -71,7 +71,7 @@ export default function TodosSection({todoList = todos} : todoSectionProps) {
 	)
 }
 
-export function TodoItem({ name, description, isChecked, className, style } : TodoItemComponentProps) {
+export function TodoItem({name, description, isChecked, className, style} : TodoItemComponentProps) {
 	return (
 		<div style={style} className={twMerge("grid grid-cols-[3rem_1fr] gap-x-4", className)}>
 			<div className={"w-12 h-12 aspect-square border-2 rounded-lg" + " " + (typeof isChecked === "boolean" && isChecked ? "bg-root-fg" : isChecked === "halfway" ? "bg-hatch" : "bg-none")} />

@@ -42,7 +42,7 @@ export default function BuiltWithSection() {
 
                     <div className="font-mono flex justify-between w-full">
                         {["React", "+", "Typescript", "+", "Tailwind", "+", "Anime.js"].map((item, index) => (
-                            <p key={index}>
+                            <p style={{"--opacity-small" : item === "+" ? "0" : "100"} as React.CSSProperties} key={index} className="opacity-(--opacity-small) sm:opacity-100">
                                 {item}
                             </p>
                         ))}
@@ -59,8 +59,6 @@ export default function BuiltWithSection() {
                     <div className="absolute bottom-0 left-0 w-full h-[30%] bg-linear-to-t from-10% from-root-bg to-none z-20" />
                 </div>
             </div>
-
-
         </section>
     )
 }

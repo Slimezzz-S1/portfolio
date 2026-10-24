@@ -1,7 +1,7 @@
 // COMPONENTS
 import { useMemo, type RefCallback, type Ref } from "react"
 
-function useMergedRefs<T>(refs: (Ref<T> | undefined)[]): RefCallback<T> {
+export default function useMergedRefs<T>(refs: (Ref<T> | undefined)[]): RefCallback<T> {
   return useMemo(() => {
     return (node: T | null) => {
       refs.forEach((ref) => {
@@ -16,5 +16,3 @@ function useMergedRefs<T>(refs: (Ref<T> | undefined)[]): RefCallback<T> {
     }
   }, refs)
 }
-
-export default useMergedRefs
