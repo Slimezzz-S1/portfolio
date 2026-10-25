@@ -76,7 +76,7 @@ export interface UnderscoreDataProps {
     holdDuration : number
 }
 
-export interface EpicSectionData {
+export interface EpicSectionDataProps {
     roles : string[]
 }
 
@@ -111,7 +111,7 @@ export const underscoreData : UnderscoreDataProps = {
 //////      EPIC SECTION    //////
 //////                      //////
 
-export const epicSectionData = {
+export const epicSectionData : EpicSectionDataProps = {
     roles : [
         "3D Artist",
         "Developer",

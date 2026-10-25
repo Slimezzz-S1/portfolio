@@ -8,6 +8,7 @@ import ProjectSection from "@/sections/ProjectSection"
 import GallerySection from "@/sections/GallerySection"
 import EpicSection from "@/sections/EpicSection"
 import SkillSection from "@/sections/SkillSection"
+import type { ReactNode } from "react"
 
 export default function HomePage() {
 	return (
