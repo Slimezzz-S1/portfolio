@@ -12,11 +12,11 @@ export default function App() {
         {pages.map((page) => {
           switch (page.type) {
             case "main":
-              return <Route index path={page.path} element={page.element} />
+              return <Route index key="/" path={page.path} element={page.element} />
             case "base":
-              return <Route path={page.path} element={page.element} />
+              return <Route key={page.path} path={page.path} element={page.element} />
             case "notFound":
-              return <Route path="*" element={page.element} />
+              return <Route key="404" path="*" element={page.element} />
           }
         })}
       </Route>

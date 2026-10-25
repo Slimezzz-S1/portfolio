@@ -108,7 +108,7 @@ function Options<T extends string>({ items, className, style, overrideClassName,
     return (
         <select style={style} className={overrideClassName ? className : twMerge("border p-2 rounded-lg text-lg text-center", className)} value={value} onChange={(e) => onValueChange(e.target.value as T)}>
             {items.map((name) => (
-                <option value={name} className={twMerge("bg-root-bg text-root-fg rounded-lg", optionClassName)} style={optionStyle} >
+                <option value={name} key={name} className={twMerge("bg-root-bg text-root-fg rounded-lg", optionClassName)} style={optionStyle} >
                     {name}
                 </option>
             ))}
@@ -184,11 +184,9 @@ function Card({ timestamp, wpm, rawWpm, accuracy, mode, mode2, category, overrid
                     {displayWpm}
                 </p>
 
-                <div className="absolute bottom-0 left-full w-full h-full flex items-end">
-                    <span className="text-lg ">
-                        wpm
-                    </span>
-                </div>
+                <span className="absolute bottom-0 left-full w-full h-full flex items-end text-lg">
+                    wpm
+                </span>
             </div>
 
             <p className="relative text-4xl font-bold opacity-75">
@@ -196,11 +194,9 @@ function Card({ timestamp, wpm, rawWpm, accuracy, mode, mode2, category, overrid
                     {displayAcc}%
                 </span>
 
-                <div className="absolute bottom-0 left-full w-full h-full flex items-end text-lg font-normal">
-                    <span>
-                        acc
-                    </span>
-                </div>
+                <span className="absolute bottom-0 left-full w-full h-full flex items-end text-lg font-normal">
+                    acc
+                </span>
             </p>
         </div>
     )
