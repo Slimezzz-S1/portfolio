@@ -1,10 +1,10 @@
 // COMPONENTS
-import type { NavProps } from "@/components/main/AppNav"
-import type { ItemProps } from "@/sections/SkillSection"
-import type { SummaryItemProps } from "@/sections/SummarySection"
-import type { TodoItemProps } from "@/sections/TodosSection"
+import type { NavProps } from "@/components/main/PageNav"
+import type { ItemProps } from "@/sections/home-page/SkillSection"
+import type { SummaryItemProps } from "@/sections/home-page/SummarySection"
+import type { TodoItemProps } from "@/sections/home-page/TodosSection"
 import type { SocialLinkProps } from "@/components/SocialLink"
-import type { ProjectProps } from "@/sections/ProjectSection"
+import type { ProjectProps } from "@/sections/home-page/ProjectSection"
 
 // ICONS : SOCIAL LINKS
 
@@ -13,15 +13,6 @@ import GithubIcon from "@/icons/social-link-icons/github/mdi--github.svg?react"
 import DiscordIcon from "@/icons/social-link-icons/discord/ic--baseline-discord.svg?react"
 import MonkeyTypeIcon from "@/icons/social-link-icons/monkeytype/simple-icons--monkeytype.svg?react"
 // import XIcon from "@/icons/social-link-icons/x/pajamas--twitter.svg?react"
-
-// ICONS : NAV
-
-import HomeIcon from "@/icons/nav/akar-icons--home-alt1.svg?react"
-import InfoIcon from "@/icons/nav/boxicons--info-circle.svg?react"
-import SkillIcon from "@/icons/nav/carbon--skill-level-advanced.svg?react"
-import GoalIcon from "@/icons/nav/akar-icons--check-box.svg?react"
-import ProjectIcon from "@/icons/nav/octicon--project-roadmap-16.svg?react"
-import GalleryIcon from "@/icons/nav/boxicons--gallery-vertical-end-filled.svg?react"
 
 // ICONS : LANGUAGES
 
@@ -298,68 +289,6 @@ export const appsData : ItemProps[] = [
         Icon : GodotIcon,
         color : "#478CBF"
     },
-] as const
-
-
-//////          //////
-//////  NAV     //////
-//////          //////
-
-export const navData : NavProps[] = [
-	{
-		name : "Home",
-		Icon : HomeIcon,
-		idElement : "home",
-		options : {
-			behavior : "smooth",
-			block : "end",
-		}
-	},
-	{
-		name : "About Me",
-		Icon : InfoIcon,
-		idElement : "about",
-		options : {
-			behavior : "smooth",
-			block : "start"
-		}
-	},
-	{
-		name : "Skills",
-		Icon : SkillIcon,
-		idElement : "skill",
-		options : {
-			behavior : "smooth",
-			block : "start"
-		}
-	},
-	{
-		name : "Goals",
-		Icon : GoalIcon,
-		idElement : "goals",
-        options : {
-            behavior : "smooth",
-            block : "start"
-        }
-	},
-	{
-		name : "Project",
-		Icon : ProjectIcon,
-		idElement : "project",
-        options : {
-            behavior : "smooth",
-            block : "start"
-        }
-	},
-	{
-		name : "Gallery",
-		Icon : GalleryIcon,
-		idElement : "gallery",
-		options : {
-			behavior : "smooth",
-			block : "start"
-		}
-	},
 ] as const
 
 //////                  //////

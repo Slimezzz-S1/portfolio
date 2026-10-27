@@ -9,6 +9,8 @@ import { useEffect, useState, useRef } from "react"
 import useTimers from "@/lib/useTimers"
 import { twMerge } from "tailwind-merge"
 import { animate } from "animejs"
+import Button from "@/components/Button"
+import { useNavigate } from "react-router"
 
 const data = aboutMeData
 
@@ -24,6 +26,7 @@ export default function AboutMeSection() {
     const sectRef = useRef<HTMLDivElement | null>(null)
     const isVisible = useClientVisibility(sectRef, { threshold : 0.9 })
     const [isVisibleOnce, setIsVisibleOnce] = useState<boolean>(false)
+    const navigate = useNavigate()
     
     useEffect(() => {
         if (isVisible) setIsVisibleOnce(true)
@@ -55,17 +58,22 @@ export default function AboutMeSection() {
                 </div>
 
                 <div className="flex-1 flex flex-col justify-center gap-4">
-                    <h1 className="text-6xl lg:text-7xl font-black">
+                    <h1 className="text-5xl sm:text-6xl lg:text-7xl font-black text-center md:text-start">
                         What am I?
                     </h1>
 
                     <h3 className="text-3xl font-bold">
-                        A <ScrollingRole className="font-black" isActive={isVisible && isVisibleOnce} /> from Indonesia
+                        A <ScrollingRole className="font-black" isActive={isVisible && isVisibleOnce} />
+                        <span className="whitespace-break-spaces">
+                            {"\n"}from Indonesia
+                        </span>
                     </h3>
 
-                    <p>
+                    <p className="indent-8">
                         A 17 year old self-taught voca student from Indonesia. I mainly focus on create a simple web designs using React, creating simple 3d animation for a hobby, and editing video for fun.
                     </p>
+
+                    <Button text="Know more" className="self-center lg:self-start" onClick={() => navigate("/about")} />
                 </div>
             </div>
         </section>

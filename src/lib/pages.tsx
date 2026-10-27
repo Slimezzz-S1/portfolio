@@ -6,14 +6,14 @@ import GoalIcon from "@/icons/nav/akar-icons--check-box.svg?react"
 import ProjectIcon from "@/icons/nav/octicon--project-roadmap-16.svg?react"
 import GalleryIcon from "@/icons/nav/boxicons--gallery-vertical-end-filled.svg?react"
 
-
 // COMPONENTS
-import type { NavProps } from "@/components/main/AppNav"
+import type { NavProps } from "@/components/main/PageNav"
 import { lazy, type ReactNode } from "react"
 import HomePage from "@/pages/HomePage"
-const NotFound = lazy(() => import("@/pages/NotFound"))
+const NotFoundPage = lazy(() => import("@/pages/NotFound"))
+const AboutPage = lazy(() => import("@/pages/AboutPage"))
 
-interface BasePageProps {
+export interface BasePageProps {
     type : "base"
     name : string
     path : string
@@ -22,27 +22,27 @@ interface BasePageProps {
     nav? : NavProps[]
 }
 
-interface MainPageProps extends Omit<BasePageProps, "type"> {
+export interface MainPageProps extends Omit<BasePageProps, "type"> {
     type : "main"
 }
 
-interface NotFoundPageProps {
+export interface NotFoundPageProps {
     type : "notFound"
     isDefault : boolean
     element : ReactNode
 }
 
-type PageProps = BasePageProps | NotFoundPageProps | MainPageProps
+export type PageProps = BasePageProps | NotFoundPageProps | MainPageProps
 
 const pages : PageProps[] = [
     {
         type : "notFound",
         isDefault : true,
-        element : <NotFound />
+        element : <NotFoundPage />
     },
     {
         type : "main",
-        name : "home",
+        name : "Home",
         path : "/",
         element : <HomePage />,
         nav : [
@@ -101,6 +101,12 @@ const pages : PageProps[] = [
                 }
             },
         ]
+    },
+    {
+        type : "main",
+        name : "About Me",
+        path : "/about",
+        element : <AboutPage />
     },
     {
         type : "base",

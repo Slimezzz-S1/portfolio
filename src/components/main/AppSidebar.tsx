@@ -2,7 +2,7 @@
 import { useEffect, useRef, useState } from "react"
 import { createPortal } from "react-dom"
 import { animate } from "animejs"
-import AppNav from "@/mainComponents/AppNav"
+import AppNav, { type NavProps } from "@/components/main/PageNav"
 
 interface AppSidebarProps {
 	posY : number

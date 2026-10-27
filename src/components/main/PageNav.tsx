@@ -1,5 +1,4 @@
-// DATA
-import { navData } from "@/lib/data"
+import usePage from "@/lib/usePage"
 
 export interface NavProps {
 	name : string
@@ -46,10 +45,13 @@ function Nav({ name, Icon, idElement, summary, options, onClick } : Omit<NavProp
 	)
 }
 
-export default function AppNav({ navList = navData, onClick, className, style, overrideClassName = false } : AppNavProps) {
+export default function AppNav({ navList, onClick, className, style, overrideClassName = false } : AppNavProps) {
+	const page = usePage()
+	const nav  = page?.nav ?? (navList ?? [])
+
 	return (
 		<nav style={style} className={overrideClassName ? className :  "flex flex-col p-4 gap-4" + " " + className}>
-			{navList.map(( item, index ) => ( <Nav key={index} name={item.name} Icon={item.Icon} summary={item.summary} idElement={item.idElement} onClick={onClick} options={item.options} /> ))}
+			{nav.map((item, index) => (<Nav key={index} name={item.name} Icon={item.Icon} summary={item.summary} idElement={item.idElement} onClick={onClick} options={item.options} />))}
 		</nav>
 	)
 }

@@ -37,7 +37,7 @@ const roles : string[] = rolesOptions.roles
 const delayEachLetter : number = rolesOptions.delayEachLetter
 const textHold : number = rolesOptions.holdDuration
 
-export default function MainHeroSection() {
+export default function HeroSection() {
 	const sectRef = useRef<HTMLDivElement | null>(null)
 	const imageRef = useRef<HTMLDivElement | null>(null)
 	const textRef = useRef<HTMLDivElement | null>(null)

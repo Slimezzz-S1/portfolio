@@ -6,6 +6,7 @@ import Logo from "@/icons/favicon.svg?react"
 import React, { useEffect, useState, useRef } from "react"
 import AppBurger from "@/mainComponents/AppBurger"
 import AppSidebar from "@/mainComponents/AppSidebar"
+import type { NavProps } from "@/mainComponents/PageNav"
 
 export default function AppHeader() {
 	const [isHidden, setIsHidden] = useState<boolean>(false)
