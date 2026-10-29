@@ -209,7 +209,6 @@ function Underscores({ amount, endLineAt, isActive } : UnderScoreProps) {
 	)
 }
 
-
 function BlinkingCursor({isActive, startBlank = false, isSwitchedManually = false, isSwitchedValue = true, cursorType = "_"} : BlinkingCursorProps) {
 	const [isSwitched, setIsSwitched] = useState<boolean>(startBlank ? true : false)
 

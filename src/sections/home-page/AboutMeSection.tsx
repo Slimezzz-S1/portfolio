@@ -24,7 +24,7 @@ export default function AboutMeSection() {
     const wrapperRef = useRef<HTMLDivElement | null>(null)
     const imageRef = useRef<HTMLImageElement | null>(null)
     const sectRef = useRef<HTMLDivElement | null>(null)
-    const isVisible = useClientVisibility(sectRef, { threshold : 0.9 })
+    const isVisible = useClientVisibility(sectRef, { threshold : 0.7 })
     const [isVisibleOnce, setIsVisibleOnce] = useState<boolean>(false)
     const navigate = useNavigate()
     
