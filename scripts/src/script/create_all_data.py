@@ -1,16 +1,14 @@
+from goodies import json_encode, write_file
 from dataclasses import dataclass
-from enum import Enum
-from pathlib import Path
 from typing import Any, Literal
+from pathlib import Path
+from enum import Enum
 import csv
-import json
-import math
 
-ROOT_PATH : Path = Path(__file__).parent.parent
-DATA_PATH : Path = ROOT_PATH / "src" / "assets" / "data" / "monkey-type"
-INPUT_PATH : Path = DATA_PATH / "results.csv"
-OUTPUT_PATH : Path = DATA_PATH / "results.json"
+from script import MONKEYTYPE_FILEPATH, MONKEYTYPE_OUTPUT_FILEPATH
 
+INPUT_PATH : Path = MONKEYTYPE_FILEPATH / "results.csv"
+OUTPUT_PATH : Path = MONKEYTYPE_OUTPUT_FILEPATH
 
 #
 # OPTIONS
@@ -26,7 +24,7 @@ def init() -> None:
         user_confirm : str = input(f"The output file {OUTPUT_PATH} already exists, do you want to continue?\ny/n\n>>> ")
 
         if not user_confirm.lower() in ["y", "yes"]:
-            quit
+            quit()
 
     return None
 
@@ -136,60 +134,6 @@ def csv_encode(filepath : Path | str = INPUT_PATH, fields : list[Field] = FIELDS
     result.sort(key = lambda item : item[sort_key], reverse = sort_reverse)
     return result
 
-def write_file(text : str, filepath : str | Path = OUTPUT_PATH) -> None:
-    with open(filepath, "w", encoding = "utf-8") as f:
-        f.write(text)
-
-def json_encode(data : list[dict[str, Any]] | dict[str, Any]) -> str:
-    if not type(data) in [list, dict]:
-        raise TypeError(f"{type(data)} is not either a list or a dict!")
-
-    def encode(value : Any, indent_level : int = 0) -> str:
-        indent = "\t" * indent_level
-        inner_indent = "\t" * (indent_level + 1)
-
-        match value:
-            case None:
-                return "null"
-            
-            case bool():
-                return "true" if value else "false"
-            
-            case int():
-                return str(value)
-            
-            case float():
-                if math.isnan(value) or math.isinf(value):
-                    return "null"
-                
-                return str(value)
-            
-            case str():
-                return json.dumps(value, ensure_ascii = False)
-            
-            case list():
-                if not value:
-                    return "[]"
-                
-                items = [inner_indent + encode(v, indent_level = indent_level + 1) for v in value]
-                return "[\n" + ",\n".join(items) + "\n]"
-            
-            case dict():
-                if not value:
-                    return "{}"
-                
-                items = [
-                    f"{inner_indent}{json.dumps(str(k), ensure_ascii = False)}: {encode(v, indent_level + 1)}" for k, v in value.items()
-                ]
-                return "{\n" + ",\n".join(items) + "\n" + indent + "}"
-            
-            case _:
-                raise TypeError(f"cannot encode type {type(value).__name__}")
-
-        return encode(data, 0)
-    
-    return encode(data)
-
 def filter_by_mode(data : list[dict[str, Any]], mode : Modes | str, mode2 : Modes2 | str, with_mode2 : bool = True) -> list[dict[str, Any]]:
     if with_mode2 and not mode2:
         raise ValueError("no value in mode2!")
@@ -219,7 +163,6 @@ def filter_by_category(data : list[dict[str, Any]], category : str) -> dict[str,
         
         case _:
             raise ValueError("where is the category?")
-    ...
 
 def main() -> None:
     init()
@@ -241,7 +184,7 @@ def main() -> None:
 
     # print(filter_by_mode(dict_data, "time", "120"))
     # write_file(text = json_encode(filter_by_mode(dict_data, "time", "15", with_mode2 = True)))
-    write_file(text = json_encode(format_data))
+    write_file(text = json_encode(format_data), filepath = OUTPUT_PATH)
 
     # print(format_data)
 

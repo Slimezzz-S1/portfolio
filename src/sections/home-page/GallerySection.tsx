@@ -6,7 +6,7 @@ import { useEffect, useRef, useState } from "react"
 
 export function images( folderName : string | string[]) {
     const modules : Record<string, unknown> = import.meta.glob(
-        "../assets/images/Gallery/**",
+        "/src/assets/images/gallery/**",
         {
             eager : true,
             query : "?url",
