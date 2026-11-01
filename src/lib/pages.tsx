@@ -12,6 +12,7 @@ import { lazy, type ReactNode } from "react"
 import HomePage from "@/pages/HomePage"
 const NotFoundPage = lazy(() => import("@/pages/NotFound"))
 const AboutPage = lazy(() => import("@/pages/AboutPage"))
+const SkillsPage = lazy(() => import("@/pages/AboutPage"))
 
 export interface BasePageProps {
     type : "base"
@@ -117,7 +118,13 @@ const pages : PageProps[] = [
                 meow
             </p>
         )
-    }
+    },
+    {
+        type : "base",
+        name : "Skills",
+        path : "/skills",
+        element : <SkillsPage />
+    },
 ] as const
 
 export default pages

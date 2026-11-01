@@ -1,0 +1,19 @@
+query($login: String!, $from: DateTime, $to: DateTime) {
+    user(login: $login) {
+        contributionsCollection(from: $from, to: $to) {
+            totalCommits : totalCommitContributions
+            totalPullRequests : totalPullRequestContributions
+            totalIssues : totalIssueContributions
+            totalPullRequestReviews : totalPullRequestReviewContributions
+            calendar : contributionCalendar {
+                totalContributions
+                weeks {
+                    days : contributionDays {
+                        date
+                        amount : contributionCount
+                    }
+                }
+            }
+        }
+    }
+}

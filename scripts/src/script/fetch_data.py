@@ -1,5 +1,5 @@
-from goodies import json_encode, write_file
-from script import GITHUB_OUTPUT_FILEPATH, GITHUB_USERNAME, LEETCODE_USERNAME, LEETCODE_OUTPUT_FILEPATH
+from script import GITHUB_USERNAME, LEETCODE_USERNAME, LEETCODE_RAW_FILEPATH, GITHUB_GRAPHQL_FILEPATH, GITHUB_RAW_FILEPATH, LEETCODE_GRAPHQL_FILEPATH
+from goodies import json_encode, read_file, write_file
 from datetime import datetime, timezone
 from dotenv import load_dotenv
 from pathlib import Path
@@ -27,27 +27,7 @@ def github() -> dict[str, Any]:
         "to" : to_utc.isoformat()
     }
 
-    query = """
-    query($login: String!, $from: DateTime, $to: DateTime) {
-    user(login: $login) {
-        contributionsCollection(from: $from, to: $to) {
-        totalCommitContributions
-        totalPullRequestContributions
-        totalIssueContributions
-        totalPullRequestReviewContributions
-        contributionCalendar {
-            totalContributions
-            weeks {
-            contributionDays {
-                date
-                contributionCount
-            }
-            }
-        }
-        }
-    }
-    }
-    """
+    query = read_file(GITHUB_GRAPHQL_FILEPATH)
 
     response = requests.post(
         "https://api.github.com/graphql",
@@ -59,18 +39,7 @@ def github() -> dict[str, Any]:
     return response.json()["data"]["user"]["contributionsCollection"]
 
 def leetcode() -> dict[str, Any]:
-    query = """
-    query userProfileCalendar($username: String!, $year: Int) {
-    matchedUser(username: $username) {
-        userCalendar(year: $year) {
-        activeYears
-        streak
-        totalActiveDays
-        submissionCalendar
-        }
-    }
-    }
-    """
+    query = read_file(LEETCODE_GRAPHQL_FILEPATH)
 
     response = requests.post(
         "https://leetcode.com/graphql",
@@ -78,21 +47,25 @@ def leetcode() -> dict[str, Any]:
         headers={"Referer": "https://leetcode.com", "User-Agent": "Mozilla/5.0"},
     )
     response.raise_for_status()
-    raw_data = response.json()["data"]["matchedUser"]["userCalendar"]
+    raw_data = response.json()["data"]["user"]["calendar"]
 
-    submissions = {datetime.fromtimestamp(int(timestamp), tz = timezone.utc) : amount for timestamp, amount in json.loads(raw_data["submissionCalendar"]).items()}
+    submissions = {
+        datetime.fromtimestamp(int(timestamp), tz = timezone.utc) : amount
+        for timestamp, amount in json.loads(raw_data["submissions"]).items()
+    }
 
-    data = {key : value for key, value in raw_data.items() if key != "submissionCalendar"}
-    data.setdefault("submissionCalendar", {})
-    data["submissionCalendar"] = submissions
+    data = {key : value for key, value in raw_data.items() if key != "submissions"}
+    data.setdefault("submissions", {})
+    data["submissions"] = submissions
 
     return data
 
-def main () -> None:
-    # data_str = json_encode(github())
-    # write_file(data_str, GITHUB_OUTPUT_FILEPATH)
+def main() -> None:
+    data_str = json_encode(github())
+    write_file(GITHUB_RAW_FILEPATH, data_str)
+
     leetcode_data = json_encode(leetcode())
-    write_file(leetcode_data, LEETCODE_OUTPUT_FILEPATH)
+    write_file(LEETCODE_RAW_FILEPATH, leetcode_data)
     return None
 
 

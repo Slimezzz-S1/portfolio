@@ -1,0 +1,8 @@
+query userProfileCalendar($username: String!, $year: Int) {
+    user : matchedUser(username: $username) {
+        calendar : userCalendar(year: $year) {
+            streak
+            submissions : submissionCalendar
+        }
+    }
+}

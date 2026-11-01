@@ -164,36 +164,20 @@ def filter_by_category(data : list[dict[str, Any]], category : str) -> dict[str,
         case _:
             raise ValueError("where is the category?")
 
-def main() -> None:
-    init()
-
+def generate() -> None:
     dict_data = [item for item in csv_encode(sort_key = "wpm", sort_reverse = True) if item["wpm"] >= 70]
-    # json_string = json_encode(dict_data)
-
-    # format_data : dict[str, dict[str, Any]] = {
-    #     "average" : sum(item["wpm"] for item in dict_data) / len(dict_data),
-    #     "fastest" : max(dict_data, key = lambda data : data["wpm"])
-    #     # "fastest" : {
-    #     #     key : max()
-    #     # }
-    # }
 
     format_data : dict[str, dict[str, Any]] = {
         category : {mode : {md2 : filter_by_category(filter_by_mode(dict_data, mode, md2), category) for md2 in mode2} for mode, mode2 in MODES.items()} for category in CATEGORIES
     }
 
-    # print(filter_by_mode(dict_data, "time", "120"))
-    # write_file(text = json_encode(filter_by_mode(dict_data, "time", "15", with_mode2 = True)))
-    write_file(text = json_encode(format_data), filepath = OUTPUT_PATH)
+    write_file(filepath = OUTPUT_PATH, text = json_encode(format_data))
 
-    # print(format_data)
 
-    # write_file(text = json_encode(format_data))
+def main() -> None:
+    init()
 
-    # write_file(filepath = DATA_PATH / "test.txt", text = str(sorted(dict_data, key = lambda item : item["wpm"], reverse = True)))
-    # print(max(dict_data, key = lambda data : data["wpm"]))
-    # print(sum(item["wpm"] for item in dict_data) / len(dict_data))
-
+    generate()
     return None
 
 if __name__ == '__main__':

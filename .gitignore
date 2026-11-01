@@ -28,3 +28,4 @@ __pycache__/*
 
 results.csv
 .env    
+raw.json

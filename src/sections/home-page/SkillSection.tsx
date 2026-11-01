@@ -1,10 +1,14 @@
+// DATA
+import { languagesData, toolsData, appsData } from "@/lib/data"
+
 // COMPONENTS
+import MonkeyTypePart from "@/components/MonkeyTypePart"
+import Button from "@/components/Button"
 import type { textDirection } from "@/components/main/Section"
 import type { BaseComponentProps } from "@/lib/BaseComponentProps"
-import { languagesData, toolsData, appsData } from "@/lib/data"
 import { SectionTitle } from "@/components/main/Section"
 import { twMerge } from "tailwind-merge"
-import MonkeyTypePart from "@/components/MonkeyTypePart"
+import { useNavigate } from "react-router"
 
 export interface ItemProps {    
     name : string
@@ -159,8 +163,10 @@ function SkillPartTitle({text, className, style, overrideClassName = false, dire
 }
 
 export default function SkillSection() {
+    const navigate = useNavigate()
+
     return (
-        <section className="p-8">
+        <section className="p-8 flex flex-col gap-4 items-stretch">
             <SectionTitle text="Skills" direction="end" />
 
             <div>
@@ -176,6 +182,8 @@ export default function SkillSection() {
 
                 <SkillPart title="Apps" items={apps} titleDirection="end" />
             </div>
+
+            <Button text="More" className="self-center w-90 max-w-full" onClick={() => navigate("/skills")} />
         </section>
     )
 }

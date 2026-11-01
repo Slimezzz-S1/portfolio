@@ -1,13 +1,15 @@
 from pathlib import Path
 from typing import Any
+import json
+import math
 
-def write_file(text : str, filepath : str | Path) -> None:
+def write_file(filepath : str | Path, text : str) -> None:
     with open(filepath, "w", encoding = "utf-8") as f:
         f.write(text)
 
-import json
-import math
-from typing import Any
+def read_file(filepath : str | Path) -> str:
+    with open(filepath, "r", encoding = "utf-8") as f:
+        return f.read()
 
 def json_encode(data : list[dict[str, Any]] | dict[str, Any]) -> str:
     if not type(data) in (list, dict):
@@ -41,15 +43,13 @@ def json_encode(data : list[dict[str, Any]] | dict[str, Any]) -> str:
                     return "[]"
                 
                 items = [inner_indent + encode(v, indent_level = indent_level + 1) for v in value]
-                return "[\n" + ",\n".join(items) + "\n]"
+                return "[\n" + ",\n".join(items) + "\n" + indent + "]"
             
             case dict():
                 if not value:
                     return "{}"
                 
-                items = [
-                    f"{inner_indent}{json.dumps(str(k), ensure_ascii = False)}: {encode(v, indent_level + 1)}" for k, v in value.items()
-                ]
+                items = [f"{inner_indent}{json.dumps(str(k), ensure_ascii = False)}: {encode(v, indent_level + 1)}" for k, v in value.items()]
                 return "{\n" + ",\n".join(items) + "\n" + indent + "}"
             
             case _:

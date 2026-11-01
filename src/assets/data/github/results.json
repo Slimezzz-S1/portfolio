@@ -1,839 +1,191 @@
 {
-	"totalCommitContributions": 103,
-	"totalPullRequestContributions": 1,
-	"totalIssueContributions": 1,
-	"totalPullRequestReviewContributions": 0,
-	"contributionCalendar": {
-		"totalContributions": 115,
-		"weeks": [
-			{
-				"contributionDays": [
-					{
-						"date": "2026-05-04",
-						"contributionCount": 8
-					},
-					{
-						"date": "2026-05-05",
-						"contributionCount": 1
-					},
-					{
-						"date": "2026-05-06",
-						"contributionCount": 2
-					},
-					{
-						"date": "2026-05-07",
-						"contributionCount": 2
-					},
-					{
-						"date": "2026-05-08",
-						"contributionCount": 3
-					},
-					{
-						"date": "2026-05-09",
-						"contributionCount": 6
-					}
-]
-			},
-			{
-				"contributionDays": [
-					{
-						"date": "2026-05-10",
-						"contributionCount": 0
-					},
-					{
-						"date": "2026-05-11",
-						"contributionCount": 0
-					},
-					{
-						"date": "2026-05-12",
-						"contributionCount": 1
-					},
-					{
-						"date": "2026-05-13",
-						"contributionCount": 0
-					},
-					{
-						"date": "2026-05-14",
-						"contributionCount": 0
-					},
-					{
-						"date": "2026-05-15",
-						"contributionCount": 0
-					},
-					{
-						"date": "2026-05-16",
-						"contributionCount": 0
-					}
-]
-			},
-			{
-				"contributionDays": [
-					{
-						"date": "2026-05-17",
-						"contributionCount": 0
-					},
-					{
-						"date": "2026-05-18",
-						"contributionCount": 0
-					},
-					{
-						"date": "2026-05-19",
-						"contributionCount": 0
-					},
-					{
-						"date": "2026-05-20",
-						"contributionCount": 0
-					},
-					{
-						"date": "2026-05-21",
-						"contributionCount": 0
-					},
-					{
-						"date": "2026-05-22",
-						"contributionCount": 0
-					},
-					{
-						"date": "2026-05-23",
-						"contributionCount": 0
-					}
-]
-			},
-			{
-				"contributionDays": [
-					{
-						"date": "2026-05-24",
-						"contributionCount": 0
-					},
-					{
-						"date": "2026-05-25",
-						"contributionCount": 0
-					},
-					{
-						"date": "2026-05-26",
-						"contributionCount": 0
-					},
-					{
-						"date": "2026-05-27",
-						"contributionCount": 0
-					},
-					{
-						"date": "2026-05-28",
-						"contributionCount": 0
-					},
-					{
-						"date": "2026-05-29",
-						"contributionCount": 0
-					},
-					{
-						"date": "2026-05-30",
-						"contributionCount": 0
-					}
-]
-			},
-			{
-				"contributionDays": [
-					{
-						"date": "2026-05-31",
-						"contributionCount": 4
-					},
-					{
-						"date": "2026-06-01",
-						"contributionCount": 0
-					},
-					{
-						"date": "2026-06-02",
-						"contributionCount": 0
-					},
-					{
-						"date": "2026-06-03",
-						"contributionCount": 0
-					},
-					{
-						"date": "2026-06-04",
-						"contributionCount": 0
-					},
-					{
-						"date": "2026-06-05",
-						"contributionCount": 0
-					},
-					{
-						"date": "2026-06-06",
-						"contributionCount": 1
-					}
-]
-			},
-			{
-				"contributionDays": [
-					{
-						"date": "2026-06-07",
-						"contributionCount": 0
-					},
-					{
-						"date": "2026-06-08",
-						"contributionCount": 0
-					},
-					{
-						"date": "2026-06-09",
-						"contributionCount": 0
-					},
-					{
-						"date": "2026-06-10",
-						"contributionCount": 0
-					},
-					{
-						"date": "2026-06-11",
-						"contributionCount": 0
-					},
-					{
-						"date": "2026-06-12",
-						"contributionCount": 0
-					},
-					{
-						"date": "2026-06-13",
-						"contributionCount": 0
-					}
-]
-			},
-			{
-				"contributionDays": [
-					{
-						"date": "2026-06-14",
-						"contributionCount": 0
-					},
-					{
-						"date": "2026-06-15",
-						"contributionCount": 0
-					},
-					{
-						"date": "2026-06-16",
-						"contributionCount": 0
-					},
-					{
-						"date": "2026-06-17",
-						"contributionCount": 0
-					},
-					{
-						"date": "2026-06-18",
-						"contributionCount": 0
-					},
-					{
-						"date": "2026-06-19",
-						"contributionCount": 0
-					},
-					{
-						"date": "2026-06-20",
-						"contributionCount": 0
-					}
-]
-			},
-			{
-				"contributionDays": [
-					{
-						"date": "2026-06-21",
-						"contributionCount": 0
-					},
-					{
-						"date": "2026-06-22",
-						"contributionCount": 1
-					},
-					{
-						"date": "2026-06-23",
-						"contributionCount": 0
-					},
-					{
-						"date": "2026-06-24",
-						"contributionCount": 1
-					},
-					{
-						"date": "2026-06-25",
-						"contributionCount": 0
-					},
-					{
-						"date": "2026-06-26",
-						"contributionCount": 0
-					},
-					{
-						"date": "2026-06-27",
-						"contributionCount": 0
-					}
-]
-			},
-			{
-				"contributionDays": [
-					{
-						"date": "2026-06-28",
-						"contributionCount": 0
-					},
-					{
-						"date": "2026-06-29",
-						"contributionCount": 0
-					},
-					{
-						"date": "2026-06-30",
-						"contributionCount": 3
-					},
-					{
-						"date": "2026-07-01",
-						"contributionCount": 2
-					},
-					{
-						"date": "2026-07-02",
-						"contributionCount": 7
-					},
-					{
-						"date": "2026-07-03",
-						"contributionCount": 0
-					},
-					{
-						"date": "2026-07-04",
-						"contributionCount": 6
-					}
-]
-			},
-			{
-				"contributionDays": [
-					{
-						"date": "2026-07-05",
-						"contributionCount": 4
-					},
-					{
-						"date": "2026-07-06",
-						"contributionCount": 2
-					},
-					{
-						"date": "2026-07-07",
-						"contributionCount": 1
-					},
-					{
-						"date": "2026-07-08",
-						"contributionCount": 0
-					},
-					{
-						"date": "2026-07-09",
-						"contributionCount": 0
-					},
-					{
-						"date": "2026-07-10",
-						"contributionCount": 0
-					},
-					{
-						"date": "2026-07-11",
-						"contributionCount": 0
-					}
-]
-			},
-			{
-				"contributionDays": [
-					{
-						"date": "2026-07-12",
-						"contributionCount": 6
-					},
-					{
-						"date": "2026-07-13",
-						"contributionCount": 2
-					},
-					{
-						"date": "2026-07-14",
-						"contributionCount": 5
-					},
-					{
-						"date": "2026-07-15",
-						"contributionCount": 0
-					},
-					{
-						"date": "2026-07-16",
-						"contributionCount": 0
-					},
-					{
-						"date": "2026-07-17",
-						"contributionCount": 1
-					},
-					{
-						"date": "2026-07-18",
-						"contributionCount": 0
-					}
-]
-			},
-			{
-				"contributionDays": [
-					{
-						"date": "2026-07-19",
-						"contributionCount": 1
-					},
-					{
-						"date": "2026-07-20",
-						"contributionCount": 0
-					},
-					{
-						"date": "2026-07-21",
-						"contributionCount": 0
-					},
-					{
-						"date": "2026-07-22",
-						"contributionCount": 0
-					},
-					{
-						"date": "2026-07-23",
-						"contributionCount": 0
-					},
-					{
-						"date": "2026-07-24",
-						"contributionCount": 0
-					},
-					{
-						"date": "2026-07-25",
-						"contributionCount": 0
-					}
-]
-			},
-			{
-				"contributionDays": [
-					{
-						"date": "2026-07-26",
-						"contributionCount": 0
-					},
-					{
-						"date": "2026-07-27",
-						"contributionCount": 0
-					},
-					{
-						"date": "2026-07-28",
-						"contributionCount": 0
-					},
-					{
-						"date": "2026-07-29",
-						"contributionCount": 1
-					},
-					{
-						"date": "2026-07-30",
-						"contributionCount": 0
-					},
-					{
-						"date": "2026-07-31",
-						"contributionCount": 0
-					},
-					{
-						"date": "2026-08-01",
-						"contributionCount": 0
-					}
-]
-			},
-			{
-				"contributionDays": [
-					{
-						"date": "2026-08-02",
-						"contributionCount": 0
-					},
-					{
-						"date": "2026-08-03",
-						"contributionCount": 0
-					},
-					{
-						"date": "2026-08-04",
-						"contributionCount": 0
-					},
-					{
-						"date": "2026-08-05",
-						"contributionCount": 0
-					},
-					{
-						"date": "2026-08-06",
-						"contributionCount": 0
-					},
-					{
-						"date": "2026-08-07",
-						"contributionCount": 0
-					},
-					{
-						"date": "2026-08-08",
-						"contributionCount": 0
-					}
-]
-			},
-			{
-				"contributionDays": [
-					{
-						"date": "2026-08-09",
-						"contributionCount": 0
-					},
-					{
-						"date": "2026-08-10",
-						"contributionCount": 0
-					},
-					{
-						"date": "2026-08-11",
-						"contributionCount": 0
-					},
-					{
-						"date": "2026-08-12",
-						"contributionCount": 0
-					},
-					{
-						"date": "2026-08-13",
-						"contributionCount": 1
-					},
-					{
-						"date": "2026-08-14",
-						"contributionCount": 0
-					},
-					{
-						"date": "2026-08-15",
-						"contributionCount": 0
-					}
-]
-			},
-			{
-				"contributionDays": [
-					{
-						"date": "2026-08-16",
-						"contributionCount": 0
-					},
-					{
-						"date": "2026-08-17",
-						"contributionCount": 0
-					},
-					{
-						"date": "2026-08-18",
-						"contributionCount": 0
-					},
-					{
-						"date": "2026-08-19",
-						"contributionCount": 0
-					},
-					{
-						"date": "2026-08-20",
-						"contributionCount": 0
-					},
-					{
-						"date": "2026-08-21",
-						"contributionCount": 0
-					},
-					{
-						"date": "2026-08-22",
-						"contributionCount": 0
-					}
-]
-			},
-			{
-				"contributionDays": [
-					{
-						"date": "2026-08-23",
-						"contributionCount": 0
-					},
-					{
-						"date": "2026-08-24",
-						"contributionCount": 0
-					},
-					{
-						"date": "2026-08-25",
-						"contributionCount": 0
-					},
-					{
-						"date": "2026-08-26",
-						"contributionCount": 0
-					},
-					{
-						"date": "2026-08-27",
-						"contributionCount": 0
-					},
-					{
-						"date": "2026-08-28",
-						"contributionCount": 0
-					},
-					{
-						"date": "2026-08-29",
-						"contributionCount": 0
-					}
-]
-			},
-			{
-				"contributionDays": [
-					{
-						"date": "2026-08-30",
-						"contributionCount": 0
-					},
-					{
-						"date": "2026-08-31",
-						"contributionCount": 0
-					},
-					{
-						"date": "2026-09-01",
-						"contributionCount": 0
-					},
-					{
-						"date": "2026-09-02",
-						"contributionCount": 0
-					},
-					{
-						"date": "2026-09-03",
-						"contributionCount": 0
-					},
-					{
-						"date": "2026-09-04",
-						"contributionCount": 0
-					},
-					{
-						"date": "2026-09-05",
-						"contributionCount": 0
-					}
-]
-			},
-			{
-				"contributionDays": [
-					{
-						"date": "2026-09-06",
-						"contributionCount": 4
-					},
-					{
-						"date": "2026-09-07",
-						"contributionCount": 0
-					},
-					{
-						"date": "2026-09-08",
-						"contributionCount": 0
-					},
-					{
-						"date": "2026-09-09",
-						"contributionCount": 0
-					},
-					{
-						"date": "2026-09-10",
-						"contributionCount": 0
-					},
-					{
-						"date": "2026-09-11",
-						"contributionCount": 0
-					},
-					{
-						"date": "2026-09-12",
-						"contributionCount": 0
-					}
-]
-			},
-			{
-				"contributionDays": [
-					{
-						"date": "2026-09-13",
-						"contributionCount": 0
-					},
-					{
-						"date": "2026-09-14",
-						"contributionCount": 0
-					},
-					{
-						"date": "2026-09-15",
-						"contributionCount": 1
-					},
-					{
-						"date": "2026-09-16",
-						"contributionCount": 1
-					},
-					{
-						"date": "2026-09-17",
-						"contributionCount": 0
-					},
-					{
-						"date": "2026-09-18",
-						"contributionCount": 0
-					},
-					{
-						"date": "2026-09-19",
-						"contributionCount": 0
-					}
-]
-			},
-			{
-				"contributionDays": [
-					{
-						"date": "2026-09-20",
-						"contributionCount": 0
-					},
-					{
-						"date": "2026-09-21",
-						"contributionCount": 0
-					},
-					{
-						"date": "2026-09-22",
-						"contributionCount": 0
-					},
-					{
-						"date": "2026-09-23",
-						"contributionCount": 1
-					},
-					{
-						"date": "2026-09-24",
-						"contributionCount": 3
-					},
-					{
-						"date": "2026-09-25",
-						"contributionCount": 0
-					},
-					{
-						"date": "2026-09-26",
-						"contributionCount": 0
-					}
-]
-			},
-			{
-				"contributionDays": [
-					{
-						"date": "2026-09-27",
-						"contributionCount": 0
-					},
-					{
-						"date": "2026-09-28",
-						"contributionCount": 0
-					},
-					{
-						"date": "2026-09-29",
-						"contributionCount": 4
-					},
-					{
-						"date": "2026-09-30",
-						"contributionCount": 1
-					},
-					{
-						"date": "2026-10-01",
-						"contributionCount": 0
-					},
-					{
-						"date": "2026-10-02",
-						"contributionCount": 0
-					},
-					{
-						"date": "2026-10-03",
-						"contributionCount": 0
-					}
-]
-			},
-			{
-				"contributionDays": [
-					{
-						"date": "2026-10-04",
-						"contributionCount": 1
-					},
-					{
-						"date": "2026-10-05",
-						"contributionCount": 2
-					},
-					{
-						"date": "2026-10-06",
-						"contributionCount": 1
-					},
-					{
-						"date": "2026-10-07",
-						"contributionCount": 0
-					},
-					{
-						"date": "2026-10-08",
-						"contributionCount": 0
-					},
-					{
-						"date": "2026-10-09",
-						"contributionCount": 2
-					},
-					{
-						"date": "2026-10-10",
-						"contributionCount": 7
-					}
-]
-			},
-			{
-				"contributionDays": [
-					{
-						"date": "2026-10-11",
-						"contributionCount": 1
-					},
-					{
-						"date": "2026-10-12",
-						"contributionCount": 0
-					},
-					{
-						"date": "2026-10-13",
-						"contributionCount": 0
-					},
-					{
-						"date": "2026-10-14",
-						"contributionCount": 1
-					},
-					{
-						"date": "2026-10-15",
-						"contributionCount": 3
-					},
-					{
-						"date": "2026-10-16",
-						"contributionCount": 0
-					},
-					{
-						"date": "2026-10-17",
-						"contributionCount": 0
-					}
-]
-			},
-			{
-				"contributionDays": [
-					{
-						"date": "2026-10-18",
-						"contributionCount": 0
-					},
-					{
-						"date": "2026-10-19",
-						"contributionCount": 0
-					},
-					{
-						"date": "2026-10-20",
-						"contributionCount": 0
-					},
-					{
-						"date": "2026-10-21",
-						"contributionCount": 0
-					},
-					{
-						"date": "2026-10-22",
-						"contributionCount": 0
-					},
-					{
-						"date": "2026-10-23",
-						"contributionCount": 1
-					},
-					{
-						"date": "2026-10-24",
-						"contributionCount": 2
-					}
-]
-			},
-			{
-				"contributionDays": [
-					{
-						"date": "2026-10-25",
-						"contributionCount": 2
-					},
-					{
-						"date": "2026-10-26",
-						"contributionCount": 0
-					},
-					{
-						"date": "2026-10-27",
-						"contributionCount": 1
-					},
-					{
-						"date": "2026-10-28",
-						"contributionCount": 1
-					},
-					{
-						"date": "2026-10-29",
-						"contributionCount": 3
-					},
-					{
-						"date": "2026-10-30",
-						"contributionCount": 0
-					},
-					{
-						"date": "2026-10-31",
-						"contributionCount": 0
-					}
-]
-			}
-]
+	"totalCommits": 104,
+	"totalPullRequests": 1,
+	"totalIssues": 1,
+	"totalPullRequestReviews": 0,
+	"totalContributions": 116,
+	"days": {
+		"2026-05-04": 8,
+		"2026-05-05": 1,
+		"2026-05-06": 2,
+		"2026-05-07": 2,
+		"2026-05-08": 3,
+		"2026-05-09": 6,
+		"2026-05-10": 0,
+		"2026-05-11": 0,
+		"2026-05-12": 1,
+		"2026-05-13": 0,
+		"2026-05-14": 0,
+		"2026-05-15": 0,
+		"2026-05-16": 0,
+		"2026-05-17": 0,
+		"2026-05-18": 0,
+		"2026-05-19": 0,
+		"2026-05-20": 0,
+		"2026-05-21": 0,
+		"2026-05-22": 0,
+		"2026-05-23": 0,
+		"2026-05-24": 0,
+		"2026-05-25": 0,
+		"2026-05-26": 0,
+		"2026-05-27": 0,
+		"2026-05-28": 0,
+		"2026-05-29": 0,
+		"2026-05-30": 0,
+		"2026-05-31": 4,
+		"2026-06-01": 0,
+		"2026-06-02": 0,
+		"2026-06-03": 0,
+		"2026-06-04": 0,
+		"2026-06-05": 0,
+		"2026-06-06": 1,
+		"2026-06-07": 0,
+		"2026-06-08": 0,
+		"2026-06-09": 0,
+		"2026-06-10": 0,
+		"2026-06-11": 0,
+		"2026-06-12": 0,
+		"2026-06-13": 0,
+		"2026-06-14": 0,
+		"2026-06-15": 0,
+		"2026-06-16": 0,
+		"2026-06-17": 0,
+		"2026-06-18": 0,
+		"2026-06-19": 0,
+		"2026-06-20": 0,
+		"2026-06-21": 0,
+		"2026-06-22": 1,
+		"2026-06-23": 0,
+		"2026-06-24": 1,
+		"2026-06-25": 0,
+		"2026-06-26": 0,
+		"2026-06-27": 0,
+		"2026-06-28": 0,
+		"2026-06-29": 0,
+		"2026-06-30": 3,
+		"2026-07-01": 2,
+		"2026-07-02": 7,
+		"2026-07-03": 0,
+		"2026-07-04": 6,
+		"2026-07-05": 4,
+		"2026-07-06": 2,
+		"2026-07-07": 1,
+		"2026-07-08": 0,
+		"2026-07-09": 0,
+		"2026-07-10": 0,
+		"2026-07-11": 0,
+		"2026-07-12": 6,
+		"2026-07-13": 2,
+		"2026-07-14": 5,
+		"2026-07-15": 0,
+		"2026-07-16": 0,
+		"2026-07-17": 1,
+		"2026-07-18": 0,
+		"2026-07-19": 1,
+		"2026-07-20": 0,
+		"2026-07-21": 0,
+		"2026-07-22": 0,
+		"2026-07-23": 0,
+		"2026-07-24": 0,
+		"2026-07-25": 0,
+		"2026-07-26": 0,
+		"2026-07-27": 0,
+		"2026-07-28": 0,
+		"2026-07-29": 1,
+		"2026-07-30": 0,
+		"2026-07-31": 0,
+		"2026-08-01": 0,
+		"2026-08-02": 0,
+		"2026-08-03": 0,
+		"2026-08-04": 0,
+		"2026-08-05": 0,
+		"2026-08-06": 0,
+		"2026-08-07": 0,
+		"2026-08-08": 0,
+		"2026-08-09": 0,
+		"2026-08-10": 0,
+		"2026-08-11": 0,
+		"2026-08-12": 0,
+		"2026-08-13": 1,
+		"2026-08-14": 0,
+		"2026-08-15": 0,
+		"2026-08-16": 0,
+		"2026-08-17": 0,
+		"2026-08-18": 0,
+		"2026-08-19": 0,
+		"2026-08-20": 0,
+		"2026-08-21": 0,
+		"2026-08-22": 0,
+		"2026-08-23": 0,
+		"2026-08-24": 0,
+		"2026-08-25": 0,
+		"2026-08-26": 0,
+		"2026-08-27": 0,
+		"2026-08-28": 0,
+		"2026-08-29": 0,
+		"2026-08-30": 0,
+		"2026-08-31": 0,
+		"2026-09-01": 0,
+		"2026-09-02": 0,
+		"2026-09-03": 0,
+		"2026-09-04": 0,
+		"2026-09-05": 0,
+		"2026-09-06": 4,
+		"2026-09-07": 0,
+		"2026-09-08": 0,
+		"2026-09-09": 0,
+		"2026-09-10": 0,
+		"2026-09-11": 0,
+		"2026-09-12": 0,
+		"2026-09-13": 0,
+		"2026-09-14": 0,
+		"2026-09-15": 1,
+		"2026-09-16": 1,
+		"2026-09-17": 0,
+		"2026-09-18": 0,
+		"2026-09-19": 0,
+		"2026-09-20": 0,
+		"2026-09-21": 0,
+		"2026-09-22": 0,
+		"2026-09-23": 1,
+		"2026-09-24": 3,
+		"2026-09-25": 0,
+		"2026-09-26": 0,
+		"2026-09-27": 0,
+		"2026-09-28": 0,
+		"2026-09-29": 4,
+		"2026-09-30": 1,
+		"2026-10-01": 0,
+		"2026-10-02": 0,
+		"2026-10-03": 0,
+		"2026-10-04": 1,
+		"2026-10-05": 2,
+		"2026-10-06": 1,
+		"2026-10-07": 0,
+		"2026-10-08": 0,
+		"2026-10-09": 2,
+		"2026-10-10": 7,
+		"2026-10-11": 1,
+		"2026-10-12": 0,
+		"2026-10-13": 0,
+		"2026-10-14": 1,
+		"2026-10-15": 3,
+		"2026-10-16": 0,
+		"2026-10-17": 0,
+		"2026-10-18": 0,
+		"2026-10-19": 0,
+		"2026-10-20": 0,
+		"2026-10-21": 0,
+		"2026-10-22": 0,
+		"2026-10-23": 1,
+		"2026-10-24": 2,
+		"2026-10-25": 2,
+		"2026-10-26": 0,
+		"2026-10-27": 1,
+		"2026-10-28": 1,
+		"2026-10-29": 3,
+		"2026-10-30": 0,
+		"2026-10-31": 1,
+		"2026-11-01": 0
 	}
 }
