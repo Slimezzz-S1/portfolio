@@ -1,5 +1,5 @@
 // DATA
-import resultsData from "@/data/monkey-type/results.json"
+import resultsData from "@/data/monkeytype/results.json"
 
 // COMPONENTS
 import type { BaseComponentProps } from "@/lib/BaseComponentProps"

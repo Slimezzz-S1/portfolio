@@ -7,6 +7,7 @@ import React, { useEffect, useState, useRef } from "react"
 import AppBurger from "@/mainComponents/AppBurger"
 import AppSidebar from "@/mainComponents/AppSidebar"
 import type { NavProps } from "@/mainComponents/PageNav"
+import { useLocation, useNavigate } from "react-router"
 
 export default function AppHeader() {
 	const [isHidden, setIsHidden] = useState<boolean>(false)
@@ -57,13 +58,7 @@ export default function AppHeader() {
 
 			<div ref={rootRef} style={{"--y" : isHidden ? "-100%" : "0%"} as React.CSSProperties} className="fixed top-0 left-0 z-100 transition-transform translate-y-(--y) w-full">
 				<header className="bg-root-bg border-b-2 px-6 py-4 flex justify-between">
-					<div className="flex items-center text-root-fg gap-2">
-						<Logo className="w-12 h-12 aspect-square" />
-
-						<h1 className="font-black text-4xl">
-							Portfolio
-						</h1>
-					</div>
+					<HeaderLogo />
 
 					<AppBurger onClick={() => setIsSidebarToggled(!isSidebarToggled)} isToggled={isSidebarToggled} />
 				</header>
@@ -72,5 +67,25 @@ export default function AppHeader() {
 				<AppSidebar posY={rootRef.current?.getBoundingClientRect().height ?? 0} onClick={() => setIsSidebarToggled(!isSidebarToggled)} isToggled={isSidebarToggled} />
 			)}
 		</>		
+	)
+}
+
+function HeaderLogo() {
+	const { key } = useLocation()
+	const navigate = useNavigate()
+
+    const onBack = () => {
+        if (key !== "default")  navigate(-1)
+        else navigate("/", { replace : true })
+    }
+
+	return (
+		<div className="flex items-center text-root-fg gap-2 cursor-pointer" onClick={onBack}>
+			<Logo className="w-12 h-12 aspect-square" />
+
+			<h1 className="font-black text-4xl">
+				Portfolio
+			</h1>
+		</div>
 	)
 }

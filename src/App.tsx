@@ -17,7 +17,6 @@ export default function App() {
               return <Route key={page.path} path={page.path} element={page.element} />
             case "notFound":
               return <Route key="404" path="*" element={page.element} />
-              
           }
         })}
       </Route>

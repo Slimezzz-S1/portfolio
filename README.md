@@ -24,6 +24,9 @@ Stacks : Vite, React.js, TypeScript, TailwindCSS, Anime.js, Chart.js
 ### how do i check it?
 simply type : `https://slimezzz-s1.github.io/portfolio/` and you're in for a treat!
 
+### Can i fork this?
+Yeah! anytime! im gonna add more guide on how to use this project for your portfolio!
+
 ### Current goals to fix
 1. Adding typing stats with option like "words 10-25-50-100" and "time 15-30-60-120" and showing full stats of it (highest wpm and acc, average wpm and acc)
 2. Adding contact me section for more detailed in case anyone wants to

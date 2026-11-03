@@ -18,10 +18,10 @@
 				"mode2": "25"
 			},
 			"50": {
-				"timestamp": 1790594959000.0,
-				"wpm": 97.77,
-				"rawWpm": 112.85,
-				"accuracy": 93.28,
+				"timestamp": 1790595113000.0,
+				"wpm": 100.07,
+				"rawWpm": 109.25,
+				"accuracy": 92.34,
 				"mode": "words",
 				"mode2": "50"
 			},
@@ -36,26 +36,26 @@
 		},
 		"time": {
 			"15": {
-				"timestamp": 1792237416000.0,
-				"wpm": 109.6,
-				"rawWpm": 118.4,
-				"accuracy": 96.03,
+				"timestamp": 1793507367285.0,
+				"wpm": 111.13,
+				"rawWpm": 111.13,
+				"accuracy": 97.89,
 				"mode": "time",
 				"mode2": "15"
 			},
 			"30": {
-				"timestamp": 1778024234000.0,
-				"wpm": 84.82,
-				"rawWpm": 84.82,
-				"accuracy": 96.83,
+				"timestamp": 1778024702000.0,
+				"wpm": 85.62,
+				"rawWpm": 92.43,
+				"accuracy": 93.31,
 				"mode": "time",
 				"mode2": "30"
 			},
 			"60": {
-				"timestamp": 1789734482000.0,
-				"wpm": 79.4,
-				"rawWpm": 86.0,
-				"accuracy": 91.96,
+				"timestamp": 1789883463000.0,
+				"wpm": 93.0,
+				"rawWpm": 93.8,
+				"accuracy": 94.84,
 				"mode": "time",
 				"mode2": "60"
 			},
@@ -96,36 +96,36 @@
 				"mode2": "50"
 			},
 			"100": {
-				"timestamp": 1790557864000.0,
-				"wpm": 105.46,
-				"rawWpm": 109.71,
-				"accuracy": 95.66,
+				"timestamp": 1793173655000.0,
+				"wpm": 105.99,
+				"rawWpm": 109.92,
+				"accuracy": 96.34,
 				"mode": "words",
 				"mode2": "100"
 			}
 		},
 		"time": {
 			"15": {
-				"timestamp": 1790726921000.0,
-				"wpm": 128.0,
-				"rawWpm": 131.2,
-				"accuracy": 98.18,
+				"timestamp": 1793445104000.0,
+				"wpm": 136.71,
+				"rawWpm": 139.11,
+				"accuracy": 98.85,
 				"mode": "time",
 				"mode2": "15"
 			},
 			"30": {
-				"timestamp": 1788700812000.0,
-				"wpm": 113.2,
-				"rawWpm": 114.0,
-				"accuracy": 98.27,
+				"timestamp": 1793445250000.0,
+				"wpm": 121.2,
+				"rawWpm": 122.0,
+				"accuracy": 98.71,
 				"mode": "time",
 				"mode2": "30"
 			},
 			"60": {
-				"timestamp": 1791548573000.0,
-				"wpm": 102.2,
-				"rawWpm": 105.6,
-				"accuracy": 95.5,
+				"timestamp": 1793508057368.0,
+				"wpm": 108.58,
+				"rawWpm": 110.38,
+				"accuracy": 97.88,
 				"mode": "time",
 				"mode2": "60"
 			},

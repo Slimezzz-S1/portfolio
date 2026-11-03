@@ -12,7 +12,7 @@ import { lazy, type ReactNode } from "react"
 import HomePage from "@/pages/HomePage"
 const NotFoundPage = lazy(() => import("@/pages/NotFound"))
 const AboutPage = lazy(() => import("@/pages/AboutPage"))
-const SkillsPage = lazy(() => import("@/pages/AboutPage"))
+const SkillsPage = lazy(() => import("@/pages/SkillsPage"))
 
 export interface BasePageProps {
     type : "base"
