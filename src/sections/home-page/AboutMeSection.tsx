@@ -24,7 +24,7 @@ export default function AboutMeSection() {
     const wrapperRef = useRef<HTMLDivElement | null>(null)
     const imageRef = useRef<HTMLImageElement | null>(null)
     const sectRef = useRef<HTMLDivElement | null>(null)
-    const isVisible = useClientVisibility(sectRef, { threshold : 0.2 })
+    const isVisible = useClientVisibility(sectRef, { threshold : 0.5 })
     const [isVisibleOnce, setIsVisibleOnce] = useState<boolean>(false)
     const navigate = useNavigate()
     
@@ -52,17 +52,17 @@ export default function AboutMeSection() {
         <section ref={sectRef} className="p-8">
             <div ref={wrapperRef} style={{"transform" : "translateX(100vw)"} as React.CSSProperties} className="flex flex-col md:flex-row justify-between gap-8">
                 <div className="flex-1 relative overflow-hidden">
-                    <img style={{"transform" : "translateX(100%)"} as React.CSSProperties} ref={imageRef} src={image} alt="" className="rounded-2xl w-full h-full object-cover" />
+                    <img ref={imageRef} style={{"transform" : "translateX(100%)"} as React.CSSProperties} src={image} alt="" className="object-cover rounded-2xl w-full h-full" />
 
                     <div className="absolute top-0 left-0 w-full h-full bg-linear-0 md:-bg-linear-90 from-root-bg to-transparent z-10" />
                 </div>
 
                 <div className="flex-1 flex flex-col justify-center gap-4">
-                    <h1 className="text-5xl sm:text-6xl lg:text-7xl font-black text-center md:text-start">
+                    <h1 className="text-4xl sm:text-6xl lg:text-7xl font-black text-center md:text-start">
                         What am I?
                     </h1>
 
-                    <h3 className="text-3xl font-bold">
+                    <h3 className="text-2xl sm:text-3xl font-bold">
                         A <ScrollingRole className="font-black" isActive={isVisible && isVisibleOnce} />
                         <span className="whitespace-break-spaces">
                             {"\n"}from Indonesia
@@ -70,7 +70,7 @@ export default function AboutMeSection() {
                     </h3>
 
                     <p className="indent-8">
-                        A 17 year old self-taught voca student from Indonesia. I mainly focus on create a simple web designs using React, creating simple 3d animation for a hobby, and editing video for fun.
+                        A 17 year old self-taught voca student from Indonesia. I mainly focus on creating a simple web using React, creating simple 3d animation for a hobby, and editing video for fun.
                     </p>
 
                     <Button text="Know more" className="self-center lg:self-start" onClick={() => navigate("/about")} />

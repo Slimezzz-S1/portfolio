@@ -55,7 +55,7 @@ export default function SocialLinks({ socialLinkList = socialLinks, useDefaultWr
 
 export function SocialLink({ name, Icon, description, url, className, overrideClassName } : SocialLinkProps) {
     return (
-        <a className={overrideClassName ? className : twMerge("w-11 sm:w-14 md:w-15 aspect-square border-3 rounded-full p-2 sm:p-2.5 cursor-pointer transition-all hover:scale-110 hover:bg-root-fg hover:text-root-bg", className)} onClick={(e) => {e.preventDefault; window.location.assign(url)}} title={description ?? name} href={url}>
+        <a className={overrideClassName ? className : twMerge("w-11 sm:w-13 md:w-15 aspect-square border-3 rounded-full p-2 sm:p-2.5 cursor-pointer transition-all hover:scale-110 hover:bg-root-fg hover:text-root-bg", className)} onClick={(e) => {e.preventDefault; window.location.assign(url)}} title={description ?? name} href={url}>
             <Icon />
         </a>
     )

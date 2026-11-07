@@ -3,12 +3,12 @@ import { languagesData, toolsData, appsData } from "@/lib/data"
 
 // COMPONENTS
 import MonkeyTypePart from "@/components/MonkeyTypePart"
-import Button from "@/components/Button"
+// import Button from "@/components/Button"
 import type { textDirection } from "@/components/main/Section"
 import type { BaseComponentProps } from "@/lib/BaseComponentProps"
 import { SectionTitle } from "@/components/main/Section"
 import { twMerge } from "tailwind-merge"
-import { useNavigate } from "react-router"
+// import { useNavigate } from "react-router"
 
 export interface ItemProps {    
     name : string
@@ -74,7 +74,11 @@ export function ItemDetailed({ name, Icon, color, descriptions, className, skill
 
             <p className="font-bold sm:text-center text-left text-xl sm:text-base row-start-2">
                 {skillPercent}%
-                {skillPercent?.toString().length != 3 && (<span className="opacity-0">0</span>)}
+                {skillPercent?.toString().length != 3 && (
+                    <span className="opacity-0">
+                        0
+                    </span>
+                )}
             </p>
 
 
@@ -143,7 +147,7 @@ function SkillPart({ title, items, titleDirection = "start" } : SkillPartProps) 
         <div>
             <SkillPartTitle text={title} direction={titleDirection} />
 
-            <div className={title.toLowerCase() == "tools" ? "flex flex-col gap-4 justify-center" : "flex gap-4 justify-center flex-wrap"}>
+            <div className={title.toLowerCase() == "tools" ? "flex flex-col gap-4 justify-center lg:grid grid-cols-2 xl:grid-cols-3" : "flex gap-4 justify-center flex-wrap"}>
                 <ItemIcons items={items} mode={title.toLowerCase() == "tools" ? "details" : "icons"} />
             </div>
         </div>
@@ -163,7 +167,7 @@ function SkillPartTitle({text, className, style, overrideClassName = false, dire
 }
 
 export default function SkillSection() {
-    const navigate = useNavigate()
+    // const navigate = useNavigate()
 
     return (
         <section className="p-8 flex flex-col gap-4 items-stretch">
@@ -183,7 +187,7 @@ export default function SkillSection() {
                 <SkillPart title="Apps" items={apps} titleDirection="end" />
             </div>
 
-            <Button text="More" className="self-center w-90 max-w-full" onClick={() => navigate("/skills")} />
+            {/* <Button text="More" className="self-center w-90 max-w-full" onClick={() => navigate("/skills")} /> */}
         </section>
     )
 }

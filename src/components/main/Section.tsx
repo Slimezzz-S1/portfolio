@@ -22,7 +22,7 @@ export function SectionTitle({ text, className, style, direction, overrideClassN
                 <div className={"w-full h-full" + " " + (direction === "end" ? "bg-linear-270 from-root-bg to-transparent" : direction === "center" ? "bg-linear-90 from-root-bg via-transparent to-root-bg" : "bg-linear-90 from-root-bg to-transparent")} />
             </div>
 
-            <h2 className={"md:text-8xl sm:text-7xl text-5xl md:text-stroke-md text-stroke-sm text-transparent" + " " + ((direction === "end" ? "text-end" : direction === "center" ? "text-center" : "text-start"))}>
+            <h2 className={"md:text-8xl sm:text-7xl text-5xl md:text-stroke-md text-stroke-sm text-transparent text-display" + " " + ((direction === "end" ? "text-end" : direction === "center" ? "text-center" : "text-start"))}>
                 {text}
             </h2>
         </div>

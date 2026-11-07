@@ -12,5 +12,4 @@ export default function usePage() {
         (p): p is BasePageProps | MainPageProps =>
             p.type !== "notFound" && p.path === pathname
     )
-    
 }

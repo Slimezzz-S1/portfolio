@@ -33,10 +33,10 @@ export default function BuiltWithSection() {
     }, [isShownOnce])
 
     return (
-        <section ref={sectRef} className="p-8 relative flex flex-col lg:flex-row-reverse">
+        <section ref={sectRef} className="relative py-8 sm:px-8 px-0 flex flex-col lg:flex-row-reverse">
             <div style={{"transform" : "translateX(-100vw)"} as React.CSSProperties} ref={titleRef} className="flex flex-col gap-2 items-center justify-center w-full">
                 <div className="w-fit mx-auto">
-                    <h1 className="text-6xl  sm:text-8xl md:text-9xl lg:text-8xl font-black text-center w-full whitespace-nowrap">
+                    <h1 className="text-5xl sm:text-8xl md:text-9xl lg:text-8xl font-black text-center w-full whitespace-nowrap">
                         Built With
                     </h1>
 
@@ -59,6 +59,8 @@ export default function BuiltWithSection() {
                     <div className="absolute bottom-0 left-0 w-full h-[30%] bg-linear-to-t from-10% from-root-bg to-none z-20" />
                 </div>
             </div>
+
+            <div className="absolute top-0 left-0 w-full h-full bg-[linear-gradient(to_right,var(--color-root-bg),transparent_20%,transparent_80%,var(--color-root-bg))] pointer-events-none sm:hidden" />
         </section>
     )
 }

@@ -27,7 +27,6 @@ export default function AppHeader() {
 		let lastScroll : number = 0
 
 		const onScroll = () => {
-			
 			if (window.scrollY > lastScroll) {
 				setIsHidden(true)
 			} else {
@@ -57,10 +56,18 @@ export default function AppHeader() {
 			<div style={{"--height" : currentEmptyHeight + "px"} as React.CSSProperties} className="h-(--height)" />
 
 			<div ref={rootRef} style={{"--y" : isHidden ? "-100%" : "0%"} as React.CSSProperties} className="fixed top-0 left-0 z-100 transition-transform translate-y-(--y) w-full">
-				<header className="bg-root-bg border-b-2 px-6 py-4 flex justify-between">
+				<div className="relative">
+					<div className="absolute top-0 left-0 w-full h-full -z-1 bg-rainbow-gradient animate-rainbow" />
+
+					<p className="text-center text-lg">
+						Work in progress
+					</p>
+				</div>
+
+				<header className="bg-root-bg border-b-2 px-6 py-3 flex justify-between">
 					<HeaderLogo />
 
-					<AppBurger onClick={() => setIsSidebarToggled(!isSidebarToggled)} isToggled={isSidebarToggled} />
+					<AppBurger onClick={() => setIsSidebarToggled(!isSidebarToggled)} isToggled={isSidebarToggled} />		
 				</header>
 			</div>
 			{isSidebarToggledOnce && (
@@ -81,7 +88,7 @@ function HeaderLogo() {
 
 	return (
 		<div className="flex items-center text-root-fg gap-2 cursor-pointer" onClick={onBack}>
-			<Logo className="w-12 h-12 aspect-square" />
+			<Logo className="w-11 h-11 aspect-square" />
 
 			<h1 className="font-black text-4xl">
 				Portfolio

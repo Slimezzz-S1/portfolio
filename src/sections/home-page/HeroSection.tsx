@@ -10,6 +10,7 @@ import useClientVisibility from "@/hooks/useClientVisibility"
 // ASSETS
 import profileImage from "@/assets/images/main-hero/main-hero-profile.png"
 import useTimers from "@/lib/useTimers"
+import Button from "@/components/Button"
 
 interface BlinkingCursorProps {
 	isActive : boolean
@@ -91,6 +92,10 @@ export default function HeroSection() {
 		setIsActive(isFinishedTransition)
 	}, [isFinishedTransition])
 
+	const onClickButton = () => {
+		document.querySelector("#about")?.scrollIntoView({ behavior : "smooth", block : "center" })
+	}
+
 	return (
 		<section ref={sectRef} className="p-8 flex flex-col-reverse lg:flex-row justify-around gap-4 lg:items-center min-h-[calc(100dvh-90px)]">
 			<div style={{"transform" : "translateX(-100vw)"} as React.CSSProperties} ref={textRef} className="flex flex-col gap-2 lg:flex-1 lg:w-1/2">
@@ -99,8 +104,6 @@ export default function HeroSection() {
 				</p>
 
 				<h2 className="relative text-4xl sm:text-5xl lg:text-7xl font-bold min-h-[2em] leading-[1em] whitespace-pre-wrap font-mono col-start-1">
-					{/* THIS */}
-
 					<Role isActive={isActive} onBegin={onBeginText} onComplete={onCompleteText} />
 
 					<BlinkingCursor isActive={isActive} startBlank={true} isSwitchedManually={isTextTransitioning} isSwitchedValue={false} cursorType="_" />
@@ -108,17 +111,23 @@ export default function HeroSection() {
 					<span className="absolute top-0 left-0 w-full h-full opacity-25">
 						<Underscores amount={11} endLineAt={5} isActive={isActive} />
 					</span>
-
 				</h2>
 
 				<p className="col-start-1">
 					Just a silly slime trying to enjoy life the human way.
 				</p>
 
-				<SocialLinks />
+				<div className="flex flex-col gap-[inherit] items-center sm:grid grid-cols-2 grid-rows-1 sm:gap-18 lg:flex lg:gap-6 lg:items-start">
+					<div className="sm:flex items-center justify-between hidden lg:justify-start lg:gap-4">
+						<SocialLinks useDefaultWrapper={false} />
+					</div>
+
+					<Button text="Learn more" className="w-full lg:self-center" onClick={onClickButton} />
+				</div>
+
 			</div>
 
-			<div style={{"transform" : "translateX(100vw)"} as React.CSSProperties} ref={imageRef} className="relative flex-1 h-1/2 min-h-120 flex items-center justify-center lg:justify-end">
+			<div style={{"transform" : "translateX(100vw)"} as React.CSSProperties} ref={imageRef} className="relative flex-1 h-1/2 min-h-90 flex items-center justify-center lg:justify-end">
 				<img src={profileImage} alt="" className="absolute lg:static top-0 left-0 w-full h-full object-cover rounded-2xl lg:max-w-lg" />
 			</div>
 		</section>

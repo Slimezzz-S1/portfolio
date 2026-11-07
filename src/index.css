@@ -1,5 +1,5 @@
 @import "tailwindcss";
-@custom-variant dark (&:where(.dark, .dark *));
+/* @custom-variant dark (&:where(.dark, .dark *)); */
 
 :root {
     --accent: rgb(43, 182, 61);
@@ -22,14 +22,75 @@
 } */
 
 @theme inline {
-    --color-accent: var(--accent);
-    --color-light-accent : var(--light-accent);
-    --color-root-bg: var(--root-bg);
-    --color-root-fg: var(--root-fg);
-    --background-image-hatch: var(--hatch-pattern);
+  --font-display: sans-serif;
 
-    --animate-spin-icon: spin 2.5s linear infinite;
-    --animate-bob: bob 2.5s ease infinite alternate;
+  --color-accent: var(--accent);
+  --color-light-accent : var(--light-accent);
+  --color-root-bg: var(--root-bg);
+  --color-root-fg: var(--root-fg);
+
+  --background-image-hatch: var(--hatch-pattern);
+
+  --color-rainbow-red: #ef4444;
+  --color-rainbow-orange: #f97316;
+  --color-rainbow-yellow: #eab308;
+  --color-rainbow-green: #22c55e;
+  --color-rainbow-blue: #3b82f6;
+  --color-rainbow-indigo: #6366f1;
+  --color-rainbow-violet: #a855f7;
+
+  --animate-rainbow: rainbow 5s linear infinite;
+  --animate-spin-icon: spin 2.5s linear infinite;
+  --animate-bob: bob 2.5s ease infinite alternate;
+}
+
+@utility bg-rainbow-gradient {
+  background-image: linear-gradient(
+    90deg,
+    var(--color-rainbow-red),
+    var(--color-rainbow-orange),
+    var(--color-rainbow-yellow),
+    var(--color-rainbow-green),
+    var(--color-rainbow-blue),
+    var(--color-rainbow-indigo),
+    var(--color-rainbow-violet),
+    var(--color-rainbow-red)
+  );
+  background-size: 200% 100%;
+}
+
+@utility bg-rainbow-radial {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate; /* keeps the -z-10 pseudo-element inside this element */
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 150%;
+    aspect-ratio: 1;
+    translate: -50% -50%;
+    z-index: -1;
+    background-image: conic-gradient(
+      var(--color-rainbow-red),
+      var(--color-rainbow-orange),
+      var(--color-rainbow-yellow),
+      var(--color-rainbow-green),
+      var(--color-rainbow-blue),
+      var(--color-rainbow-indigo),
+      var(--color-rainbow-violet),
+      var(--color-rainbow-red)
+    );
+    animation: rainbow-spin 4s linear infinite;
+  }
+}
+
+@keyframes rainbow-spin {
+  to {
+    rotate: 360deg;
+  }
 }
 
 @utility text-stroke-sm {
@@ -67,5 +128,11 @@ body {
 @keyframes bob {
     to {
         transform: translateY(var(--y));
+    }
+}
+
+@keyframes rainbow {
+    to {
+        background-position: 200% 0%;
     }
 }
