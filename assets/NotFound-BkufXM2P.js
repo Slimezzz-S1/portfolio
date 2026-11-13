@@ -1,0 +1,1 @@
+import{l as e,u as t}from"./index-DZF9y1RV.js";var n=t(),r=e();function i(){let e=(0,n.c)(1),t;return e[0]===Symbol.for(`react.memo_cache_sentinel`)?(t=(0,r.jsx)(`div`,{className:`w-screen h-screen flex items-center justify-center`,children:(0,r.jsx)(`p`,{className:`font-bold text-2xl`,children:`404 error`})}),e[0]=t):t=e[0],t}export{i as default};
