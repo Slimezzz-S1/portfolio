@@ -1,5 +1,4 @@
 // COMPONENTS
-import type { NavProps } from "@/components/main/PageNav"
 import type { ItemProps } from "@/sections/home-page/SkillSection"
 import type { SummaryItemProps } from "@/sections/home-page/SummarySection"
 import type { TodoItemProps } from "@/sections/home-page/TodosSection"
@@ -186,7 +185,7 @@ export const toolsData : ItemProps[] = [
         name : "Next.js",
         Icon : NextIcon,
         color : "#fff",
-        skillPercent : 45,
+        skillPercent : 60,
         descriptions : [
             "SPA App",
             "REST API",
@@ -205,7 +204,7 @@ export const toolsData : ItemProps[] = [
         color : "#4FC08D",
         skillPercent : 20,
         descriptions : [
-            "Basic use of utilities"
+            "Basic use of utilities",
         ]
     },
     {
@@ -216,7 +215,7 @@ export const toolsData : ItemProps[] = [
         descriptions : [
             "Custom hooks",
             "SSR and SSG",
-            "Custom complex components"
+            "Custom complex components",
         ]
     },
     {
@@ -226,7 +225,7 @@ export const toolsData : ItemProps[] = [
         skillPercent : 62,
         descriptions : [
             "Custom utilities",
-            "Smooth animations"
+            "Smooth animations",
         ]
     },
     // {
@@ -239,7 +238,7 @@ export const toolsData : ItemProps[] = [
         name : "PostgreSQL",
         Icon : PGSQLIcon,
         color : "#4169E1",
-        skillPercent : 35
+        skillPercent : 35,
     },
     // {
     //     name : "Nest.js",

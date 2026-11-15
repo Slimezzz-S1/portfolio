@@ -1,4 +1,4 @@
-import { animate, scrambleText, splitText, stagger } from "animejs"
+import { animate, scrambleText } from "animejs"
 import { useEffect, useRef } from "react"
 import WIPPage from "./WIPPage"
 

@@ -1,6 +1,6 @@
 from datetime import datetime, timedelta, timezone
 from dataclasses import dataclass
-from typing import Any, Literal, TypedDict
+from typing import Any, Literal
 from dotenv import load_dotenv
 from pathlib import Path
 import requests
@@ -9,13 +9,17 @@ import json
 import csv
 import os
 
-def fp_chk(fp : Path | str) -> None:
+def filepath_check(fp : Path | str) -> None:
     if not os.path.exists(fp):
         raise FileNotFoundError(f"Filepath doesnt exists : {fp}")
 
     return None
 
+# ARGS
 MONKEYTYPE_USE_CSV = True
+FORCE_OVERWRITE = True
+
+# CONSTANTS
 ROOT_FILEPATH = Path(__file__).parent.parent.parent.parent
 SCRIPTS_FILEPATH = ROOT_FILEPATH / "scripts"
 INPUT_FILEPATH = SCRIPTS_FILEPATH / "input_folder"
@@ -30,9 +34,9 @@ MONKEYTYPE_FILEPATH = DATA_FILEPATH / "monkeytype"
 
 MONKEYTYPE_CSV = INPUT_FILEPATH / "results.csv"
 
-GITHUB_OUTPUT_FILEPATH = DATA_FILEPATH / OUTPUT_FILENAME
-LEETCODE_OUTPUT_FILEPATH = DATA_FILEPATH / OUTPUT_FILENAME
-MONKEYTYPE_OUTPUT_FILEPATH = DATA_FILEPATH / OUTPUT_FILENAME
+GITHUB_OUTPUT_FILEPATH = GITHUB_FILEPATH / OUTPUT_FILENAME
+LEETCODE_OUTPUT_FILEPATH = LEETCODE_FILEPATH / OUTPUT_FILENAME
+MONKEYTYPE_OUTPUT_FILEPATH = MONKEYTYPE_FILEPATH / OUTPUT_FILENAME
 
 GITHUB_GRAPHQL_FILEPATH = INPUT_FILEPATH / "github_graph.graphql"
 LEETCODE_GRAPHQL_FILEPATH = INPUT_FILEPATH / "leetcode_graph.graphql"
@@ -44,21 +48,86 @@ MONKEYTYPE_USERNAME = "slimez7"
 GITHUB_USERNAME = "SlimeZZZ-S1"
 LEETCODE_USERNAME = "slimezzz-s1"
 
-START_UTC = datetime(2026, 5, 4, tzinfo = timezone.utc)
-END_UTC = datetime.now(tz = timezone.utc)
+START_DATE_UTC = datetime(2026, 5, 4, tzinfo = timezone.utc)
+END_DATE_UTC = datetime.now(tz = timezone.utc)
+
+if MONKEYTYPE_USE_CSV:
+    filepath_check(MONKEYTYPE_CSV)
+
+filepath_check(ROOT_FILEPATH)
+filepath_check(ENV_FILEPATH)
+filepath_check(SCRIPTS_FILEPATH)
+filepath_check(INPUT_FILEPATH)
+filepath_check(DATA_FILEPATH)
+filepath_check(GITHUB_FILEPATH)
+filepath_check(LEETCODE_FILEPATH)
+filepath_check(MONKEYTYPE_FILEPATH)
+filepath_check(GITHUB_GRAPHQL_FILEPATH)
+filepath_check(LEETCODE_GRAPHQL_FILEPATH)
+
+# load env
+load_dotenv(ENV_FILEPATH)
+
+type Result = dict[str, Any]
+type Results = list[Result]
+
+@dataclass
+class Field:
+    name : str
+    raw_name : str | None = None
+    field_type : type = str
+
+    def __post_init__(self):
+        if self.raw_name is None:
+            self.raw_name = self.name
+
+FIELDS : list[Field] = [
+    # Field("timestamp", field_type = float),
+    Field("date"),
+    Field("wpm", field_type = float),
+    Field("rawWpm", field_type = float),
+    Field("accuracy", "acc", field_type = float),
+    Field("mode"),
+    Field("mode2")
+]
+
+
+MODES : dict[str, list[str]] = {
+    "words" : [
+        "10",
+        "25",
+        "50",
+        "100"
+    ],
+    "time" : [
+        "15",
+        "30",
+        "60",
+        "120"
+    ]
+}
+
+CATEGORIES = [
+    "average",
+    "fastest",
+    "first"
+]
+
+type Modes = Literal["words", "time"]
+type Modes2 = Literal["10", "25", "50", "100", "15", "30", "60", "120"]
 
 def get_variables(source : Literal["github", "monkeytype", "leetcode"]) -> dict[str, Any]:
     match source:
         case "github":
             return {
                 "login" : GITHUB_USERNAME,
-                "from" : START_UTC.isoformat(),
-                "tp" : END_UTC.isoformat()
+                "from" : START_DATE_UTC.isoformat(),
+                "tp" : END_DATE_UTC.isoformat()
             }
         case "leetcode":
             return {
                 "username" : LEETCODE_USERNAME,
-                "year" : START_UTC.year
+                "year" : START_DATE_UTC.year
             }
         case "monkeytype":
             return {}
@@ -75,6 +144,9 @@ def get_headers(source : Literal["github", "monkeytype", "leetcode"], token : st
                 "Authorization": f"Bearer {token}"
             }
         case "leetcode":
+            if not token:
+                raise ValueError("where is token?")
+
             return {
                 "Referer": "https://leetcode.com",
                 "User-Agent": "Mozilla/5.0"
@@ -84,33 +156,17 @@ def get_headers(source : Literal["github", "monkeytype", "leetcode"], token : st
         case _:
             return {}
 
-if MONKEYTYPE_USE_CSV:
-    fp_chk(MONKEYTYPE_CSV)
-
-fp_chk(ROOT_FILEPATH)
-fp_chk(ENV_FILEPATH)
-fp_chk(SCRIPTS_FILEPATH)
-fp_chk(INPUT_FILEPATH)
-fp_chk(DATA_FILEPATH)
-fp_chk(GITHUB_FILEPATH)
-fp_chk(LEETCODE_FILEPATH)
-fp_chk(MONKEYTYPE_FILEPATH)
-fp_chk(GITHUB_GRAPHQL_FILEPATH)
-fp_chk(LEETCODE_GRAPHQL_FILEPATH)
-
-load_dotenv(ENV_FILEPATH)
-
-def read_file(fp : str | Path) -> str:
-    with open(fp, "r", encoding = "utf-8") as f:
+def read_file(filepath : str | Path) -> str:
+    with open(filepath, "r", encoding = "utf-8") as f:
         return f.read()
 
-def write_file(text : str, fp : str | Path, force_overwrite : bool = True) -> None:
-    if not force_overwrite and os.path.exists(fp):
+def write_file(text : str, filepath : str | Path, force_overwrite : bool = True) -> None:
+    if not force_overwrite and os.path.exists(filepath):
         if not input(f"Filepath exists, overwrite it?\ny/N\n>>> ").lower().startswith("y"):
             return None
 
-    with open(fp, "w", encoding = "utf-8") as f:
-        f.write(text)
+    with open(filepath, "w", encoding = "utf-8") as file:
+        file.write(text)
 
     return None
 
@@ -122,12 +178,18 @@ def generate_date_strs(start : datetime = datetime(2026, 1, 1), end : datetime =
 
 def fill_empty_dates_rows(data: dict[str, int]) -> dict[str, int]:
     result = {date : 0 for date in generate_date_strs()}
-    result.update({key: value for key, value in data.items() if key in result})
+    result.update({
+        key: value
+        for key, value in data.items() if key in result
+    })
 
     return result
 
 def fill_empty_dates_results(data : list[str]) -> dict[str, int]:
-    result = {format_date(date) : 0 for date in generate_date()}
+    result = {
+        format_date(date) : 0
+        for date in generate_date()
+    }
 
     for date in data:
         result[date] += 1
@@ -179,7 +241,6 @@ def json_encode(data : list[dict[str, Any]] | dict[str, Any]) -> str:
                 raise TypeError(f"cannot encode type {type(value).__name__}")
 
         return encode(data, 0)
-    
     return encode(data)
 
 def fetch_data(url : str, variables : dict[str, Any], query : str, headers : dict[str, Any]) -> dict[str, Any]:
@@ -195,9 +256,9 @@ def fetch_data(url : str, variables : dict[str, Any], query : str, headers : dic
     response.raise_for_status()
     return response.json()
 
-def csv_to_json(fp : str | Path) -> list[dict[str, Any]]:
+def csv_to_json(filepath : str | Path) -> list[dict[str, Any]]:
     result : list[dict[str, Any]] = []
-    raw = read_file(fp)
+    raw = read_file(filepath)
     reader = csv.DictReader(raw.splitlines())
 
     for row in reader:
@@ -205,59 +266,18 @@ def csv_to_json(fp : str | Path) -> list[dict[str, Any]]:
 
     return result
 
-type Result = dict[str, Any]
-type Results = list[Result]
-
-@dataclass
-class Field:
-    name : str
-    raw_name : str | None = None
-    field_type : type = str
-
-    def __post_init__(self):
-        if self.raw_name is None:
-            self.raw_name = self.name
-
-FIELDS : list[Field] = [
-    Field("timestamp", field_type = int),
-    Field("wpm", field_type = float),
-    Field("rawWpm", field_type = float),
-    Field("accuracy", "acc", field_type = float),
-    Field("mode"),
-    Field("mode2")
-]
-
-
-MODES : dict[str, list[str]] = {
-    "words" : [
-        "10",
-        "25",
-        "50",
-        "100"
-    ],
-    "time" : [
-        "15",
-        "30",
-        "60",
-        "120"
-    ]
-}
-
-CATEGORIES = [
-    "average",
-    "fastest",
-    "first"
-]
-
-type Modes = Literal["words", "time"]
-type Modes2 = Literal["10", "25", "50", "100", "15", "30", "60", "120"]
-
 def format_date(date : datetime) -> str:
     return date.strftime("%Y-%m-%d")
 
 def filter_fields(data : Result, fields : list[Field] = FIELDS) -> Result:
-    by_raw = {field.raw_name : field for field in fields}
-    return {by_raw[key].name : by_raw[key].field_type(value) for key, value in data.items() if key in by_raw}
+    by_raw = {
+        field.raw_name : field
+        for field in fields
+    }
+    return {
+        by_raw[key].name : by_raw[key].field_type(value)
+        for key, value in data.items() if key in by_raw
+    }
 
 def filter_all_fields(data : Results, fields : list[Field] = FIELDS) -> Results:
     return [filter_fields(result, fields = fields) for result in data]
@@ -267,7 +287,7 @@ def filter_modes(data : Results, **criteria) -> list[dict[str, Any]]:
 
 def create_categories(data : Results, categories : list[str] = CATEGORIES, subcategories : dict[str, list[str]] = MODES) -> dict[str, dict[str, Any]]:
     def average(data : Results, key : str) -> float | None:
-        return sum(result[key] for result in data) / len(data) if data else None
+        return round(sum(result[key] for result in data) / len(data), 1) if data else None
 
     def per_mode(category : str, data : Results = data) -> dict[str, dict[str, Any]]:
         match category:
@@ -306,10 +326,16 @@ def create_categories(data : Results, categories : list[str] = CATEGORIES, subca
 
 def monkeytype(use_csv : bool = True) -> None:
     raw = csv_to_json(MONKEYTYPE_CSV)
+    raw.sort(key = lambda result : float(result["timestamp"]))
+
+    for result in raw:
+        ts = float(result.pop("timestamp"))
+        result["date"] = format_date(datetime.fromtimestamp(ts / 1000))
+
     filtered_results = filter_all_fields(raw)
     categories = create_categories(filtered_results)
 
-    dates = [format_date(datetime.fromtimestamp(result["timestamp"] / 1000)) for result in filtered_results]
+    dates = [result["date"] for result in filtered_results]
     dates.sort()
     results_count = fill_empty_dates_results(dates)
 
@@ -360,7 +386,10 @@ def leetcode() -> None:
     )["data"]["user"]
 
     submissions : dict[str, int] = json.loads(raw["calendar"]["submissions"])
-    dates = {format_date(datetime.fromtimestamp(int(timestamp), tz=timezone.utc)): count for timestamp, count in submissions.items()}
+    dates = {
+        format_date(datetime.fromtimestamp(int(timestamp), tz=timezone.utc)): count
+        for timestamp, count in submissions.items()
+    }
     result = {
         "streak" : raw["calendar"]["streak"],
     }
@@ -372,12 +401,12 @@ def leetcode() -> None:
     write_file(json_encode(result), LEETCODE_OUTPUT_FILEPATH)
     return None
 
-def main(force_overwrite : bool = False) -> None:
-    if not force_overwrite and (os.path.exists(MONKEYTYPE_OUTPUT_FILEPATH) or os.path.exists(GITHUB_OUTPUT_FILEPATH) or os.path.exists(LEETCODE_OUTPUT_FILEPATH)):
-        if not input("files exist, overwrite them?\nY/n\n>>> ").lower() in ["y", "yes"]:
+def main() -> None:
+    if not FORCE_OVERWRITE and (os.path.exists(MONKEYTYPE_OUTPUT_FILEPATH) or os.path.exists(GITHUB_OUTPUT_FILEPATH) or os.path.exists(LEETCODE_OUTPUT_FILEPATH)):
+        if not input("files exist, overwrite them?\nY/n\n>>> ").lower().startswith("y"):
             quit()
 
-    monkeytype()
+    monkeytype(use_csv = MONKEYTYPE_USE_CSV)
     github()
     leetcode()
 

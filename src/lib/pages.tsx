@@ -21,6 +21,7 @@ export interface BasePageProps {
     element : ReactNode
     description? : string
     nav? : NavProps[]
+    isVisible? : boolean
 }
 
 export interface MainPageProps extends Omit<BasePageProps, "type"> {
@@ -57,12 +58,12 @@ const pages : PageProps[] = [
                 }
             },
             {
-                name : "About Me",
+                name : "About",
                 Icon : InfoIcon,
                 idElement : "about",
                 options : {
                     behavior : "smooth",
-                    block : "start"
+                    block : "center",
                 }
             },
             {

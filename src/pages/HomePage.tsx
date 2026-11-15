@@ -8,6 +8,7 @@ import ProjectSection from "@/sections/home-page/ProjectSection"
 import GallerySection from "@/sections/home-page/GallerySection"
 import EpicSection from "@/sections/home-page/EpicSection"
 import SkillSection from "@/sections/home-page/SkillSection"
+import TextCarousel from "@/components/TextCarousel"
 
 export default function HomePage() {
 	return (
@@ -25,6 +26,8 @@ export default function HomePage() {
 				<AboutMeSection />
 			</div>
 
+			<TextCarousel texts={["TypeScript", "JavaScript", "Python", "Lua"]} />
+
 			<div id="skill">
 				<SkillSection />
 			</div>
@@ -37,11 +40,11 @@ export default function HomePage() {
 				<ProjectSection />
 			</div>
 			
-			<section className="w-full h-32 flex items-center justify-center bg-gray-900 border-y">
+			{/* <section className="w-full h-32 flex items-center justify-center bg-gray-900 border-y">
 				<p className="text-3xl font-bold">
 					Work in progress
 				</p>
-			</section>
+			</section> */}
 
 			<div id="gallery">
 				<GallerySection />

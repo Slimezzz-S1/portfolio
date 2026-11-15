@@ -1,8 +1,9 @@
 {
   "compilerOptions": {
+    "strict": true,
     "ignoreDeprecations": "6.0",
-    "baseUrl": ".",
     "resolveJsonModule": true,
+    "baseUrl": ".",
     "paths": {
       "@/*" : ["src/*"],
       "@/components/*" : ["src/components/*"],

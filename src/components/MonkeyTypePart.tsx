@@ -10,22 +10,35 @@ import useCount from "@/hooks/useCount"
 export type Mode = "words" | "time"
 export type Mode2<M extends Mode = Mode> = (typeof MODES)[M][number]
 export type Category = "average" | "fastest" | "first"
-type DataProps = Record<Category, {
-    [M in Mode]: Record<Mode2<M>, TypingResultProps>
-}>
-interface CardProps extends TypingResultProps, BaseComponentProps {}
 
-export interface TypingResultProps {
-    timestamp : number
-    wpm : number
-    rawWpm : number
-    accuracy : number
+type ByMode<T> = {
+    [M in Mode]: Record<Mode2<M>, T>
+}
+
+type DataProps = {
+    [C in Category]: ByMode<C extends "average" ? BaseTypingResultProps : TypingResultProps>
+}
+
+interface CardProps extends TypingResultProps, BaseComponentProps {
     mode : Mode
     mode2 : Mode2
     category : Category
 }
 
-interface OptionProps<T extends string> extends BaseComponentProps{
+export interface BaseTypingResultProps {
+    wpm : number
+    rawWpm : number
+    accuracy : number
+}
+
+export interface TypingResultProps extends BaseTypingResultProps {
+    date : string
+    mode : Mode
+    mode2 : Mode2
+}
+
+
+interface OptionProps<T extends string> extends BaseComponentProps {
     optionClassName? : string
     optionStyle? : React.CSSProperties
     items : readonly (string | number)[]
@@ -94,7 +107,7 @@ export default function MonkeyTypePart() {
             </div>
 
             {currentData ? (
-                <Card {...currentData} category={currentCategory} />
+                <Card {...currentData} mode={currentMode} mode2={currentMode2} category={currentCategory} />
             ) : (
                 <p>
                     no current data
@@ -116,7 +129,7 @@ function Options<T extends string>({ items, className, style, overrideClassName,
     )
 }
 
-function Card({ timestamp, wpm, rawWpm, accuracy, mode, mode2, category, overrideClassName, className, style, ...rest } : CardProps) {
+function Card({ date, wpm, rawWpm, accuracy, mode, mode2, category, overrideClassName, className, style, ...rest } : CardProps) {
     const displayWpm = useCount(wpm)
     const displayAcc = useCount(accuracy)
     
@@ -126,9 +139,9 @@ function Card({ timestamp, wpm, rawWpm, accuracy, mode, mode2, category, overrid
 
 
     useEffect(() => {
-        setCategoryIndex(CATEGORIES.indexOf(category))
-        setModeIndex(MODE.indexOf(mode))
-        setMode2Index(MODE2.indexOf(mode2))
+        setCategoryIndex(CATEGORIES.indexOf(category ?? ""))
+        setModeIndex(MODE.indexOf(mode ?? "time"))
+        setMode2Index(MODE2.indexOf(mode2 ?? "15"))
     }, [category, mode, mode2])
 
     return (

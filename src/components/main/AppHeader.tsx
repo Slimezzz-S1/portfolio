@@ -6,8 +6,8 @@ import Logo from "@/icons/favicon.svg?react"
 import React, { useEffect, useState, useRef } from "react"
 import AppBurger from "@/mainComponents/AppBurger"
 import AppSidebar from "@/mainComponents/AppSidebar"
-import type { NavProps } from "@/mainComponents/PageNav"
 import { useLocation, useNavigate } from "react-router"
+import { PageHeaderNav } from "./PageNav"
 
 export default function AppHeader() {
 	const [isHidden, setIsHidden] = useState<boolean>(false)
@@ -64,12 +64,17 @@ export default function AppHeader() {
 					</p>
 				</div>
 
-				<header className="bg-root-bg border-b-2 px-6 py-3 flex justify-between">
+				<header className="relative bg-root-bg border-b-2 px-6 py-3 flex justify-between">
 					<HeaderLogo />
+
+					<div className="absolute top-0 left-0 w-full h-full p-[inherit] hidden lg:flex justify-center pointer-events-none">
+						<PageHeaderNav className="pointer-events-auto" />
+					</div>
 
 					<AppBurger onClick={() => setIsSidebarToggled(!isSidebarToggled)} isToggled={isSidebarToggled} />		
 				</header>
 			</div>
+
 			{isSidebarToggledOnce && (
 				<AppSidebar posY={rootRef.current?.getBoundingClientRect().height ?? 0} onClick={() => setIsSidebarToggled(!isSidebarToggled)} isToggled={isSidebarToggled} />
 			)}

@@ -1,20 +1,27 @@
 {
   "name": "portfolio",
+  "version": "0.0.1",
   "private": true,
-  "version": "0.0.0",
+  "description": "My portfolio made in React",
+  "bugs": {
+    "url": "https://github.com/Slimezzz-S1/portfolio/issues"
+  },
+  "author": {
+    "name": "SlimeZZZ-S1",
+    "url": "https://github.com/Slimezzz-S1"
+  },
   "type": "module",
   "scripts": {
-    "dev": "vite",
     "build": "tsc -b && vite build",
-    "lint": "eslint .",
-    "preview": "vite preview",
     "predeploy": "pnpm run build",
     "deploy": "pnpm run build && gh-pages -d dist",
-    "meow": "echo meow"
+    "dev": "vite",
+    "dist-size": "powershell -NoProfile -Command \"'{0:N2} MB' -f ((Get-ChildItem './dist' -Recurse -File | Measure-Object -Property Length -Sum).Sum / 1MB)\"",
+    "lint": "eslint .",
+    "meow": "pnpm run build && pnpm run dist-size && vite preview",
+    "preview": "vite preview"
   },
   "dependencies": {
-    "@types/animejs": "^3.1.13",
-    "@types/flickity": "^2.2.12",
     "animejs": "^4.5.0",
     "chart.js": "^4.5.1",
     "flickity": "^3.0.0",
@@ -22,17 +29,17 @@
     "react-chartjs-2": "^5.3.1",
     "react-dom": "^19.2.7",
     "react-router": "^8.4.0",
-    "sharp": "^0.35.3",
-    "svgo": "^4.0.2",
-    "tailwind": "^4.0.0",
-    "tailwind-merge": "^3.7.0"
+    "tailwind-merge": "^3.7.0",
+    "vite-imagetools": "^12.0.2"
   },
   "devDependencies": {
     "@babel/core": "^7.29.7",
     "@eslint/js": "^10.0.1",
     "@rolldown/plugin-babel": "^0.2.3",
     "@tailwindcss/vite": "^4.3.1",
+    "@types/animejs": "^3.1.13",
     "@types/babel__core": "^7.20.5",
+    "@types/flickity": "^2.2.12",
     "@types/node": "^24.13.2",
     "@types/react": "^19.2.17",
     "@types/react-dom": "^19.2.3",
@@ -43,11 +50,15 @@
     "eslint-plugin-react-refresh": "^0.5.3",
     "gh-pages": "^6.3.0",
     "globals": "^17.6.0",
+    "sharp": "^0.35.3",
+    "svgo": "^4.0.2",
     "tailwindcss": "^4.3.1",
+    "terser": "^5.51.2",
     "typescript": "~6.0.2",
     "typescript-eslint": "^8.61.0",
     "vite": "^8.1.0",
     "vite-plugin-image-optimizer": "^2.0.3",
+    "vite-plugin-singlefile": "^2.3.4",
     "vite-plugin-svgr": "^5.2.0"
   }
 }
