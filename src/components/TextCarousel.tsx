@@ -1,7 +1,8 @@
+// COMPONENTS
 import useClientVisibility from "@/hooks/useClientVisibility"
-import type { BaseComponentProps } from "@/lib/BaseComponentProps"
 import useTimers from "@/lib/useTimers"
 import React, { useEffect, useRef, useState } from "react"
+import type { BaseComponentProps } from "@/lib/BaseComponentProps"
 import { twMerge } from "tailwind-merge"
 
 interface TextCarouselProps extends Omit<BaseComponentProps, "overrideStyle"> {

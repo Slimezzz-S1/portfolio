@@ -1,16 +1,18 @@
 // DATA
-import { aboutMeData } from "@/lib/data"
-import image from "@/assets/images/about-me/linus.png"
+import { aboutMeData } from "@data"
+
+// ASSETS
+import image from "@/assets/about-me/linus.png"
 
 // COMPONENTS
-import type { BaseComponentProps } from "@/lib/BaseComponentProps"
 import useClientVisibility from "@/hooks/useClientVisibility"
-import { useEffect, useState, useRef } from "react"
+import Button from "@/components/Button"
 import useTimers from "@/lib/useTimers"
+import type { BaseComponentProps } from "@/lib/BaseComponentProps"
+import { useEffect, useState, useRef } from "react"
+import { useNavigate } from "react-router"
 import { twMerge } from "tailwind-merge"
 import { animate } from "animejs"
-import Button from "@/components/Button"
-import { useNavigate } from "react-router"
 
 const data = aboutMeData
 

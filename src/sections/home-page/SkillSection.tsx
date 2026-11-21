@@ -1,14 +1,14 @@
 // DATA
-import { languagesData, toolsData, appsData } from "@/lib/data"
+import { languagesData, toolsData, appsData } from "@data"
 
 // COMPONENTS
 import MonkeyTypePart from "@/components/MonkeyTypePart"
-// import Button from "@/components/Button"
+import Button from "@/components/Button"
 import type { textDirection } from "@/components/main/Section"
 import type { BaseComponentProps } from "@/lib/BaseComponentProps"
 import { SectionTitle } from "@/components/main/Section"
+import { useNavigate } from "react-router"
 import { twMerge } from "tailwind-merge"
-// import { useNavigate } from "react-router"
 
 export interface ItemProps {    
     name : string
@@ -51,7 +51,6 @@ const TYPING_WORDS_MODES = ["words 10", "words 25", "words 50", "words 100"] as 
 type TypingTimeMode = typeof TYPING_TIME_MODES[number]
 type TypingWordsMode = typeof TYPING_WORDS_MODES[number]
 export type TypingMode = TypingTimeMode | TypingWordsMode
-
 
 export function ItemIcon({ name, Icon, color, descriptions, className, style, onClick, overrideClassName = false, overrideStyle = false } : ItemComponentProps) {
     return (
@@ -167,7 +166,7 @@ function SkillPartTitle({text, className, style, overrideClassName = false, dire
 }
 
 export default function SkillSection() {
-    // const navigate = useNavigate()
+    const navigate = useNavigate()
 
     return (
         <section className="p-8 flex flex-col gap-4 items-stretch">
@@ -187,7 +186,7 @@ export default function SkillSection() {
                 <SkillPart title="Apps" items={apps} titleDirection="end" />
             </div>
 
-            {/* <Button text="More" className="self-center w-90 max-w-full" onClick={() => navigate("/skills")} /> */}
+            <Button text="More" className="self-center w-90 max-w-full" onClick={() => navigate("/skills")} />
         </section>
     )
 }

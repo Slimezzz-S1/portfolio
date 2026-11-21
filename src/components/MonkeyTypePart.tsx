@@ -1,11 +1,11 @@
 // DATA
-import resultsData from "@/data/monkeytype/results.json"
+import resultsData from "@/constants/monkeytype-data.json"
 
 // COMPONENTS
+import useCount from "@/hooks/useCount"
 import type { BaseComponentProps } from "@/lib/BaseComponentProps"
 import { useEffect, useState } from "react"
 import { twMerge } from "tailwind-merge"
-import useCount from "@/hooks/useCount"
 
 export type Mode = "words" | "time"
 export type Mode2<M extends Mode = Mode> = (typeof MODES)[M][number]

@@ -1,18 +1,18 @@
 // DATA
-import { epicSectionData } from "@/lib/data"
+import { epicSectionData } from "@data"
 
 // ASSETS
-import imageLit from "@/assets/images/epic-section/lit.png"
-import imageDark from "@/assets/images/epic-section/dark.png"
-import imageEyes from "@/assets/images/epic-section/eyes.png"
-import imageEyesDark from "@/assets/images/epic-section/eyes-dark.png"
+import imageLit from "@/assets/epic-section/lit.png"
+import imageDark from "@/assets/epic-section/dark.png"
+import imageEyes from "@/assets/epic-section/eyes.png"
+import imageEyesDark from "@/assets/epic-section/eyes-dark.png"
 
 // COMPONENTS
+import useClientVisibility from "@/hooks/useClientVisibility"
+import useTimers from "@/lib/useTimers"
 import { useEffect, useRef, useState } from "react"
 import { animate, random, stagger } from "animejs"
 import { getSecretDialogES } from "@/lib/iLoveSlime"
-import useClientVisibility from "@/hooks/useClientVisibility"
-import useTimers from "@/lib/useTimers"
 
 const options = epicSectionData
 
@@ -47,8 +47,6 @@ export default function EpicSection() {
         if (!isActivated || !imageLitRef.current || !imageDarkRef.current || !imageEyesRef.current) return clearTimers()
 
         const imageLit = imageLitRef.current
-        // const imageDark = imageDarkRef.current
-        // const imageEyes = imageEyesRef.current
 
         const onInterval = () => {
             const number : number = Number(Math.random().toFixed(1))            

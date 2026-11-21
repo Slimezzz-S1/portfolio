@@ -1,5 +1,5 @@
+// COMPONENTS
 import Activities, { type ActivitiesProps } from "@/components/Activities"
-
 
 interface StatsProps extends ActivitiesProps {
     title : string

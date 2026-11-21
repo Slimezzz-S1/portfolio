@@ -1,10 +1,10 @@
 // ASSETS
-import zylHoldingImage from "@/assets/images/built-with/zyl-holding.png"
-import ReactIcon from "@/tools/react/griddy-icons--react.svg?react"
+import zylHoldingImage from "@/assets/built-with/zyl-holding.png"
+import ReactIcon from "@icons/tools/react/griddy-icons--react.svg?react"
 
 // COMPONENTS
-import { useEffect, useRef, useState } from "react"
 import useIntersectionObserver from "@/hooks/useIntersectionObserver"
+import { useEffect, useRef, useState } from "react"
 import { animate } from "animejs"
 
 export default function BuiltWithSection() {

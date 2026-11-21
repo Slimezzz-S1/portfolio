@@ -1,5 +1,6 @@
-import type { BaseComponentProps } from "@/lib/BaseComponentProps"
+// COMPONENTS
 import usePage from "@/lib/usePage"
+import type { BaseComponentProps } from "@/lib/BaseComponentProps"
 import { twMerge } from "tailwind-merge"
 
 export interface NavProps {

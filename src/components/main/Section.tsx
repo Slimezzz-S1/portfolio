@@ -6,8 +6,9 @@ import { twMerge } from "tailwind-merge"
 export type textDirection = "start" | "end" | "center"
 
 interface SectionProps extends BaseComponentProps {
-    title : string
+    title? : string
     titleDirection? : textDirection
+    useTitle? : boolean
     isAnimatable? : boolean
     children : ReactNode
 }
@@ -31,10 +32,12 @@ export function SectionTitle({ text, className, style, direction, overrideClassN
     )
 }
 
-export default function Section({ title, titleDirection = "start", className, style, overrideClassName, overrideStyle, children } : SectionProps) {
+export default function Section({ title, titleDirection = "start", className, style, overrideClassName, overrideStyle, useTitle, children, ...rest } : SectionProps) {
     return (
-        <section style={overrideStyle ? style : {...style, ...{} as React.CSSProperties}} className={overrideClassName ? className : twMerge("", className)}>
-            <SectionTitle text={title} direction={titleDirection} />
+        <section style={overrideStyle ? style : {...style, ...{} as React.CSSProperties}} className={overrideClassName ? className : twMerge("", className)} {...rest}>
+            {useTitle && (
+                <SectionTitle text={title ?? ""} direction={titleDirection ?? "center"} />
+            )}
 
             {children}
         </section>

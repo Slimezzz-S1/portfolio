@@ -19,7 +19,8 @@
     "dist-size": "powershell -NoProfile -Command \"'{0:N2} MB' -f ((Get-ChildItem './dist' -Recurse -File | Measure-Object -Property Length -Sum).Sum / 1MB)\"",
     "lint": "eslint .",
     "meow": "pnpm run build && pnpm run dist-size && vite preview",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "update-data" : "uv run --project scripts python scripts/src/scripts/__init__.py"
   },
   "dependencies": {
     "animejs": "^4.5.0",

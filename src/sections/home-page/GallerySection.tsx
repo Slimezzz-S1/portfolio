@@ -4,7 +4,7 @@ import { SectionTitle } from "@/components/main/Section"
 import { animate, stagger } from "animejs"
 import { useEffect, useRef, useState } from "react"
 
-export function images( folderName : string | string[]) {
+export function images(folderName : string | string[]) {
     const modules : Record<string, unknown> = import.meta.glob(
         "/src/assets/images/gallery/**",
         {

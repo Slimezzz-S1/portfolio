@@ -1,8 +1,9 @@
-import { StrictMode } from 'react'
+// COMPONENTS
+import '@/index.css'
+import App from '@/App'
 import { createRoot } from 'react-dom/client'
 import { HashRouter } from 'react-router'
-import App from '@/App'
-import '@/index.css'
+import { StrictMode } from 'react'
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>

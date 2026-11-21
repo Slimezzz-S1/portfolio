@@ -1,5 +1,5 @@
 // DATA
-import { socialLinksData } from "@/lib/data"
+import { socialLinksData } from "@data"
 
 // COMPONENTS
 import type { BaseComponentProps } from "@/lib/BaseComponentProps"

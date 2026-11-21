@@ -1,6 +1,7 @@
+// COMPONENTS
 import { animate, scrambleText } from "animejs"
 import { useEffect, useRef } from "react"
-import WIPPage from "./WIPPage"
+import HeroSection from "@/sections/about/HeroSections"
 
 export default function About() {
     const titleRef = useRef<HTMLHeadingElement | null>(null)
@@ -18,6 +19,8 @@ export default function About() {
     }, [])
 
     return (
-        <WIPPage />
+        <>
+        <HeroSection />
+        </>
     )
 }

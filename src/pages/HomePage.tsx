@@ -49,9 +49,6 @@ export default function HomePage() {
 			<div id="gallery">
 				<GallerySection />
 			</div>
-
-			{/* <AppFooter /> */}
-
 		</section>
 		</>
 	)

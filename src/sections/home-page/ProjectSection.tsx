@@ -1,14 +1,14 @@
 // DATA
-import { projectData } from "@/lib/data"
+import { projectData } from "@data"
 
 // ASSETS
-import unknownImage from "@/assets/images/projects/Unknown.png"
+import unknownImage from "@/assets/projects/unknown.png"
 
 // COMPONENTS
-import { useEffect, useRef, useState } from "react"
-import { animate } from "animejs"
 import useClientVisibility from "@/hooks/useClientVisibility"
+import { useEffect, useRef, useState } from "react"
 import { SectionTitle } from "@/components/main/Section"
+import { animate } from "animejs"
 
 export type ProjectCardMode = "image-only" | "video-only" | "hybrid"
 export type ProjectStatus = "finished" | "unfinished" | "scrapped" | "work-in-progress" | "prototype" | "abandoned"

@@ -1,5 +1,6 @@
-import { useLocation, useNavigate } from "react-router"
+// COMPONENTS
 import Button from "@/components/Button"
+import { useLocation, useNavigate } from "react-router"
 
 export default function WIPPage() {
     const { key } = useLocation()

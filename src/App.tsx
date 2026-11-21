@@ -1,9 +1,9 @@
 // DATA
-import pages from '@/lib/pages'
+import pages from '@/constants/pages'
 
 // COMPONENTS
 import { Routes, Route } from 'react-router'
-import AppLayout from '@/mainComponents/AppLayout'
+import { AppLayout } from '@mainComponents/AppCore'
 
 export default function App() {
   return (

@@ -25,18 +25,16 @@ SCRIPTS_FILEPATH = ROOT_FILEPATH / "scripts"
 INPUT_FILEPATH = SCRIPTS_FILEPATH / "input_folder"
 ENV_FILEPATH = ROOT_FILEPATH / ".env"
 
-OUTPUT_FILENAME = "results.json"
-
-DATA_FILEPATH = ROOT_FILEPATH / "src" / "assets" / "data"
-GITHUB_FILEPATH = DATA_FILEPATH / "github"
-LEETCODE_FILEPATH = DATA_FILEPATH / "leetcode"
-MONKEYTYPE_FILEPATH = DATA_FILEPATH / "monkeytype"
+DATA_FILEPATH = ROOT_FILEPATH / "src" / "constants"
+# GITHUB_FILEPATH = DATA_FILEPATH / "github"
+# LEETCODE_FILEPATH = DATA_FILEPATH / "leetcode"
+# MONKEYTYPE_FILEPATH = DATA_FILEPATH / "monkeytype"
 
 MONKEYTYPE_CSV = INPUT_FILEPATH / "results.csv"
 
-GITHUB_OUTPUT_FILEPATH = GITHUB_FILEPATH / OUTPUT_FILENAME
-LEETCODE_OUTPUT_FILEPATH = LEETCODE_FILEPATH / OUTPUT_FILENAME
-MONKEYTYPE_OUTPUT_FILEPATH = MONKEYTYPE_FILEPATH / OUTPUT_FILENAME
+GITHUB_OUTPUT_FILEPATH = DATA_FILEPATH / "github-data.json"
+LEETCODE_OUTPUT_FILEPATH = DATA_FILEPATH / "leetcode-data.json"
+MONKEYTYPE_OUTPUT_FILEPATH = DATA_FILEPATH / "monkeytype-data.json"
 
 GITHUB_GRAPHQL_FILEPATH = INPUT_FILEPATH / "github_graph.graphql"
 LEETCODE_GRAPHQL_FILEPATH = INPUT_FILEPATH / "leetcode_graph.graphql"
@@ -59,9 +57,9 @@ filepath_check(ENV_FILEPATH)
 filepath_check(SCRIPTS_FILEPATH)
 filepath_check(INPUT_FILEPATH)
 filepath_check(DATA_FILEPATH)
-filepath_check(GITHUB_FILEPATH)
-filepath_check(LEETCODE_FILEPATH)
-filepath_check(MONKEYTYPE_FILEPATH)
+# filepath_check(GITHUB_FILEPATH)
+# filepath_check(LEETCODE_FILEPATH)
+# filepath_check(MONKEYTYPE_FILEPATH)
 filepath_check(GITHUB_GRAPHQL_FILEPATH)
 filepath_check(LEETCODE_GRAPHQL_FILEPATH)
 
@@ -144,9 +142,6 @@ def get_headers(source : Literal["github", "monkeytype", "leetcode"], token : st
                 "Authorization": f"Bearer {token}"
             }
         case "leetcode":
-            if not token:
-                raise ValueError("where is token?")
-
             return {
                 "Referer": "https://leetcode.com",
                 "User-Agent": "Mozilla/5.0"

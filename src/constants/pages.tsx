@@ -1,10 +1,10 @@
 // ASSETS
-import HomeIcon from "@/icons/nav/akar-icons--home-alt1.svg?react"
-import InfoIcon from "@/icons/nav/boxicons--info-circle.svg?react"
-import SkillIcon from "@/icons/nav/carbon--skill-level-advanced.svg?react"
-import GoalIcon from "@/icons/nav/akar-icons--check-box.svg?react"
-import ProjectIcon from "@/icons/nav/octicon--project-roadmap-16.svg?react"
-import GalleryIcon from "@/icons/nav/boxicons--gallery-vertical-end-filled.svg?react"
+import HomeIcon from "@icons/nav/akar-icons--home-alt1.svg?react"
+import InfoIcon from "@icons/nav/boxicons--info-circle.svg?react"
+import SkillIcon from "@icons/nav/carbon--skill-level-advanced.svg?react"
+import GoalIcon from "@icons/nav/akar-icons--check-box.svg?react"
+import ProjectIcon from "@icons/nav/octicon--project-roadmap-16.svg?react"
+import GalleryIcon from "@icons/nav/boxicons--gallery-vertical-end-filled.svg?react"
 
 // COMPONENTS
 import type { NavProps } from "@/components/main/PageNav"

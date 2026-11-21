@@ -1,7 +1,7 @@
-import type { BaseComponentProps } from "@/lib/BaseComponentProps";
-import { animate } from "animejs";
-import { useEffect, useRef, useState, type ComponentProps } from "react";
-import { twMerge } from "tailwind-merge";
+import type { BaseComponentProps } from "@/lib/BaseComponentProps"
+import { useEffect, useRef, useState, type ComponentProps } from "react"
+import { twMerge } from "tailwind-merge"
+import { animate } from "animejs"
 
 interface ButtonProps extends ComponentProps<"button">, Pick<BaseComponentProps, "overrideClassName"> {
     text? : string

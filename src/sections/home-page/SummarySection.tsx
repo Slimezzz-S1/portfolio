@@ -1,13 +1,13 @@
 // DATA
-import { summaryItemData } from "@/lib/data"
+import { summaryItemData } from "@data"
 
 // COMPONENTS
-import type { BaseComponentProps } from "@/lib/BaseComponentProps"
+import useIntersectionObserver from "@/hooks/useIntersectionObserver"
 import React, { useState, useRef, useEffect } from "react"
+import type { BaseComponentProps } from "@/lib/BaseComponentProps"
 import { animate, stagger } from "animejs"
 import { SectionTitle } from "@/components/main/Section"
 import { twMerge } from "tailwind-merge"
-import useIntersectionObserver from "@/hooks/useIntersectionObserver"
 
 export interface SummaryItemProps extends BaseComponentProps {
 	name : string

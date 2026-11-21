@@ -6,49 +6,44 @@ import type { SocialLinkProps } from "@/components/SocialLink"
 import type { ProjectProps } from "@/sections/home-page/ProjectSection"
 
 // ICONS : SOCIAL LINKS
-
-import YoutubeIcon from "@/icons/social-link-icons/youtube/mdi--youtube.svg?react"
-import GithubIcon from "@/icons/social-link-icons/github/mdi--github.svg?react"
-import DiscordIcon from "@/icons/social-link-icons/discord/ic--baseline-discord.svg?react"
-import MonkeyTypeIcon from "@/icons/social-link-icons/monkeytype/simple-icons--monkeytype.svg?react"
-// import XIcon from "@/icons/social-link-icons/x/pajamas--twitter.svg?react"
+import YoutubeIcon from "@icons/social-link-icons/youtube/mdi--youtube.svg?react"
+import GithubIcon from "@icons/social-link-icons/github/mdi--github.svg?react"
+import DiscordIcon from "@icons/social-link-icons/discord/ic--baseline-discord.svg?react"
+import MonkeyTypeIcon from "@icons/social-link-icons/monkeytype/simple-icons--monkeytype.svg?react"
+// import XIcon from "@icons/social-link-icons/x/pajamas--twitter.svg?react"
 
 // ICONS : LANGUAGES
-
-import HTMLIcon from "@/icons/languages/html/flowbite--html-solid.svg?react"
-import CSSIcon from "@/icons/languages/css/griddy-icons--css-3.svg?react"
-import JSIcon from "@/icons/languages/js/cib--js.svg?react"
-import TSIcon from "@/icons/languages/ts/akar-icons--typescript-fill.svg?react"
-import PythonIcon from "@/icons/languages/python/akar-icons--python-fill.svg?react"
-import LuaIcon from "@/icons/languages/lua/cib--lua.svg?react"
+import HTMLIcon from "@icons/languages/html/flowbite--html-solid.svg?react"
+import CSSIcon from "@icons/languages/css/griddy-icons--css-3.svg?react"
+import JSIcon from "@icons/languages/js/cib--js.svg?react"
+import TSIcon from "@icons/languages/ts/akar-icons--typescript-fill.svg?react"
+import PythonIcon from "@icons/languages/python/akar-icons--python-fill.svg?react"
+import LuaIcon from "@icons/languages/lua/cib--lua.svg?react"
 
 // ICONS : FRAMEWORK/TOOLS
-
-import NextIcon from "@/tools/next-js/akar-icons--nextjs-fill.svg?react"
-// import NuxtIcon from "@/tools/nuxt-js/bxl--nuxt-js.svg?react"
-import ReactIcon from "@/tools/react/griddy-icons--react.svg?react"
-import VueIcon from "@/tools/vue-js/carbon--logo-vue.svg?react"
-import TailwindIcon from "@/tools/tailwind-css/bxl--tailwind-css.svg?react"
-import PGSQLIcon from "@/tools/postgre-sql/akar-icons--postgresql-fill.svg?react"
-import DockerIcon from "@/tools/docker/ant-design--docker-outlined.svg?react"
-import BlenderIcon from "@/tools/blender/bxl--blender.svg?react"
-import PhotoshopIcon from "@/tools/photoshop/devicon-plain--photoshop.svg?react"
-import AEIcon from "@/tools/after-effects/iconoir--adobe-after-effects-solid.svg?react"
-import DavinciIcon from "@/tools/davinci-resolve/thesvg--davinci-resolve.svg?react"
-// import NestIcon from "@/tools/nest-js/file-icons--nestjs.svg?react"
-import ExpressIcon from "@/tools/express-js/griddy-icons--expressjs.svg?react"
-import GodotIcon from "@/tools/godot/cib--godot-engine.svg?react"
-// import LaravelIcon from "@/tools/laravel/bxl--laravel.svg?react"
-// import SupabaseIcon from "@/tools/supabase/bxl--supabase.svg?react"
-// import VercelIcon from "@/tools/vercel/akar-icons--vercel-fill.svg?react"
-// import NodeIcon from "@/tools/node-js/bxl--nodejs.svg?react"
+import NextIcon from "@icons/tools/next-js/akar-icons--nextjs-fill.svg?react"
+// import NuxtIcon from "@icons/tools/nuxt-js/bxl--nuxt-js.svg?react"
+import ReactIcon from "@icons/tools/react/griddy-icons--react.svg?react"
+import VueIcon from "@icons/tools/vue-js/carbon--logo-vue.svg?react"
+import TailwindIcon from "@icons/tools/tailwind-css/bxl--tailwind-css.svg?react"
+import PGSQLIcon from "@icons/tools/postgre-sql/akar-icons--postgresql-fill.svg?react"
+import DockerIcon from "@icons/tools/docker/ant-design--docker-outlined.svg?react"
+import BlenderIcon from "@icons/tools/blender/bxl--blender.svg?react"
+import PhotoshopIcon from "@icons/tools/photoshop/devicon-plain--photoshop.svg?react"
+import AEIcon from "@icons/tools/after-effects/iconoir--adobe-after-effects-solid.svg?react"
+import DavinciIcon from "@icons/tools/davinci-resolve/thesvg--davinci-resolve.svg?react"
+import NestIcon from "@icons/tools/nest-js/file-icons--nestjs.svg?react"
+import ExpressIcon from "@icons/tools/express-js/griddy-icons--expressjs.svg?react"
+import GodotIcon from "@icons/tools/godot/cib--godot-engine.svg?react"
+// import LaravelIcon from "@icons/tools/laravel/bxl--laravel.svg?react"
+// import SupabaseIcon from "@icons/tools/supabase/bxl--supabase.svg?react"
+// import VercelIcon from "@icons/tools/vercel/akar-icons--vercel-fill.svg?react"
+// import NodeIcon from "@icons/tools/node-js/bxl--nodejs.svg?react"
 
 // ASSETS : PROJECTS
-
-import projectImage1 from "@/assets/images/projects/posterzzz/posterzzz.png"
-
-import projectImage2 from "@/assets/hybrid/projects/s11me/image.png"
-import projectVideo2 from "@/assets/hybrid/projects/s11me/video.mp4"
+import posterzzzBannerImage from "@/assets/projects/posterzzz/banner.png"
+import s11meBannerImage from "@/assets/projects/s11me/banner.png"
+import s11meBannerVideo from "@/assets/projects/s11me/bannerVideo.mp4"
 
 //////                  //////
 //////  END OF IMPORT   //////
@@ -239,13 +234,20 @@ export const toolsData : ItemProps[] = [
         Icon : PGSQLIcon,
         color : "#4169E1",
         skillPercent : 35,
+        descriptions : [
+            "Basic SQL query"
+        ]
     },
-    // {
-    //     name : "Nest.js",
-    //     Icon : NestIcon,
-    //     skillPercent : 10,
-    //     color : "#E0234E"
-    // },
+    {
+        name : "Nest.js",
+        Icon : NestIcon,
+        skillPercent : 25,
+        color : "#E0234E",
+        descriptions : [
+            "Basic controllers and services",
+            "Basic routing"
+        ]
+    },
     {
         name : "Express.js",
         Icon : ExpressIcon,
@@ -350,10 +352,14 @@ export const todoData : TodoItemProps[] = [
         isChecked : "halfway"
     },
     {
-        name : "Create a 3d game",
+        name : "Create a 3D game",
         description : "Coming soon",
         isChecked : "halfway"
-    }
+    },
+    {
+        name : "Learn ASL",
+        isChecked : "halfway"
+    },
 ] as const
 
 
@@ -367,14 +373,14 @@ export const projectData : ProjectProps[] = [
 		name : "S11ME",
 		summary : "a 3d animation series about random things",
 		url : "https://www.youtube.com/@S11-ME_",
-		image : projectImage2,
-		video : projectVideo2,
+		image : s11meBannerImage,
+		video : s11meBannerVideo,
 	},
 	{
 		name : "PosterZZZ",
 		summary : "A 4chan knockoff made using Next.js",
 		url : "https://posterzzz.vercel.app/",
-		image : projectImage1,
+		image : posterzzzBannerImage,
 	},
 	{
 		name : "Grits",

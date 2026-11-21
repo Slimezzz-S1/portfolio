@@ -6,7 +6,7 @@ import tailwindcss from '@tailwindcss/vite'
 import svgr from 'vite-plugin-svgr'
 import { ViteImageOptimizer } from 'vite-plugin-image-optimizer'
 import { imagetools } from 'vite-imagetools'
-// import {viteSingleFile} from "vite-plugin-singlefile"
+// import { viteSingleFile } from "vite-plugin-singlefile"
 
 // https://vite.dev/config/
 export default defineConfig({
@@ -14,27 +14,54 @@ export default defineConfig({
     tsconfigPaths : true,
   },
   build : {
-
     minify : "terser",
     cssMinify : "lightningcss",
     terserOptions : {
-      maxWorkers : 16
+      maxWorkers : 16,
+      compress : {
+        passes : 3,
+        dead_code : true,
+        drop_console : false,
+        unused : true,
+        inline : true,
+      },
+      format : {
+        comments : false,
+        beautify : false,
+      },
+      mangle : true
     },
   },
   
   plugins: [
-    // viteSingleFile(),
     imagetools({
       defaultDirectives: (url) => {
-        if (url.pathname.match(/\.png$/i)) {
+        if (url.pathname.match(/\.(png|jpe?g)$/i)) {
           return new URLSearchParams({
-            format: "webp",
-            quality: "80",
+            format: "webp"
           })
         }
         return new URLSearchParams()
       },
       removeMetadata : true,
+    }),
+    ViteImageOptimizer({
+      webp : {
+        effort : 6,
+        quality : 80,
+        alphaQuality : 100,
+        smartSubsample : true,
+        smartDeblock : true,
+        nearLossless : true
+      },
+      svg: {
+        multipass: true,
+        plugins: [
+          "preset-default",
+          "removeDimensions",
+          "removeXMLNS"
+        ],
+      },
     }),
     react(),
     babel({
@@ -48,35 +75,22 @@ export default defineConfig({
         reactCompilerPreset()
       ]
     }),
-    tailwindcss({
-      optimize : {
-        minify : true,
+    tailwindcss({optimize : {minify : true}}),
+    svgr({
+      svgrOptions : {
+        svgo : true
       }
     }),
-    svgr(),
-    ViteImageOptimizer({
-      png : {
-        effort : 10,
-        compressionLevel : 9,
-        quality : 80,
-      },
-      svg: {
-        multipass: true,
-        plugins: [
-          "preset-default",
-          "removeDimensions",
-          "removeComments",
-        ],
-      },
-      jpeg : {
-        quality : 80,
-      },
-      jpg : {
-        quality : 80,
-      }
-    }),
+    // viteSingleFilqe(),
   ],
 
   base : '/portfolio/',
-  appType : "spa",  
+  appType : "spa",
+  preview : {
+    // open : true,
+    port : 4173,
+  },
+  server : {
+    port : 5173,
+  }
 })
