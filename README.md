@@ -3,26 +3,43 @@
 STATUS : UNFINISHED
 
 This is my portfolio website made in React. A static SPA webpage.
+
 Stacks : Vite, React.js, TypeScript, TailwindCSS, Anime.js, Chart.js
+
+---
 
 ## Sections
 1. Hero
-    A simple hero section to greet the visitor!
+
+A simple hero section to greet the visitor!
+
 2. Built with
-    A simple section to show off what libraries/frameworks i use.
+
+A simple section to show off what libraries/frameworks i use.
+
 3. About me
-    My life, summarized
+
+My life, summarized
+
 4. Skills
-    Skills im capable of
+
+Skills im capable of
+
 5. Goals
-    My life goals
+
+My life goals
+
 6. Projects
-    All projects I made
+
+All projects I made
+
 7. Gallery
-    My OC's gallery
+
+My OC's gallery
+
 
 ### how do i check it?
-simply type : `https://slimezzz-s1.github.io/portfolio/` and you're in for a treat!
+simply check [this](`https://slimezzz-s1.github.io/portfolio/`) and you're in for a treat!
 
 ### Can i fork this?
 Yeah! anytime! im gonna add more guide on how to use this project for your portfolio!

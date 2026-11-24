@@ -1,5 +1,6 @@
 // DATA
-import { underscoreData, rolesData } from "@data"
+import { underscoreData } from "@data/components"
+import { rolesData } from "@data/sections"
 
 // ASSETS
 import profileImage from "@/assets/main-hero/main-hero-profile.png"

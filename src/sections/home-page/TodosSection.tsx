@@ -1,5 +1,5 @@
 // DATA
-import { todoData } from "@data"
+import { todoData } from "@data/sections"
 
 // COMPONENTS
 import useClientVisibility from "@/hooks/useClientVisibility"

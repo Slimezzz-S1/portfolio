@@ -1,7 +1,7 @@
 // COMPONENTS
+import HeroSection from "@/sections/about/HeroSection"
 import { animate, scrambleText } from "animejs"
 import { useEffect, useRef } from "react"
-import HeroSection from "@/sections/about/HeroSections"
 
 export default function About() {
     const titleRef = useRef<HTMLHeadingElement | null>(null)

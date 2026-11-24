@@ -1,8 +1,8 @@
 // DATA
-import pages from "@/constants/pages"
+import pages from "@/constants/data/pages"
 
 // COMPONENT
-import { type BasePageProps, type MainPageProps } from "@/constants/pages"
+import { type BasePageProps, type MainPageProps } from "@/constants/data/pages"
 import { useLocation } from "react-router"
 
 export default function usePage() {

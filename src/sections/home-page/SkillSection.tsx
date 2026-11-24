@@ -1,5 +1,5 @@
 // DATA
-import { languagesData, toolsData, appsData } from "@data"
+import { languagesData, toolsData, appsData } from "@data/sections"
 
 // COMPONENTS
 import MonkeyTypePart from "@/components/MonkeyTypePart"

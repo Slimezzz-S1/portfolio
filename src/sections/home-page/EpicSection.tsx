@@ -1,5 +1,5 @@
 // DATA
-import { epicSectionData } from "@data"
+import { epicSectionData } from "@data/sections"
 
 // ASSETS
 import imageLit from "@/assets/epic-section/lit.png"

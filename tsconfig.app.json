@@ -10,7 +10,7 @@
       "@mainComponents/*" : ["src/components/main/*"],
       "@public/*" : ["public/*"],
       "@tools/*" : ["src/assets/icons/tools/*"],
-      "@data" : ["src/constants/data.tsx"]
+      "@data/*" : ["src/constants/data/*"]
     },
     
     "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.app.tsbuildinfo",

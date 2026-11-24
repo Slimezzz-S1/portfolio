@@ -1,5 +1,5 @@
 // DATA
-import resultsData from "@/constants/monkeytype-data.json"
+import resultsData from "@data/monkeytype.json"
 
 // COMPONENTS
 import useCount from "@/hooks/useCount"

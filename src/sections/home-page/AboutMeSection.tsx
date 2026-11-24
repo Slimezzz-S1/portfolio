@@ -1,5 +1,5 @@
 // DATA
-import { aboutMeData } from "@data"
+import { aboutMeData } from "@data/sections"
 
 // ASSETS
 import image from "@/assets/about-me/linus.png"

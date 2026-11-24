@@ -58,22 +58,39 @@
   );
   background-size: 200% 100%;
 }
+@property --rainbow-angle {
+  syntax: "<angle>";
+  inherits: false;
+  initial-value: 0deg;
+}
 
 @utility bg-rainbow-radial {
-  position: relative;
-  overflow: hidden;
-  isolation: isolate; /* keeps the -z-10 pseudo-element inside this element */
+  background-image: conic-gradient(
+    from var(--rainbow-angle),
+    var(--color-rainbow-red),
+    var(--color-rainbow-orange),
+    var(--color-rainbow-yellow),
+    var(--color-rainbow-green),
+    var(--color-rainbow-blue),
+    var(--color-rainbow-indigo),
+    var(--color-rainbow-violet),
+    var(--color-rainbow-red)
+  );
+  animation: rainbow-spin 4s linear infinite;
+}
 
-  &::before {
-    content: "";
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 150%;
-    aspect-ratio: 1;
-    translate: -50% -50%;
-    z-index: -1;
-    background-image: conic-gradient(
+@keyframes rainbow-spin {
+  to {
+    --rainbow-angle: 360deg;
+  }
+}
+
+@utility border-rainbow-radial {
+  border: 3px solid transparent;
+  background:
+    linear-gradient(var(--root-bg), var(--root-bg)) padding-box,
+    conic-gradient(
+      from var(--rainbow-angle),
       var(--color-rainbow-red),
       var(--color-rainbow-orange),
       var(--color-rainbow-yellow),
@@ -82,15 +99,8 @@
       var(--color-rainbow-indigo),
       var(--color-rainbow-violet),
       var(--color-rainbow-red)
-    );
-    animation: rainbow-spin 4s linear infinite;
-  }
-}
-
-@keyframes rainbow-spin {
-  to {
-    rotate: 360deg;
-  }
+    ) border-box;
+  animation: rainbow-spin 4s linear infinite;
 }
 
 @utility text-stroke-sm {
@@ -135,4 +145,10 @@ body {
     to {
         background-position: 200% 0%;
     }
+}
+
+@keyframes infinite-carousel {
+  to {
+    transform: translateX(-100%);
+  }
 }

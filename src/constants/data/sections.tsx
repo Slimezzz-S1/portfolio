@@ -1,18 +1,5 @@
-// COMPONENTS
-import type { ItemProps } from "@/sections/home-page/SkillSection"
-import type { SummaryItemProps } from "@/sections/home-page/SummarySection"
-import type { TodoItemProps } from "@/sections/home-page/TodosSection"
-import type { SocialLinkProps } from "@/components/SocialLink"
-import type { ProjectProps } from "@/sections/home-page/ProjectSection"
 
-// ICONS : SOCIAL LINKS
-import YoutubeIcon from "@icons/social-link-icons/youtube/mdi--youtube.svg?react"
-import GithubIcon from "@icons/social-link-icons/github/mdi--github.svg?react"
-import DiscordIcon from "@icons/social-link-icons/discord/ic--baseline-discord.svg?react"
-import MonkeyTypeIcon from "@icons/social-link-icons/monkeytype/simple-icons--monkeytype.svg?react"
-// import XIcon from "@icons/social-link-icons/x/pajamas--twitter.svg?react"
-
-// ICONS : LANGUAGES
+// ASSETS : LANGUAGES
 import HTMLIcon from "@icons/languages/html/flowbite--html-solid.svg?react"
 import CSSIcon from "@icons/languages/css/griddy-icons--css-3.svg?react"
 import JSIcon from "@icons/languages/js/cib--js.svg?react"
@@ -20,7 +7,7 @@ import TSIcon from "@icons/languages/ts/akar-icons--typescript-fill.svg?react"
 import PythonIcon from "@icons/languages/python/akar-icons--python-fill.svg?react"
 import LuaIcon from "@icons/languages/lua/cib--lua.svg?react"
 
-// ICONS : FRAMEWORK/TOOLS
+// ASSETS : FRAMEWORK/TOOLS
 import NextIcon from "@icons/tools/next-js/akar-icons--nextjs-fill.svg?react"
 // import NuxtIcon from "@icons/tools/nuxt-js/bxl--nuxt-js.svg?react"
 import ReactIcon from "@icons/tools/react/griddy-icons--react.svg?react"
@@ -45,36 +32,15 @@ import posterzzzBannerImage from "@/assets/projects/posterzzz/banner.png"
 import s11meBannerImage from "@/assets/projects/s11me/banner.png"
 import s11meBannerVideo from "@/assets/projects/s11me/bannerVideo.mp4"
 
-//////                  //////
-//////  END OF IMPORT   //////
-//////                  //////
+// COMPONENTS
+import type { SummaryItemProps } from "@/sections/home-page/SummarySection"
+import type { AboutMeDataProps, EpicSectionDataProps, RolesDataProps } from "./types"
+import type { ItemProps } from "@/sections/home-page/SkillSection"
+import type { ProjectProps } from "@/sections/home-page/ProjectSection"
+import type { TodoItemProps } from "@/sections/home-page/TodosSection"
 
-export interface RolesDataProps {
-    roles : string[]
-    delayEachLetter : number
-    holdDuration : number
-}
-
-export interface UnderscoreDataProps {
-    duration : number
-    staggerDelay : number
-    holdDuration : number
-}
-
-export interface EpicSectionDataProps {
-    roles : string[]
-}
-
-export interface AboutMeDataProps {
-    transitionTime : number
-    delay : number
-    delayMid : number
-    roles : string[]
-}
-
-//////                  //////
-//////      MAIN HERO   //////
-//////                  //////
+////
+//// Main Hero
 
 export const rolesData : RolesDataProps = {
     roles : [
@@ -86,15 +52,9 @@ export const rolesData : RolesDataProps = {
     holdDuration : 2000
 } as const
 
-export const underscoreData : UnderscoreDataProps = {
-    duration : 100,
-    staggerDelay : 75,
-    holdDuration : 250
-} as const
 
-//////                      //////
-//////      EPIC SECTION    //////
-//////                      //////
+////
+//// Epic Section
 
 export const epicSectionData : EpicSectionDataProps = {
     roles : [
@@ -104,10 +64,8 @@ export const epicSectionData : EpicSectionDataProps = {
     ]
 } as const
 
-//////                  //////
-//////      SUMMARY     //////
-//////                  //////
-
+////
+//// Summary
 
 export const summaryItemData : SummaryItemProps[] = [
 	{
@@ -138,9 +96,9 @@ export const summaryItemData : SummaryItemProps[] = [
 	},
 ] as const
 
-//////           //////
-//////  SKILL    //////
-//////           //////
+
+////
+//// Skill
 
 export const languagesData : ItemProps[] = [
     {
@@ -292,40 +250,8 @@ export const appsData : ItemProps[] = [
     },
 ] as const
 
-//////                  //////
-//////  SOCIAL LINKS    //////
-//////                  //////
-
-export const socialLinksData : SocialLinkProps[] = [
-    {
-        name : "Youtube",
-        Icon : YoutubeIcon,
-        description : "My Youtube Channel",
-        url : "https://www.youtube.com/@S11-ME_"
-    },
-    {
-        name : "Github",
-        Icon : GithubIcon,
-        description : "My Github",
-        url : "https://github.com/Slimezzz-S1"
-    },
-    {
-        name : "MonkeyType",
-        Icon : MonkeyTypeIcon,
-        description : "My MonkeyType Profile",
-        url : "https://monkeytype.com/profile/slimez7"
-    },
-    {
-        name : "Discord",
-        Icon : DiscordIcon,
-        description : "My Discord account",
-        url : "https://discord.com/users/999482178570305586"
-    },
-] as const
-
-//////          //////
-//////  TODOS   //////
-//////          //////
+////
+//// Todos
 
 export const todoData : TodoItemProps[] = [
     {
@@ -362,11 +288,8 @@ export const todoData : TodoItemProps[] = [
     },
 ] as const
 
-
-//////              //////
-//////  PROJECTS    //////
-//////              //////
-
+////
+//// Projects
 
 export const projectData : ProjectProps[] = [
 	{
@@ -396,11 +319,9 @@ export const projectData : ProjectProps[] = [
 	},
 ] as const
 
-//////              //////
-//////  About ME    //////
-//////              //////
+//// About Me
 
-export const aboutMeData = {
+export const aboutMeData : AboutMeDataProps = {
     transitionTime : 800,
     delay : 1100,
     delayMid : 100,

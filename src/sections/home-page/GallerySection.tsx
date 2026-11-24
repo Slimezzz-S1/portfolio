@@ -1,43 +1,9 @@
 // COMPONENTS
 import useClientVisibility from "@/hooks/useClientVisibility"
+import getImages from "@/lib/getImages"
 import { SectionTitle } from "@/components/main/Section"
 import { animate, stagger } from "animejs"
 import { useEffect, useRef, useState } from "react"
-
-export function images(folderName : string | string[]) {
-    const modules : Record<string, unknown> = import.meta.glob(
-        "/src/assets/images/gallery/**",
-        {
-            eager : true,
-            query : "?url",
-            import : "default"
-        }
-    )
-
-    const getImages = (folderName : string) => {
-        const images : string[] = []
-
-        for (const module in modules) {
-            if (module.includes(folderName)) {
-                images.push(modules[module] as string)
-            }
-        }
-
-        return images
-    }
-
-	if (typeof folderName === "object") {
-		const images : string[] = []
-
-		folderName.forEach((name) => {
-			images.push(...getImages(name))
-		})
-
-		return images
-	}
-
-    return getImages(folderName)
-}
 
 export default function GallerySection() {
     const cardRef = useRef<HTMLDivElement | null>(null)
@@ -67,7 +33,7 @@ export default function GallerySection() {
             </div>
 
 			<div ref={cardRef} className="columns-1 sm:columns-2 md:columns-3 lg:columns-4">
-				{images(["zyl"]).map(( item, index ) => (
+				{getImages(["zyl"]).map(( item, index ) => (
 					<img style={{ "opacity" : "0" } as React.CSSProperties} key={index} src={item} alt="" className="mb-4 rounded-lg w-full" />
 				))}
 			</div>

@@ -1,8 +1,8 @@
 // COMPONENTS
 import Activities from "@/components/Activities"
-import githubData from "@/constants/github-data.json"
-import monkeytypeData from "@/constants/monkeytype-data.json"
-import leetcodeData from "@/constants/leetcode-data.json"
+import githubData from "@/constants/data/github.json"
+import monkeytypeData from "@/constants/data/monkeytype.json"
+import leetcodeData from "@/constants/data/leetcode.json"
 import { useNavigate } from "react-router"
 
 export default function SkillsPage() {

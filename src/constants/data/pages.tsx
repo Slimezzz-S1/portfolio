@@ -7,9 +7,9 @@ import ProjectIcon from "@icons/nav/octicon--project-roadmap-16.svg?react"
 import GalleryIcon from "@icons/nav/boxicons--gallery-vertical-end-filled.svg?react"
 
 // COMPONENTS
+import HomePage from "@/pages/HomePage"
 import type { NavProps } from "@/components/main/PageNav"
 import { lazy, type ReactNode } from "react"
-import HomePage from "@/pages/HomePage"
 const NotFoundPage = lazy(() => import("@/pages/NotFound"))
 const AboutPage = lazy(() => import("@/pages/AboutPage"))
 const SkillsPage = lazy(() => import("@/pages/SkillsPage"))
