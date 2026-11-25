@@ -183,10 +183,7 @@ export default function InteractiveCardStatic({ className, overrideClassName, re
 
 
                 <div style={{"--z" : isHovering ? "30px" : "0"} as React.CSSProperties} className="rounded-[inherit] w-full border-4 translate-z-(--z) transition-transform flex flex-col items-center justify-center">
-                    <p className="text-2xl">
-                        Hover over this card
-                    </p>
-                    <p className="font-bold text-3xl">
+                    <p className="font-bold text-xl sm:text-3xl">
                         {cardText}
                     </p>
                 </div>

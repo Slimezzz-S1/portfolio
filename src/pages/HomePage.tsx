@@ -39,12 +39,6 @@ export default function HomePage() {
 			<div id="project">
 				<ProjectSection />
 			</div>
-			
-			{/* <section className="w-full h-32 flex items-center justify-center bg-gray-900 border-y">
-				<p className="text-3xl font-bold">
-					Work in progress
-				</p>
-			</section> */}
 
 			<div id="gallery">
 				<GallerySection />

@@ -6,12 +6,12 @@ import unknownImage from "@/assets/projects/unknown.png"
 
 // COMPONENTS
 import useClientVisibility from "@/hooks/useClientVisibility"
+import useMergedRefs from "@/lib/useMergedRefs"
+import type { BaseComponentProps } from "@/lib/BaseComponentProps"
 import { useEffect, useRef, useState } from "react"
 import { SectionTitle } from "@/components/main/Section"
+import { twMerge } from "tailwind-merge"
 import { animate } from "animejs"
-
-export type ProjectCardMode = "image-only" | "video-only" | "hybrid"
-export type ProjectStatus = "finished" | "unfinished" | "scrapped" | "work-in-progress" | "prototype" | "abandoned"
 
 export interface ProjectProps {
 	name : string
@@ -24,18 +24,19 @@ export interface ProjectProps {
 	currestStatusReason? : string
 }
 
-interface ProjectCardProps extends ProjectProps {
+interface ProjectCardProps extends ProjectProps, BaseComponentProps {
 	isActivatedManually? : boolean
 	isActivatedManuallyValue? : boolean
-	ref? : React.Ref< HTMLDivElement >
 	onComplete? : () => void
-	onBegin? : () => void
-	className? : string
-	style? : React.CSSProperties
+	onBegin? : () => void	
 }
+
 interface ProjectSectionProps {
 	projectData? : ProjectProps[]
 }
+
+export type ProjectCardMode = "image-only" | "video-only" | "hybrid"
+export type ProjectStatus = "finished" | "unfinished" | "scrapped" | "work-in-progress" | "prototype" | "abandoned"
 
 const resolveCardType : (image? : string, video? : string, mode? : ProjectCardMode) => ProjectCardMode | null = (image?, video?, mode?) => {
 	return mode ? mode :
@@ -146,7 +147,7 @@ export function ProjectSectionLive({ projectData = projects } : ProjectSectionPr
 	)
 }
 
-export function ProjectCard({ name, summary, url, image, video, mode, isActivatedManually, isActivatedManuallyValue = false, onComplete, onBegin, currentStatus, currestStatusReason, className, style, ref } : ProjectCardProps) {
+export function ProjectCard({ name, summary, url, image, video, mode, isActivatedManually, isActivatedManuallyValue = false, onComplete, onBegin, currentStatus, currestStatusReason, className, ref, style, ...rest } : ProjectCardProps) {
 	const currentMode = resolveCardType(image, video, mode)!
 	const rootRef = useRef< HTMLDivElement | null >( null )
 	const imageRef = useRef< HTMLImageElement | null >( null )
@@ -161,20 +162,6 @@ export function ProjectCard({ name, summary, url, image, video, mode, isActivate
 	const clearTimers = () => {
 		timersRef.current.forEach(( id ) => clearTimeout( id ))
 		timersRef.current = []
-	}
-
-	const setRootRef = ( node : HTMLDivElement | null ) => {
-		rootRef.current = node
-
-		if (!ref) return
-
-		if ( typeof ref === "function") {
-			ref(node)
-		} else {
-			ref.current = node
-		}
-
-		return 
 	}
 
 	useEffect(() => {
@@ -261,8 +248,8 @@ export function ProjectCard({ name, summary, url, image, video, mode, isActivate
 	}, [ isActivated ])
 
 	return (
-		<div ref={setRootRef} className="group">
-			<div style={style as React.CSSProperties} className={"relative w-full h-full max-h-160 aspect-3/4 border-3 rounded-2xl overflow-hidden" + " " + className}>
+		<div style={style as React.CSSProperties} ref={useMergedRefs([rootRef, ref])} className={twMerge("group", className)} {...rest}>
+			<div className={"relative w-full h-full max-h-160 aspect-3/4 border-3 rounded-2xl overflow-hidden" + " " + className}>
 				<div className="w-full h-full overflow-hidden">
 					<div className="relative w-full h-full group-hover:scale-110 transition-transform duration-600">
 						<img ref={imageRef} src={image ?? unknownImage} alt="" className="w-full h-full object-cover" />

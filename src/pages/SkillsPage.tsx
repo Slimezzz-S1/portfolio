@@ -1,17 +1,10 @@
-// COMPONENTS
+// DATA
 import Activities from "@/components/Activities"
 import githubData from "@/constants/data/github.json"
 import monkeytypeData from "@/constants/data/monkeytype.json"
 import leetcodeData from "@/constants/data/leetcode.json"
-import { useNavigate } from "react-router"
 
 export default function SkillsPage() {
-    const navigate = useNavigate()
-
-    const onClick = () => {
-        navigate("/")
-    }
-
     return (
         <section className="w-full">
             <h1 className="text-2xl font-bold">

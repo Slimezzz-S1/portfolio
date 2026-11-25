@@ -1,5 +1,5 @@
 // DATA
-import { summaryItemData } from "@data"
+import { summaryItemData } from "@data/sections"
 
 // COMPONENTS
 import useIntersectionObserver from "@/hooks/useIntersectionObserver"

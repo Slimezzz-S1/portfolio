@@ -98,7 +98,7 @@ export default function MonkeyTypePart() {
 
     return (
         <div className="flex flex-col-reverse items-center gap-4">
-            <div className="flex flex-col w-sm gap-2">
+            <div className="flex flex-col w-sm max-w-full gap-2">
                 <Options items={CATEGORIES} value={currentCategory} onValueChange={setCurrentCategory} />
 
                 <Options items={MODE} value={currentMode} onValueChange={changeMode} />
@@ -119,7 +119,7 @@ export default function MonkeyTypePart() {
 
 function Options<T extends string>({ items, className, style, overrideClassName, value, onValueChange, optionClassName, optionStyle } : OptionProps<T>) {
     return (
-        <select style={style} className={overrideClassName ? className : twMerge("border p-2 rounded-lg text-lg text-center", className)} value={value} onChange={(e) => onValueChange(e.target.value as T)}>
+        <select style={style} className={overrideClassName ? className : twMerge("border py-2 rounded-lg text-lg text-center", className)} value={value} onChange={(e) => onValueChange(e.target.value as T)}>
             {items.map((name) => (
                 <option value={name} key={name} className={twMerge("bg-root-bg text-root-fg rounded-lg", optionClassName)} style={optionStyle} >
                     {name}
@@ -145,7 +145,7 @@ function Card({ date, wpm, rawWpm, accuracy, mode, mode2, category, overrideClas
     }, [category, mode, mode2])
 
     return (
-        <div style={style} className={overrideClassName ? className : twMerge("w-sm max-w-screen flex flex-col items-center gap-2 border-3 rounded-lg py-3 px-4", className)} {...rest} >
+        <div style={style} className={overrideClassName ? className : twMerge("w-sm max-w-full flex flex-col items-center gap-2 border-3 rounded-lg py-3 px-4", className)} {...rest} >
             <div className="relative flex gap-4 py-4 overflow-hidden">
                 <div className="absolute top-0 left-0 w-full h-full z-10 bg-linear-0 from-root-bg via-transparent to-root-bg" />
 

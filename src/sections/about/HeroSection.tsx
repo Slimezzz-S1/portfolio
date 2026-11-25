@@ -5,14 +5,13 @@ import profileImage3 from "@/assets/gallery/zyl/ak mw dua.png"
 import profileImage4 from "@/assets/gallery/zyl/skyscrapper.png"
 
 // COMPONENT
+import InteractiveCardStatic from "@/components/InteractiveCard"
 import useClientVisibility from "@/hooks/useClientVisibility"
-import InteractiveCardStatic, { InteractiveCard } from "@/components/InteractiveCard"
+import ScrollingImage from "@/components/ScrollingImage"
 import type { BaseComponentProps } from "@/lib/BaseComponentProps"
 import { Fragment, useLayoutEffect, useRef, useState, type ReactNode } from "react"
 import { twMerge } from "tailwind-merge"
-import { useWindowWidth } from "@/lib/useWIndowWitdh"
-import Loading from "@/components/Loading"
-import ScrollingImage from "@/components/ScrollingImage"
+import { useWindowSize } from "@/lib/useWIndowWitdh"
 
 export default function HeroSection() {
     const rootRef = useRef<HTMLDivElement | null>(null)
@@ -20,7 +19,7 @@ export default function HeroSection() {
 
     return (
         <section ref={rootRef} className="p-8 w-full">
-            <div className="grid grid-cols-2 gap-2 lg:max-w-4xl mx-auto">
+            <div className="grid grid-cols-2 gap-2 lg:max-w-3xl mx-auto">
                 <div className="relative border-rainbow-radial border-4 rounded-lg overflow-hidden flex items-center justify-center p-4">
                     <AnimatedText text="About Me" className="text-4xl sm:text-7xl lg:text-8xl font-black" />
                 </div>
@@ -38,15 +37,13 @@ export default function HeroSection() {
                 </div>
 
                 <div>
-                    <InteractiveCardStatic className="h-full" />
+                    <InteractiveCardStatic className="h-full min-h-fit aspect-square lg:min-h-96" />
                 </div>
 
-                <div>
-                    <InteractiveCard className="h-full">
-                        <div className="p-8 flex flex-col items-center gap-4">
-                            <Loading isActivated />
-                        </div>
-                    </InteractiveCard>
+                <div className="border-4 rounded-2xl flex flex-col items-center  justify-center">
+                  <p className="text-2xl font-bold">
+                    test
+                  </p>
                 </div>
             </div>
         </section>
@@ -81,7 +78,7 @@ function CarouselText({ amount, className, overrideClassName, children, ...rest 
   const containerRef = useRef<HTMLDivElement>(null)
   const setRef = useRef<HTMLDivElement>(null)
   const [repeat, setRepeat] = useState(1)
-  const width = useWindowWidth()
+  const { width } = useWindowSize()
   const duration = getDuration(width)
 
   useLayoutEffect(() => {
